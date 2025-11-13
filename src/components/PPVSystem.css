@@ -1,0 +1,399 @@
+/* PPVSystem.css */
+.ppv-system {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* Navigation Bar */
+.ppv-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #1a3d7c 0%, #2c5aa0 100%);
+  color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-back-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.nav-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-action-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-action-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Existing Styles */
+.ppv-header {
+  background: linear-gradient(135deg, #1a3d7c 0%, #2c5aa0 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 1rem;
+  text-align: center;
+}
+
+.ppv-header h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+}
+
+.ppv-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.location-info {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
+.payment-methods {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.payment-methods h3 {
+  color: #1a3d7c;
+  margin-bottom: 1rem;
+}
+
+.payment-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.payment-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.payment-option:hover {
+  border-color: #1a3d7c;
+  background: #f8f9fa;
+}
+
+.payment-option.selected {
+  border-color: #1a3d7c;
+  background: #1a3d7c;
+  color: white;
+}
+
+.payment-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.payment-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.upcoming-games {
+  margin: 1rem;
+}
+
+.upcoming-games h2 {
+  color: #1a3d7c;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.game-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.tournament-badge {
+  background: #ffcc00;
+  color: #1a3d7c;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.game-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.teams-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.team {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.team:first-child {
+  justify-content: flex-start;
+}
+
+.team:last-child {
+  justify-content: flex-end;
+}
+
+.team-flag {
+  font-size: 1.5rem;
+}
+
+.team-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.vs {
+  color: #666;
+  font-weight: bold;
+  padding: 0 1rem;
+}
+
+.game-details {
+  margin-bottom: 1.5rem;
+}
+
+.venue {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.broadcasters {
+  color: #888;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.ppv-options {
+  text-align: center;
+}
+
+.pricing {
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1a3d7c;
+  display: block;
+}
+
+.duration {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.purchase-btn {
+  background: linear-gradient(135deg, #ff6b35, #e55a2b);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.purchase-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #e55a2b, #cc4a23);
+  transform: translateY(-1px);
+}
+
+.purchase-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.ppv-unavailable {
+  background: #f8f9fa;
+  color: #666;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px dashed #ccc;
+}
+
+.ppv-benefits {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.ppv-benefits h3 {
+  color: #1a3d7c;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.benefit {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.benefit-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.benefit h4 {
+  color: #1a3d7c;
+  margin-bottom: 0.5rem;
+}
+
+.benefit p {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Ad Banners */
+.ad-banner {
+  background-color: #e9ecef;
+  text-align: center;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #555;
+}
+
+.ad-placeholder {
+  width: 728px;
+  height: 90px;
+  background-color: #ddd;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .payment-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .teams-display {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .team {
+    justify-content: center !important;
+  }
+  
+  .ad-placeholder {
+    width: 100%;
+    max-width: 728px;
+  }
+  
+  .ppv-header h1 {
+    font-size: 2rem;
+  }
+}

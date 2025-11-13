@@ -1,0 +1,173 @@
+.home-screen {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0d2d5c 0%, #1a4b8c 100%);
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top Navigation */
+.top-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn {
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Content */
+.home-content {
+  flex: 1;
+  padding: 2rem;
+  text-align: center;
+}
+
+.welcome-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #d4af37;
+}
+
+.design-placeholder {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3rem;
+  border-radius: 10px;
+  border: 2px dashed #d4af37;
+  margin-bottom: 3rem;
+  font-size: 1.2rem;
+}
+
+/* Features Section */
+.features-section {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border-left: 4px solid #d4af37;
+  text-align: left;
+}
+
+.feature-card h3 {
+  color: #d4af37;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.feature-card p {
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.action-btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.freemium {
+  background: #4CAF50;
+  color: white;
+}
+
+.subscribe {
+  background: #d4af37;
+  color: black;
+}
+
+.signin {
+  background: #2196F3;
+  color: white;
+}
+
+/* Advertisement Banner */
+.ad-banner {
+  background: linear-gradient(90deg, #1a4b8c, #2a5c2a);
+  color: white;
+  padding: 0.8rem;
+  border-top: 2px solid #d4af37;
+}
+
+.ad-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ad-badge {
+  background: #ff4444;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.ad-text {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ad-close {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+/* Updated button styles for new strategy */
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.action-btn:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}

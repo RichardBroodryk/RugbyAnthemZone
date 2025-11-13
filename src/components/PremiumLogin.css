@@ -1,0 +1,84 @@
+.premium-login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0d2d5c 0%, #1a4b8c 100%);
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+.premium-login-content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.premium-login-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 2px solid #d4af37;
+  max-width: 500px;
+  width: 100%;
+  backdrop-filter: blur(10px);
+}
+
+.premium-title {
+  text-align: center;
+  color: #d4af37;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.banking-section {
+  background: rgba(212, 175, 55, 0.1);
+  padding: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #d4af37;
+  margin: 1.5rem 0;
+}
+
+.banking-title {
+  color: #d4af37;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.premium-features {
+  margin: 1.5rem 0;
+}
+
+.premium-features h4 {
+  color: #d4af37;
+  margin-bottom: 0.5rem;
+}
+
+.premium-features ul {
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.premium-features li {
+  margin-bottom: 0.5rem;
+}
+
+.premium-subscribe-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #d4af37;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-top: 1rem;
+}
+
+.premium-subscribe-btn:hover {
+  transform: translateY(-2px);
+}

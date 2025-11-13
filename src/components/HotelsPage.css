@@ -1,0 +1,366 @@
+.hotels-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.top-ad-banner {
+  background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-ad-banner {
+  background: linear-gradient(90deg, #4ecdc4, #26a69a);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.nav-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+.hotels-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.hotels-header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.hotels-title {
+  font-size: 3em;
+  margin: 0 0 10px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hotels-subtitle {
+  font-size: 1.3em;
+  opacity: 0.9;
+  margin: 0 0 15px 0;
+}
+
+.affiliate-notice {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  border-radius: 25px;
+  display: inline-block;
+  backdrop-filter: blur(10px);
+  font-size: 0.95em;
+}
+
+.hotels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.country-hotels-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.country-hotels-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.country-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f8f9fa;
+}
+
+.nation-flag {
+  font-size: 3em;
+  margin-right: 20px;
+}
+
+.country-info h3 {
+  margin: 0 0 5px 0;
+  color: #333;
+  font-size: 1.6em;
+}
+
+.stadium-name {
+  margin: 0 0 5px 0;
+  color: #666;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.hotels-count {
+  margin: 0;
+  color: #888;
+  font-size: 0.9em;
+}
+
+.hotels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hotel-item {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.hotel-item:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+.hotel-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.hotel-info {
+  flex: 1;
+}
+
+.hotel-name {
+  margin: 0 0 8px 0;
+  color: #333;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.hotel-distance {
+  margin: 0 0 12px 0;
+  color: #666;
+  font-size: 0.95em;
+}
+
+.hotel-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.feature-tag {
+  background: #007bff;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.hotel-ratings {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.official-rating {
+  color: #ffc107;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.fan-rating {
+  color: #666;
+  font-size: 0.85em;
+  font-style: italic;
+}
+
+.hotel-pricing {
+  text-align: center;
+  min-width: 180px;
+}
+
+.price-section {
+  margin-bottom: 12px;
+}
+
+.price-from {
+  display: block;
+  color: #666;
+  font-size: 0.8em;
+  margin-bottom: 2px;
+}
+
+.price-amount {
+  display: block;
+  color: #28a745;
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.price-note {
+  display: block;
+  color: #888;
+  font-size: 0.75em;
+}
+
+.book-now-btn {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.95em;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.book-now-btn:hover {
+  background: linear-gradient(135deg, #20c997, #28a745);
+  transform: scale(1.05);
+}
+
+.book-now-btn.affiliate {
+  background: linear-gradient(135deg, #ff6b35, #ff8e50);
+}
+
+.book-now-btn.affiliate:hover {
+  background: linear-gradient(135deg, #ff8e50, #ff6b35);
+}
+
+.affiliate-badge {
+  background: #17a2b8;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.75em;
+  font-weight: bold;
+}
+
+.booking-tips {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.booking-tips h3 {
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.tip-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.tip-icon {
+  font-size: 1.5em;
+}
+
+.tip-text {
+  color: #555;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.commission-notice {
+  background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+  border: 2px solid #ffc107;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+}
+
+.commission-notice h4 {
+  color: #856404;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+.commission-notice p {
+  color: #856404;
+  margin: 0;
+  line-height: 1.5;
+  font-size: 1em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hotels-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hotels-title {
+    font-size: 2.5em;
+  }
+  
+  .country-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .nation-flag {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .hotel-main {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,162 @@
+.secondary-splash {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0d2d5c 0%, #1a4b8c 100%);
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Top Navigation */
+.top-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn {
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Content */
+.secondary-content {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.tournament-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #d4af37; /* Gold */
+}
+
+.subscribe-text {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  color: #ffd700;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Loading Animation */
+.loading-animation {
+  margin-top: 2rem;
+}
+
+.rugby-field {
+  width: 200px;
+  height: 100px;
+  background: #2a5c2a;
+  border: 2px solid white;
+  border-radius: 10px;
+  margin: 0 auto 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.rugby-ball-loading {
+  width: 30px;
+  height: 18px;
+  background: #d4af37;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(30deg);
+  animation: ballMove 2s infinite ease-in-out;
+}
+
+@keyframes ballMove {
+  0% { left: 0; }
+  50% { left: calc(100% - 30px); }
+  100% { left: 0; }
+}
+
+.loading-animation p {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+/* Advertisement Banner */
+.ad-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, #1a4b8c, #2a5c2a);
+  color: white;
+  padding: 0.8rem;
+  border-top: 2px solid #d4af37;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+}
+
+.ad-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ad-badge {
+  background: #ff4444;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.ad-text {
+  flex: 1;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ad-close {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ad-close:hover {
+  background: rgba(255,255,255,0.1);
+}
+/* Make entire screen clickable with cursor indication */
+.secondary-splash {
+  cursor: pointer;
+}
+
+/* Add pulse animation to indicate interactivity */
+.loading-animation p {
+  animation: pulseText 2s infinite;
+}
+
+@keyframes pulseText {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
