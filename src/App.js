@@ -45,6 +45,7 @@ import PodcastsPage from './components/PodcastsPage';
 import PPVSystem from './components/PPVSystem';
 import PPASystem from './components/PPASystem';
 import GameStats from './components/GameStats';
+import LiveScoresPage from './components/LiveScoresPage';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState('splash');
@@ -93,6 +94,7 @@ function App() {
   const goToGameStats = (gameData = null) => navigateTo('game-stats', gameData);
   const goToNationalAnthems = () => navigateTo('national-anthems');
   const goToTournamentMerchandise = () => navigateTo('tournament-merchandise');
+  const goToLiveScores = () => navigateTo('live-scores');
 
   // Authentication Navigation
   const goToFreemiumLogin = () => {
@@ -173,42 +175,8 @@ function App() {
         onNavigateToPPV: goToPPV,
         onNavigateToAudio: goToPPA,
         onNavigateToNationalAnthems: goToNationalAnthems,
-        onNavigateToTournamentMerchandise: goToTournamentMerchandise
-      }
-    },
-
-    // Tournament Selection
-    'mens-tournaments': { 
-      component: MensTournaments, 
-      props: { 
-        onNavigateBack: navigateBack,
-        onNavigateToMensAutumnTours: () => navigateTo('mens-autumn-tours'),
-        onNavigateToMensSixNations: () => navigateTo('mens-six-nations'),
-        onNavigateToMensRugbyChampionship: () => navigateTo('mens-rugby-championship'),
-        onNavigateToMensWorldCup: () => navigateTo('mens-world-cup'),
-        onNavigateToMensRivalTours: () => navigateTo('mens-rival-tours'),
-        onNavigateToMensSummerInternationals: () => navigateTo('mens-summer-internationals'),
-        onNavigateToMensRugby7s: () => navigateTo('mens-rugby-7s'),
-        onNavigateToMensBritishLions: () => navigateTo('mens-british-lions'),
-        onNavigateToFantasyLeagues: goToFantasyLeagues,
-        onNavigateToFinalResults: goToFinalResults,
-        onNavigateToPodcasts: goToPodcasts
-      }
-    },
-    'womens-tournaments': { 
-      component: WomensTournaments, 
-      props: { 
-        onNavigateBack: navigateBack,
-        onNavigateToWomensSixNations: () => navigateTo('womens-six-nations'),
-        onNavigateToWomensWXV: () => navigateTo('womens-wxv'),
-        onNavigateToWomensWorldCup: () => navigateTo('womens-world-cup'),
-        onNavigateToWomensPacificFour: () => navigateTo('womens-pacific-four'),
-        onNavigateToWomensRugby7s: () => navigateTo('womens-rugby-7s'),
-        onNavigateToWomensAutumnInternationals: () => navigateTo('womens-autumn-internationals'),
-        onNavigateToWomensSummerTests: () => navigateTo('womens-summer-tests'),
-        onNavigateToFantasyLeagues: goToFantasyLeagues,
-        onNavigateToFinalResults: goToFinalResults,
-        onNavigateToPodcasts: goToPodcasts
+        onNavigateToTournamentMerchandise: goToTournamentMerchandise,
+        onNavigateToLiveScores: goToLiveScores
       }
     },
 
@@ -221,6 +189,7 @@ function App() {
     'game-stats': { component: GameStats, props: { onNavigateBack: navigateBack, game: currentGame } },
     'national-anthems': { component: NationalAnthems, props: { onNavigateBack: navigateBack } },
     'tournament-merchandise': { component: TournamentMerchandise, props: { onNavigateBack: navigateBack, userStatus: userStatus, game: currentGame } },
+    'live-scores': { component: LiveScoresPage, props: { onNavigateBack: navigateBack } },
     'game-overview': { 
       component: GameOverview, 
       props: { 

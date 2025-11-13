@@ -12,7 +12,8 @@ function HomePage({
   onNavigateToAudio,
   onNavigateToGameStats,
   onNavigateToNationalAnthems,
-  onNavigateToTournamentMerchandise
+  onNavigateToTournamentMerchandise,
+  onNavigateToLiveScores
 }) {
   const gridItems = [
     // CORE FEATURES - NOW CONNECTED
@@ -76,11 +77,11 @@ function HomePage({
       case "merchandise":
         onNavigateToTournamentMerchandise();
         break;
+      case "scores":
+        onNavigateToLiveScores();
+        break;
       
       // ========== COMING SOON FEATURES ==========
-      case "scores":
-        alert(`🏉 ${label} - Live scores feature launching next update!`);
-        break;
       case "tickets":
         alert(`🎟️ ${label} - Ticket integration coming soon!`);
         break;
@@ -158,10 +159,10 @@ function HomePage({
               <div className="icon-description">{item.description}</div>
               
               {/* Status Indicator */}
-              {(['fantasy', 'results', 'podcasts', 'ppv', 'audio', 'anthems', 'merchandise', 'mens-tournaments', 'womens-tournaments'].includes(item.action)) && (
+              {(['fantasy', 'results', 'podcasts', 'ppv', 'audio', 'anthems', 'merchandise', 'scores', 'mens-tournaments', 'womens-tournaments'].includes(item.action)) && (
                 <div className="status-badge working">READY</div>
               )}
-              {!['fantasy', 'results', 'podcasts', 'ppv', 'audio', 'anthems', 'merchandise', 'mens-tournaments', 'womens-tournaments'].includes(item.action) && (
+              {!['fantasy', 'results', 'podcasts', 'ppv', 'audio', 'anthems', 'merchandise', 'scores', 'mens-tournaments', 'womens-tournaments'].includes(item.action) && (
                 <div className="status-badge coming-soon">SOON</div>
               )}
             </div>
