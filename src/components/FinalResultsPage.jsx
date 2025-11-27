@@ -33,6 +33,44 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
               awayTeam: { name: 'Ireland', flag: '🇮🇪', score: 38 },
               venue: 'Stade de France, Paris',
               status: 'Completed'
+            },
+            {
+              id: 2,
+              round: 'Round 2',
+              date: '2024-02-10',
+              homeTeam: { name: 'Scotland', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', score: 16 },
+              awayTeam: { name: 'France', flag: '🇫🇷', score: 20 },
+              venue: 'Murrayfield, Edinburgh',
+              status: 'Completed'
+            }
+          ]
+        }
+      }
+    },
+    {
+      id: 'rugby-championship',
+      name: 'The Rugby Championship',
+      logo: 'TRC',
+      currentChampion: 'New Zealand',
+      seasons: {
+        '2024': {
+          winner: 'New Zealand',
+          runnerUp: 'South Africa',
+          points: {
+            'New Zealand': 18,
+            'South Africa': 15,
+            'Australia': 9,
+            'Argentina': 6
+          },
+          games: [
+            {
+              id: 1,
+              round: 'Round 1',
+              date: '2024-08-10',
+              homeTeam: { name: 'Australia', flag: '🇦🇺', score: 25 },
+              awayTeam: { name: 'New Zealand', flag: '🇳🇿', score: 32 },
+              venue: 'Melbourne Cricket Ground',
+              status: 'Completed'
             }
           ]
         }
@@ -186,6 +224,7 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
         >
           <option value="2024">2024</option>
           <option value="2023">2023</option>
+          <option value="2022">2022</option>
         </select>
       </div>
     </div>
@@ -199,7 +238,7 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
 
     return (
       <div className="quick-stats">
-        <h3>Current Champions</h3>
+        <h3>🏆 Current Season Champions</h3>
         <div className="champions-grid">
           {currentChampions.map((item, index) => (
             <div key={index} className="champion-item">
@@ -214,31 +253,24 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
 
   return (
     <div className="final-results-page">
-      {/* Navigation Bar */}
-      <nav className="results-nav">
-        <button className="nav-back-btn" onClick={onNavigateBack}>
-          ← Back
-        </button>
-        <h1 className="nav-title">Rugby Results Archive</h1>
-        <div className="nav-actions">
-          <button className="nav-action-btn">🏠</button>
-          <button className="nav-action-btn">🔍</button>
-        </div>
-      </nav>
-
       {/* Top Ad Banner */}
-      <div className="ad-banner top-ad">
-        <p>ADVERTISEMENT</p>
-        <div className="ad-placeholder">
-          Ad Banner (728x90)
-        </div>
+      <div className="top-ad-banner">
+        🏆 Rugby Results Archive - Complete Tournament History & Statistics! 📊
       </div>
 
-      <div className="container">
-        {/* Page Header */}
-        <div className="page-header">
-          <h1>Rugby Results Archive</h1>
-          <p>Complete results from all major international rugby tournaments</p>
+      {/* Top Navigation */}
+      <nav className="top-nav">
+        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
+        <button className="nav-btn">🏠 Home</button>
+        <button className="nav-btn">🔍 Search</button>
+        <button className="nav-btn">👤 Profile</button>
+      </nav>
+
+      {/* Main Content */}
+      <div className="results-content">
+        <div className="results-header">
+          <h1 className="results-title">📊 Rugby Results Archive</h1>
+          <p className="results-subtitle">Complete results, standings, and match details from all major international rugby tournaments</p>
         </div>
 
         {/* Quick Stats */}
@@ -247,9 +279,9 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
         {/* Filters */}
         <TournamentFilter />
 
-        {/* Results Grid */}
+        {/* Results Container */}
         <div className="results-container">
-          <h2>Tournament Results</h2>
+          <h2>Tournament Results & Standings</h2>
           {filteredTournaments.length > 0 ? (
             filteredTournaments.map(tournament => (
               <TournamentCard key={tournament.id} tournament={tournament} />
@@ -257,17 +289,24 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
           ) : (
             <div className="no-results">
               <p>No results found for the selected filters.</p>
+              <p>Try selecting different tournament or season options.</p>
             </div>
           )}
         </div>
 
-        {/* Bottom Ad Banner */}
-        <div className="ad-banner bottom-ad">
-          <p>ADVERTISEMENT</p>
-          <div className="ad-placeholder">
-            Ad Banner (728x90)
-          </div>
+        {/* Historical CTA */}
+        <div className="historical-cta">
+          <h3>📚 Explore Historical Data</h3>
+          <p>Access complete tournament archives, historical statistics, and championship records dating back to the first international rugby matches.</p>
+          <button className="cta-button">
+            📖 View Historical Archives
+          </button>
         </div>
+      </div>
+
+      {/* Bottom Ad Banner */}
+      <div className="bottom-ad-banner">
+        🎥 Match Highlights & Full Replays Available - Relive the Action! 🎬
       </div>
     </div>
   );

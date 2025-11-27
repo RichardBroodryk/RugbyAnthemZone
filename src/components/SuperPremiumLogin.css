@@ -1,0 +1,431 @@
+/* SuperPremiumLogin.css - Super Premium Subscription Page */
+.super-premium-login-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
+}
+
+/* Standardized Ad Banners - Matching FlightsPage */
+.top-ad-banner {
+  background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-ad-banner {
+  background: linear-gradient(90deg, #4ecdc4, #26a69a);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Standardized Navigation - Matching HomePage */
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Super Premium Login Content */
+.super-premium-login-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.super-premium-login-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.super-premium-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2.2em;
+  background: linear-gradient(135deg, #ff6b35, #e55a2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* VIP Badge */
+.vip-badge {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.vip-icon {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.vip-text {
+  background: linear-gradient(135deg, #ff6b35, #e55a2b);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1.1em;
+  display: inline-block;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+/* Banking Section */
+.banking-section {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 15px;
+  margin: 25px 0;
+  border-left: 4px solid #ff6b35;
+}
+
+.banking-title {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+/* SUPER PREMIUM FEATURES SECTION - DIFFERENT COLOR */
+.super-premium-features {
+  background: linear-gradient(135deg, #ff6b35, #e55a2b); /* Orange/Red gradient */
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  margin: 25px 0;
+  border: 2px solid rgba(255, 107, 53, 0.3);
+  box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+}
+
+.super-premium-features h4 {
+  color: white;
+  margin-bottom: 15px;
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.super-premium-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.super-premium-features li {
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;
+  font-weight: 500;
+}
+
+.super-premium-features li:before {
+  content: "⭐";
+  position: absolute;
+  left: 0;
+  color: #ffd700;
+}
+
+/* Premium Comparison */
+.premium-comparison {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px 0;
+  border: 2px solid #e9ecef;
+}
+
+.comparison-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  text-align: center;
+}
+
+.comparison-item {
+  padding: 10px;
+}
+
+.comparison-label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.premium-price {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.super-premium-price {
+  color: #ff6b35;
+  font-weight: bold;
+}
+
+/* Subscribe Button */
+.super-premium-subscribe-btn {
+  background: linear-gradient(135deg, #ff6b35, #e55a2b);
+  color: white;
+  border: none;
+  padding: 16px 30px;
+  border-radius: 25px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.super-premium-subscribe-btn:hover {
+  background: linear-gradient(135deg, #e55a2b, #cc4a23);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+/* Test Button Styles */
+.test-button-container {
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 15px;
+  border: 2px dashed #667eea;
+}
+
+.test-button {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px;
+  transition: all 0.3s ease;
+}
+
+.test-button:hover {
+  background: #5a6fd8;
+  transform: translateY(-2px);
+}
+
+.test-note {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Payment Method Options */
+.payment-methods {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.payment-method {
+  flex: 1;
+  min-width: 80px;
+  text-align: center;
+  padding: 10px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.payment-method:hover {
+  border-color: #ff6b35;
+  background: #f8f9fa;
+}
+
+.payment-method.selected {
+  border-color: #ff6b35;
+  background: #ff6b35;
+  color: white;
+}
+
+.payment-icon {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+
+.payment-name {
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+/* Price Display */
+.price-display {
+  text-align: center;
+  margin: 20px 0;
+  padding: 15px;
+  background: linear-gradient(135deg, #ff6b35, #e55a2b);
+  color: white;
+  border-radius: 15px;
+}
+
+.price-amount {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.price-period {
+  font-size: 1em;
+  opacity: 0.9;
+}
+
+/* Security Badge */
+.security-badge {
+  text-align: center;
+  margin-top: 15px;
+  color: #28a745;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.security-badge:before {
+  content: "🔒 ";
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .super-premium-login-container {
+    padding: 30px 20px;
+    margin: 20px;
+  }
+  
+  .super-premium-title {
+    font-size: 1.8em;
+  }
+  
+  .banking-section {
+    padding: 20px 15px;
+  }
+  
+  .super-premium-features {
+    padding: 20px 15px;
+  }
+  
+  .payment-methods {
+    flex-direction: column;
+  }
+  
+  .payment-method {
+    min-width: auto;
+  }
+  
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .super-premium-login-content {
+    padding: 20px 15px;
+  }
+  
+  .super-premium-login-container {
+    padding: 25px 15px;
+  }
+  
+  .super-premium-title {
+    font-size: 1.6em;
+  }
+  
+  .form-input {
+    padding: 10px 14px;
+  }
+  
+  .super-premium-subscribe-btn {
+    padding: 14px 20px;
+    font-size: 1em;
+  }
+}
+
+/* Animation for super premium badge */
+@keyframes superPremiumGlow {
+  0% { box-shadow: 0 0 5px rgba(255, 107, 53, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.8); }
+  100% { box-shadow: 0 0 5px rgba(255, 107, 53, 0.5); }
+}
+
+.vip-badge {
+  animation: superPremiumGlow 2s infinite;
+}

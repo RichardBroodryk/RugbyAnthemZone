@@ -3,33 +3,28 @@ import './HomeScreen.css';
 function HomeScreen({ 
   onNavigateToFreemiumLogin, 
   onNavigateToPremiumLogin, 
-  onNavigateToAppropriatePage,
-  userStatus 
+  onNavigateToSuperPremiumLogin,
+  onNavigateToAppropriatePage
 }) {
-  
-  // Determine if Sign In button should be active
-  const isSignInActive = userStatus !== null;
 
   return (
     <div className="home-screen">
-      {/* Top Navigation */}
       <nav className="top-nav">
         <button className="nav-btn">🏠 Home</button>
         <button className="nav-btn">🔍 Search</button>
         <button className="nav-btn">👤 Profile</button>
+        <button className="nav-btn" onClick={onNavigateToAppropriatePage}>🔐 Login</button>
         <button className="nav-btn">☰ Menu</button>
       </nav>
 
-      {/* Main Content */}
       <div className="home-content">
         <div className="welcome-section">
-          <h1>WELCOME TO</h1>
+          <h1>WELCOME TO RUGBY UNION INTERNATIONAL</h1>
           <div className="design-placeholder">
-            [My own DESIGN - to be added later]
+            🌍 The Global Home of Rugby - Connecting Fans Worldwide
           </div>
         </div>
 
-        {/* Feature Descriptions */}
         <div className="features-section">
           <div className="feature-card">
             <h3>⚡ Real-time Team Updates & Lineups</h3>
@@ -57,29 +52,28 @@ function HomeScreen({
           </div>
         </div>
 
-        {/* Action Buttons - UPDATED STRATEGY */}
         <div className="action-buttons">
           <button className="action-btn freemium" onClick={onNavigateToFreemiumLogin}>
-            Freemium Sign In
+            <span className="button-main">🆓 Freemium</span>
+            <span className="button-description">Free Basic Features</span>
           </button>
-          <button className="action-btn subscribe" onClick={onNavigateToPremiumLogin}>
-            Premium Subscribe
+          
+          <button className="action-btn premium" onClick={onNavigateToPremiumLogin}>
+            <span className="button-main">⭐ Premium</span>
+            <span className="button-description">$9.99/month</span>
           </button>
-          <button 
-            className="action-btn signin" 
-            onClick={onNavigateToAppropriatePage}
-            disabled={!isSignInActive}
-          >
-            {isSignInActive ? 'Sign In' : 'Choose Option First'}
+
+          <button className="action-btn super-premium" onClick={onNavigateToSuperPremiumLogin}>
+            <span className="button-main">👑 Super Premium</span>
+            <span className="button-description">$19.99/month</span>
           </button>
         </div>
       </div>
 
-      {/* Advertisement Banner */}
       <div className="ad-banner">
         <div className="ad-content">
           <span className="ad-badge">AD</span>
-          <span className="ad-text">Official Rugby Jersey Sale - 50% Off! 🎽</span>
+          <span className="ad-text">🎽 Official Rugby Jersey Sale - 50% Off! Limited Time Offer ⚡</span>
           <button className="ad-close">×</button>
         </div>
       </div>

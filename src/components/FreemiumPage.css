@@ -1,256 +1,126 @@
+/* Freemium Page Specific Styles */
 .freemium-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 100%);
-  color: #0d2d5c;
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Top Navigation */
-.top-nav {
-  display: flex;
-  justify-content: space-around;
-  padding: 1rem;
-  background: rgba(13, 45, 92, 0.9);
-  border-bottom: 2px solid #d4af37;
-}
-
-.nav-btn {
-  background: transparent;
+  background: linear-gradient(135deg, #2c5aa0 0%, #3a6bc0 100%);
   color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  border-radius: 5px;
-  transition: background 0.3s;
 }
 
-.nav-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* Main Content */
-.freemium-content {
-  flex: 1;
-  padding: 2rem;
-  text-align: center;
-}
-
-.welcome-title {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: #0d2d5c;
-  font-weight: bold;
-}
-
-.welcome-subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 3rem;
-  color: #1a4b8c;
-  opacity: 0.9;
-}
-
-/* Limited Icon Grid - Freemium has fewer features */
-.freemium-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  max-width: 600px;
-  margin: 0 auto 3rem;
-}
-
-.freemium-item {
-  background: white;
-  padding: 1.5rem 1rem;
-  border-radius: 15px;
-  border: 2px solid #666;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  position: relative;
-}
-
-.freemium-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(13, 45, 92, 0.15);
-}
-
-.freemium-icon {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.freemium-label {
-  font-weight: bold;
-  font-size: 0.9rem;
-  text-align: center;
-  color: #0d2d5c;
-}
-
-.freemium-description {
-  font-size: 0.8rem;
-  color: #666;
-  text-align: center;
-}
-
-/* Locked/Disabled Items */
+/* Locked Items */
 .locked-item {
-  opacity: 0.6;
-  border: 2px dashed #999;
-  cursor: not-allowed;
+  opacity: 0.7;
+  position: relative;
+  background: linear-gradient(135deg, #666 0%, #888 100%) !important;
+  border: 2px solid #999 !important;
 }
 
 .locked-item:hover {
-  transform: none;
-  box-shadow: none;
+  background: linear-gradient(135deg, #777 0%, #999 100%) !important;
+  transform: none !important;
+  cursor: not-allowed;
 }
 
-.locked-badge {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background: #ff4444;
-  color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 3px;
-  font-size: 0.7rem;
-  font-weight: bold;
+.locked-item .icon-label,
+.locked-item .icon-description {
+  color: #ccc !important;
 }
 
-.upgrade-prompt {
-  background: rgba(212, 175, 55, 0.1);
-  border: 2px solid #d4af37;
-  border-radius: 10px;
+/* Status Badges */
+.status-badge.locked {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+}
+
+.status-badge.available {
+  background: linear-gradient(135deg, #51cf66, #40c057);
+}
+
+/* Upgrade Section */
+.upgrade-section {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   padding: 1.5rem;
-  margin: 2rem auto;
-  max-width: 500px;
-}
-
-.upgrade-prompt h3 {
-  color: #d4af37;
-  margin-bottom: 0.5rem;
-}
-
-.upgrade-button {
-  background: #d4af37;
-  color: black;
-  border: none;
-  padding: 0.8rem 2rem;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 1rem;
-  transition: transform 0.2s;
-}
-
-.upgrade-button:hover {
-  transform: translateY(-2px);
-}
-
-/* Advertisement Banners */
-.top-ad-banner,
-.bottom-ad-banner {
-  background: linear-gradient(90deg, #1a4b8c, #2a5c2a);
-  color: white;
-  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
   text-align: center;
-  font-weight: bold;
-  font-size: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.top-ad-banner {
-  border-bottom: 2px solid #d4af37;
+.upgrade-section h3 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: white;
 }
 
-.bottom-ad-banner {
-  border-top: 2px solid #d4af37;
+.upgrade-options {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.upgrade-btn {
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid #4fc3f7;
+  min-width: 200px;
+}
+
+.upgrade-btn.premium {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  border: 2px solid #ffd700;
+  color: #333;
+}
+
+.upgrade-btn.super-premium {
+  background: linear-gradient(135deg, #c0c0c0, #e5e5e5);
+  border: 2px solid #c0c0c0;
+  color: #333;
+}
+
+.upgrade-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(79, 195, 247, 0.4);
+}
+
+.upgrade-btn.premium:hover {
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.upgrade-btn.super-premium:hover {
+  box-shadow: 0 6px 20px rgba(192, 192, 192, 0.4);
+}
+
+/* Lock Icon */
+.locked-item .premium-star {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-size: 0.8rem;
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .freemium-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+  .upgrade-options {
+    flex-direction: column;
+    align-items: center;
   }
   
-  .welcome-title {
-    font-size: 2rem;
+  .upgrade-btn {
+    min-width: 250px;
+    width: 100%;
   }
 }
-/* Add to your existing FreemiumPage.css */
-.feature-status {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
-  padding: 20px;
-  margin: 20px 0;
-  text-align: center;
-}
 
-.status-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px 0;
-  font-size: 1.1em;
-}
-
-.status-item.unlocked {
-  color: #28a745;
-}
-
-.status-item.locked {
-  color: #dc3545;
-}
-
-.status-icon {
-  margin-right: 10px;
-  font-size: 1.2em;
-}
-
-.status-text {
-  font-weight: 500;
-}
-
-.upgrade-prompt {
-  background: linear-gradient(135deg, #fff3cd, #ffeaa7);
-  border: 2px solid #ffd700;
-  border-radius: 15px;
-  padding: 25px;
-  margin-top: 30px;
-  text-align: center;
-}
-
-.upgrade-prompt h3 {
-  color: #856404;
-  margin-bottom: 15px;
-}
-
-.upgrade-prompt p {
-  color: #856404;
-  margin: 8px 0;
-  line-height: 1.5;
-}
-
-.upgrade-button {
-  background: linear-gradient(135deg, #ffd700, #ffed4e);
-  color: #8b6b00;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 1.2em;
-  font-weight: bold;
-  margin-top: 15px;
-  transition: all 0.3s ease;
-}
-
-.upgrade-button:hover {
-  background: linear-gradient(135deg, #ffed4e, #ffd700);
-  transform: scale(1.05);
-  color: #6b5200;
+@media (max-width: 480px) {
+  .upgrade-btn {
+    min-width: 200px;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
 }

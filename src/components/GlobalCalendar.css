@@ -1,0 +1,597 @@
+/* GlobalCalendar.css - FIXED WHITE TEAM NAMES */
+.global-calendar-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #e2e8f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Top Ad Banner - Vibrant Orange */
+.calendar-top-ad-banner {
+  background: linear-gradient(90deg, #ea580c, #dc2626);
+  color: #fff7ed;
+  text-align: center;
+  padding: 14px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  letter-spacing: 0.3px;
+  border-bottom: 2px solid #fdba74;
+}
+
+/* Top Navigation - Dark with Orange Accents */
+.calendar-top-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #1e293b;
+  backdrop-filter: blur(15px);
+  border-bottom: 2px solid #475569;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+.calendar-nav-btn {
+  background: linear-gradient(135deg, #475569, #334155);
+  color: #f1f5f9;
+  border: 1px solid #475569;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.calendar-nav-btn:hover {
+  background: linear-gradient(135deg, #ea580c, #dc2626);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.4);
+  border-color: #ea580c;
+}
+
+/* Main Content */
+.calendar-content {
+  padding: 2.5rem 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.calendar-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+  font-weight: 800;
+  text-align: center;
+  color: #f8fafc;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.calendar-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  color: #94a3b8;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* Premium Badge - Amber/Orange */
+.calendar-premium-badge {
+  background: linear-gradient(135deg, #d97706, #f59e0b);
+  color: #fef3c7;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 2.5rem;
+  display: inline-block;
+  box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+  border: 2px solid #f59e0b;
+  text-align: center;
+  width: 100%;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Calendar Controls - Orange Theme */
+.calendar-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.1), rgba(217, 119, 6, 0.05));
+  padding: 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(234, 88, 12, 0.3);
+}
+
+.calendar-view-toggle {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.view-toggle-btn {
+  background: linear-gradient(135deg, #475569, #334155);
+  color: #e2e8f0;
+  border: 2px solid #475569;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  font-family: inherit;
+}
+
+.view-toggle-btn.active {
+  background: linear-gradient(135deg, #ea580c, #dc2626);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(234, 88, 12, 0.4);
+  border-color: #ea580c;
+  color: #fef3c7;
+}
+
+.view-toggle-btn:hover:not(.active) {
+  background: linear-gradient(135deg, #4a5568, #374151);
+  border-color: #6b7280;
+}
+
+.timezone-selector {
+  background: linear-gradient(135deg, #475569, #334155);
+  color: #e2e8f0;
+  border: 2px solid #475569;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.timezone-selector:hover {
+  border-color: #ea580c;
+}
+
+.timezone-selector option {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+/* Calendar Grid - FIXED SPACING */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.calendar-event-card {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 2px solid #475569;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.calendar-event-card:hover {
+  transform: translateY(-8px);
+  background: linear-gradient(135deg, #1e293b, #7c2d12);
+  box-shadow: 0 15px 35px rgba(234, 88, 12, 0.2);
+  border-color: #ea580c;
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.event-tournament {
+  background: linear-gradient(135deg, #ea580c, #dc2626);
+  color: #ffffff; /* WHITE TEXT */
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  white-space: nowrap;
+}
+
+.event-date-time {
+  text-align: right;
+  min-width: 120px;
+}
+
+.event-date {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff; /* WHITE TEXT */
+  background: #475569;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #64748b;
+  margin-bottom: 0.3rem;
+}
+
+.event-time {
+  font-size: 0.9rem;
+  color: #ffffff; /* WHITE TEXT */
+  font-weight: 600;
+  background: #334155;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+}
+
+/* FIXED: WHITE TEAM NAMES with Better Contrast */
+.event-teams {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: rgba(234, 88, 12, 0.08);
+  border-radius: 10px;
+  border: 2px solid rgba(234, 88, 12, 0.3);
+  gap: 1rem;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 0; /* Crucial for text truncation */
+}
+
+.team-flag {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.team-name {
+  font-weight: 700; /* Bolder for better visibility */
+  font-size: 1.1rem;
+  color: #ffffff !important; /* FORCE WHITE TEXT */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  max-width: 120px;
+  padding: 0.3rem 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* Text shadow for better contrast */
+}
+
+.vs {
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin: 0 1rem;
+  color: #ffffff; /* WHITE TEXT */
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  min-width: 40px;
+  text-align: center;
+  background: rgba(234, 88, 12, 0.8);
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+}
+
+.event-details {
+  border-top: 2px solid #475569;
+  padding-top: 1.5rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+  padding: 0.4rem 0;
+  gap: 1rem;
+}
+
+.detail-label {
+  color: #cbd5e1; /* Lighter gray for better contrast */
+  font-weight: 600;
+  min-width: 80px;
+}
+
+.detail-value {
+  font-weight: 600;
+  color: #ffffff; /* WHITE TEXT */
+  text-align: right;
+  flex: 1;
+}
+
+.broadcast-info {
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.3), rgba(217, 119, 6, 0.2));
+  color: #ffffff; /* WHITE TEXT */
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(234, 88, 12, 0.4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.ticket-status {
+  background: linear-gradient(135deg, rgba(101, 163, 13, 0.3), rgba(77, 124, 15, 0.2));
+  color: #ffffff; /* WHITE TEXT */
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid rgba(101, 163, 13, 0.4);
+  white-space: nowrap;
+}
+
+/* Sync Options - Orange Theme */
+.sync-options {
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.1), rgba(217, 119, 6, 0.05));
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(234, 88, 12, 0.3);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.sync-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #ffffff; /* WHITE TEXT */
+  letter-spacing: -0.2px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.sync-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sync-btn {
+  background: linear-gradient(135deg, #ea580c, #dc2626);
+  color: #ffffff; /* WHITE TEXT */
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid #ea580c;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.sync-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(234, 88, 12, 0.4);
+  border-color: #f97316;
+}
+
+/* Quick Actions - Orange Theme */
+.calendar-quick-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.calendar-quick-btn {
+  background: linear-gradient(135deg, #ea580c, #dc2626);
+  color: #ffffff; /* WHITE TEXT */
+  border: 2px solid #ea580c;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 220px;
+  max-width: 280px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  box-shadow: 0 6px 15px rgba(234, 88, 12, 0.3);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.calendar-quick-btn:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(234, 88, 12, 0.4);
+  border-color: #f97316;
+}
+
+/* Bottom Ad Banner - Orange */
+.calendar-bottom-ad-banner {
+  background: linear-gradient(90deg, #9a3412, #c2410c);
+  color: #ffffff; /* WHITE TEXT */
+  text-align: center;
+  padding: 14px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  border-top: 2px solid #ea580c;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Event Actions */
+.event-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: space-between;
+}
+
+.event-actions .sync-btn {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.8rem;
+  text-align: center;
+  justify-content: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .calendar-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .calendar-title {
+    font-size: 2rem;
+  }
+  
+  .calendar-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .calendar-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+  
+  .calendar-view-toggle {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .event-teams {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.2rem;
+  }
+  
+  .vs {
+    margin: 0.5rem 0;
+    order: -1;
+  }
+  
+  .team {
+    min-width: 140px;
+  }
+  
+  .team-name {
+    max-width: 140px;
+    font-size: 1.1rem;
+  }
+  
+  .sync-buttons {
+    flex-direction: column;
+  }
+  
+  .calendar-quick-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .calendar-quick-btn {
+    min-width: 280px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-content {
+    padding: 2rem 1rem;
+  }
+  
+  .calendar-title {
+    font-size: 1.8rem;
+  }
+  
+  .calendar-top-nav {
+    padding: 0.8rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .calendar-nav-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    flex: 1;
+    min-width: 80px;
+  }
+  
+  .calendar-quick-btn {
+    min-width: 250px;
+    padding: 0.9rem 1.2rem;
+    font-size: 0.85rem;
+  }
+  
+  .calendar-event-card {
+    padding: 1.5rem;
+  }
+  
+  .event-header {
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
+  }
+  
+  .event-date-time {
+    text-align: left;
+  }
+  
+  .event-actions {
+    flex-direction: column;
+  }
+  
+  .team-name {
+    max-width: 120px;
+    font-size: 1rem;
+  }
+}
+
+/* Enhanced Typography */
+.global-calendar-page {
+  line-height: 1.6;
+}
+
+.calendar-title, .sync-title {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Focus states for accessibility */
+.calendar-nav-btn:focus,
+.view-toggle-btn:focus,
+.timezone-selector:focus,
+.sync-btn:focus,
+.calendar-quick-btn:focus {
+  outline: 3px solid #f97316;
+  outline-offset: 2px;
+}

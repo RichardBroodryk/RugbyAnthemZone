@@ -1,0 +1,230 @@
+/* SharedTournamentStyles.css - Universal fixes for all tournament pages */
+
+/* ===== ULTRA-SPECIFIC OVERRIDE FOR ALL GLOBAL CONFLICTS ===== */
+
+/* Force tournament-specific button styles - Override ALL global conflicts */
+.tournament-page .match-actions .action-btn,
+.mens-tournaments-page .match-actions .action-btn,
+.womens-tournaments-page .match-actions .action-btn,
+.mens-autumn-tours-page .match-actions .action-btn,
+.mens-six-nations-page .match-actions .action-btn,
+.womens-six-nations-page .match-actions .action-btn,
+.mens-rugby-championship-page .match-actions .action-btn,
+.womens-wxv-page .match-actions .action-btn {
+  /* Layout & Box Model */
+  padding: 0.5rem 0.4rem !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 6px !important;
+  min-height: 32px !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  
+  /* Typography */
+  font-size: 0.7rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  
+  /* Layout */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.2rem !important;
+  flex: 1 !important;
+  
+  /* Prevent inheritance */
+  background: #4fc3f7 !important;
+  color: white !important;
+  box-sizing: border-box !important;
+  isolation: isolate !important;
+  
+  /* Reset any transforms */
+  transform: none !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Specific button type overrides */
+.tournament-page .match-actions .action-btn.primary,
+.mens-tournaments-page .match-actions .action-btn.primary {
+  background: #4fc3f7 !important;
+  color: white !important;
+}
+
+.tournament-page .match-actions .action-btn.secondary,
+.mens-tournaments-page .match-actions .action-btn.secondary {
+  background: #1e3c72 !important;
+  color: white !important;
+  border: 1px solid #2a5298 !important;
+}
+
+/* Override header layout conflicts */
+.tournament-page .match-header,
+.mens-tournaments-page .match-header,
+.womens-tournaments-page .match-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  margin-bottom: 1rem !important;
+  padding-bottom: 0.8rem !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+  min-height: 40px !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  isolation: isolate !important;
+}
+
+.tournament-page .match-tournament,
+.mens-tournaments-page .match-tournament,
+.womens-tournaments-page .match-tournament {
+  font-size: 0.75rem !important;
+  opacity: 0.8 !important;
+  color: #666 !important;
+  font-weight: 500 !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  margin-right: 0.5rem !important;
+  line-height: 1.2 !important;
+  max-width: 60% !important;
+}
+
+.tournament-page .match-date,
+.mens-tournaments-page .match-date,
+.womens-tournaments-page .match-date {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: #4fc3f7 !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+  min-width: 90px !important;
+  text-align: right !important;
+  line-height: 1.2 !important;
+  margin-left: auto !important;
+}
+
+/* Force featured badges positioning */
+.tournament-page .featured-match::before,
+.mens-tournaments-page .featured-match::before,
+.womens-tournaments-page .featured-match::before {
+  content: '⭐ FEATURED' !important;
+  position: absolute !important;
+  top: -10px !important;
+  right: 10px !important;
+  background: #4fc3f7 !important;
+  color: white !important;
+  padding: 0.2rem 0.6rem !important;
+  border-radius: 8px !important;
+  font-size: 0.6rem !important;
+  font-weight: bold !important;
+  z-index: 1000 !important;
+  pointer-events: none !important;
+}
+
+/* Scoped tournament navigation */
+.tournament-nav {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 1rem !important;
+  background: white !important;
+  border-bottom: 2px solid #e0e0e0 !important;
+  gap: 10px !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.tournament-nav-btn {
+  background: #4fc3f7 !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.7rem 1.2rem !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  flex: 1 !important;
+  min-width: 70px !important;
+  transition: all 0.3s ease !important;
+  white-space: nowrap !important;
+}
+
+.tournament-nav-btn:hover {
+  background: #29b6f6 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.4) !important;
+}
+
+/* Tournament page base styles */
+.tournament-page,
+.mens-tournaments-page,
+.womens-tournaments-page,
+.mens-autumn-tours-page,
+.mens-six-nations-page,
+.womens-six-nations-page,
+.mens-rugby-championship-page,
+.womens-wxv-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Standard tournament ad banners */
+.tournament-top-ad-banner {
+  background: linear-gradient(90deg, #ff6b35, #e55a2b);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.tournament-bottom-ad-banner {
+  background: linear-gradient(90deg, #4ecdc4, #26a69a);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Tournament hero sections */
+.tournament-hero {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+  padding: 3rem 2rem;
+  text-align: center;
+  border-bottom: 3px solid #4fc3f7;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Match cards base styling */
+.tournament-match-card {
+  background: white !important;
+  color: #333 !important;
+  border: 2px solid #e0e0e0 !important;
+  border-radius: 12px;
+  padding: 1.2rem !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tournament-match-card:hover {
+  background: white !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+  border-color: #e0e0e0 !important;
+}

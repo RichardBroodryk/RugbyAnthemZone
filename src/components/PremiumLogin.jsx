@@ -2,10 +2,10 @@ import './PremiumLogin.css';
 
 function PremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
   const handleSubscribe = () => {
-  alert('🎉 Premium subscription activated! Welcome to Premium features!\n\nYou now have access to:\n• Official merchandise stores\n• Ad-free experience\n• Exclusive content');
-  // DON'T navigate away - stay on premium page or show success message
-  // Remove this line: onNavigateToHomePage();
-};
+    alert('🎉 Premium subscription activated! Welcome to Premium features!\n\nYou now have access to:\n• Official merchandise stores\n• Ad-free experience\n• Exclusive content');
+    // DON'T navigate away - stay on premium page or show success message
+    // Remove this line: onNavigateToHomePage();
+  };
 
   return (
     <div className="premium-login-page">
@@ -22,6 +22,12 @@ function PremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
         <div className="premium-login-container">
           <h1 className="premium-title">Premium Subscription</h1>
           
+          {/* Price Display */}
+          <div className="price-display">
+            <div className="price-amount">$9.99</div>
+            <div className="price-period">per month</div>
+          </div>
+
           <form>
             <div className="form-group">
               <label className="form-label">Email Address:</label>
@@ -39,6 +45,22 @@ function PremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
                 className="form-input" 
                 placeholder="Create a password"
               />
+            </div>
+
+            {/* Payment Methods */}
+            <div className="payment-methods">
+              <div className="payment-method selected">
+                <div className="payment-icon">💳</div>
+                <div className="payment-name">Card</div>
+              </div>
+              <div className="payment-method">
+                <div className="payment-icon">🔵</div>
+                <div className="payment-name">PayPal</div>
+              </div>
+              <div className="payment-method">
+                <div className="payment-icon">📱</div>
+                <div className="payment-name">Mobile</div>
+              </div>
             </div>
 
             {/* Banking Section */}
@@ -82,9 +104,11 @@ function PremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
                   placeholder="Full name on card"
                 />
               </div>
+
+              <div className="security-badge">Secure SSL Encryption</div>
             </div>
 
-            {/* Premium Features */}
+            {/* PREMIUM FEATURES - NOW WITH GOLD BACKGROUND */}
             <div className="premium-features">
               <h4>🎯 Premium Features Included:</h4>
               <ul>
@@ -93,29 +117,22 @@ function PremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
                 <li>Ad-free experience</li>
                 <li>Exclusive behind-the-scenes footage</li>
                 <li>Priority ticket access</li>
+                <li>Official merchandise store access</li>
+                <li>Live match statistics</li>
+                <li>Fantasy league premium features</li>
               </ul>
             </div>
 
             {/* TEMPORARY TEST BUTTON - REMOVE LATER */}
-            <div style={{ textAlign: 'center', margin: '20px 0' }}>
+            <div className="test-button-container">
               <button 
                 type="button"
+                className="test-button"
                 onClick={onNavigateToHomePage}
-                style={{
-                  background: '#ff6b35',
-                  color: 'white',
-                  padding: '12px 24px',
-                  border: 'none',
-                  borderRadius: '8px',
-                  cursor: 'pointer',
-                  fontSize: '14px',
-                  fontWeight: 'bold',
-                  margin: '10px'
-                }}
               >
                 🚀 TEST: Skip to Premium Homepage
               </button>
-              <p style={{ fontSize: '12px', color: '#666', marginTop: '5px' }}>
+              <p className="test-note">
                 Development only - bypasses payment process
               </p>
             </div>

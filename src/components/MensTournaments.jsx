@@ -1,5 +1,6 @@
 import React from 'react';
-import './TournamentOverview.css';
+import './MensTournaments.css';
+import ThemeToggle from './ThemeToggle';
 
 const MensTournaments = ({ 
   onNavigateBack,
@@ -64,29 +65,34 @@ const MensTournaments = ({
   ];
 
   return (
-    <div className="tournament-overview-page">
-      <div className="tournament-content">
+    <div className="mens-tournaments-page">
+      <nav className="top-nav">
+        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
+        <button className="nav-btn">🏠 Home</button>
+        <button className="nav-btn">🔍 Search</button>
+        <button className="nav-btn">👤 Profile</button>
+        <ThemeToggle />
+      </nav>
+
+      <div className="tournaments-content">
         <div className="tournament-header">
-          <button className="nav-btn" onClick={onNavigateBack}>
-            ← Back
-          </button>
           <h1 className="tournament-title">Men's Rugby Tournaments</h1>
           <p className="tournament-subtitle">Select a tournament to explore</p>
         </div>
         
-        <div className="teams-section">
-          <div className="teams-grid">
-            {tournaments.map((tournament) => (
-              <div
-                key={tournament.id}
-                className="team-card"
-                onClick={tournament.onClick}
-              >
-                <h3 className="team-name">{tournament.name}</h3>
-                <p>{tournament.description}</p>
-              </div>
-            ))}
-          </div>
+        <div className="tournaments-grid">
+          {tournaments.map((tournament) => (
+            <div
+              key={tournament.id}
+              className="tournament-card"
+              onClick={tournament.onClick}
+            >
+              <div className="tournament-icon">🏆</div>
+              <h3 className="tournament-name">{tournament.name}</h3>
+              <p className="tournament-description">{tournament.description}</p>
+              <div className="tournament-dates">View Tournament</div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

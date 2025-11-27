@@ -1,3 +1,4 @@
+/* MEN'S TOURNAMENTS PAGE - NUCLEAR OPTION FOR SPACING */
 .mens-tournaments-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 100%);
@@ -7,351 +8,220 @@
   flex-direction: column;
 }
 
-/* Top Navigation */
-.top-nav {
-  display: flex;
-  justify-content: space-around;
-  padding: 1rem;
-  background: rgba(13, 45, 92, 0.9);
-  border-bottom: 2px solid #d4af37;
+/* NUCLEAR OPTION - FORCE SPACING WITH IMPORTANT */
+.mens-tournaments-page .top-nav {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 1rem 2rem !important;
+  background: white !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  gap: 1rem !important;
 }
 
-.nav-btn {
-  background: transparent;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  font-size: 0.9rem;
-  border-radius: 5px;
-  transition: background 0.3s;
+.mens-tournaments-page .nav-btn {
+  background: #0ea5e9 !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.5rem 1.5rem !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  flex: 1 !important;
+  max-width: 120px !important;
+  margin: 0 !important;
+  min-width: 80px !important;
 }
 
-.nav-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+.mens-tournaments-page .nav-btn:hover {
+  background: #0284c7 !important;
+  transform: translateY(-2px) !important;
 }
 
-/* Main Content */
-.tournaments-content {
+/* REST OF YOUR ORIGINAL CSS */
+.mens-tournaments-page .tournaments-content {
   flex: 1;
   padding: 2rem;
   text-align: center;
 }
 
-.page-title {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  color: #0d2d5c;
-  font-weight: bold;
-}
-
-.page-subtitle {
-  font-size: 1.2rem;
-  margin-bottom: 3rem;
-  color: #1a4b8c;
-  opacity: 0.9;
-}
-
-/* Tournament Filter Bar */
-.tournament-filter {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
-.filter-btn {
-  background: white;
-  color: #0d2d5c;
-  border: 2px solid #0d2d5c;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.filter-btn:hover {
-  background: #0d2d5c;
+.mens-tournaments-page .tournament-header {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%) !important;
   color: white;
-  transform: translateY(-2px);
-}
-
-.filter-btn.active {
-  background: #0d2d5c;
-  color: white;
-  border-color: #d4af37;
-}
-
-/* Secondary Filter Row */
-.secondary-filter {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-}
-
-.secondary-btn {
-  background: rgba(255, 255, 255, 0.8);
-  color: #0d2d5c;
-  border: 1px solid #0d2d5c;
-  padding: 0.6rem 1.2rem;
+  padding: 3rem 2rem;
   border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s;
+  margin-bottom: 3rem;
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.secondary-btn:hover {
-  background: #0d2d5c;
-  color: white;
-}
-
-/* Countdown Timer */
-.countdown-section {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  border: 3px solid #d4af37;
-  margin: 2rem auto;
-  max-width: 600px;
-}
-
-.countdown-title {
-  color: #0d2d5c;
+.mens-tournaments-page .tournament-title {
+  font-size: 2.8rem;
   margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
-.countdown-timer {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.countdown-unit {
-  background: #0d2d5c;
-  color: white;
-  padding: 1rem;
-  border-radius: 10px;
-  min-width: 80px;
-}
-
-.countdown-number {
-  font-size: 2rem;
   font-weight: bold;
-  display: block;
-}
-
-.countdown-label {
-  font-size: 0.8rem;
-  opacity: 0.9;
-}
-
-/* Video Preview Section */
-.video-section {
-  margin: 3rem auto;
-  max-width: 800px;
-}
-
-.video-title {
-  color: #0d2d5c;
-  margin-bottom: 1.5rem;
-  font-size: 1.5rem;
-}
-
-.video-container {
-  background: #000;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  height: 0;
-}
-
-.video-placeholder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, #1a4b8c, #2a5c2a);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   color: white;
 }
 
-.video-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+.mens-tournaments-page .tournament-subtitle {
+  font-size: 1.3rem;
+  opacity: 0.95;
+  color: #e8f5e8;
+  font-weight: 500;
 }
 
-/* Tournaments Grid */
-.tournaments-grid {
+.mens-tournaments-page .tournaments-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   max-width: 1200px;
-  margin: 0 auto 3rem;
+  margin: 0 auto;
 }
 
-.tournament-card {
+.mens-tournaments-page .tournament-card {
   background: white;
   padding: 2rem;
   border-radius: 15px;
-  border: 3px solid #0d2d5c;
+  border: 3px solid #0ea5e9;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
   position: relative;
+  min-height: 240px;
 }
 
-.tournament-card:hover {
+.mens-tournaments-page .tournament-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(13, 45, 92, 0.2);
+  box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2);
 }
 
-.tournament-icon {
+.mens-tournaments-page .tournament-icon {
   font-size: 3rem;
   margin-bottom: 0.5rem;
+  flex-shrink: 0;
 }
 
-.tournament-name {
+.mens-tournaments-page .tournament-name {
   font-weight: bold;
   font-size: 1.3rem;
   text-align: center;
   color: #0d2d5c;
+  margin: 0;
+  flex-shrink: 0;
 }
 
-.tournament-description {
+.mens-tournaments-page .tournament-description {
   font-size: 0.9rem;
   color: #666;
   text-align: center;
   line-height: 1.4;
+  margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 0.5rem;
 }
 
-.tournament-dates {
-  background: #0d2d5c;
+.mens-tournaments-page .tournament-dates {
+  background: #0ea5e9;
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  margin-top: 0.5rem;
-}
-
-/* Featured Tournament */
-.featured-tournament {
-  border: 3px solid #d4af37;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-}
-
-.featured-badge {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background: #d4af37;
-  color: black;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
-/* Quick Stats */
-.quick-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  max-width: 800px;
-  margin: 2rem auto;
-}
-
-.stat-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 2px solid #0d2d5c;
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #0d2d5c;
-  margin-bottom: 0.5rem;
-}
-
-.stat-label {
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
   font-size: 0.9rem;
-  color: #666;
-}
-
-/* Advertisement Banners */
-.top-ad-banner,
-.bottom-ad-banner {
-  background: linear-gradient(90deg, #1a4b8c, #2a5c2a);
-  color: white;
-  padding: 1rem;
-  text-align: center;
   font-weight: bold;
-  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  flex-shrink: 0;
+  width: fit-content;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.3);
 }
 
-.top-ad-banner {
-  border-bottom: 2px solid #d4af37;
-}
-
-.bottom-ad-banner {
-  border-top: 2px solid #d4af37;
+.mens-tournaments-page .tournament-card:hover .tournament-dates {
+  background: #0284c7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .tournaments-grid {
+  .mens-tournaments-page .top-nav {
+    padding: 1rem 1.5rem !important;
+    gap: 0.8rem !important;
+  }
+  
+  .mens-tournaments-page .nav-btn {
+    padding: 0.5rem 1rem !important;
+    max-width: 100px !important;
+    font-size: 0.85rem !important;
+  }
+  
+  .mens-tournaments-page .tournaments-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
   
-  .page-title {
-    font-size: 2rem;
+  .mens-tournaments-page .tournament-title {
+    font-size: 2.2rem;
   }
   
-  .quick-stats {
-    grid-template-columns: 1fr;
+  .mens-tournaments-page .tournament-subtitle {
+    font-size: 1.1rem;
   }
   
-  .tournament-filter,
-  .secondary-filter {
-    gap: 0.5rem;
+  .mens-tournaments-page .tournament-header {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
   }
   
-  .filter-btn,
-  .secondary-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
+  .mens-tournaments-page .tournament-card {
+    min-height: 220px;
+    padding: 1.5rem;
   }
   
-  .countdown-timer {
-    gap: 0.5rem;
+  .mens-tournaments-page .tournament-dates {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .mens-tournaments-page .top-nav {
+    padding: 1rem !important;
+    gap: 0.5rem !important;
   }
   
-  .countdown-unit {
-    min-width: 60px;
-    padding: 0.8rem;
+  .mens-tournaments-page .nav-btn {
+    padding: 0.5rem 0.8rem !important;
+    max-width: 80px !important;
+    font-size: 0.8rem !important;
   }
   
-  .countdown-number {
-    font-size: 1.5rem;
+  .mens-tournaments-page .tournament-title {
+    font-size: 1.8rem;
+  }
+  
+  .mens-tournaments-page .tournament-subtitle {
+    font-size: 1rem;
+  }
+  
+  .mens-tournaments-page .tournaments-content {
+    padding: 1rem;
+  }
+  
+  .mens-tournaments-page .tournament-card {
+    padding: 1.5rem;
+    min-height: 200px;
+    gap: 1rem;
+  }
+  
+  .mens-tournaments-page .tournament-dates {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.85rem;
+    margin-top: 1rem;
   }
 }

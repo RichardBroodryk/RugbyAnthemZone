@@ -1,58 +1,107 @@
+/* TournamentMerchandise.css - Complete Updated Version */
 .merchandise-page {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-.merch-header {
-  text-align: center;
-  margin-bottom: 30px;
+/* Standardized Ad Banners - Matching FlightsPage */
+.top-ad-banner {
+  background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
   color: white;
-  position: relative;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.back-btn {
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: rgba(255, 255, 255, 0.2);
+.bottom-ad-banner {
+  background: linear-gradient(90deg, #4ecdc4, #26a69a);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Standardized Navigation - Matching HomePage */
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-btn {
+  background: #007bff;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 25px;
   cursor: pointer;
-  font-size: 16px;
-  backdrop-filter: blur(10px);
+  font-size: 14px;
+  transition: all 0.3s ease;
 }
 
-.back-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
+.nav-btn:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
 }
 
-.merch-header h1 {
-  font-size: 2.5em;
+/* Merchandise Content */
+.merch-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.merch-header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.merch-title {
+  font-size: 3em;
   margin: 0 0 10px 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.merch-header p {
-  font-size: 1.2em;
+.merch-subtitle {
+  font-size: 1.3em;
   opacity: 0.9;
+  margin: 0 0 20px 0;
 }
 
+.premium-badge {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #8b6b00;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  display: inline-block;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+}
+
+/* Game Info Section */
 .game-info {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 25px;
   margin-bottom: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
 .game-info h2 {
   color: #333;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  font-size: 1.8em;
 }
 
 .teams-playing {
@@ -64,37 +113,44 @@
 .vs-teams {
   display: flex;
   align-items: center;
-  gap: 20px;
-  font-size: 1.2em;
+  gap: 25px;
+  font-size: 1.3em;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .team-flag {
-  font-size: 2em;
+  font-size: 2.5em;
 }
 
 .team-name {
   font-weight: bold;
   color: #333;
+  font-size: 1.2em;
 }
 
 .vs {
-  color: #666;
+  color: #667eea;
   font-weight: bold;
+  font-size: 1.4em;
+  padding: 0 15px;
 }
 
+/* Merchandise Grid */
 .merchandise-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 25px;
-  margin-top: 30px;
+  margin-bottom: 40px;
 }
 
 .store-card {
-  background: white;
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
   padding: 25px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
   display: flex;
   flex-direction: column;
 }
@@ -102,42 +158,46 @@
 .store-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  border-color: #667eea;
 }
 
 .team-header {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f8f9fa;
 }
 
 .team-flag-large {
-  font-size: 3em;
-  margin-right: 15px;
+  font-size: 3.5em;
+  margin-right: 20px;
 }
 
 .team-info h3 {
-  margin: 0 0 5px 0;
+  margin: 0 0 8px 0;
   color: #333;
-  font-size: 1.4em;
+  font-size: 1.5em;
 }
 
 .store-name {
   margin: 0;
   color: #666;
   font-style: italic;
-  font-size: 0.95em;
+  font-size: 1em;
 }
 
 .store-description {
   color: #555;
-  line-height: 1.5;
-  margin-bottom: 20px;
+  line-height: 1.6;
+  margin-bottom: 25px;
   flex-grow: 1;
+  font-size: 1em;
 }
 
 .shop-btn {
-  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-  color: white;
+  background: linear-gradient(135deg, #ff6b35, #e55a2b);
+  color: #000000;
   border: none;
   padding: 15px 25px;
   border-radius: 25px;
@@ -146,11 +206,14 @@
   font-weight: bold;
   transition: all 0.3s ease;
   margin-bottom: 15px;
+  width: 100%;
 }
 
 .shop-btn:hover {
-  background: linear-gradient(135deg, #ff5252, #ff7b7b);
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #e55a2b, #cc4a23);
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
 }
 
 .store-footer {
@@ -159,53 +222,62 @@
 }
 
 .official-badge {
-  background: #28a745;
+  background: linear-gradient(135deg, #28a745, #20c997);
   color: white;
-  padding: 5px 12px;
-  border-radius: 15px;
-  font-size: 0.85em;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9em;
   font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+/* No Teams Message */
 .no-teams-message {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
   padding: 40px;
   text-align: center;
   grid-column: 1 / -1;
+  border: 2px dashed #667eea;
 }
 
 .no-teams-message h3 {
   color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-size: 1.5em;
 }
 
 .no-teams-message p {
   color: #666;
   margin: 0;
+  font-size: 1.1em;
+  line-height: 1.5;
 }
 
 /* Premium Gate Styles */
 .premium-gate {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 60vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
 }
 
 .gate-content {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
   padding: 40px;
   border-radius: 20px;
   text-align: center;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   max-width: 500px;
+  width: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .gate-content h1 {
   color: #333;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   font-size: 2.5em;
 }
 
@@ -213,7 +285,7 @@
   color: #666;
   margin-bottom: 25px;
   font-size: 1.1em;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .upgrade-btn-large {
@@ -226,27 +298,133 @@
   font-size: 1.2em;
   font-weight: bold;
   transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .upgrade-btn-large:hover {
   background: linear-gradient(135deg, #ffed4e, #ffd700);
-  transform: scale(1.05);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
   color: #6b5200;
+}
+
+/* Additional Rugby Nations Section */
+.all-nations-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 40px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.all-nations-section h2 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 2em;
+}
+
+.nations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.nation-store-btn {
+  background: white;
+  border: 2px solid #e9ecef;
+  color: #333;
+  border-radius: 15px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.nation-store-btn:hover {
+  border-color: #667eea;
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  color: #333;
+}
+
+.nation-store-flag {
+  font-size: 1.8em;
+}
+
+.nation-store-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95em;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .merch-content {
+    padding: 20px 15px;
+  }
+  
+  .merch-title {
+    font-size: 2.2em;
+  }
+  
   .merchandise-grid {
     grid-template-columns: 1fr;
   }
   
-  .back-btn {
-    position: relative;
-    margin-bottom: 15px;
-  }
-  
   .vs-teams {
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+  }
+  
+  .team-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .team-flag-large {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .nations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .gate-content {
+    padding: 30px 20px;
+  }
+  
+  .gate-content h1 {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .merchandise-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .merch-title {
+    font-size: 1.8em;
+  }
+  
+  .store-card {
+    padding: 20px 15px;
+  }
+  
+  .team-flag-large {
+    font-size: 2.5em;
+  }
+  
+  .nations-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .nation-store-btn {
+    padding: 12px;
   }
 }

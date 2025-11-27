@@ -1,191 +1,302 @@
-/* FantasyLeagues.css */
+/* FantasyLeagues.css - Complete Updated Version */
 .fantasy-leagues-page {
-  background-color: #f5f5f5;
   min-height: 100vh;
-}
-
-/* Navigation Bar */
-.fantasy-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
   background: linear-gradient(135deg, #1a3d7c 0%, #2c5aa0 100%);
-  color: white;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-.nav-back-btn {
-  background: rgba(255, 255, 255, 0.2);
+.top-ad-banner {
+  background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-ad-banner {
+  background: linear-gradient(90deg, #4ecdc4, #26a69a);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.nav-btn {
+  background: #1a3d7c;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  padding: 10px 20px;
+  border-radius: 25px;
   cursor: pointer;
-  font-weight: 500;
+  font-size: 14px;
   transition: all 0.3s ease;
 }
 
-.nav-back-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-1px);
+.nav-btn:hover {
+  background: #2c5aa0;
+  transform: translateY(-2px);
 }
 
-.nav-title {
-  font-size: 1.3rem;
-  font-weight: bold;
+.fantasy-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.fantasy-header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.fantasy-title {
+  font-size: 3em;
+  margin: 0 0 10px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.fantasy-subtitle {
+  font-size: 1.3em;
+  opacity: 0.9;
   margin: 0;
 }
 
-.nav-actions {
-  display: flex;
-  gap: 0.5rem;
+/* Tournament Sections */
+.tournament-section {
+  margin-bottom: 50px;
 }
 
-.nav-action-btn {
-  background: rgba(255, 255, 255, 0.2);
+.section-header {
+  text-align: center;
+  margin-bottom: 30px;
   color: white;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-action-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-/* Existing Styles */
-.fantasy-section {
-  background-color: white;
-  border-radius: 8px;
-  padding: 2rem;
-  margin: 1rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .section-title {
-  color: #1a3d7c;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid #ffcc00;
+  font-size: 2.2em;
+  margin: 0 0 15px 0;
+  color: #ffcc00;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+.section-description {
+  font-size: 1.1em;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #ffcc00;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Tournament Grid */
 .tournament-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
 }
 
 .tournament-card {
-  background-color: #f8f9fa;
-  border-radius: 8px;
+  background: white;
+  border-radius: 15px;
+  padding: 0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-left: 4px solid #ffcc00;
   overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-  border: 1px solid #e9ecef;
 }
 
 .tournament-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 12px 35px rgba(255, 204, 0, 0.2);
 }
 
 .tournament-header {
-  background-color: #1a3d7c;
+  background: linear-gradient(135deg, #1a3d7c 0%, #2c5aa0 100%);
   color: white;
-  padding: 1rem;
+  padding: 25px 20px;
   text-align: center;
-}
-
-.tournament-body {
-  padding: 1.5rem;
+  border-bottom: 2px solid #ffcc00;
 }
 
 .tournament-logo {
   width: 80px;
   height: 80px;
-  margin: 0 auto 1rem;
-  background-color: white;
+  margin: 0 auto 15px;
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: #1a3d7c;
-  font-size: 1.2rem;
+  color: #ffcc00;
+  font-size: 1.5em;
+  border: 3px solid #ffcc00;
+}
+
+.tournament-body {
+  padding: 25px;
 }
 
 .tournament-name {
-  font-size: 1.3rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.4em;
+  margin-bottom: 15px;
   text-align: center;
-  color: #333;
+  color: #1a3d7c;
+  font-weight: bold;
 }
 
 .tournament-desc {
   color: #666;
-  margin-bottom: 1.5rem;
+  margin-bottom: 25px;
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-size: 0.95em;
 }
 
 .affiliate-links {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 12px;
 }
 
 .affiliate-link {
   display: block;
-  background-color: #1a3d7c;
+  background: #1a3d7c;
   color: white;
   text-align: center;
-  padding: 0.8rem;
-  border-radius: 4px;
+  padding: 12px 20px;
+  border-radius: 25px;
   text-decoration: none;
   font-weight: 500;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .affiliate-link:hover {
-  background-color: #2c5aa0;
+  background: #2c5aa0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(26, 61, 124, 0.3);
 }
 
 .superbru-link {
-  background-color: #ff6b35;
+  background: linear-gradient(135deg, #ff6b35, #e55a2b);
+  border-color: #ff6b35;
 }
 
 .superbru-link:hover {
-  background-color: #e55a2b;
+  background: linear-gradient(135deg, #e55a2b, #cc4a23);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
 }
 
-/* Ad Banners */
-.ad-banner {
-  background-color: #e9ecef;
+/* Fantasy Features Section */
+.fantasy-features {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.fantasy-features h3 {
+  color: #1a3d7c;
+  margin-bottom: 25px;
   text-align: center;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 4px;
-  font-weight: bold;
-  color: #555;
+  font-size: 1.8em;
 }
 
-.ad-placeholder {
-  width: 728px;
-  height: 90px;
-  background-color: #ddd;
-  margin: 0 auto;
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.feature-item {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  background: white;
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 2em;
+  min-width: 50px;
+}
+
+.feature-text {
+  color: #555;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Quick Start Section */
+.quick-start {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+}
+
+.quick-start h3 {
+  color: #1a3d7c;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.quick-start p {
+  color: #555;
+  font-size: 1.1em;
+  margin-bottom: 25px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.quick-start-btn {
+  background: linear-gradient(135deg, #ffcc00, #ffaa00);
+  color: #1a3d7c;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px;
+}
+
+.quick-start-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
 }
 
 /* Responsive Design */
@@ -194,13 +305,79 @@
     grid-template-columns: 1fr;
   }
   
-  .ad-placeholder {
-    width: 100%;
-    max-width: 728px;
+  .fantasy-title {
+    font-size: 2.5em;
   }
   
-  .fantasy-section {
-    padding: 1.5rem;
-    margin: 0.5rem;
+  .section-title {
+    font-size: 1.8em;
+  }
+  
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tournament-header {
+    padding: 20px 15px;
+  }
+  
+  .tournament-body {
+    padding: 20px;
+  }
+  
+  .section-description {
+    padding: 15px;
+    font-size: 1em;
+    margin: 0 10px;
+  }
+  
+  .quick-start {
+    padding: 20px;
+  }
+  
+  .quick-start p {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .tournament-card {
+    margin: 0 10px;
+  }
+  
+  .fantasy-title {
+    font-size: 2em;
+  }
+  
+  .section-title {
+    font-size: 1.5em;
+  }
+  
+  .tournament-logo {
+    width: 60px;
+    height: 60px;
+    font-size: 1.2em;
+  }
+  
+  .affiliate-link {
+    padding: 10px 15px;
+    font-size: 0.9em;
+  }
+  
+  .feature-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .section-description {
+    padding: 12px;
+    font-size: 0.95em;
+  }
+  
+  .quick-start-btn {
+    padding: 12px 20px;
+    font-size: 1em;
+    margin: 5px;
   }
 }

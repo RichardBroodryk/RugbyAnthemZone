@@ -7,7 +7,6 @@
   flex-direction: column;
 }
 
-/* Top Navigation */
 .top-nav {
   display: flex;
   justify-content: space-around;
@@ -31,11 +30,12 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Main Content */
 .home-content {
   flex: 1;
   padding: 2rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .welcome-section h1 {
@@ -46,18 +46,17 @@
 
 .design-placeholder {
   background: rgba(255, 255, 255, 0.1);
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 10px;
   border: 2px dashed #d4af37;
-  margin-bottom: 3rem;
-  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
 }
 
-/* Features Section */
 .features-section {
   display: grid;
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -65,7 +64,7 @@
 
 .feature-card {
   background: rgba(255, 255, 255, 0.1);
-  padding: 1.5rem;
+  padding: 1.2rem;
   border-radius: 10px;
   border-left: 4px solid #d4af37;
   text-align: left;
@@ -74,58 +73,93 @@
 .feature-card h3 {
   color: #d4af37;
   margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .feature-card p {
   opacity: 0.9;
-  line-height: 1.5;
+  line-height: 1.4;
+  font-size: 0.9rem;
 }
 
-/* Action Buttons */
 .action-buttons {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .action-btn {
-  padding: 1rem 2rem;
+  padding: 1rem 1.2rem;
   border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
+  border-radius: 10px;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+  text-align: center;
+  width: 180px;
 }
 
 .action-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
 .freemium {
-  background: #4CAF50;
+  background: linear-gradient(135deg, #28a745, #20c997);
   color: white;
 }
 
-.subscribe {
-  background: #d4af37;
-  color: black;
+.freemium:hover {
+  background: linear-gradient(135deg, #20c997, #28a745);
 }
 
-.signin {
-  background: #2196F3;
+.premium {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #8b6b00;
+}
+
+.premium:hover {
+  background: linear-gradient(135deg, #ffed4e, #ffd700);
+}
+
+.super-premium {
+  background: linear-gradient(135deg, #ff6b35, #e55a2b);
   color: white;
 }
 
-/* Advertisement Banner */
+.super-premium:hover {
+  background: linear-gradient(135deg, #e55a2b, #cc4a23);
+}
+
+.button-main {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.button-description {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
 .ad-banner {
   background: linear-gradient(90deg, #1a4b8c, #2a5c2a);
   color: white;
-  padding: 0.8rem;
+  padding: 1rem;
   border-top: 2px solid #d4af37;
+  margin-top: auto;
 }
 
 .ad-content {
@@ -139,8 +173,8 @@
 .ad-badge {
   background: #ff4444;
   color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 3px;
+  padding: 0.3rem 0.6rem;
+  border-radius: 5px;
   font-size: 0.8rem;
   font-weight: bold;
 }
@@ -149,6 +183,7 @@
   flex: 1;
   text-align: center;
   font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .ad-close {
@@ -159,15 +194,27 @@
   width: 25px;
   height: 25px;
   cursor: pointer;
-}
-/* Updated button styles for new strategy */
-.action-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none !important;
+  font-size: 1rem;
 }
 
-.action-btn:disabled:hover {
-  transform: none !important;
-  box-shadow: none !important;
+@media (max-width: 768px) {
+  .action-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  
+  .action-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .welcome-section h1 {
+    font-size: 2rem;
+  }
+  
+  .action-btn {
+    padding: 0.8rem 1rem;
+    min-height: 70px;
+  }
 }
