@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './SplashScreen.css';
+// Updated import path - Capital A, lowercase i
+import razSplash from '../Assets/images/RAZ Splashscreen.png';
 
 function SplashScreen({ onLoadingComplete }) {
   const [isVisible, setIsVisible] = useState(true);
@@ -23,8 +25,12 @@ function SplashScreen({ onLoadingComplete }) {
 
   return (
     <div className="splash-screen">
-      <div className="rugby-ball">🏉</div>
-      {/* Removed app title - ready for RAZ design */}
+      {/* Your custom design image */}
+      <img 
+        src={razSplash} 
+        alt="Rugby Anthem Zone" 
+        className="splash-image"
+      />
     </div>
   );
 }
