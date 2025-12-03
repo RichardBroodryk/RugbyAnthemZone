@@ -1,10 +1,11 @@
-/* PPASystem.css - ORIGINAL FIXED LAYOUT */
+/* PPASystem.css - UPDATED WITH REAL FLAGS AND PROPER NAVBAR */
 .ppa-system {
   min-height: 100vh;
   background: linear-gradient(135deg, #2c5530 0%, #4a7c59 100%);
   font-family: 'Arial', sans-serif;
 }
 
+/* Standardized Ad Banners */
 .ppa-top-ad-banner {
   background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
   color: white;
@@ -23,35 +24,6 @@
   font-weight: bold;
   font-size: 1.1em;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Navigation */
-.ppa-nav {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.ppa-nav-btn {
-  background: #2c5530 !important;
-  color: white !important;
-  border: none !important;
-  padding: 10px 20px !important;
-  border-radius: 25px !important;
-  cursor: pointer !important;
-  font-size: 14px !important;
-  transition: all 0.3s ease !important;
-  font-weight: 500 !important;
-}
-
-.ppa-nav-btn:hover {
-  background: #4a7c59 !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(44, 85, 48, 0.3) !important;
 }
 
 .ppa-content {
@@ -78,6 +50,9 @@
   opacity: 0.9;
   margin: 0 0 20px 0;
   line-height: 1.4;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ppa-location-info {
@@ -178,7 +153,7 @@
   font-weight: 500;
 }
 
-/* Teams Display - Original Compact Layout */
+/* Teams Display with Real Flags */
 .ppa-teams-display {
   display: flex;
   align-items: center;
@@ -203,21 +178,57 @@
   flex-direction: row-reverse;
 }
 
-.ppa-team-flag {
-  font-size: 2.2em;
+/* Flag Styles */
+.flag-small {
+  width: 30px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  vertical-align: middle;
+}
+
+.flag-medium {
+  width: 50px;
+  height: 35px;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.flag-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2c5530, #4a7c59);
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.flag-fallback.flag-small {
+  width: 30px;
+  height: 20px;
+  font-size: 0.6rem;
+}
+
+.flag-fallback.flag-medium {
+  width: 50px;
+  height: 35px;
+  font-size: 0.9rem;
 }
 
 .ppa-team-name {
   font-weight: 600;
   color: #333;
-  font-size: 1.1em;
+  font-size: 1.2em;
 }
 
 .ppa-vs {
   color: #666;
   font-weight: bold;
-  font-size: 1.1em;
-  padding: 0 10px;
+  font-size: 1.2em;
+  padding: 0 15px;
 }
 
 /* Audio Options */
@@ -692,10 +703,15 @@
   margin-bottom: 10px;
 }
 
+.ppa-country-flag .flag-small {
+  width: 35px;
+  height: 25px;
+}
+
 .ppa-country-name {
   font-weight: 500;
   color: #333;
-  font-size: 0.9em;
+  font-size: 0.95em;
 }
 
 .ppa-providers-list h3 {
@@ -784,6 +800,10 @@
     justify-content: center !important;
   }
   
+  .ppa-team:last-child {
+    flex-direction: row;
+  }
+  
   .ppa-audio-option {
     flex-direction: column;
     align-items: stretch;
@@ -819,8 +839,8 @@
     padding: 20px;
   }
   
-  .ppa-team-flag {
-    font-size: 1.8em;
+  .ppa-team-name {
+    font-size: 1.1em;
   }
   
   .ppa-game-header {
@@ -842,12 +862,7 @@
     grid-template-columns: 1fr;
   }
   
-  .ppa-nav {
-    flex-wrap: wrap;
-  }
-  
-  .ppa-nav-btn {
-    flex: 1;
-    min-width: 80px;
+  .ppa-subtitle {
+    font-size: 1.1em;
   }
 }

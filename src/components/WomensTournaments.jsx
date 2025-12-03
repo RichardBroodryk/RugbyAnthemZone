@@ -1,6 +1,6 @@
 import React from 'react';
 import './WomensTournaments.css';
-import ThemeToggle from './ThemeToggle';
+import NavBar from './NavBar';
 
 const WomensTournaments = ({ 
   onNavigateBack,
@@ -59,18 +59,33 @@ const WomensTournaments = ({
 
   return (
     <div className="womens-tournaments-page">
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <ThemeToggle />
-      </nav>
+      {/* Professional Navigation Bar - FIRST */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search clicked")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
+      {/* Top Ad Banner - SECOND (under NavBar) */}
+      <div className="top-ad-banner">
+        🌟 WOMEN'S RUGBY TOURNAMENTS - Official Partners! ⚡
+      </div>
 
       <div className="tournaments-content">
         <div className="tournament-header">
           <h1 className="tournament-title">Women's Rugby Tournaments</h1>
           <p className="tournament-subtitle">Select a tournament to explore</p>
+        </div>
+        
+        {/* Rotating Ad Banner */}
+        <div className="rotating-ad-banner">
+          🎟️ Book Women's Rugby Tickets - Limited Seats! ⚡
         </div>
         
         <div className="tournaments-grid">
@@ -87,6 +102,11 @@ const WomensTournaments = ({
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Bottom Ad Banner */}
+      <div className="bottom-ad-banner">
+        📺 Watch All Women's Rugby Live - Subscribe Now! 🎬
       </div>
     </div>
   );

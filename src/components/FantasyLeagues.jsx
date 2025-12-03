@@ -1,5 +1,6 @@
 import React from 'react';
 import './FantasyLeagues.css';
+import NavBar from './NavBar';
 
 const FantasyLeagues = ({ onNavigateBack, tournament }) => {
   const mensTournaments = [
@@ -90,18 +91,23 @@ const FantasyLeagues = ({ onNavigateBack, tournament }) => {
 
   return (
     <div className="fantasy-leagues-page">
+      {/* Professional NavBar */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Fantasy Leagues")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
       {/* Top Ad Banner */}
       <div className="top-ad-banner">
         🏆 Fantasy Rugby - Compete for Prizes & Glory! Join Now! 🎮
       </div>
-
-      {/* Top Navigation */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-      </nav>
 
       {/* Main Content */}
       <div className="fantasy-content">
@@ -133,8 +139,8 @@ const FantasyLeagues = ({ onNavigateBack, tournament }) => {
           </div>
         </div>
 
-        {/* Men's Tournaments Section */}
-        <div className="tournament-section">
+        {/* Men's Tournaments Section - FIERY RED */}
+        <div className="tournament-section mens-section">
           <div className="section-header">
             <h2 className="section-title">🏉 Men's International Tournaments</h2>
             <p className="section-description">
@@ -149,8 +155,8 @@ const FantasyLeagues = ({ onNavigateBack, tournament }) => {
           </div>
         </div>
         
-        {/* Women's Tournaments Section */}
-        <div className="tournament-section">
+        {/* Women's Tournaments Section - FIERY RED */}
+        <div className="tournament-section womens-section">
           <div className="section-header">
             <h2 className="section-title">♀ Women's International Tournaments</h2>
             <p className="section-description">

@@ -3,6 +3,7 @@
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
+/* Top Ad Banner - Now below NavBar */
 .top-ad-banner {
   background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
   color: white;
@@ -11,6 +12,7 @@
   font-weight: bold;
   font-size: 1.1em;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 0;
 }
 
 .bottom-ad-banner {
@@ -23,29 +25,95 @@
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.top-nav {
+/* NavBar Styles - Professional Navigation */
+.nav-bar {
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 15px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .nav-btn {
   background: #007bff;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 25px;
+  padding: 8px 16px;
+  border-radius: 20px;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 70px;
 }
 
 .nav-btn:hover {
   background: #0056b3;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Flag Component Styles */
+.flag-small {
+  width: 30px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.flag-large {
+  width: 60px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  margin-right: 20px;
+}
+
+.flag-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.flag-fallback.flag-small {
+  width: 30px;
+  height: 20px;
+  font-size: 0.7rem;
+}
+
+.flag-fallback.flag-large {
+  width: 60px;
+  height: 40px;
+  font-size: 1.2rem;
 }
 
 .flights-content {
@@ -70,6 +138,10 @@
   font-size: 1.3em;
   opacity: 0.9;
   margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
 }
 
 .flights-grid {
@@ -80,16 +152,18 @@
 }
 
 .country-airlines-card {
-  background: white;
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
   padding: 25px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  border-left: 4px solid #007bff;
 }
 
 .country-airlines-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 35px rgba(0, 123, 255, 0.2);
+  border-left-color: #ff6b6b;
 }
 
 .country-header {
@@ -98,11 +172,6 @@
   margin-bottom: 20px;
   padding-bottom: 15px;
   border-bottom: 2px solid #f8f9fa;
-}
-
-.nation-flag {
-  font-size: 3em;
-  margin-right: 20px;
 }
 
 .country-info h3 {
@@ -115,6 +184,7 @@
   margin: 0;
   color: #666;
   font-size: 0.95em;
+  font-weight: 500;
 }
 
 .airlines-list {
@@ -132,11 +202,14 @@
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .airline-item:hover {
-  background: #e9ecef;
+  background: white;
   transform: translateX(5px);
+  border-color: #007bff;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
 }
 
 .airline-details {
@@ -146,11 +219,11 @@
 }
 
 .airline-icon {
-  font-size: 1.2em;
+  font-size: 1.5em;
 }
 
 .airline-name {
-  font-weight: 500;
+  font-weight: 600;
   color: #333;
   font-size: 1.1em;
 }
@@ -159,30 +232,33 @@
   background: linear-gradient(135deg, #007bff, #0056b3);
   color: white;
   border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 10px 20px;
+  border-radius: 25px;
   cursor: pointer;
   font-size: 0.9em;
   font-weight: bold;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 123, 255, 0.3);
 }
 
 .book-flight-btn:hover {
   background: linear-gradient(135deg, #0056b3, #004085);
   transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
 }
 
 .travel-tips {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
   padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .travel-tips h3 {
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 
 .tips-grid {
@@ -195,19 +271,29 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 15px;
+  padding: 20px;
   background: #f8f9fa;
-  border-radius: 10px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.tip-item:hover {
+  background: white;
+  transform: translateY(-3px);
+  border-color: #ff6b6b;
+  box-shadow: 0 6px 15px rgba(255, 107, 107, 0.2);
 }
 
 .tip-icon {
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 
 .tip-text {
   color: #555;
-  font-weight: 500;
-  line-height: 1.4;
+  font-weight: 600;
+  line-height: 1.5;
+  font-size: 1em;
 }
 
 /* Responsive Design */
@@ -220,23 +306,89 @@
     font-size: 2.5em;
   }
   
+  .flights-subtitle {
+    font-size: 1.1em;
+  }
+  
   .country-header {
     flex-direction: column;
     text-align: center;
   }
   
-  .nation-flag {
+  .flag-large {
     margin-right: 0;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    width: 50px;
+    height: 33px;
+  }
+  
+  .flag-fallback.flag-large {
+    width: 50px;
+    height: 33px;
+    font-size: 1rem;
   }
   
   .airline-item {
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     text-align: center;
+  }
+  
+  .airline-details {
+    flex-direction: column;
+    gap: 10px;
   }
   
   .tips-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .nav-bar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+  }
+  
+  .nav-left, .nav-center, .nav-right {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .flights-title {
+    font-size: 2em;
+  }
+  
+  .country-airlines-card,
+  .travel-tips {
+    padding: 20px;
+  }
+  
+  .flag-large {
+    width: 45px;
+    height: 30px;
+  }
+  
+  .flag-fallback.flag-large {
+    width: 45px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+  
+  .nav-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    min-width: 60px;
+  }
+  
+  .tip-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .tip-icon {
+    margin-bottom: 10px;
   }
 }

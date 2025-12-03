@@ -3,6 +3,7 @@
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
+/* Top Ad Banner - Now below NavBar */
 .top-ad-banner {
   background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
   color: white;
@@ -11,6 +12,7 @@
   font-weight: bold;
   font-size: 1.1em;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 0;
 }
 
 .bottom-ad-banner {
@@ -23,29 +25,47 @@
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.top-nav {
-  display: flex;
+/* Flag Component Styles */
+.flag-small {
+  width: 30px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.flag-large {
+  width: 60px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 5px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  margin-right: 20px;
+}
+
+.flag-fallback {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  gap: 15px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-}
-
-.nav-btn {
-  background: #007bff;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.nav-btn:hover {
-  background: #0056b3;
-  transform: translateY(-2px);
+.flag-fallback.flag-small {
+  width: 30px;
+  height: 20px;
+  font-size: 0.7rem;
+}
+
+.flag-fallback.flag-large {
+  width: 60px;
+  height: 40px;
+  font-size: 1.2rem;
 }
 
 .hotels-content {
@@ -70,15 +90,20 @@
   font-size: 1.3em;
   opacity: 0.9;
   margin: 0 0 15px 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
 }
 
 .affiliate-notice {
   background: rgba(255, 255, 255, 0.2);
-  padding: 10px 20px;
+  padding: 10px 25px;
   border-radius: 25px;
   display: inline-block;
   backdrop-filter: blur(10px);
-  font-size: 0.95em;
+  font-size: 1em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .hotels-grid {
@@ -89,16 +114,17 @@
 }
 
 .country-hotels-card {
-  background: white;
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
   padding: 25px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+  border-left: 4px solid #ff6b6b;
 }
 
 .country-hotels-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 35px rgba(255, 107, 107, 0.2);
 }
 
 .country-header {
@@ -107,11 +133,6 @@
   margin-bottom: 25px;
   padding-bottom: 20px;
   border-bottom: 2px solid #f8f9fa;
-}
-
-.nation-flag {
-  font-size: 3em;
-  margin-right: 20px;
 }
 
 .country-info h3 {
@@ -131,6 +152,7 @@
   margin: 0;
   color: #888;
   font-size: 0.9em;
+  font-weight: 500;
 }
 
 .hotels-list {
@@ -144,11 +166,14 @@
   border-radius: 12px;
   padding: 20px;
   transition: all 0.3s ease;
+  border: 2px solid transparent;
 }
 
 .hotel-item:hover {
-  background: #e9ecef;
+  background: white;
   transform: translateX(5px);
+  border-color: #ff6b6b;
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.15);
 }
 
 .hotel-main {
@@ -185,9 +210,9 @@
 .feature-tag {
   background: #007bff;
   color: white;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 15px;
-  font-size: 0.8em;
+  font-size: 0.85em;
   font-weight: 500;
 }
 
@@ -200,7 +225,7 @@
 .official-rating {
   color: #ffc107;
   font-weight: 600;
-  font-size: 0.9em;
+  font-size: 0.95em;
 }
 
 .fan-rating {
@@ -251,42 +276,47 @@
   transition: all 0.3s ease;
   width: 100%;
   margin-bottom: 8px;
+  box-shadow: 0 2px 6px rgba(40, 167, 69, 0.3);
 }
 
 .book-now-btn:hover {
   background: linear-gradient(135deg, #20c997, #28a745);
   transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4);
 }
 
 .book-now-btn.affiliate {
   background: linear-gradient(135deg, #ff6b35, #ff8e50);
+  box-shadow: 0 2px 6px rgba(255, 107, 53, 0.3);
 }
 
 .book-now-btn.affiliate:hover {
   background: linear-gradient(135deg, #ff8e50, #ff6b35);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
 }
 
 .affiliate-badge {
   background: #17a2b8;
   color: white;
-  padding: 4px 10px;
+  padding: 4px 12px;
   border-radius: 15px;
-  font-size: 0.75em;
+  font-size: 0.8em;
   font-weight: bold;
 }
 
 .booking-tips {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
   padding: 30px;
   margin-bottom: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .booking-tips h3 {
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 
 .tips-grid {
@@ -299,40 +329,54 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 15px;
+  padding: 20px;
   background: #f8f9fa;
-  border-radius: 10px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.tip-item:hover {
+  background: white;
+  transform: translateY(-3px);
+  border-color: #ff6b6b;
+  box-shadow: 0 6px 15px rgba(255, 107, 107, 0.2);
 }
 
 .tip-icon {
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 
 .tip-text {
   color: #555;
-  font-weight: 500;
-  line-height: 1.4;
+  font-weight: 600;
+  line-height: 1.5;
+  font-size: 1em;
 }
 
 .commission-notice {
   background: linear-gradient(135deg, #fff3cd, #ffeaa7);
   border: 2px solid #ffc107;
-  border-radius: 15px;
-  padding: 25px;
+  border-radius: 20px;
+  padding: 30px;
   text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
 
 .commission-notice h4 {
   color: #856404;
-  margin-bottom: 10px;
-  font-size: 1.3em;
+  margin-bottom: 15px;
+  font-size: 1.5em;
 }
 
 .commission-notice p {
   color: #856404;
   margin: 0;
-  line-height: 1.5;
-  font-size: 1em;
+  line-height: 1.6;
+  font-size: 1.1em;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Responsive Design */
@@ -350,9 +394,17 @@
     text-align: center;
   }
   
-  .nation-flag {
+  .flag-large {
     margin-right: 0;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    width: 50px;
+    height: 33px;
+  }
+  
+  .flag-fallback.flag-large {
+    width: 50px;
+    height: 33px;
+    font-size: 1rem;
   }
   
   .hotel-main {
@@ -362,5 +414,47 @@
   
   .tips-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .affiliate-notice {
+    font-size: 0.9em;
+    padding: 8px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hotels-title {
+    font-size: 2em;
+  }
+  
+  .hotels-subtitle {
+    font-size: 1.1em;
+  }
+  
+  .country-hotels-card,
+  .booking-tips,
+  .commission-notice {
+    padding: 20px;
+  }
+  
+  .flag-large {
+    width: 45px;
+    height: 30px;
+  }
+  
+  .flag-fallback.flag-large {
+    width: 45px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+  
+  .tip-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  
+  .tip-icon {
+    margin-bottom: 10px;
   }
 }

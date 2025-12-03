@@ -1,77 +1,113 @@
 import React from 'react';
 import './TournamentMerchandise.css';
+import NavBar from './NavBar';
+
+const Flag = ({ country, size = 'medium' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'newzealand': 'new-zealand',
+      'southafrica': 'south-africa',
+      'australia': 'australia',
+      'england': 'england',
+      'ireland': 'ireland',
+      'france': 'france',
+      'wales': 'wales',
+      'scotland': 'scotland',
+      'argentina': 'argentina',
+      'fiji': 'fiji',
+      'japan': 'japan',
+      'italy': 'italy',
+      'samoa': 'samoa',
+      'tonga': 'tonga'
+    };
+    return nameMap[countryName] || countryName;
+  };
+
+  const fileName = getCountryFileName(country.toLowerCase());
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      return <div className={`flag-fallback flag-${size}`}>{country.slice(0, 3).toUpperCase()}</div>;
+    }
+  }
+};
 
 const TournamentMerchandise = ({ game, onNavigateBack, userStatus }) => {
-  // Official merchandise stores for all rugby nations
   const teamStores = {
     "New Zealand": {
-      flag: "🇳🇿",
+      country: "new-zealand",
       storeName: "All Blacks Official Store",
       url: "https://www.allblacks.com/shop/",
       description: "Official All Blacks jerseys, apparel, and exclusive merchandise. Get the famous black jersey and support the team!"
     },
     "South Africa": {
-      flag: "🇿🇦", 
+      country: "south-africa", 
       storeName: "Springboks Official Store",
       url: "https://www.springbokshop.com/",
       description: "Official Springboks gear, Green and Gold jerseys, and South African rugby merchandise. Go Bokke!"
     },
     "Australia": {
-      flag: "🇦🇺",
+      country: "australia",
       storeName: "Wallabies Official Store", 
       url: "https://www.wallabieshop.com.au/",
       description: "Official Wallabies jerseys, Gold apparel, and Australian rugby gear. Support the Wallabies!"
     },
     "England": {
-      flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      country: "england",
       storeName: "England Rugby Store",
       url: "https://www.englandrugbystore.com/",
       description: "Official England rugby union merchandise, White Rose kit, and exclusive apparel"
     },
     "Ireland": {
-      flag: "🇮🇪",
+      country: "ireland",
       storeName: "Irish Rugby Shop",
       url: "https://www.irishrugby.ie/shop/",
       description: "Official Ireland rugby merchandise, Green jerseys, and Irish rugby apparel"
     },
     "France": {
-      flag: "🇫🇷",
+      country: "france",
       storeName: "FFR Boutique Officielle",
       url: "https://boutique.ffr.fr/",
       description: "Official French rugby federation merchandise, Bleu jerseys, and French rugby gear"
     },
     "Wales": {
-      flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+      country: "wales",
       storeName: "Welsh Rugby Union Shop",
       url: "https://www.wru.wales/shop/",
       description: "Official Wales rugby union merchandise, Red Dragon kit, and Welsh rugby apparel"
     },
     "Scotland": {
-      flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+      country: "scotland",
       storeName: "Scottish Rugby Shop",
       url: "https://www.scottishrugbystore.com/",
       description: "Official Scotland rugby merchandise, Thistle kit, and Scottish rugby gear"
     },
     "Argentina": {
-      flag: "🇦🇷",
+      country: "argentina",
       storeName: "UAR Tienda Oficial",
       url: "https://tienda.uar.com.ar/",
       description: "Official Argentine rugby union merchandise, Los Pumas jerseys, and rugby apparel"
     },
     "Fiji": {
-      flag: "🇫🇯",
+      country: "fiji",
       storeName: "Fiji Rugby Shop",
       url: "https://www.fijirugby.com/shop/",
       description: "Official Flying Fijians merchandise, traditional designs, and Pacific rugby gear"
     },
     "Japan": {
-      flag: "🇯🇵",
+      country: "japan",
       storeName: "Japan Rugby Shop",
       url: "https://www.rugby-japan.jp/shop/",
       description: "Official Brave Blossoms merchandise, Sakura jerseys, and Japanese rugby apparel"
     },
     "Italy": {
-      flag: "🇮🇹",
+      country: "italy",
       storeName: "FIR Store Ufficiale",
       url: "https://store.federugby.it/",
       description: "Official Italian rugby federation merchandise, Azzurri kit, and Italian rugby gear"
@@ -82,18 +118,22 @@ const TournamentMerchandise = ({ game, onNavigateBack, userStatus }) => {
   if (userStatus !== 'premium') {
     return (
       <div className="premium-gate">
-        {/* Top Ad Banner - Matching FlightsPage */}
+        <NavBar 
+          showBackButton={true}
+          showHomeButton={true}
+          showSearchButton={true}
+          showProfileButton={true}
+          showThemeToggle={true}
+          onNavigateBack={onNavigateBack}
+          onNavigateToHome={() => window.location.reload()}
+          onNavigateToSearch={() => console.log("Search Merchandise")}
+          onNavigateToProfile={() => console.log("Profile clicked")}
+        />
+
+        {/* Top Ad Banner */}
         <div className="top-ad-banner">
           🛍️ UNLOCK OFFICIAL MERCHANDISE - UPGRADE TO PREMIUM! ⭐
         </div>
-
-        {/* Standardized Navigation - Matching HomePage */}
-        <nav className="top-nav">
-          <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-          <button className="nav-btn">🏠 Home</button>
-          <button className="nav-btn">🔍 Search</button>
-          <button className="nav-btn">👤 Profile</button>
-        </nav>
 
         <div className="gate-content">
           <h1>⭐ Premium Exclusive</h1>
@@ -104,7 +144,7 @@ const TournamentMerchandise = ({ game, onNavigateBack, userStatus }) => {
           </button>
         </div>
 
-        {/* Bottom Ad Banner - Matching FlightsPage */}
+        {/* Bottom Ad Banner */}
         <div className="bottom-ad-banner">
           🏉 Official Rugby Gear - Only for Premium Members! 🛒
         </div>
@@ -131,18 +171,22 @@ const TournamentMerchandise = ({ game, onNavigateBack, userStatus }) => {
 
   return (
     <div className="merchandise-page">
-      {/* Top Ad Banner - Matching FlightsPage */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Merchandise")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
+      {/* Top Ad Banner */}
       <div className="top-ad-banner">
         🛍️ OFFICIAL RUGBY GEAR - SUPPORT YOUR TEAM! 🏉
       </div>
-
-      {/* Standardized Navigation - Matching HomePage */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-      </nav>
 
       <div className="merch-content">
         {/* Merchandise Header */}
@@ -158,10 +202,14 @@ const TournamentMerchandise = ({ game, onNavigateBack, userStatus }) => {
             <h2>Featured Match Teams</h2>
             <div className="teams-playing">
               <div className="vs-teams">
-                <span className="team-flag">{teamStores[homeTeam]?.flag}</span>
+                <div className="team-flag">
+                  <Flag country={teamStores[homeTeam]?.country} size="large" />
+                </div>
                 <span className="team-name">{homeTeam}</span>
                 <span className="vs">VS</span>
-                <span className="team-flag">{teamStores[awayTeam]?.flag}</span>
+                <div className="team-flag">
+                  <Flag country={teamStores[awayTeam]?.country} size="large" />
+                </div>
                 <span className="team-name">{awayTeam}</span>
               </div>
             </div>
@@ -173,7 +221,9 @@ const TournamentMerchandise = ({ game, onNavigateBack, userStatus }) => {
           {playingTeams.map((team, index) => (
             <div key={index} className="store-card">
               <div className="team-header">
-                <div className="team-flag-large">{team.flag}</div>
+                <div className="team-flag-large">
+                  <Flag country={team.country} size="xlarge" />
+                </div>
                 <div className="team-info">
                   <h3>{team.name}</h3>
                   <p className="store-name">{team.storeName}</p>
@@ -207,7 +257,9 @@ const TournamentMerchandise = ({ game, onNavigateBack, userStatus }) => {
                   className="nation-store-btn"
                   onClick={() => handleStoreClick(nation.url)}
                 >
-                  <span className="nation-store-flag">{nation.flag}</span>
+                  <div className="nation-store-flag">
+                    <Flag country={nation.country} size="medium" />
+                  </div>
                   <span className="nation-store-name">{nation.name}</span>
                 </button>
               ))}
@@ -224,7 +276,7 @@ const TournamentMerchandise = ({ game, onNavigateBack, userStatus }) => {
         )}
       </div>
 
-      {/* Bottom Ad Banner - Matching FlightsPage */}
+      {/* Bottom Ad Banner */}
       <div className="bottom-ad-banner">
         🎽 Limited Edition Jerseys - Shop Now Before They're Gone! ⚡
       </div>

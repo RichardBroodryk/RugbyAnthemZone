@@ -1,10 +1,95 @@
-/* PremiumLogin.css - Premium Subscription Page */
+/* ===== PREMIUM LOGIN PAGE - COMPLETE REDESIGN ===== */
 .premium-login-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 
-/* Standardized Ad Banners - Matching FlightsPage */
+/* ===== PROFESSIONAL NAVBAR ===== */
+.raz-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-shrink: 0;
+}
+
+.nav-logo-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-main-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  max-width: 180px;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
+}
+
+.nav-icons-section {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.nav-icon {
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.6rem;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.back-icon {
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+}
+
+.home-icon {
+  background: linear-gradient(135deg, #66bb6a, #4caf50);
+}
+
+.search-icon {
+  background: linear-gradient(135deg, #ffb74d, #ff9800);
+}
+
+.profile-icon {
+  background: linear-gradient(135deg, #ba68c8, #9c27b0);
+}
+
+.menu-icon {
+  background: linear-gradient(135deg, #78909c, #546e7a);
+}
+
+/* ===== STANDARDIZED AD BANNERS ===== */
 .top-ad-banner {
   background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
   color: white;
@@ -13,6 +98,7 @@
   font-weight: bold;
   font-size: 1.1em;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
 .bottom-ad-banner {
@@ -23,44 +109,18 @@
   font-weight: bold;
   font-size: 1.1em;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
-/* Standardized Navigation - Matching HomePage */
-.top-nav {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.nav-btn {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.nav-btn:hover {
-  background: #0056b3;
-  transform: translateY(-2px);
-}
-
-/* Premium Login Content */
+/* ===== PREMIUM LOGIN CONTENT ===== */
 .premium-login-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 30px 20px;
+  flex: 1;
+  padding: 2rem 1rem;
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 70vh;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding-bottom: 60px;
 }
 
 .premium-login-container {
@@ -71,6 +131,7 @@
   max-width: 500px;
   width: 100%;
   border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #333;
 }
 
 .premium-title {
@@ -82,9 +143,33 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  font-weight: 700;
 }
 
-/* Form Styles */
+/* ===== PRICE DISPLAY ===== */
+.price-display {
+  text-align: center;
+  margin: 20px 0 30px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.price-amount {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.price-period {
+  font-size: 1em;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* ===== FORM STYLES ===== */
 .form-group {
   margin-bottom: 20px;
 }
@@ -92,7 +177,7 @@
 .form-label {
   display: block;
   margin-bottom: 8px;
-  color: #333;
+  color: #555;
   font-weight: 600;
   font-size: 0.95em;
 }
@@ -105,6 +190,7 @@
   font-size: 1em;
   transition: all 0.3s ease;
   background: white;
+  color: #333;
 }
 
 .form-input:focus {
@@ -113,7 +199,48 @@
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-/* Banking Section */
+/* ===== PAYMENT METHODS ===== */
+.payment-methods {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.payment-method {
+  flex: 1;
+  min-width: 80px;
+  text-align: center;
+  padding: 12px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.payment-method:hover {
+  border-color: #667eea;
+  background: #f8f9fa;
+}
+
+.payment-method.selected {
+  border-color: #667eea;
+  background: #667eea;
+  color: white;
+}
+
+.payment-icon {
+  font-size: 1.5em;
+  margin-bottom: 8px;
+}
+
+.payment-name {
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+/* ===== BANKING SECTION ===== */
 .banking-section {
   background: #f8f9fa;
   padding: 25px;
@@ -127,11 +254,12 @@
   margin-bottom: 20px;
   font-size: 1.3em;
   text-align: center;
+  font-weight: 700;
 }
 
-/* PREMIUM FEATURES SECTION - DIFFERENT COLOR */
+/* ===== PREMIUM FEATURES SECTION ===== */
 .premium-features {
-  background: linear-gradient(135deg, #ffd700, #ffed4e); /* Gold gradient */
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
   color: #8b6b00;
   padding: 25px;
   border-radius: 15px;
@@ -168,9 +296,9 @@
   color: #28a745;
 }
 
-/* Subscribe Button */
+/* ===== SUBSCRIBE BUTTON ===== */
 .premium-subscribe-btn {
-  background: linear-gradient(135deg, #28a745, #20c997);
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
   border: none;
   padding: 16px 30px;
@@ -181,16 +309,16 @@
   transition: all 0.3s ease;
   width: 100%;
   margin-top: 20px;
-  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
 .premium-subscribe-btn:hover {
-  background: linear-gradient(135deg, #20c997, #28a745);
+  background: linear-gradient(135deg, #764ba2, #667eea);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(40, 167, 69, 0.4);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
-/* Test Button Styles */
+/* ===== TEST BUTTON CONTAINER ===== */
 .test-button-container {
   text-align: center;
   margin: 20px 0;
@@ -222,72 +350,55 @@
   font-size: 12px;
   color: #666;
   margin-top: 5px;
+  font-style: italic;
 }
 
-/* Payment Method Options */
-.payment-methods {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.payment-method {
-  flex: 1;
-  min-width: 80px;
+/* ===== SECURITY BADGE ===== */
+.security-badge {
   text-align: center;
-  padding: 10px;
-  border: 2px solid #e9ecef;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background: white;
-}
-
-.payment-method:hover {
-  border-color: #667eea;
-  background: #f8f9fa;
-}
-
-.payment-method.selected {
-  border-color: #667eea;
-  background: #667eea;
-  color: white;
-}
-
-.payment-icon {
-  font-size: 1.5em;
-  margin-bottom: 5px;
-}
-
-.payment-name {
-  font-size: 0.8em;
+  margin-top: 15px;
+  color: #28a745;
+  font-size: 0.9em;
   font-weight: 500;
 }
 
-/* Price Display */
-.price-display {
-  text-align: center;
-  margin: 20px 0;
-  padding: 15px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  border-radius: 15px;
+.security-badge:before {
+  content: "🔒 ";
 }
 
-.price-amount {
-  font-size: 2.5em;
-  font-weight: bold;
-  margin-bottom: 5px;
+/* ===== ANIMATION FOR PREMIUM BADGE ===== */
+@keyframes premiumGlow {
+  0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+  100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
 }
 
-.price-period {
-  font-size: 1em;
-  opacity: 0.9;
+.premium-badge {
+  animation: premiumGlow 2s infinite;
 }
 
-/* Responsive Design */
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
+  .raz-navbar {
+    padding: 0.6rem 1rem;
+    height: 65px;
+  }
+  
+  .nav-main-logo {
+    height: 42px;
+    max-width: 150px;
+  }
+  
+  .nav-icons-section {
+    gap: 0.5rem;
+  }
+  
+  .nav-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+  
   .premium-login-container {
     padding: 30px 20px;
     margin: 20px;
@@ -295,6 +406,14 @@
   
   .premium-title {
     font-size: 1.8em;
+  }
+  
+  .price-display {
+    padding: 15px;
+  }
+  
+  .price-amount {
+    font-size: 2.2em;
   }
   
   .banking-section {
@@ -315,6 +434,27 @@
 }
 
 @media (max-width: 480px) {
+  .raz-navbar {
+    padding: 0.5rem;
+    height: 60px;
+  }
+  
+  .nav-main-logo {
+    height: 38px;
+    max-width: 130px;
+  }
+  
+  .nav-icons-section {
+    gap: 0.4rem;
+  }
+  
+  .nav-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+  }
+  
   .premium-login-content {
     padding: 20px 15px;
   }
@@ -335,28 +475,20 @@
     padding: 14px 20px;
     font-size: 1em;
   }
+  
+  .top-ad-banner,
+  .bottom-ad-banner {
+    font-size: 1em;
+    padding: 10px;
+  }
 }
 
-/* Animation for premium badge */
-@keyframes premiumGlow {
-  0% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
-  50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
-  100% { box-shadow: 0 0 5px rgba(255, 215, 0, 0.5); }
+/* Remove any unwanted scroll */
+.premium-login-content::-webkit-scrollbar {
+  display: none;
 }
 
-.premium-badge {
-  animation: premiumGlow 2s infinite;
-}
-
-/* Security Badge */
-.security-badge {
-  text-align: center;
-  margin-top: 15px;
-  color: #28a745;
-  font-size: 0.9em;
-  font-weight: 500;
-}
-
-.security-badge:before {
-  content: "🔒 ";
+.premium-login-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

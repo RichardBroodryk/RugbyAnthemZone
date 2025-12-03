@@ -1,4 +1,5 @@
 import './SuperPremiumLogin.css';
+import razNavIcon from '../Assets/images/raz-nav-icon.png';
 
 function SuperPremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
   const handleSubscribe = () => {
@@ -8,13 +9,39 @@ function SuperPremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
 
   return (
     <div className="super-premium-login-page">
-      {/* Top Navigation */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
+      {/* NEW: Professional Navbar */}
+      <nav className="raz-navbar">
+        <div className="nav-logo-section">
+          <img 
+            src={razNavIcon} 
+            alt="Rugby Anthem Zone" 
+            className="nav-main-logo" 
+          />
+        </div>
+
+        <div className="nav-icons-section">
+          <button className="nav-icon back-icon" onClick={onNavigateBack}>
+            ←
+          </button>
+          <button className="nav-icon home-icon">
+            🏠
+          </button>
+          <button className="nav-icon search-icon">
+            🔍
+          </button>
+          <button className="nav-icon profile-icon">
+            👤
+          </button>
+          <button className="nav-icon menu-icon">
+            ☰
+          </button>
+        </div>
       </nav>
+
+      {/* Top Ad Banner - UNDERNEATH NAVBAR */}
+      <div className="top-ad-banner">
+        👑 SUPER PREMIUM VIP - The Ultimate Rugby Experience! 🏆
+      </div>
 
       {/* Main Content */}
       <div className="super-premium-login-content">
@@ -167,7 +194,7 @@ function SuperPremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
 
       {/* Bottom Ad Banner */}
       <div className="bottom-ad-banner">
-        👑 SUPER PREMIUM VIP - The Ultimate Rugby Experience! 🏆
+        🛒 Exclusive Super Premium Merchandise - VIP Members Only! 🎁
       </div>
     </div>
   );

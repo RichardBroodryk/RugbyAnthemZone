@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './PodcastsPage.css';
-import ThemeToggle from './ThemeToggle';
+import NavBar from './NavBar';
 
 const PodcastsPage = ({ onNavigateBack, tournament }) => {
   const [selectedTournament, setSelectedTournament] = useState('all');
@@ -293,19 +293,23 @@ const PodcastsPage = ({ onNavigateBack, tournament }) => {
 
   return (
     <div className="podcasts-page">
-      {/* Top Ad Banner */}
+      {/* Professional NavBar - FIRST */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Podcasts")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
+      {/* Top Ad Banner - NOW BELOW NAVBAR */}
       <div className="top-ad-banner">
         🎧 Rugby Podcasts Hub - Expert Analysis & Player Interviews! 🎙️
       </div>
-
-      {/* Top Navigation */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <ThemeToggle />
-      </nav>
 
       {/* Main Content */}
       <div className="podcasts-content">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './MatchVideosPage.css';
-import ThemeToggle from './ThemeToggle';
+import NavBar from './NavBar';
 
 const MatchVideosPage = ({ onNavigateBack }) => {
   const [selectedCategory, setSelectedCategory] = useState('highlights');
@@ -43,19 +43,23 @@ const MatchVideosPage = ({ onNavigateBack }) => {
 
   return (
     <div className="match-videos-page">
+      {/* Professional Navigation Bar */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Videos")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
       {/* Top Ad Banner */}
       <div className="top-ad-banner">
         🎥 Rugby Video Library - Exclusive Match Content & Analysis! 📊
       </div>
-
-      {/* Top Navigation */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <ThemeToggle />
-      </nav>
 
       {/* Main Content */}
       <div className="videos-content">

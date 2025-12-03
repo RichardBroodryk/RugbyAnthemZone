@@ -1,47 +1,165 @@
-/* Freemium Page Specific Styles */
+/* ===== FREEMIUM PAGE ===== */
 .freemium-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #2c5aa0 0%, #3a6bc0 100%);
   color: white;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 
-/* Locked Items */
-.locked-item {
-  opacity: 0.7;
-  position: relative;
-  background: linear-gradient(135deg, #666 0%, #888 100%) !important;
-  border: 2px solid #999 !important;
+/* ===== PROFESSIONAL NAVBAR ===== */
+.raz-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-shrink: 0;
 }
 
-.locked-item:hover {
-  background: linear-gradient(135deg, #777 0%, #999 100%) !important;
-  transform: none !important;
-  cursor: not-allowed;
+.nav-logo-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
-.locked-item .icon-label,
-.locked-item .icon-description {
-  color: #ccc !important;
+.nav-main-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  max-width: 180px;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
 }
 
-/* Status Badges */
-.status-badge.locked {
-  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+.nav-icons-section {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  align-items: center;
 }
 
-.status-badge.available {
-  background: linear-gradient(135deg, #51cf66, #40c057);
+.nav-icon {
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.6rem;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Upgrade Section */
+.nav-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.back-icon {
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+}
+
+.home-icon {
+  background: linear-gradient(135deg, #66bb6a, #4caf50);
+}
+
+.search-icon {
+  background: linear-gradient(135deg, #ffb74d, #ff9800);
+}
+
+.profile-icon {
+  background: linear-gradient(135deg, #ba68c8, #9c27b0);
+}
+
+.menu-icon {
+  background: linear-gradient(135deg, #78909c, #546e7a);
+}
+
+/* ===== STANDARDIZED AD BANNERS ===== */
+.top-ad-banner {
+  background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.bottom-ad-banner {
+  background: linear-gradient(90deg, #4ecdc4, #26a69a);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+/* ===== HOME CONTENT ===== */
+.home-content {
+  flex: 1;
+  padding: 2rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  padding-bottom: 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.welcome-title {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.welcome-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #e3f2fd;
+}
+
+.premium-badge {
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  display: inline-block;
+}
+
+/* ===== UPGRADE SECTION ===== */
 .upgrade-section {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.15);
   padding: 1.5rem;
   border-radius: 12px;
   margin-bottom: 2rem;
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 800px;
+  width: 100%;
+  backdrop-filter: blur(5px);
 }
 
 .upgrade-section h3 {
@@ -95,6 +213,95 @@
   box-shadow: 0 6px 20px rgba(192, 192, 192, 0.4);
 }
 
+/* ===== ICON GRID ===== */
+.icon-grid {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr) !important;
+  gap: 1rem !important;
+  max-width: 1400px !important;
+  margin: 0 auto 2rem auto !important;
+  padding: 0 1rem !important;
+  width: 100%;
+}
+
+.icon-item {
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+  border-radius: 12px;
+  padding: 1.2rem 0.8rem;
+  text-align: center;
+  cursor: pointer;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: relative;
+  border: 2px solid #4fc3f7;
+  transition: all 0.3s ease;
+}
+
+.icon-item:hover {
+  background: linear-gradient(135deg, #29b6f6, #4fc3f7);
+  transform: translateY(-3px);
+}
+
+/* Locked Items */
+.locked-item {
+  opacity: 0.7;
+  position: relative;
+  background: linear-gradient(135deg, #666 0%, #888 100%) !important;
+  border: 2px solid #999 !important;
+}
+
+.locked-item:hover {
+  background: linear-gradient(135deg, #777 0%, #999 100%) !important;
+  transform: none !important;
+  cursor: not-allowed;
+}
+
+.locked-item .icon-label,
+.locked-item .icon-description {
+  color: #ccc !important;
+}
+
+.icon {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+.icon-label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+  color: white;
+}
+
+.icon-description {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  color: #e3f2fd;
+}
+
+/* Status Badges */
+.status-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  color: white;
+}
+
+.status-badge.locked {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+}
+
+.status-badge.available {
+  background: linear-gradient(135deg, #51cf66, #40c057);
+}
+
 /* Lock Icon */
 .locked-item .premium-star {
   position: absolute;
@@ -104,23 +311,142 @@
   filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
 }
 
-/* Responsive Design */
+/* ===== QUICK ACTIONS ===== */
+.quick-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.quick-btn {
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 1;
+  min-width: 180px;
+  max-width: 250px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.quick-btn:hover {
+  background: linear-gradient(135deg, #29b6f6, #039be5);
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+  .icon-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
 @media (max-width: 768px) {
+  .raz-navbar {
+    padding: 0.6rem 1rem;
+    height: 65px;
+  }
+  
+  .nav-main-logo {
+    height: 42px;
+    max-width: 150px;
+  }
+  
+  .nav-icons-section {
+    gap: 0.5rem;
+  }
+  
+  .nav-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+  
+  .icon-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  .home-content {
+    padding: 1rem;
+    padding-bottom: 70px;
+  }
+  
+  .welcome-title {
+    font-size: 1.8rem;
+  }
+  
+  .quick-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .quick-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
   .upgrade-options {
     flex-direction: column;
     align-items: center;
   }
   
   .upgrade-btn {
-    min-width: 250px;
     width: 100%;
+    max-width: 300px;
   }
 }
 
 @media (max-width: 480px) {
+  .raz-navbar {
+    padding: 0.5rem;
+    height: 60px;
+  }
+  
+  .nav-main-logo {
+    height: 38px;
+    max-width: 130px;
+  }
+  
+  .nav-icons-section {
+    gap: 0.4rem;
+  }
+  
+  .nav-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+  }
+  
+  .icon-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .welcome-title {
+    font-size: 1.5rem;
+  }
+  
+  .premium-badge {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
   .upgrade-btn {
     min-width: 200px;
-    padding: 0.8rem 1rem;
     font-size: 0.9rem;
+    padding: 0.8rem 1.2rem;
+  }
+  
+  .top-ad-banner,
+  .bottom-ad-banner {
+    font-size: 1em;
+    padding: 10px;
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import './SignupPage.css';
+import razNavIcon from '../Assets/images/raz-nav-icon.png';
 
 function SignupPage({ 
   onNavigateToHome, 
@@ -29,19 +30,39 @@ function SignupPage({
 
   return (
     <div className="signup-page">
-      {/* Top Ad Banner */}
+      {/* Professional Navbar */}
+      <nav className="raz-navbar">
+        <div className="nav-logo-section">
+          <img 
+            src={razNavIcon} 
+            alt="Rugby Anthem Zone" 
+            className="nav-main-logo" 
+          />
+        </div>
+
+        <div className="nav-icons-section">
+          <button className="nav-icon back-icon" onClick={onNavigateBack}>
+            ←
+          </button>
+          <button className="nav-icon home-icon" onClick={onNavigateToHome}>
+            🏠
+          </button>
+          <button className="nav-icon search-icon">
+            🔍
+          </button>
+          <button className="nav-icon profile-icon">
+            👤
+          </button>
+          <button className="nav-icon menu-icon">
+            ☰
+          </button>
+        </div>
+      </nav>
+
+      {/* Top Ad Banner - UNDERNEATH NAVBAR */}
       <div className="top-ad-banner">
         🎟️ Rugby World Cup 2025 Tickets - Book Now! ⚡
       </div>
-
-      {/* Top Navigation */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <button className="nav-btn">🔐 Login</button>
-      </nav>
 
       {/* Main Content */}
       <div className="signup-content">
@@ -78,7 +99,7 @@ function SignupPage({
               />
             </div>
 
-            {/* Email, Mobile, Country - Stacked vertically */}
+            {/* Email, Mobile, Country */}
             <div className="form-row">
               <div className="form-group">
                 <label className="form-label">Email Address:</label>
@@ -178,14 +199,14 @@ function SignupPage({
                   className="upgrade-btn premium-upgrade"
                   onClick={() => handleTermsClick('premium')}
                 >
-                  ⭐ Upgrade to Premium
+                  ⭐ Upgrade to Premium - $9.99/month
                 </button>
                 <button 
                   type="button" 
                   className="upgrade-btn super-premium-upgrade"
                   onClick={() => handleTermsClick('super-premium')}
                 >
-                  👑 Go Super Premium
+                  👑 Go Super Premium - $19.99/month
                 </button>
               </div>
             </div>

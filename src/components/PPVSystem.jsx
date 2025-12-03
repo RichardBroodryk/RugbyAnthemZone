@@ -1,6 +1,52 @@
 import React, { useState } from 'react';
 import './PPVSystem.css';
-import MatchCard from './MatchCard';
+import NavBar from './NavBar';
+
+const Flag = ({ country, size = 'small' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'england': 'england',
+      'ireland': 'ireland',
+      'france': 'france',
+      'wales': 'wales',
+      'scotland': 'scotland',
+      'italy': 'italy',
+      'newzealand': 'new-zealand',
+      'southafrica': 'south-africa',
+      'australia': 'australia',
+      'argentina': 'argentina',
+      'japan': 'japan',
+      'usa': 'united-states',
+      'uk': 'united-kingdom',
+      'canada': 'canada',
+      'fiji': 'fiji',
+      'samoa': 'samoa',
+      'tonga': 'tonga',
+      'germany': 'germany',
+      'spain': 'spain',
+      'portugal': 'portugal',
+      'netherlands': 'netherlands',
+      'singapore': 'singapore',
+      'hongkong': 'hong-kong',
+      'uae': 'united-arab-emirates'
+    };
+    return nameMap[countryName] || countryName;
+  };
+
+  const fileName = getCountryFileName(country.toLowerCase());
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      return <div className={`flag-fallback flag-${size}`}>{country.slice(0, 3).toUpperCase()}</div>;
+    }
+  }
+};
 
 const PPVSystem = ({ onNavigateBack, game }) => {
   const [userLocation, setUserLocation] = useState('Japan');
@@ -9,26 +55,57 @@ const PPVSystem = ({ onNavigateBack, game }) => {
   const [selectedGame, setSelectedGame] = useState(null);
   const [showPPVProviders, setShowPPVProviders] = useState(false);
 
-  // PPV Providers data remains the same...
+  // PPV Providers data with real country names
   const ppvProviders = {
     'Japan': [
       { name: 'DAZN Japan', logo: '🎌', url: 'https://www.dazn.com/ja-JP', price: '¥1,800', quality: '4K' },
-      // ... rest of providers data
+      { name: 'Rakuten TV', logo: '🎁', url: 'https://rakuten.tv', price: '¥2,200', quality: '4K HDR' },
+      { name: 'U-NEXT', logo: '▶️', url: 'https://video.unext.jp', price: '¥1,980', quality: '1080p' },
+      { name: 'Hulu Japan', logo: '🎬', url: 'https://www.happyon.jp', price: '¥1,026', quality: '1080p' }
     ],
-    // ... rest of countries
+    'United States': [
+      { name: 'ESPN+', logo: '🏈', url: 'https://plus.espn.com', price: '$9.99', quality: '4K' },
+      { name: 'Peacock', logo: '🦚', url: 'https://www.peacocktv.com', price: '$4.99', quality: '4K' },
+      { name: 'Flosports', logo: '📺', url: 'https://www.flosports.tv', price: '$12.50', quality: '1080p' },
+      { name: 'Sling TV', logo: '💎', url: 'https://www.sling.com', price: '$40/mo', quality: '1080p' }
+    ],
+    'United Kingdom': [
+      { name: 'Sky Sports', logo: '☁️', url: 'https://www.skysports.com', price: '£10', quality: '4K UHD' },
+      { name: 'BT Sport', logo: '🔵', url: 'https://www.bt.com/sport', price: '£25/mo', quality: '4K' },
+      { name: 'Amazon Prime', logo: '📦', url: 'https://primevideo.com', price: '£8.99/mo', quality: '4K HDR' },
+      { name: 'Premier Sports', logo: '👑', url: 'https://www.premiersports.com', price: '£12.99', quality: '1080p' }
+    ],
+    'Ireland': [
+      { name: 'Virgin Media', logo: '📡', url: 'https://www.virginmediatelevision.ie', price: '€15', quality: '1080p' },
+      { name: 'eir Sport', logo: '📶', url: 'https://www.eir.ie/sport', price: '€20/mo', quality: '1080p' },
+      { name: 'RTÉ Player', logo: '🇮🇪', url: 'https://www.rte.ie/player', price: 'Free (license)', quality: '720p' },
+      { name: 'TG4', logo: '📺', url: 'https://www.tg4.ie', price: 'Free', quality: '720p' }
+    ],
+    'Australia': [
+      { name: 'Stan Sport', logo: '🎾', url: 'https://www.stan.com.au/sport', price: 'AUD$10', quality: '4K' },
+      { name: 'Kayo Sports', logo: '🎯', url: 'https://kayosports.com.au', price: 'AUD$25/mo', quality: '4K' },
+      { name: 'Foxtel', logo: '🦊', url: 'https://www.foxtel.com.au', price: 'AUD$58/mo', quality: '4K' },
+      { name: 'Nine Network', logo: '9️⃣', url: 'https://www.9now.com.au', price: 'Free', quality: '720p' }
+    ],
+    'New Zealand': [
+      { name: 'Sky Sport NZ', logo: '☁️', url: 'https://www.skysport.co.nz', price: 'NZD$49/mo', quality: '4K' },
+      { name: 'Spark Sport', logo: '⚡', url: 'https://www.sparksport.co.nz', price: 'NZD$24.99', quality: '4K' },
+      { name: 'TVNZ OnDemand', logo: '📺', url: 'https://www.tvnz.co.nz', price: 'Free', quality: '720p' },
+      { name: 'Whakaata Māori', logo: '🇳🇿', url: 'https://www.maoritelevision.com', price: 'Free', quality: '720p' }
+    ]
   };
 
   const availableCountries = Object.keys(ppvProviders);
 
-  // Updated to use MatchCard compatible data structure
+  // Updated to use real flag images
   const upcomingGames = [
     {
       id: 1,
       tournament: "Six Nations Championship",
       homeTeam: "England",
-      homeFlag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      homeCountry: "england",
       awayTeam: "Ireland",
-      awayFlag: "🇮🇪",
+      awayCountry: "ireland",
       homeScore: 0,
       awayScore: 0,
       status: "UPCOMING",
@@ -44,9 +121,9 @@ const PPVSystem = ({ onNavigateBack, game }) => {
       id: 2,
       tournament: "Six Nations Championship",
       homeTeam: "Wales",
-      homeFlag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+      homeCountry: "wales",
       awayTeam: "France",
-      awayFlag: "🇫🇷",
+      awayCountry: "france",
       homeScore: 0,
       awayScore: 0,
       status: "UPCOMING",
@@ -62,9 +139,9 @@ const PPVSystem = ({ onNavigateBack, game }) => {
       id: 3,
       tournament: "Rugby Championship",
       homeTeam: "New Zealand",
-      homeFlag: "🇳🇿",
+      homeCountry: "new-zealand",
       awayTeam: "South Africa",
-      awayFlag: "🇿🇦",
+      awayCountry: "south-africa",
       homeScore: 0,
       awayScore: 0,
       status: "UPCOMING",
@@ -74,6 +151,24 @@ const PPVSystem = ({ onNavigateBack, game }) => {
       ppvPrice: 14.99,
       ppvAvailable: true,
       duration: "Live + 7 days replay",
+      quality: "4K Ultra HD"
+    },
+    {
+      id: 4,
+      tournament: "Rugby Championship",
+      homeTeam: "Australia",
+      homeCountry: "australia",
+      awayTeam: "Argentina",
+      awayCountry: "argentina",
+      homeScore: 0,
+      awayScore: 0,
+      status: "UPCOMING",
+      time: "Sat, Sep 7, 2024, 10:05",
+      venue: "Suncorp Stadium, Brisbane",
+      broadcastRights: ["Stan Sport", "ESPN"],
+      ppvPrice: 11.99,
+      ppvAvailable: true,
+      duration: "Live + 72h replay",
       quality: "4K Ultra HD"
     }
   ];
@@ -126,7 +221,6 @@ const PPVSystem = ({ onNavigateBack, game }) => {
       await processPayment(game, paymentMethod);
       const streamToken = generateStreamToken(game.id);
       showPurchaseSuccess(game, streamToken);
-      
     } catch (error) {
       console.error('Payment failed:', error);
       alert('Payment failed. Please try again.');
@@ -157,8 +251,6 @@ const PPVSystem = ({ onNavigateBack, game }) => {
     alert(`🎉 Purchase Successful!\n\nYou can now watch:\n${game.homeTeam} 🆚 ${game.awayTeam}\n\n💰 Amount: $${game.ppvPrice}\n📺 Quality: ${game.quality}\n⏰ Access: ${game.duration}\n\nYour stream will begin shortly...`);
   };
 
-  // REMOVED: formatGameDate function since it's no longer needed
-
   const PPVProviderModal = () => (
     <div className="ppv-providers-modal">
       <div className="modal-content">
@@ -177,31 +269,9 @@ const PPVSystem = ({ onNavigateBack, game }) => {
                 setShowPPVProviders(false);
               }}
             >
-              <span className="country-flag">{
-                country === 'Japan' ? '🇯🇵' :
-                country === 'United States' ? '🇺🇸' :
-                country === 'United Kingdom' ? '🇬🇧' :
-                country === 'Ireland' ? '🇮🇪' :
-                country === 'Australia' ? '🇦🇺' :
-                country === 'New Zealand' ? '🇳🇿' :
-                country === 'South Africa' ? '🇿🇦' :
-                country === 'France' ? '🇫🇷' :
-                country === 'Italy' ? '🇮🇹' :
-                country === 'Argentina' ? '🇦🇷' :
-                country === 'Canada' ? '🇨🇦' :
-                country === 'Wales' ? '🏴' :
-                country === 'Scotland' ? '🏴' :
-                country === 'Fiji' ? '🇫🇯' :
-                country === 'Samoa' ? '🇼🇸' :
-                country === 'Tonga' ? '🇹🇴' :
-                country === 'Germany' ? '🇩🇪' :
-                country === 'Spain' ? '🇪🇸' :
-                country === 'Portugal' ? '🇵🇹' :
-                country === 'Netherlands' ? '🇳🇱' :
-                country === 'Singapore' ? '🇸🇬' :
-                country === 'Hong Kong' ? '🇭🇰' :
-                country === 'UAE' ? '🇦🇪' : '🌍'
-              }</span>
+              <div className="country-flag">
+                <Flag country={country.replace(/\s+/g, '').toLowerCase()} size="small" />
+              </div>
               <span className="country-name">{country}</span>
             </div>
           ))}
@@ -238,18 +308,23 @@ const PPVSystem = ({ onNavigateBack, game }) => {
 
   return (
     <div className="ppv-system">
+      {/* Navigation Bar */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search PPV")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
       {/* Top Ad Banner */}
       <div className="top-ad-banner">
         🎥 LIMITED TIME: Get 20% off your first PPV purchase! Use code: RUGBY20 ⚡
       </div>
-
-      {/* Navigation */}
-      <nav className="ppv-nav">
-        <button className="ppv-nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="ppv-nav-btn">🏠 Home</button>
-        <button className="ppv-nav-btn">🔍 Search</button>
-        <button className="ppv-nav-btn">👤 Profile</button>
-      </nav>
 
       <div className="ppv-content">
         {/* PPV Header */}
@@ -305,23 +380,29 @@ const PPVSystem = ({ onNavigateBack, game }) => {
           </div>
         </div>
 
-        {/* Upcoming Games - USING MATCHCARD COMPONENT */}
+        {/* Upcoming Games with Real Flags */}
         <div className="upcoming-games">
           <h2>🏉 Available Live Games</h2>
           <div className="games-grid">
             {upcomingGames.map(game => (
               <div key={game.id} className={`game-card ${selectedGame?.id === game.id ? 'featured' : ''}`}>
-                {/* Use MatchCard for the teams display */}
-                <MatchCard
-                  match={game}
-                  isSelected={selectedGame?.id === game.id}
-                  onSelect={() => setSelectedGame(game)}
-                  tournamentColor="#667eea"
-                  showTournament={true}
-                />
-                
-                {/* PPV-specific details */}
+                {/* Game Teams with Real Flags */}
+                <div className="game-teams">
+                  <div className="team-info home-team">
+                    <Flag country={game.homeCountry} size="medium" />
+                    <div className="team-name">{game.homeTeam}</div>
+                  </div>
+                  <div className="vs-separator">🆚</div>
+                  <div className="team-info away-team">
+                    <Flag country={game.awayCountry} size="medium" />
+                    <div className="team-name">{game.awayTeam}</div>
+                  </div>
+                </div>
+
+                {/* Game Details */}
                 <div className="game-details">
+                  <div className="tournament-badge">{game.tournament}</div>
+                  <div className="game-time">📅 {game.time}</div>
                   <div className="venue">🏟️ {game.venue}</div>
                   <div className="broadcasters">
                     📡 Available on: {game.broadcastRights.join(', ')}

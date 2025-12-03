@@ -1,6 +1,7 @@
+/* ===== SECONDARY SPLASH - FIXED ===== */
 .secondary-splash {
   height: 100vh;
-  background: #000000;
+  background: linear-gradient(135deg, #0d2d5c 0%, #1a4b8c 100%);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -8,168 +9,337 @@
   flex-direction: column;
 }
 
-/* NAVIGATION BAR */
-.splash-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 0.8rem;
+/* ===== NAVBAR - SAME AS HOMESCREEN ===== */
+.raz-navbar {
   display: flex;
-  justify-content: space-around;
-  z-index: 20;
-  backdrop-filter: blur(5px);
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.5rem;
+  background: white;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  height: 70px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-shrink: 0;
 }
 
-.nav-btn {
-  background: transparent;
-  color: white;
-  border: none;
-  padding: 0.4rem 0.8rem;
-  cursor: pointer;
-  font-size: 0.8rem;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
-
-.nav-btn:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-/* MAIN CONTENT AREA */
-.splash-content {
+.nav-logo-section {
   flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-main-logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  max-width: 180px;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
+}
+
+.nav-icons-section {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.nav-icon {
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.6rem;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.home-icon {
+  background: linear-gradient(135deg, #66bb6a, #4caf50);
+}
+
+.search-icon {
+  background: linear-gradient(135deg, #ffb74d, #ff9800);
+}
+
+.profile-icon {
+  background: linear-gradient(135deg, #ba68c8, #9c27b0);
+}
+
+.menu-icon {
+  background: linear-gradient(135deg, #78909c, #546e7a);
+}
+
+/* ===== MAIN IMAGE AREA - KEEP SAME ===== */
+.splash-content {
+  flex: 2; /* Take 2/3 of space */
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
   min-height: 0;
-  padding: 0 10%; /* Prevents extreme stretching */
+  padding: 0 10%;
 }
 
-/* IMAGE - SAFER APPROACH */
 .splash-image-main {
   max-width: 100%;
   max-height: 100%;
   width: auto;
   height: auto;
-  object-fit: contain; /* Safer - no blow-up */
+  object-fit: contain;
 }
 
-/* TAP INDICATOR */
-.tap-indicator {
-  position: absolute;
-  bottom: 100px; /* Fixed position from bottom */
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.tap-indicator p {
-  background: rgba(0, 0, 0, 0.85);
-  color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  display: inline-block;
-  animation: subtlePulse 3s infinite;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-@keyframes subtlePulse {
-  0%, 100% { 
-    opacity: 0.9;
-    transform: scale(1);
-  }
-  50% { 
-    opacity: 1;
-    transform: scale(1.02);
-  }
-}
-
-/* ADVERTISEMENT BANNER */
-.ad-banner {
-  background: linear-gradient(90deg, #1a4b8c, #2a5c2a);
-  color: white;
-  padding: 0.7rem;
-  border-top: 2px solid #d4af37;
-  flex-shrink: 0;
-  height: 55px;
+/* ===== CLICK ANYWHERE BLOCK - SEPARATE, NOT OVERLAY ===== */
+.click-anywhere-block {
+  flex: 1; /* Take 1/3 of space */
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 120px;
+  margin: 0;
+}
+
+.click-anywhere-block:hover {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: #4fc3f7;
+}
+
+.click-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  text-align: left;
+}
+
+.click-icon {
+  font-size: 2.5rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(10px); }
+}
+
+.click-text h3 {
+  color: #ffd700;
+  font-size: 1.3rem;
+  margin: 0 0 5px 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.click-text p {
+  color: white;
+  font-size: 0.95rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* ===== FIXED AD BANNER - SAME AS HOMESCREEN ===== */
+.fixed-ad-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  color: white;
+  padding: 0.8rem;
+  border-top: 3px solid #ffd700;
+  z-index: 1000;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  height: 55px;
 }
 
 .ad-content {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  justify-content: center;
+  gap: 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .ad-badge {
   background: #ff4444;
   color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 3px;
-  font-size: 0.7rem;
-  font-weight: bold;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .ad-text {
   flex: 1;
   text-align: center;
-  font-weight: bold;
-  font-size: 0.85rem;
+  font-weight: 700;
+  font-size: 0.9rem;
 }
 
-.ad-close {
-  background: transparent;
-  color: white;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 50%;
-  width: 22px;
-  height: 22px;
+.ad-action {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #8b6b00;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
   cursor: pointer;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
 }
 
-/* MOBILE RESPONSIVE */
+.ad-action:hover {
+  background: linear-gradient(135deg, #ffed4e, #ffd700);
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
+  .raz-navbar {
+    padding: 0.6rem 1rem;
+    height: 65px;
+  }
+  
+  .nav-main-logo {
+    height: 42px;
+    max-width: 150px;
+  }
+  
+  .nav-icons-section {
+    gap: 0.5rem;
+  }
+  
+  .nav-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+  
   .splash-content {
-    padding: 0 5%; /* Less padding on mobile */
+    padding: 0 5%;
   }
   
-  .tap-indicator {
-    bottom: 80px;
+  .click-anywhere-block {
+    padding: 15px;
+    min-height: 100px;
   }
   
-  .tap-indicator p {
+  .click-container {
+    gap: 15px;
+  }
+  
+  .click-icon {
+    font-size: 2rem;
+  }
+  
+  .click-text h3 {
+    font-size: 1.1rem;
+  }
+  
+  .click-text p {
     font-size: 0.85rem;
-    padding: 8px 16px;
+  }
+  
+  .ad-content {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .ad-text {
+    order: 2;
+    flex-basis: 100%;
+    margin-top: 0.2rem;
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
+  .raz-navbar {
+    padding: 0.5rem;
+    height: 60px;
+  }
+  
+  .nav-main-logo {
+    height: 38px;
+    max-width: 130px;
+  }
+  
+  .nav-icons-section {
+    gap: 0.4rem;
+  }
+  
+  .nav-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+  }
+  
   .splash-content {
-    padding: 0 2%; /* Minimal padding on very small screens */
+    padding: 0 2%;
   }
   
-  .tap-indicator {
-    bottom: 70px;
+  .click-anywhere-block {
+    padding: 10px;
+    min-height: 90px;
+    flex-direction: column;
   }
   
-  .tap-indicator p {
+  .click-container {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .click-icon {
+    font-size: 1.8rem;
+  }
+  
+  .click-text h3 {
+    font-size: 1rem;
+  }
+  
+  .click-text p {
     font-size: 0.8rem;
-    padding: 6px 12px;
+  }
+  
+  .fixed-ad-banner {
+    padding: 0.6rem;
+    height: 50px;
+  }
+  
+  .ad-text {
+    font-size: 0.8rem;
+  }
+  
+  .ad-action {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
   }
 }

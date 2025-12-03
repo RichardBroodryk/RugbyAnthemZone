@@ -4,28 +4,32 @@ import './LoyaltyCard.css';
 function LoyaltyCard({ userTier, points, onNavigateToLoyalty }) {
   const tierData = {
     bronze: { 
-      color: '#CD7F32', 
+      color: '#92400e', 
       name: 'Bronze', 
       next: 'Silver',
-      icon: '🥉'
+      icon: '🥉',
+      gradient: 'linear-gradient(135deg, #92400e 0%, #b45309 50%, #d97706 100%)'
     },
     silver: { 
-      color: '#C0C0C0', 
+      color: '#374151', 
       name: 'Silver', 
       next: 'Gold',
-      icon: '🥈'
+      icon: '🥈',
+      gradient: 'linear-gradient(135deg, #374151 0%, #4b5563 50%, #6b7280 100%)'
     },
     gold: { 
-      color: '#FFD700', 
+      color: '#92400e', 
       name: 'Gold', 
       next: 'Platinum',
-      icon: '🥇'
+      icon: '🥇',
+      gradient: 'linear-gradient(135deg, #92400e 0%, #d97706 50%, #f59e0b 100%)'
     },
     platinum: { 
-      color: '#E5E4E2', 
+      color: '#1e40af', 
       name: 'Platinum', 
       next: null,
-      icon: '💎'
+      icon: '💎',
+      gradient: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)'
     }
   };
 
@@ -34,10 +38,14 @@ function LoyaltyCard({ userTier, points, onNavigateToLoyalty }) {
   const progress = (points % 500) / 5; // Percentage to next tier
 
   return (
-    <div className="loyalty-card" onClick={onNavigateToLoyalty}>
-      <div className="loyalty-header" style={{ background: currentTier.color }}>
+    <div 
+      className="loyalty-card" 
+      onClick={onNavigateToLoyalty}
+      data-tier={userTier}
+    >
+      <div className="loyalty-header" style={{ background: currentTier.gradient }}>
         <div className="tier-icon">{currentTier.icon}</div>
-        <h3>Rugby Rewards</h3>
+        <h3>🏆 Rugby Rewards</h3>
         <div className="tier-badge">{currentTier.name}</div>
       </div>
       
@@ -52,17 +60,20 @@ function LoyaltyCard({ userTier, points, onNavigateToLoyalty }) {
             <div className="progress-bar">
               <div 
                 className="progress-fill" 
-                style={{ width: `${progress}%` }}
+                style={{ 
+                  width: `${progress}%`,
+                  background: `linear-gradient(90deg, ${currentTier.color} 0%, ${currentTier.color}cc 100%)`
+                }}
               ></div>
             </div>
             <div className="next-tier">
-              {pointsToNext} points to {currentTier.next}
+              {pointsToNext} points to <strong>{currentTier.next}</strong>
             </div>
           </div>
         )}
         
         <div className="current-benefits">
-          <span className="benefits-label">Current Benefits →</span>
+          <span className="benefits-label">View Benefits & Rewards →</span>
         </div>
       </div>
     </div>

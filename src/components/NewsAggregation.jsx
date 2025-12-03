@@ -1,5 +1,6 @@
 import './NewsAggregation.css';
 import { useState } from 'react';
+import NavBar from './NavBar';
 
 function NewsAggregation({ 
   onNavigateBack, 
@@ -104,16 +105,22 @@ function NewsAggregation({
 
   return (
     <div className="news-aggregation-page">
+      {/* Professional Navigation Bar */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search News")}
+        onNavigateToProfile={onNavigateToUserProfile}
+      />
+
       <div className="news-top-ad-banner">
         🏆 Rugby World Cup 2025 - Official News Partner 🌍
       </div>
-
-      <nav className="news-top-nav">
-        <button className="news-nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="news-nav-btn" onClick={() => window.location.reload()}>🏠 Home</button>
-        <button className="news-nav-btn">🔍 Search News</button>
-        <button className="news-nav-btn" onClick={onNavigateToUserProfile}>👤 Profile</button>
-      </nav>
 
       <div className="news-content">
         <h1 className="news-title">Rugby News Aggregation</h1>

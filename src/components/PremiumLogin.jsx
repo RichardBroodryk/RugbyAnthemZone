@@ -1,4 +1,5 @@
 import './PremiumLogin.css';
+import razNavIcon from '../Assets/images/raz-nav-icon.png';
 
 function PremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
   const handleSubscribe = () => {
@@ -9,13 +10,39 @@ function PremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
 
   return (
     <div className="premium-login-page">
-      {/* Top Navigation */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
+      {/* NEW: Professional Navbar */}
+      <nav className="raz-navbar">
+        <div className="nav-logo-section">
+          <img 
+            src={razNavIcon} 
+            alt="Rugby Anthem Zone" 
+            className="nav-main-logo" 
+          />
+        </div>
+
+        <div className="nav-icons-section">
+          <button className="nav-icon back-icon" onClick={onNavigateBack}>
+            ←
+          </button>
+          <button className="nav-icon home-icon">
+            🏠
+          </button>
+          <button className="nav-icon search-icon">
+            🔍
+          </button>
+          <button className="nav-icon profile-icon">
+            👤
+          </button>
+          <button className="nav-icon menu-icon">
+            ☰
+          </button>
+        </div>
       </nav>
+
+      {/* Top Ad Banner */}
+      <div className="top-ad-banner">
+        🏆 Premium Members Get Exclusive Content! ⭐
+      </div>
 
       {/* Main Content */}
       <div className="premium-login-content">
@@ -146,7 +173,7 @@ function PremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
 
       {/* Bottom Ad Banner */}
       <div className="bottom-ad-banner">
-        🏆 Premium Members Get Exclusive Content! ⭐
+        🛒 Official Rugby Merchandise - Premium Members Get 20% Off! 🎁
       </div>
     </div>
   );

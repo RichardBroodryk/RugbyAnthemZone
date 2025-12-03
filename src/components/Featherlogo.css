@@ -1,0 +1,64 @@
+.feather-logo {
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.feather-logo-tiny {
+  width: 20px;
+  height: 20px;
+}
+
+.feather-logo-small {
+  width: 30px;
+  height: 30px;
+}
+
+.feather-logo-medium {
+  width: 45px;
+  height: 45px;
+}
+
+.feather-logo-large {
+  width: 60px;
+  height: 60px;
+}
+
+.feather-logo-xlarge {
+  width: 80px;
+  height: 80px;
+}
+
+.feather-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.feather-fallback.tiny {
+  width: 20px;
+  height: 20px;
+  font-size: 0.6rem;
+}
+
+.feather-fallback.small {
+  width: 30px;
+  height: 30px;
+  font-size: 0.7rem;
+}
+
+.feather-fallback.medium {
+  width: 45px;
+  height: 45px;
+  font-size: 0.8rem;
+}
+
+.feather-fallback.large {
+  width: 60px;
+  height: 60px;
+  font-size: 0.9rem;
+}

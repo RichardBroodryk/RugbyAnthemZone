@@ -1,14 +1,10 @@
 import { useState } from 'react';
 import './SecondarySplash.css';
 import splash2 from '../Assets/images/Splash2.png';
+import razNavIcon from '../Assets/images/raz-nav-icon.png';
 
 function SecondarySplash({ onComplete }) {
   const [showAd, setShowAd] = useState(true);
-
-  const handleCloseAd = (e) => {
-    e.stopPropagation(); // Don't trigger the main click
-    setShowAd(false);
-  };
 
   const handleContinue = () => {
     onComplete();
@@ -16,35 +12,51 @@ function SecondarySplash({ onComplete }) {
 
   return (
     <div className="secondary-splash" onClick={handleContinue}>
-      {/* NAVIGATION BAR - BACK! */}
-      <nav className="splash-nav">
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <button className="nav-btn">☰ Menu</button>
+      {/* NEW NAVBAR - SAME AS HOMESCREEN */}
+      <nav className="raz-navbar">
+        <div className="nav-logo-section">
+          <img 
+            src={razNavIcon} 
+            alt="Rugby Anthem Zone" 
+            className="nav-main-logo" 
+          />
+        </div>
+
+        <div className="nav-icons-section">
+          <button className="nav-icon home-icon">🏠</button>
+          <button className="nav-icon search-icon">🔍</button>
+          <button className="nav-icon profile-icon">👤</button>
+          <button className="nav-icon menu-icon">☰</button>
+        </div>
       </nav>
 
-      {/* Main image area */}
+      {/* Main image area - KEEP SAME */}
       <div className="splash-content">
         <img 
           src={splash2} 
           alt="Rugby Anthem Zone" 
           className="splash-image-main"
         />
-        
-        {/* Tap indicator */}
-        <div className="tap-indicator">
-          <p>Tap anywhere to continue</p>
+      </div>
+
+      {/* NEW: Click anywhere block - SEPARATE, NOT OVERLAY */}
+      <div className="click-anywhere-block">
+        <div className="click-container">
+          <div className="click-icon">👉</div>
+          <div className="click-text">
+            <h3>CLICK ANYWHERE TO CONTINUE</h3>
+            <p>Tap screen or press any key to enter Rugby Hub</p>
+          </div>
         </div>
       </div>
 
-      {/* Fixed ad banner at bottom */}
+      {/* FIXED AD BANNER - SAME AS HOMESCREEN */}
       {showAd && (
-        <div className="ad-banner">
+        <div className="fixed-ad-banner">
           <div className="ad-content">
             <span className="ad-badge">AD</span>
-            <span className="ad-text">Official Rugby Gear - Shop Now! 🛒</span>
-            <button className="ad-close" onClick={handleCloseAd}>×</button>
+            <span className="ad-text">🎽 Official Rugby Jersey Sale - 50% Off! Limited Time Offer ⚡</span>
+            <button className="ad-action">SHOP NOW →</button>
           </div>
         </div>
       )}

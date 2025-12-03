@@ -1,4 +1,3 @@
-/* NewsAggregation.css - ENHANCED CONTRAST PROFESSIONAL THEME */
 .news-aggregation-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #0f1419 0%, #1a202c 100%);
@@ -6,7 +5,6 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Top Ad Banner - Distinct Blue */
 .news-top-ad-banner {
   background: linear-gradient(90deg, #1e40af, #3b82f6);
   color: white;
@@ -19,38 +17,19 @@
   border-bottom: 2px solid #60a5fa;
 }
 
-/* Top Navigation - Dark Gray */
-.news-top-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-  background: #1e293b;
-  backdrop-filter: blur(15px);
-  border-bottom: 2px solid #334155;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
-}
-
-.news-nav-btn {
-  background: linear-gradient(135deg, #475569, #334155);
-  color: #f1f5f9;
-  border: 1px solid #475569;
-  padding: 0.6rem 1.2rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
+.news-bottom-ad-banner {
+  background: linear-gradient(90deg, #3730a3, #4f46e5);
+  color: #e0e7ff;
+  text-align: center;
+  padding: 14px;
   font-weight: 600;
-  font-family: inherit;
+  font-size: 0.9rem;
+  margin-top: 3rem;
+  border-top: 2px solid #6366f1;
+  letter-spacing: 0.3px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
-.news-nav-btn:hover {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
-  border-color: #3b82f6;
-}
-
-/* Main Content */
 .news-content {
   padding: 2.5rem 1.5rem;
   max-width: 1200px;
@@ -80,7 +59,6 @@
   line-height: 1.5;
 }
 
-/* Premium Badge - Emerald Green */
 .news-premium-badge {
   background: linear-gradient(135deg, #059669, #10b981);
   color: white;
@@ -98,7 +76,6 @@
   text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
-/* News Categories - Purple Theme */
 .news-categories {
   display: flex;
   gap: 1rem;
@@ -129,7 +106,6 @@
   border-color: #8b5cf6;
 }
 
-/* News Grid - Distinct Card Colors */
 .news-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -243,7 +219,6 @@
   box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
 }
 
-/* Featured News - Amber/Gold Theme */
 .featured-news {
   background: linear-gradient(135deg, rgba(180, 83, 9, 0.2), rgba(217, 119, 6, 0.15));
   border-radius: 12px;
@@ -263,7 +238,6 @@
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-/* Breaking News Banner - Vibrant Red */
 .breaking-news-banner {
   background: linear-gradient(90deg, #dc2626, #ef4444);
   color: white;
@@ -294,7 +268,6 @@
   }
 }
 
-/* Quick Actions - Teal Theme */
 .news-quick-actions {
   display: flex;
   gap: 1rem;
@@ -327,21 +300,6 @@
   border-color: #2dd4bf;
 }
 
-/* Bottom Ad Banner - Indigo */
-.news-bottom-ad-banner {
-  background: linear-gradient(90deg, #3730a3, #4f46e5);
-  color: #e0e7ff;
-  text-align: center;
-  padding: 14px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-top: 3rem;
-  border-top: 2px solid #6366f1;
-  letter-spacing: 0.3px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
   .news-grid {
     grid-template-columns: 1fr;
@@ -397,19 +355,6 @@
     font-size: 1.8rem;
   }
   
-  .news-top-nav {
-    padding: 0.8rem;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  
-  .news-nav-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-    flex: 1;
-    min-width: 80px;
-  }
-  
   .news-quick-btn {
     min-width: 250px;
     padding: 0.9rem 1.2rem;
@@ -434,7 +379,6 @@
   }
 }
 
-/* Enhanced Typography */
 .news-aggregation-page {
   line-height: 1.6;
 }
@@ -443,8 +387,6 @@
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Focus states for accessibility */
-.news-nav-btn:focus,
 .news-category-btn:focus,
 .news-read-more:focus,
 .news-quick-btn:focus {

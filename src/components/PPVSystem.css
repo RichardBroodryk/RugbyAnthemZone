@@ -1,4 +1,4 @@
-/* PPVSystem.css - UPDATED FOR MATCHCARD COMPONENT */
+/* PPVSystem.css - UPDATED WITH REAL FLAGS AND PROPER NAVBAR */
 .ppv-system {
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -25,33 +25,6 @@
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Scoped navigation classes */
-.ppv-nav {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.ppv-nav-btn {
-  background: #007bff !important;
-  color: white !important;
-  border: none !important;
-  padding: 10px 20px !important;
-  border-radius: 25px !important;
-  cursor: pointer !important;
-  font-size: 14px !important;
-  transition: all 0.3s ease !important;
-}
-
-.ppv-nav-btn:hover {
-  background: #0056b3 !important;
-  transform: translateY(-2px) !important;
-}
-
 /* PPV Content */
 .ppv-content {
   max-width: 1200px;
@@ -75,6 +48,10 @@
   font-size: 1.3em;
   opacity: 0.9;
   margin: 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
 }
 
 .location-badge {
@@ -214,15 +191,15 @@
   gap: 25px;
 }
 
-/* UPDATED: Game Card with MatchCard integration */
+/* Game Card with Real Flags */
 .game-card {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
-  padding: 0; /* Remove padding since MatchCard has its own */
+  padding: 25px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   border: 2px solid transparent;
-  overflow: hidden; /* Ensure clean edges */
+  overflow: hidden;
 }
 
 .game-card:hover {
@@ -236,10 +213,111 @@
   background: linear-gradient(135deg, #fff9e6, #fff);
 }
 
-/* PPV-specific details */
+/* Game Teams with Real Flags */
+.game-teams {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.team-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.team-info.home-team {
+  text-align: right;
+}
+
+.team-info.away-team {
+  text-align: left;
+}
+
+/* Flag Styles */
+.flag-small {
+  width: 30px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  vertical-align: middle;
+}
+
+.flag-medium {
+  width: 60px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 8px;
+}
+
+.flag-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.flag-fallback.flag-small {
+  width: 30px;
+  height: 20px;
+  font-size: 0.6rem;
+}
+
+.flag-fallback.flag-medium {
+  width: 60px;
+  height: 40px;
+  font-size: 1rem;
+}
+
+.team-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.vs-separator {
+  font-size: 2em;
+  color: #667eea;
+  font-weight: bold;
+  padding: 0 15px;
+}
+
+.tournament-badge {
+  display: inline-block;
+  background: #667eea;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 0.9em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
 .game-details {
-  padding: 20px;
-  border-top: 1px solid #f0f0f0;
+  margin-bottom: 20px;
+}
+
+.game-time {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .venue {
@@ -257,6 +335,9 @@
   font-size: 0.85rem;
   font-style: italic;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .quality {
@@ -269,7 +350,8 @@
   text-align: center;
   padding: 20px;
   background: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+  border-radius: 15px;
+  border: 1px solid #e9ecef;
 }
 
 .pricing {
@@ -552,6 +634,11 @@
   font-size: 1.5em;
 }
 
+.country-flag .flag-small {
+  width: 35px;
+  height: 25px;
+}
+
 .country-name {
   font-weight: 600;
   font-size: 0.95em;
@@ -634,6 +721,20 @@
     grid-template-columns: 1fr;
   }
   
+  .game-teams {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .team-info.home-team,
+  .team-info.away-team {
+    text-align: center;
+  }
+  
+  .vs-separator {
+    padding: 10px 0;
+  }
+  
   .payment-methods-grid {
     grid-template-columns: 1fr;
   }
@@ -696,7 +797,11 @@
     font-size: 1.8em;
   }
   
-  .game-card {
-    padding: 0;
+  .team-name {
+    font-size: 1.1em;
+  }
+  
+  .price {
+    font-size: 2rem;
   }
 }

@@ -1,0 +1,64 @@
+.solid-logo {
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.solid-logo-tiny {
+  width: 20px;
+  height: 20px;
+}
+
+.solid-logo-small {
+  width: 30px;
+  height: 30px;
+}
+
+.solid-logo-medium {
+  width: 45px;
+  height: 45px;
+}
+
+.solid-logo-large {
+  width: 60px;
+  height: 60px;
+}
+
+.solid-logo-xlarge {
+  width: 80px;
+  height: 80px;
+}
+
+.solid-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.solid-fallback.tiny {
+  width: 20px;
+  height: 20px;
+  font-size: 0.6rem;
+}
+
+.solid-fallback.small {
+  width: 30px;
+  height: 30px;
+  font-size: 0.7rem;
+}
+
+.solid-fallback.medium {
+  width: 45px;
+  height: 45px;
+  font-size: 0.8rem;
+}
+
+.solid-fallback.large {
+  width: 60px;
+  height: 60px;
+  font-size: 0.9rem;
+}

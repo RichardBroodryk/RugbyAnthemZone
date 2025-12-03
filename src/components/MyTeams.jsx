@@ -1,6 +1,40 @@
 import React, { useState } from 'react';
 import './MyTeams.css';
-import ThemeToggle from './ThemeToggle';
+import NavBar from './NavBar';
+
+const Flag = ({ country, size = 'small' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'newzealand': 'new-zealand',
+      'southafrica': 'south-africa',
+      'england': 'england',
+      'ireland': 'ireland',
+      'france': 'france',
+      'australia': 'australia',
+      'wales': 'wales',
+      'scotland': 'scotland',
+      'argentina': 'argentina',
+      'japan': 'japan',
+      'fiji': 'fiji',
+      'italy': 'italy'
+    };
+    return nameMap[countryName] || countryName;
+  };
+
+  const fileName = getCountryFileName(country.toLowerCase());
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      return <div className={`flag-fallback flag-${size}`}>{country.slice(0, 3).toUpperCase()}</div>;
+    }
+  }
+};
 
 function MyTeams({ 
   userPreferences = {
@@ -19,84 +53,84 @@ function MyTeams({
   // Sample team data
   const teamData = {
     'New Zealand': {
-      flag: '🇳🇿',
+      flag: 'newzealand',
       nextMatch: 'vs South Africa - Aug 17',
       recentResult: 'Won vs Australia (35-20)',
       tournament: 'Rugby Championship',
       news: 'All Blacks announce new coaching staff'
     },
     'South Africa': {
-      flag: '🇿🇦',
+      flag: 'southafrica',
       nextMatch: 'vs New Zealand - Aug 17', 
       recentResult: 'Lost to Ireland (25-30)',
       tournament: 'Rugby Championship',
       news: 'Springboks welcome back injured stars'
     },
     'England': {
-      flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+      flag: 'england',
       nextMatch: 'vs France - Feb 1',
       recentResult: 'Won vs Wales (28-14)',
       tournament: 'Six Nations',
       news: 'England name new captain for 2025'
     },
     'Ireland': {
-      flag: '🇮🇪',
+      flag: 'ireland',
       nextMatch: 'vs Wales - Feb 8',
       recentResult: 'Won vs South Africa (30-25)',
       tournament: 'Six Nations', 
       news: 'Ireland remain world #1 ranking'
     },
     'France': {
-      flag: '🇫🇷',
+      flag: 'france',
       nextMatch: 'vs England - Feb 1',
       recentResult: 'Lost to Scotland (20-24)',
       tournament: 'Six Nations',
       news: 'French team announces stadium upgrades'
     },
     'Australia': {
-      flag: '🇦🇺',
+      flag: 'australia',
       nextMatch: 'vs Argentina - Sep 7',
       recentResult: 'Lost to New Zealand (20-35)',
       tournament: 'Rugby Championship',
       news: 'Wallabies rebuild under new coach'
     },
     'Wales': {
-      flag: '🏴󠁧󠁢󠁷󠁬󠁳󠁿',
+      flag: 'wales',
       nextMatch: 'vs Ireland - Feb 8',
       recentResult: 'Lost to England (14-28)',
       tournament: 'Six Nations',
       news: 'Welsh rugby announces development program'
     },
     'Scotland': {
-      flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+      flag: 'scotland',
       nextMatch: 'vs Italy - Feb 2',
       recentResult: 'Won vs France (24-20)',
       tournament: 'Six Nations',
       news: 'Scotland target Six Nations title'
     },
     'Argentina': {
-      flag: '🇦🇷',
+      flag: 'argentina',
       nextMatch: 'vs Australia - Sep 7',
       recentResult: 'Won vs Japan (45-12)',
       tournament: 'Rugby Championship',
       news: 'Pumas prepare for Championship campaign'
     },
     'Japan': {
-      flag: '🇯🇵',
+      flag: 'japan',
       nextMatch: 'vs Fiji - Nov 10',
       recentResult: 'Lost to Argentina (12-45)',
       tournament: 'Autumn Internationals',
       news: 'Brave Blossoms focus on development'
     },
     'Fiji': {
-      flag: '🇫🇯',
+      flag: 'fiji',
       nextMatch: 'vs Japan - Nov 10',
       recentResult: 'Won vs Samoa (38-15)',
       tournament: 'Autumn Internationals',
       news: 'Fiji Drua make Super Rugby impact'
     },
     'Italy': {
-      flag: '🇮🇹',
+      flag: 'italy',
       nextMatch: 'vs Scotland - Feb 2',
       recentResult: 'Lost to Georgia (18-25)',
       tournament: 'Six Nations',
@@ -122,38 +156,45 @@ function MyTeams({
   };
 
   return (
-    <div className="my-teams-page">
-      {/* Top Ad Banner */}
+    <div className="my-teams">
+      {/* Professional NavBar - FIRST */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Teams")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
+      {/* Top Ad Banner - NOW BELOW NAVBAR */}
       <div className="top-ad-banner">
         🏉 Follow Your Favorite Teams - Personalized Rugby Experience 🌟
       </div>
 
-      {/* Scoped Navigation */}
-      <nav className="my-teams-nav">
-        <button className="my-teams-nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="my-teams-nav-btn" onClick={() => window.location.reload()}>🏠 Home</button>
-        <button className="my-teams-nav-btn">🔍 Search</button>
-        <button className="my-teams-nav-btn">👤 Profile</button>
-        <ThemeToggle />
-      </nav>
+      <div className="teams-content">
+        {/* Centered headings */}
+        <h1>My Rugby Dashboard</h1>
+        <p>Personalized content for your followed teams and tournaments</p>
 
-      <div className="my-teams-content">
-        <h1 className="my-teams-title">My Rugby Dashboard</h1>
-        <p className="my-teams-subtitle">Personalized content for your followed teams and tournaments</p>
-
-        {/* View Toggle */}
+        {/* FIXED: View Toggle with proper button sizing */}
         <div className="view-toggle">
           <button 
             className={`toggle-btn ${activeView === 'teams' ? 'active' : ''}`}
             onClick={() => setActiveView('teams')}
           >
-            🏉 My Teams
+            <span className="toggle-icon">🏉</span>
+            <span className="toggle-text">My Teams</span>
           </button>
           <button 
             className={`toggle-btn ${activeView === 'tournaments' ? 'active' : ''}`}
             onClick={() => setActiveView('tournaments')}
           >
-            🏆 My Tournaments
+            <span className="toggle-icon">🏆</span>
+            <span className="toggle-text">My Tournaments</span>
           </button>
         </div>
 
@@ -171,8 +212,11 @@ function MyTeams({
                   const data = teamData[team] || {};
                   return (
                     <div key={team} className="team-card personalized">
+                      {/* Professional team header with flag */}
                       <div className="team-header">
-                        <div className="team-flag">{data.flag || '🏉'}</div>
+                        <div className="team-flag-container">
+                          <Flag country={data.flag || 'newzealand'} size="medium" />
+                        </div>
                         <div className="team-info">
                           <div className="team-name">{team}</div>
                           <div className="team-tournament">{data.tournament || 'International'}</div>

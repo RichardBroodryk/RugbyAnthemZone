@@ -669,3 +669,100 @@
     padding: 20px;
   }
 }
+/* Add these styles to your existing FinalResultsPage.css */
+
+/* FIXED: Bigger flags for Current Season Champions */
+.champion-with-flag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.flag-xlarge {
+  width: 80px; /* Much larger flag */
+  height: 60px;
+  object-fit: contain;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 2px solid #ffcc00;
+}
+
+.flag-xlarge.flag-fallback {
+  width: 80px;
+  height: 60px;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #ffcc00, #ffaa00);
+  color: #1a3d7c;
+  font-weight: bold;
+}
+
+/* FIXED: Standings with flags */
+.team-with-flag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flag-large {
+  width: 60px;
+  height: 45px;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.flag-large.flag-fallback {
+  width: 60px;
+  height: 45px;
+  font-size: 0.9rem;
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+  color: white;
+}
+
+.flag-medium {
+  width: 50px;
+  height: 35px;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.flag-medium.flag-fallback {
+  width: 50px;
+  height: 35px;
+  font-size: 0.8rem;
+}
+
+.flag-small {
+  width: 40px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.flag-small.flag-fallback {
+  width: 40px;
+  height: 28px;
+  font-size: 0.7rem;
+}
+
+/* FIXED: Final results with flags */
+.champion-with-flag, .runner-up-with-flag {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* FIXED: Games section flags */
+.team-result {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.team-result .team-name {
+  min-width: 120px;
+  text-align: center;
+}

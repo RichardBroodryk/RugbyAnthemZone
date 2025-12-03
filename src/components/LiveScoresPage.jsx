@@ -1,6 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import './LiveScoresPage.css';
 import MatchCard from './MatchCard';
+import NavBar from './NavBar';
+
+const Flag = ({ country, size = 'small' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'ireland': 'ireland',
+      'france': 'france',
+      'england': 'england',
+      'scotland': 'scotland',
+      'wales': 'wales',
+      'italy': 'italy',
+      'newzealand': 'new-zealand',
+      'australia': 'australia',
+      'southafrica': 'south-africa',
+      'argentina': 'argentina',
+      'japan': 'japan',
+      'fiji': 'fiji',
+      'samoa': 'samoa',
+      'tonga': 'tonga',
+      'georgia': 'georgia',
+      'portugal': 'portugal',
+      'romania': 'romania',
+      'netherlands': 'netherlands',
+      'spain': 'spain',
+      'usa': 'united-states-of-america'
+    };
+    return nameMap[countryName] || countryName;
+  };
+
+  const fileName = getCountryFileName(country.toLowerCase());
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      return <div className={`flag-fallback flag-${size}`}>{country.slice(0, 3).toUpperCase()}</div>;
+    }
+  }
+};
 
 const LiveScoresPage = ({ onNavigateBack }) => {
   const [liveGames, setLiveGames] = useState([]);
@@ -14,9 +57,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 1,
         tournament: "Six Nations",
         homeTeam: "Ireland",
-        homeFlag: "🇮🇪",
+        homeFlag: "ireland",
         awayTeam: "France", 
-        awayFlag: "🇫🇷",
+        awayFlag: "france",
         homeScore: 32,
         awayScore: 19,
         status: "FT",
@@ -27,9 +70,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 2,
         tournament: "Six Nations", 
         homeTeam: "Scotland",
-        homeFlag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+        homeFlag: "scotland",
         awayTeam: "Wales",
-        awayFlag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+        awayFlag: "wales",
         homeScore: 17,
         awayScore: 14,
         status: "Live",
@@ -40,9 +83,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 3,
         tournament: "Six Nations",
         homeTeam: "England",
-        homeFlag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+        homeFlag: "england",
         awayTeam: "Italy",
-        awayFlag: "🇮🇹",
+        awayFlag: "italy",
         homeScore: 0,
         awayScore: 0,
         status: "Upcoming",
@@ -55,9 +98,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 4,
         tournament: "Rugby Championship",
         homeTeam: "New Zealand",
-        homeFlag: "🇳🇿",
+        homeFlag: "newzealand",
         awayTeam: "South Africa",
-        awayFlag: "🇿🇦",
+        awayFlag: "southafrica",
         homeScore: 24,
         awayScore: 17,
         status: "Live",
@@ -68,9 +111,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 5,
         tournament: "Rugby Championship",
         homeTeam: "Australia",
-        homeFlag: "🇦🇺",
+        homeFlag: "australia",
         awayTeam: "Argentina",
-        awayFlag: "🇦🇷",
+        awayFlag: "argentina",
         homeScore: 28,
         awayScore: 25,
         status: "FT",
@@ -83,9 +126,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 6,
         tournament: "Summer Tests",
         homeTeam: "Japan",
-        homeFlag: "🇯🇵",
+        homeFlag: "japan",
         awayTeam: "Fiji",
-        awayFlag: "🇫🇯",
+        awayFlag: "fiji",
         homeScore: 0,
         awayScore: 0,
         status: "Upcoming",
@@ -96,9 +139,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 7,
         tournament: "Pacific Nations",
         homeTeam: "Samoa",
-        homeFlag: "🇼🇸",
+        homeFlag: "samoa",
         awayTeam: "Tonga",
-        awayFlag: "🇹🇴",
+        awayFlag: "tonga",
         homeScore: 31,
         awayScore: 28,
         status: "FT",
@@ -111,9 +154,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 8,
         tournament: "Women's Six Nations",
         homeTeam: "England",
-        homeFlag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+        homeFlag: "england",
         awayTeam: "France",
-        awayFlag: "🇫🇷",
+        awayFlag: "france",
         homeScore: 21,
         awayScore: 18,
         status: "Live",
@@ -124,9 +167,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 9,
         tournament: "Women's Pacific Four",
         homeTeam: "New Zealand",
-        homeFlag: "🇳🇿",
+        homeFlag: "newzealand",
         awayTeam: "Australia",
-        awayFlag: "🇦🇺",
+        awayFlag: "australia",
         homeScore: 0,
         awayScore: 0,
         status: "Upcoming",
@@ -139,9 +182,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 10,
         tournament: "Autumn Tests",
         homeTeam: "Wales",
-        homeFlag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+        homeFlag: "wales",
         awayTeam: "South Africa",
-        awayFlag: "🇿🇦",
+        awayFlag: "southafrica",
         homeScore: 0,
         awayScore: 0,
         status: "Upcoming",
@@ -152,9 +195,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 11,
         tournament: "Autumn Tests",
         homeTeam: "Ireland",
-        homeFlag: "🇮🇪",
+        homeFlag: "ireland",
         awayTeam: "New Zealand",
-        awayFlag: "🇳🇿",
+        awayFlag: "newzealand",
         homeScore: 0,
         awayScore: 0,
         status: "Upcoming",
@@ -167,9 +210,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 12,
         tournament: "World Cup Warm-up",
         homeTeam: "France",
-        homeFlag: "🇫🇷",
+        homeFlag: "france",
         awayTeam: "Scotland",
-        awayFlag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+        awayFlag: "scotland",
         homeScore: 0,
         awayScore: 0,
         status: "Upcoming",
@@ -180,9 +223,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 13,
         tournament: "World Cup Warm-up",
         homeTeam: "Argentina",
-        homeFlag: "🇦🇷",
+        homeFlag: "argentina",
         awayTeam: "Spain",
-        awayFlag: "🇪🇸",
+        awayFlag: "spain",
         homeScore: 45,
         awayScore: 12,
         status: "FT",
@@ -195,9 +238,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 14,
         tournament: "Rugby Europe Championship",
         homeTeam: "Georgia",
-        homeFlag: "🇬🇪",
+        homeFlag: "georgia",
         awayTeam: "Portugal",
-        awayFlag: "🇵🇹",
+        awayFlag: "portugal",
         homeScore: 38,
         awayScore: 22,
         status: "FT",
@@ -208,9 +251,9 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         id: 15,
         tournament: "Rugby Europe Championship",
         homeTeam: "Romania",
-        homeFlag: "🇷🇴",
+        homeFlag: "romania",
         awayTeam: "Netherlands",
-        awayFlag: "🇳🇱",
+        awayFlag: "netherlands",
         homeScore: 0,
         awayScore: 0,
         status: "Upcoming",
@@ -281,18 +324,23 @@ const LiveScoresPage = ({ onNavigateBack }) => {
 
   return (
     <div className="live-scores-page">
-      {/* Top Ad Banner */}
+      {/* Top Ad Banner - MOVED TO TOP */}
       <div className="top-ad-banner">
         🌍 International Rugby Live Scores - Follow Your Nation! 🏉
       </div>
 
-      {/* Top Navigation */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-      </nav>
+      {/* Professional NavBar - REPLACED CUSTOM NAV */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Live Scores")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
 
       {/* Main Content */}
       <div className="live-scores-content">
@@ -350,6 +398,7 @@ const LiveScoresPage = ({ onNavigateBack }) => {
               onSelect={handleMatchSelect}
               tournamentColor={getTournamentColor(game.tournament)}
               showTournament={true}
+              FlagComponent={Flag} // Pass Flag component to MatchCard
             />
           ))}
         </div>
@@ -386,7 +435,7 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         )}
       </div>
 
-      {/* Bottom Ad Banner */}
+      {/* Bottom Ad Banner - MOVED TO BOTTOM */}
       <div className="bottom-ad-banner">
         🎟️ Book Tickets for International Matches - Limited Availability! ⭐
       </div>

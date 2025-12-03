@@ -1,5 +1,38 @@
 import React, { useState } from 'react';
 import './FinalResultsPage.css';
+import NavBar from './NavBar';
+
+const Flag = ({ country, size = 'medium' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'ireland': 'ireland',
+      'france': 'france',
+      'newzealand': 'new-zealand',
+      'southafrica': 'south-africa',
+      'england': 'england',
+      'scotland': 'scotland',
+      'wales': 'wales',
+      'italy': 'italy',
+      'australia': 'australia',
+      'argentina': 'argentina'
+    };
+    return nameMap[countryName] || countryName;
+  };
+
+  const fileName = getCountryFileName(country.toLowerCase());
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      return <div className={`flag-fallback flag-${size}`}>{country.slice(0, 3).toUpperCase()}</div>;
+    }
+  }
+};
 
 const FinalResultsPage = ({ onNavigateBack, tournament }) => {
   const [selectedTournament, setSelectedTournament] = useState('all');
@@ -12,10 +45,13 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
       name: 'Six Nations Championship',
       logo: '6N',
       currentChampion: 'Ireland',
+      currentChampionFlag: 'ireland',
       seasons: {
         '2024': {
           winner: 'Ireland',
+          winnerFlag: 'ireland',
           runnerUp: 'France',
+          runnerUpFlag: 'france',
           points: {
             'Ireland': 20,
             'France': 15,
@@ -29,8 +65,8 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
               id: 1,
               round: 'Round 1',
               date: '2024-02-02',
-              homeTeam: { name: 'France', flag: '🇫🇷', score: 17 },
-              awayTeam: { name: 'Ireland', flag: '🇮🇪', score: 38 },
+              homeTeam: { name: 'France', flag: 'france', score: 17 },
+              awayTeam: { name: 'Ireland', flag: 'ireland', score: 38 },
               venue: 'Stade de France, Paris',
               status: 'Completed'
             },
@@ -38,8 +74,8 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
               id: 2,
               round: 'Round 2',
               date: '2024-02-10',
-              homeTeam: { name: 'Scotland', flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', score: 16 },
-              awayTeam: { name: 'France', flag: '🇫🇷', score: 20 },
+              homeTeam: { name: 'Scotland', flag: 'scotland', score: 16 },
+              awayTeam: { name: 'France', flag: 'france', score: 20 },
               venue: 'Murrayfield, Edinburgh',
               status: 'Completed'
             }
@@ -52,10 +88,13 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
       name: 'The Rugby Championship',
       logo: 'TRC',
       currentChampion: 'New Zealand',
+      currentChampionFlag: 'newzealand',
       seasons: {
         '2024': {
           winner: 'New Zealand',
+          winnerFlag: 'newzealand',
           runnerUp: 'South Africa',
+          runnerUpFlag: 'southafrica',
           points: {
             'New Zealand': 18,
             'South Africa': 15,
@@ -67,12 +106,56 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
               id: 1,
               round: 'Round 1',
               date: '2024-08-10',
-              homeTeam: { name: 'Australia', flag: '🇦🇺', score: 25 },
-              awayTeam: { name: 'New Zealand', flag: '🇳🇿', score: 32 },
+              homeTeam: { name: 'Australia', flag: 'australia', score: 25 },
+              awayTeam: { name: 'New Zealand', flag: 'newzealand', score: 32 },
               venue: 'Melbourne Cricket Ground',
               status: 'Completed'
             }
           ]
+        }
+      }
+    },
+    {
+      id: 'womens-six-nations',
+      name: "Women's Six Nations",
+      logo: 'W6N',
+      currentChampion: 'England',
+      currentChampionFlag: 'england',
+      seasons: {
+        '2024': {
+          winner: 'England',
+          winnerFlag: 'england',
+          runnerUp: 'France',
+          runnerUpFlag: 'france',
+          points: {
+            'England': 28,
+            'France': 24,
+            'Ireland': 18,
+            'Scotland': 14,
+            'Wales': 10,
+            'Italy': 6
+          }
+        }
+      }
+    },
+    {
+      id: 'world-cup',
+      name: 'Rugby World Cup',
+      logo: 'RWC',
+      currentChampion: 'South Africa',
+      currentChampionFlag: 'southafrica',
+      seasons: {
+        '2023': {
+          winner: 'South Africa',
+          winnerFlag: 'southafrica',
+          runnerUp: 'New Zealand',
+          runnerUpFlag: 'newzealand',
+          points: {
+            'South Africa': 19,
+            'New Zealand': 18,
+            'England': 16,
+            'Argentina': 14
+          }
         }
       }
     }
@@ -138,7 +221,12 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
                         className={`standing-row ${index === 0 ? 'champion-row' : ''}`}
                       >
                         <span className="position">#{index + 1}</span>
-                        <span className="team">{team}</span>
+                        <span className="team">
+                          <div className="team-with-flag">
+                            <Flag country={team.toLowerCase()} size="small" />
+                            <span className="team-name">{team}</span>
+                          </div>
+                        </span>
                         <span className="points">{points}</span>
                       </div>
                     ))}
@@ -150,49 +238,61 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
               <div className="final-results">
                 <div className="result-item champion">
                   <span className="label">Champions:</span>
-                  <span className="value">{seasonData.winner} 🏆</span>
+                  <span className="value">
+                    <div className="champion-with-flag">
+                      <Flag country={seasonData.winnerFlag} size="large" />
+                      <span className="champion-name">{seasonData.winner} 🏆</span>
+                    </div>
+                  </span>
                 </div>
                 <div className="result-item">
                   <span className="label">Runner-up:</span>
-                  <span className="value">{seasonData.runnerUp}</span>
+                  <span className="value">
+                    <div className="runner-up-with-flag">
+                      <Flag country={seasonData.runnerUpFlag} size="medium" />
+                      <span>{seasonData.runnerUp}</span>
+                    </div>
+                  </span>
                 </div>
               </div>
             )}
 
-            <div className="games-section">
-              <h4>All Matches</h4>
-              <div className="games-list">
-                {seasonData.games.map(game => (
-                  <div key={game.id} className="game-result">
-                    <div className="game-header">
-                      <span className="round">{game.round}</span>
-                      <span className="date">{game.date}</span>
-                    </div>
-                    
-                    <div className="teams-result">
-                      <div className="team-result">
-                        <span className="team-flag">{game.homeTeam.flag}</span>
-                        <span className="team-name">{game.homeTeam.name}</span>
-                        <span className="team-score">{game.homeTeam.score}</span>
+            {seasonData.games && (
+              <div className="games-section">
+                <h4>All Matches</h4>
+                <div className="games-list">
+                  {seasonData.games.map(game => (
+                    <div key={game.id} className="game-result">
+                      <div className="game-header">
+                        <span className="round">{game.round}</span>
+                        <span className="date">{game.date}</span>
                       </div>
                       
-                      <div className="vs">vs</div>
+                      <div className="teams-result">
+                        <div className="team-result">
+                          <Flag country={game.homeTeam.flag} size="medium" />
+                          <span className="team-name">{game.homeTeam.name}</span>
+                          <span className="team-score">{game.homeTeam.score}</span>
+                        </div>
+                        
+                        <div className="vs">vs</div>
+                        
+                        <div className="team-result">
+                          <span className="team-score">{game.awayTeam.score}</span>
+                          <span className="team-name">{game.awayTeam.name}</span>
+                          <Flag country={game.awayTeam.flag} size="medium" />
+                        </div>
+                      </div>
                       
-                      <div className="team-result">
-                        <span className="team-score">{game.awayTeam.score}</span>
-                        <span className="team-name">{game.awayTeam.name}</span>
-                        <span className="team-flag">{game.awayTeam.flag}</span>
+                      <div className="game-details">
+                        <span className="venue">{game.venue}</span>
+                        <span className="status completed">Completed</span>
                       </div>
                     </div>
-                    
-                    <div className="game-details">
-                      <span className="venue">{game.venue}</span>
-                      <span className="status completed">Completed</span>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         )}
       </div>
@@ -233,7 +333,8 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
   const QuickStats = () => {
     const currentChampions = tournamentsData.map(t => ({
       tournament: t.name,
-      champion: t.currentChampion
+      champion: t.currentChampion,
+      flag: t.currentChampionFlag
     }));
 
     return (
@@ -243,7 +344,10 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
           {currentChampions.map((item, index) => (
             <div key={index} className="champion-item">
               <div className="tournament-name">{item.tournament}</div>
-              <div className="champion-name">{item.champion}</div>
+              <div className="champion-with-flag">
+                <Flag country={item.flag} size="xlarge" />
+                <div className="champion-name">{item.champion}</div>
+              </div>
             </div>
           ))}
         </div>
@@ -253,18 +357,23 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
 
   return (
     <div className="final-results-page">
-      {/* Top Ad Banner */}
+      {/* Professional NavBar - FIRST */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Results")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
+      {/* Top Ad Banner - NOW BELOW NAVBAR */}
       <div className="top-ad-banner">
         🏆 Rugby Results Archive - Complete Tournament History & Statistics! 📊
       </div>
-
-      {/* Top Navigation */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-      </nav>
 
       {/* Main Content */}
       <div className="results-content">
@@ -273,7 +382,7 @@ const FinalResultsPage = ({ onNavigateBack, tournament }) => {
           <p className="results-subtitle">Complete results, standings, and match details from all major international rugby tournaments</p>
         </div>
 
-        {/* Quick Stats */}
+        {/* Quick Stats with Bigger Flags */}
         <QuickStats />
 
         {/* Filters */}

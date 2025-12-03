@@ -1,42 +1,54 @@
-/* WOMEN'S TOURNAMENTS PAGE - NUCLEAR APPROACH */
+/* WOMEN'S TOURNAMENTS PAGE - COMPLETE GREEN VERSION */
 .womens-tournaments-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
-  color: #880e4f;
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  color: #1b5e20;
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
 }
 
-/* NUCLEAR OPTION - SCOPE EVERYTHING TO WOMEN'S PAGE */
-.womens-tournaments-page .top-nav {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  padding: 1rem 2rem !important;
-  background: white !important;
-  border-bottom: 1px solid #e2e8f0 !important;
-  gap: 1rem !important;
+.top-ad-banner {
+  background: linear-gradient(90deg, #ff6b35, #e55a2b);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 10px rgba(229, 90, 43, 0.3);
 }
 
-.womens-tournaments-page .nav-btn {
-  background: #ec407a !important;
-  color: white !important;
-  border: none !important;
-  padding: 0.5rem 1.5rem !important;
-  border-radius: 8px !important;
-  cursor: pointer !important;
-  font-size: 0.9rem !important;
-  font-weight: 500 !important;
-  flex: 1 !important;
-  max-width: 120px !important;
-  margin: 0 !important;
-  min-width: 80px !important;
+.bottom-ad-banner {
+  background: linear-gradient(90deg, #4ecdc4, #26a69a);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+  margin-top: 2rem;
+  box-shadow: 0 -2px 10px rgba(78, 205, 196, 0.3);
 }
 
-.womens-tournaments-page .nav-btn:hover {
-  background: #d81b60 !important;
-  transform: translateY(-2px) !important;
+.rotating-ad-banner {
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  border-radius: 8px;
+  margin: 2rem auto 3rem;
+  max-width: 800px;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  animation: womensPulse 2s infinite;
+}
+
+@keyframes womensPulse {
+  0% { opacity: 0.9; }
+  50% { opacity: 1; }
+  100% { opacity: 0.9; }
 }
 
 .womens-tournaments-page .tournaments-content {
@@ -46,12 +58,12 @@
 }
 
 .womens-tournaments-page .tournament-header {
-  background: linear-gradient(135deg, #d81b60 0%, #ad1457 100%) !important;
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%)!important;
   color: white;
   padding: 3rem 2rem;
   border-radius: 20px;
   margin-bottom: 3rem;
-  box-shadow: 0 8px 25px rgba(173, 20, 87, 0.3);
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
   border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -66,7 +78,7 @@
 .womens-tournaments-page .tournament-subtitle {
   font-size: 1.3rem;
   opacity: 0.95;
-  color: #fce4ec;
+  color: #e8f5e9;
   font-weight: 500;
 }
 
@@ -82,7 +94,7 @@
   background: white;
   padding: 2rem;
   border-radius: 15px;
-  border: 3px solid #ec407a;
+  border: 3px solid #4caf50;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
@@ -95,7 +107,7 @@
 
 .womens-tournaments-page .tournament-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(236, 64, 122, 0.2);
+  box-shadow: 0 10px 25px rgba(76, 175, 80, 0.2);
 }
 
 .womens-tournaments-page .tournament-icon {
@@ -108,7 +120,7 @@
   font-weight: bold;
   font-size: 1.3rem;
   text-align: center;
-  color: #880e4f;
+  color: #1b5e20;
   margin: 0;
   flex-shrink: 0;
 }
@@ -128,7 +140,7 @@
 }
 
 .womens-tournaments-page .tournament-dates {
-  background: #ec407a;
+  background: #4caf50;
   color: white;
   padding: 0.8rem 1.5rem;
   border-radius: 25px;
@@ -138,28 +150,16 @@
   flex-shrink: 0;
   width: fit-content;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(236, 64, 122, 0.3);
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
 }
 
 .womens-tournaments-page .tournament-card:hover .tournament-dates {
-  background: #d81b60;
+  background: #388e3c;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(236, 64, 122, 0.4);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
-  .womens-tournaments-page .top-nav {
-    padding: 1rem 1.5rem !important;
-    gap: 0.8rem !important;
-  }
-  
-  .womens-tournaments-page .nav-btn {
-    padding: 0.5rem 1rem !important;
-    max-width: 100px !important;
-    font-size: 0.85rem !important;
-  }
-  
   .womens-tournaments-page .tournaments-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
@@ -186,18 +186,17 @@
   .womens-tournaments-page .tournament-dates {
     margin-top: 1rem;
   }
+  
+  .rotating-ad-banner {
+    margin: 1.5rem auto 2rem;
+    font-size: 0.9rem;
+    padding: 10px;
+  }
 }
 
 @media (max-width: 480px) {
-  .womens-tournaments-page .top-nav {
-    padding: 1rem !important;
-    gap: 0.5rem !important;
-  }
-  
-  .womens-tournaments-page .nav-btn {
-    padding: 0.5rem 0.8rem !important;
-    max-width: 80px !important;
-    font-size: 0.8rem !important;
+  .womens-tournaments-page .tournaments-grid {
+    grid-template-columns: 1fr;
   }
   
   .womens-tournaments-page .tournament-title {
@@ -222,5 +221,11 @@
     padding: 0.7rem 1.2rem;
     font-size: 0.85rem;
     margin-top: 1rem;
+  }
+  
+  .rotating-ad-banner {
+    font-size: 0.85rem;
+    padding: 10px;
+    margin: 1rem auto 2rem;
   }
 }

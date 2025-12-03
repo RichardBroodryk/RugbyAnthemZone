@@ -3,7 +3,7 @@ import './FeaturedTournament.css';
 
 function FeaturedTournament({ 
   userPreferences,
-  onNavigateToTournamentSelector  // NEW PROP - navigates to selector
+  onNavigateToTournamentSelector
 }) {
   
   const getFeaturedTournamentData = () => {
@@ -15,7 +15,8 @@ function FeaturedTournament({
         icon: featuredTournament.icon,
         name: featuredTournament.name,
         description: "Your Featured Tournament",
-        hasSelection: true
+        hasSelection: true,
+        color: featuredTournament.color || "#667eea"
       };
     }
     
@@ -24,7 +25,8 @@ function FeaturedTournament({
       icon: "⭐",
       name: "My Tournament", 
       description: "Tap to Choose",
-      hasSelection: false
+      hasSelection: false,
+      color: "#4fc3f7"
     };
   };
 
@@ -38,7 +40,15 @@ function FeaturedTournament({
   };
 
   return (
-    <div className="featured-tournament-card" onClick={handleClick}>
+    <div 
+      className="featured-tournament-card" 
+      onClick={handleClick}
+      style={{ 
+        background: tournamentData.hasSelection 
+          ? `linear-gradient(135deg, ${tournamentData.color} 0%, ${darkenColor(tournamentData.color, 20)} 100%)`
+          : 'linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%)'
+      }}
+    >
       <div className="tournament-header">
         <div className="tournament-icon">{tournamentData.icon}</div>
         <div className="tournament-info">
@@ -71,6 +81,20 @@ function FeaturedTournament({
       )}
     </div>
   );
+}
+
+// Helper function to darken color for gradient
+function darkenColor(color, percent) {
+  let hex = color.replace("#", "");
+  let r = parseInt(hex.substr(0, 2), 16);
+  let g = parseInt(hex.substr(2, 2), 16);
+  let b = parseInt(hex.substr(4, 2), 16);
+  
+  r = Math.floor(r * (100 - percent) / 100);
+  g = Math.floor(g * (100 - percent) / 100);
+  b = Math.floor(b * (100 - percent) / 100);
+  
+  return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
 }
 
 export default FeaturedTournament;

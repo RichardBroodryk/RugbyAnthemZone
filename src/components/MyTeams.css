@@ -1,58 +1,50 @@
-/* MyTeams.css - Conflict-Free Version */
+/* MyTeams.css - Fixed Version */
 .my-teams {
   min-height: 100vh;
   background: linear-gradient(135deg, #2c5aa0 0%, #3a6bc0 100%);
   color: white;
 }
 
-/* Scoped Navigation - Different class names to avoid conflicts */
-.my-teams-nav {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  padding: 1rem !important;
-  background: white !important;
-  border-bottom: 2px solid #e0e0e0 !important;
-  gap: 10px !important;
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 1000 !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+/* Professional NavBar styles (inherited from App.css) */
+
+/* FIXED: Ad Banners - MOVED BELOW NAV */
+.top-ad-banner {
+  background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+  color: white;
+  text-align: center;
+  padding: 14px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  border-bottom: 2px solid #4fc3f7;
+  margin-top: 0;
 }
 
-.my-teams-nav-btn {
-  background: #4fc3f7 !important;
-  color: white !important;
-  border: none !important;
-  padding: 0.7rem 1.2rem !important;
-  border-radius: 20px !important;
-  cursor: pointer !important;
-  font-size: 0.9rem !important;
-  font-weight: 600 !important;
-  flex: 1 !important;
-  min-width: 70px !important;
-  transition: all 0.3s ease !important;
-  white-space: nowrap !important;
+.bottom-ad-banner {
+  background: linear-gradient(90deg, #4ecdc4, #26a69a);
+  color: white;
+  text-align: center;
+  padding: 14px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+  border-top: 2px solid #4fd1c7;
 }
 
-.my-teams-nav-btn:hover {
-  background: #29b6f6 !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.4) !important;
-}
-
+/* FIXED: Main Content - Proper centering */
 .teams-content {
   padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .teams-content h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
-  text-align: center;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }
 
 .teams-content > p {
@@ -63,7 +55,7 @@
   color: #e3f2fd;
 }
 
-/* View Toggle */
+/* FIXED: View Toggle - Better button layout with proper sizing */
 .view-toggle {
   display: flex;
   gap: 1rem;
@@ -76,12 +68,17 @@
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.2);
-  padding: 1rem 2rem;
+  padding: 1rem 1.5rem; /* FIXED: Reduced padding */
   border-radius: 25px;
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.9rem; /* FIXED: Reduced font size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* FIXED: Reduced gap */
+  min-width: 160px; /* FIXED: Reduced min-width */
 }
 
 .toggle-btn:hover {
@@ -96,7 +93,15 @@
   box-shadow: 0 4px 15px rgba(79, 195, 247, 0.4);
 }
 
-/* Dashboard Header */
+.toggle-icon {
+  font-size: 1.1rem; /* FIXED: Reduced icon size */
+}
+
+.toggle-text {
+  font-size: 0.9rem; /* FIXED: Match button font size */
+}
+
+/* FIXED: Dashboard Header */
 .dashboard-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -113,7 +118,7 @@
   font-size: 1.1rem;
 }
 
-/* Teams Grid */
+/* FIXED: Teams Grid with proper flag layout */
 .teams-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -129,6 +134,7 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   border: 2px solid #e0e0e0;
+  text-align: left;
 }
 
 .team-card:hover {
@@ -141,6 +147,7 @@
   background: linear-gradient(135deg, white, #f8fdff);
 }
 
+/* FIXED: Team Header with professional flag alignment */
 .team-header {
   display: flex;
   align-items: center;
@@ -150,24 +157,60 @@
   border-bottom: 2px solid #f0f0f0;
 }
 
-.team-icon {
-  font-size: 2rem;
+.team-flag-container {
+  flex-shrink: 0;
+  width: 50px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.team-flag-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.team-flag-container .flag-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+  color: white;
+  font-weight: bold;
+  border-radius: 3px;
+  font-size: 0.8rem;
+}
+
+.team-info {
+  flex: 1;
+  min-width: 0;
 }
 
 .team-name {
-  flex: 1;
   font-size: 1.4rem;
   font-weight: bold;
   color: #1e3c72;
+  margin-bottom: 0.3rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .team-tournament {
   background: #4fc3f7;
   color: white;
-  padding: 0.4rem 0.8rem;
+  padding: 0.3rem 0.8rem;
   border-radius: 15px;
   font-size: 0.8rem;
   font-weight: 600;
+  display: inline-block;
 }
 
 .team-content {
@@ -178,13 +221,25 @@
   margin-bottom: 1rem;
 }
 
-.next-match, .recent-result {
+.info-item {
   margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.next-match strong, .recent-result strong {
+.info-label {
+  font-weight: 600;
   color: #1e3c72;
+  font-size: 0.9rem;
+}
+
+.info-value {
+  color: #333;
+  font-size: 0.9rem;
+  text-align: right;
+  flex: 1;
+  margin-left: 1rem;
 }
 
 .team-news {
@@ -197,6 +252,8 @@
 
 .team-news strong {
   color: #1e3c72;
+  display: block;
+  margin-bottom: 0.3rem;
 }
 
 /* Team Actions */
@@ -214,6 +271,10 @@
   font-weight: 600;
   transition: all 0.3s ease;
   font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .view-matches {
@@ -238,6 +299,7 @@
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .quick-action-btn {
@@ -259,12 +321,13 @@
 }
 
 /* Empty States */
-.empty-teams, .empty-tournaments {
+.empty-state {
   text-align: center;
   padding: 3rem 2rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   border: 2px dashed rgba(255, 255, 255, 0.3);
+  margin-bottom: 2rem;
 }
 
 .empty-icon {
@@ -273,13 +336,13 @@
   opacity: 0.7;
 }
 
-.empty-teams h3, .empty-tournaments h3 {
+.empty-state h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: #e3f2fd;
 }
 
-.add-teams-btn {
+.cta-btn {
   background: linear-gradient(135deg, #4fc3f7, #29b6f6);
   color: white;
   border: none;
@@ -292,12 +355,16 @@
   transition: all 0.3s ease;
 }
 
-.add-teams-btn:hover {
+.cta-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(79, 195, 247, 0.4);
 }
 
 /* Tournaments View */
+.tournaments-view {
+  margin-bottom: 2rem;
+}
+
 .tournaments-view h2 {
   text-align: center;
   font-size: 2rem;
@@ -312,6 +379,7 @@
   padding: 2rem;
   margin-bottom: 2rem;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
 .personalized-tournament {
@@ -344,6 +412,10 @@
   font-weight: 600;
   transition: all 0.3s ease;
   font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .tournament-btn.primary {
@@ -388,6 +460,31 @@
   font-size: 1.1rem;
 }
 
+.tournament-action-btn {
+  background: #4fc3f7;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.tournament-action-btn:hover {
+  background: #29b6f6;
+  transform: translateY(-2px);
+}
+
+.no-tournaments {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  grid-column: 1 / -1;
+  padding: 2rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .teams-grid {
@@ -419,6 +516,20 @@
   .teams-content h1 {
     font-size: 2rem;
   }
+  
+  .team-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
+  }
+  
+  .team-flag-container {
+    margin: 0 auto;
+  }
+  
+  .team-info {
+    text-align: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -430,21 +541,30 @@
     padding: 1rem;
   }
   
-  .team-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.5rem;
-  }
-  
   .view-toggle {
     flex-direction: column;
+    align-items: center;
   }
   
   .toggle-btn {
     width: 100%;
+    max-width: 250px; /* FIXED: Reduced max-width */
+    padding: 0.8rem 1.2rem; /* FIXED: Smaller padding on mobile */
+    font-size: 0.85rem; /* FIXED: Smaller font on mobile */
   }
   
   .tournament-section {
     padding: 1.5rem;
+  }
+  
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  
+  .info-value {
+    margin-left: 0;
+    text-align: left;
   }
 }

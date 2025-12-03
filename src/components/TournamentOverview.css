@@ -1,4 +1,4 @@
-.tournament-overview-page {
+ .tournament-overview-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #2c5aa0 0%, #3a6bc0 100%);
   color: white;
@@ -116,4 +116,4 @@
   .team-name {
     font-size: 0.95rem;
   }
-}
+}                                            

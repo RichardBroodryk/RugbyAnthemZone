@@ -1,5 +1,45 @@
 import React, { useState } from 'react';
 import './PPASystem.css';
+import NavBar from './NavBar';
+
+const Flag = ({ country, size = 'small' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'england': 'england',
+      'ireland': 'ireland',
+      'france': 'france',
+      'wales': 'wales',
+      'scotland': 'scotland',
+      'italy': 'italy',
+      'newzealand': 'new-zealand',
+      'southafrica': 'south-africa',
+      'australia': 'australia',
+      'argentina': 'argentina',
+      'usa': 'united-states',
+      'uk': 'united-kingdom',
+      'canada': 'canada',
+      'japan': 'japan',
+      'fiji': 'fiji',
+      'samoa': 'samoa',
+      'tonga': 'tonga'
+    };
+    return nameMap[countryName] || countryName;
+  };
+
+  const fileName = getCountryFileName(country.toLowerCase());
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      return <div className={`flag-fallback flag-${size}`}>{country.slice(0, 3).toUpperCase()}</div>;
+    }
+  }
+};
 
 const PPASystem = ({ onNavigateBack, game }) => {
   const [userLocation, setUserLocation] = useState('United States');
@@ -7,7 +47,7 @@ const PPASystem = ({ onNavigateBack, game }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showAudioProviders, setShowAudioProviders] = useState(false);
 
-  // Audio Providers data
+  // Audio Providers data with real country names
   const audioProviders = {
     'United States': [
       { name: 'ESPN Radio', logo: '🏈', url: 'https://www.espn.com/espnradio', type: 'Free', quality: '128kbps' },
@@ -43,13 +83,15 @@ const PPASystem = ({ onNavigateBack, game }) => {
 
   const availableCountries = Object.keys(audioProviders);
 
-  // Games data with original structure
+  // Games data with real flag images
   const upcomingGames = [
     {
       id: 1,
       tournament: "Six Nations Championship",
-      homeTeam: { name: "England", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-      awayTeam: { name: "Ireland", flag: "🇮🇪" },
+      homeTeam: "England",
+      homeCountry: "england",
+      awayTeam: "Ireland",
+      awayCountry: "ireland",
       date: "2024-03-16T14:15:00",
       venue: "Twickenham Stadium, London",
       audioOptions: {
@@ -89,8 +131,10 @@ const PPASystem = ({ onNavigateBack, game }) => {
     {
       id: 2,
       tournament: "Rugby Championship",
-      homeTeam: { name: "New Zealand", flag: "🇳🇿" },
-      awayTeam: { name: "Australia", flag: "🇦🇺" },
+      homeTeam: "New Zealand",
+      homeCountry: "new-zealand",
+      awayTeam: "Australia",
+      awayCountry: "australia",
       date: "2024-08-21T08:35:00",
       venue: "Eden Park, Auckland",
       audioOptions: {
@@ -130,8 +174,10 @@ const PPASystem = ({ onNavigateBack, game }) => {
     {
       id: 3,
       tournament: "Summer Internationals",
-      homeTeam: { name: "South Africa", flag: "🇿🇦" },
-      awayTeam: { name: "France", flag: "🇫🇷" },
+      homeTeam: "South Africa",
+      homeCountry: "south-africa",
+      awayTeam: "France",
+      awayCountry: "france",
       date: "2024-07-13T16:05:00",
       venue: "Ellis Park, Johannesburg",
       audioOptions: {
@@ -162,8 +208,10 @@ const PPASystem = ({ onNavigateBack, game }) => {
     {
       id: 4,
       tournament: "Autumn Internationals",
-      homeTeam: { name: "Wales", flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿" },
-      awayTeam: { name: "Argentina", flag: "🇦🇷" },
+      homeTeam: "Wales",
+      homeCountry: "wales",
+      awayTeam: "Argentina",
+      awayCountry: "argentina",
       date: "2024-11-09T15:00:00",
       venue: "Principality Stadium, Cardiff",
       audioOptions: {
@@ -266,15 +314,9 @@ const PPASystem = ({ onNavigateBack, game }) => {
                 setShowAudioProviders(false);
               }}
             >
-              <span className="ppa-country-flag">{
-                country === 'United States' ? '🇺🇸' :
-                country === 'United Kingdom' ? '🇬🇧' :
-                country === 'Ireland' ? '🇮🇪' :
-                country === 'Australia' ? '🇦🇺' :
-                country === 'New Zealand' ? '🇳🇿' :
-                country === 'South Africa' ? '🇿🇦' :
-                country === 'Global' ? '🌍' : '🌍'
-              }</span>
+              <div className="ppa-country-flag">
+                <Flag country={country.replace(/\s+/g, '').toLowerCase()} size="small" />
+              </div>
               <span className="ppa-country-name">{country}</span>
             </div>
           ))}
@@ -326,7 +368,7 @@ const PPASystem = ({ onNavigateBack, game }) => {
           <div className="ppa-now-playing">
             <div className="ppa-game-info">
               <div className="ppa-teams">
-                {selectedAudio.game?.homeTeam.name} {selectedAudio.game?.homeTeam.flag} vs {selectedAudio.game?.awayTeam.name} {selectedAudio.game?.awayTeam.flag}
+                {selectedAudio.game?.homeTeam} 🆚 {selectedAudio.game?.awayTeam}
               </div>
               <div className="ppa-audio-source">
                 {selectedAudio.name} • {selectedAudio.type.toUpperCase()} • {selectedAudio.bitrate}
@@ -362,15 +404,16 @@ const PPASystem = ({ onNavigateBack, game }) => {
         <span className="ppa-game-date">{formatGameDate(game.date)}</span>
       </div>
       
+      {/* Teams Display with Real Flags */}
       <div className="ppa-teams-display">
         <div className="ppa-team">
-          <span className="ppa-team-flag">{game.homeTeam.flag}</span>
-          <span className="ppa-team-name">{game.homeTeam.name}</span>
+          <Flag country={game.homeCountry} size="medium" />
+          <span className="ppa-team-name">{game.homeTeam}</span>
         </div>
         <div className="ppa-vs">VS</div>
         <div className="ppa-team">
-          <span className="ppa-team-name">{game.awayTeam.name}</span>
-          <span className="ppa-team-flag">{game.awayTeam.flag}</span>
+          <Flag country={game.awayCountry} size="medium" />
+          <span className="ppa-team-name">{game.awayTeam}</span>
         </div>
       </div>
       
@@ -435,18 +478,23 @@ const PPASystem = ({ onNavigateBack, game }) => {
 
   return (
     <div className="ppa-system">
+      {/* Navigation Bar */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search PPA")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
       {/* Top Ad Banner */}
       <div className="ppa-top-ad-banner">
         🎧 Rugby Audio Streaming - Live Commentary & Stadium Atmosphere! 🔊
       </div>
-
-      {/* Top Navigation */}
-      <nav className="ppa-nav">
-        <button className="ppa-nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="ppa-nav-btn">🏠 Home</button>
-        <button className="ppa-nav-btn">🔍 Search</button>
-        <button className="ppa-nav-btn">👤 Profile</button>
-      </nav>
 
       {/* Main Content */}
       <div className="ppa-content">

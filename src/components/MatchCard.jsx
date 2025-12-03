@@ -6,7 +6,8 @@ const MatchCard = ({
   isSelected = false, 
   onSelect, 
   tournamentColor = '#1976d2',
-  showTournament = true 
+  showTournament = true,
+  FlagComponent = null // Accept Flag component prop
 }) => {
   const getStatusClass = (status) => {
     switch(status?.toUpperCase()) {
@@ -37,6 +38,19 @@ const MatchCard = ({
   const homeTeam = match.homeTeam || match.teams?.[0] || 'TBD';
   const awayTeam = match.awayTeam || match.teams?.[1] || 'TBD';
 
+  // Render flag with FlagComponent if provided, otherwise fallback to emoji/text
+  const renderFlag = (flagData, size = 'medium') => {
+    if (FlagComponent && flagData) {
+      return (
+        <div className="team-flag-container">
+          <FlagComponent country={flagData} size={size} />
+        </div>
+      );
+    }
+    // Fallback to existing emoji/text display
+    return <div className="team-flag">{flagData || '🏉'}</div>;
+  };
+
   return (
     <div 
       className={`match-card ${isSelected ? 'selected' : ''}`}
@@ -59,7 +73,7 @@ const MatchCard = ({
       <div className="match-teams-container">
         {/* Home Team - Stacked Layout */}
         <div className="team-section home-team">
-          <div className="team-flag">{match.homeFlag || '🏉'}</div>
+          {renderFlag(match.homeFlag, 'medium')}
           <div className="team-name">{homeTeam}</div>
           <div className="team-score">{match.homeScore ?? match.scores?.[0] ?? 0}</div>
         </div>
@@ -77,7 +91,7 @@ const MatchCard = ({
 
         {/* Away Team - Stacked Layout */}
         <div className="team-section away-team">
-          <div className="team-flag">{match.awayFlag || '🏉'}</div>
+          {renderFlag(match.awayFlag, 'medium')}
           <div className="team-name">{awayTeam}</div>
           <div className="team-score">{match.awayScore ?? match.scores?.[1] ?? 0}</div>
         </div>

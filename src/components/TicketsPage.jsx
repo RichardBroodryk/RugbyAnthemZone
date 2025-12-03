@@ -1,5 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import './TicketsPage.css';
+import NavBar from './NavBar';
+
+const Flag = ({ country, size = 'medium' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'england': 'england',
+      'newzealand': 'new-zealand',
+      'southafrica': 'south-africa',
+      'australia': 'australia',
+      'france': 'france',
+      'ireland': 'ireland',
+      'wales': 'wales',
+      'scotland': 'scotland',
+      'italy': 'italy',
+      'argentina': 'argentina',
+      'japan': 'japan',
+      'usa': 'united-states',
+      'canada': 'canada',
+      'fiji': 'fiji',
+      'samoa': 'samoa',
+      'tonga': 'tonga'
+    };
+    return nameMap[countryName] || countryName;
+  };
+
+  const fileName = getCountryFileName(country.toLowerCase());
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      return <div className={`flag-fallback flag-${size}`}>{country.slice(0, 3).toUpperCase()}</div>;
+    }
+  }
+};
 
 const TicketsPage = ({ onNavigateBack }) => {
   const [email, setEmail] = useState('');
@@ -54,7 +93,7 @@ const TicketsPage = ({ onNavigateBack }) => {
   const rugbyNations = [
     {
       name: "England",
-      flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      country: "england",
       ticketSellers: [
         { name: "Ticketmaster", url: "https://www.ticketmaster.co.uk/rugby-tickets", icon: "🎫" },
         { name: "RFU Official", url: "https://www.englandrugby.com/tickets", icon: "🏉" },
@@ -64,7 +103,7 @@ const TicketsPage = ({ onNavigateBack }) => {
     },
     {
       name: "New Zealand",
-      flag: "🇳🇿",
+      country: "new-zealand",
       ticketSellers: [
         { name: "Ticketek NZ", url: "https://www.ticketek.co.nz/rugby", icon: "🎫" },
         { name: "All Blacks", url: "https://www.allblacks.com/tickets/", icon: "⚫" },
@@ -73,7 +112,7 @@ const TicketsPage = ({ onNavigateBack }) => {
     },
     {
       name: "South Africa",
-      flag: "🇿🇦",
+      country: "south-africa",
       ticketSellers: [
         { name: "Ticketpro", url: "https://www.ticketpros.co.za/rugby", icon: "🎫" },
         { name: "Springboks", url: "https://www.springboks.rugby/tickets", icon: "💚" },
@@ -82,7 +121,7 @@ const TicketsPage = ({ onNavigateBack }) => {
     },
     {
       name: "Australia",
-      flag: "🇦🇺",
+      country: "australia",
       ticketSellers: [
         { name: "Ticketek AU", url: "https://www.ticketek.com.au/rugby", icon: "🎫" },
         { name: "Wallabies", url: "https://www.rugby.com.au/tickets", icon: "🟡" },
@@ -91,7 +130,7 @@ const TicketsPage = ({ onNavigateBack }) => {
     },
     {
       name: "France",
-      flag: "🇫🇷",
+      country: "france",
       ticketSellers: [
         { name: "France Billet", url: "https://www.francebillet.com/rugby", icon: "🎫" },
         { name: "FFR Official", url: "https://www.ffr.fr/billetterie", icon: "🐓" },
@@ -100,7 +139,7 @@ const TicketsPage = ({ onNavigateBack }) => {
     },
     {
       name: "Ireland",
-      flag: "🇮🇪",
+      country: "ireland",
       ticketSellers: [
         { name: "Ticketmaster IE", url: "https://www.ticketmaster.ie/rugby", icon: "🎫" },
         { name: "IRFU", url: "https://www.irishrugby.ie/tickets/", icon: "☘️" },
@@ -109,7 +148,7 @@ const TicketsPage = ({ onNavigateBack }) => {
     },
     {
       name: "Wales",
-      flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+      country: "wales",
       ticketSellers: [
         { name: "WRU Official", url: "https://www.wru.wales/tickets/", icon: "🐉" },
         { name: "Principality", url: "https://www.principalitystadium.wales/tickets", icon: "🏟️" },
@@ -118,7 +157,7 @@ const TicketsPage = ({ onNavigateBack }) => {
     },
     {
       name: "Scotland",
-      flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+      country: "scotland",
       ticketSellers: [
         { name: "Scottish Rugby", url: "https://www.scottishrugby.org/tickets", icon: "🏴󠁧󠁢󠁳󠁣󠁴󠁿" },
         { name: "Murrayfield", url: "https://www.eticketing.co.uk/scottishrugby", icon: "🏟️" },
@@ -127,7 +166,7 @@ const TicketsPage = ({ onNavigateBack }) => {
     },
     {
       name: "Italy",
-      flag: "🇮🇹",
+      country: "italy",
       ticketSellers: [
         { name: "FIR Official", url: "https://www.federugby.it/biglietteria/", icon: "🔵" },
         { name: "Ticketone", url: "https://www.ticketone.it/categoria/rugby/", icon: "🎫" },
@@ -136,7 +175,7 @@ const TicketsPage = ({ onNavigateBack }) => {
     },
     {
       name: "Argentina",
-      flag: "🇦🇷",
+      country: "argentina",
       ticketSellers: [
         { name: "UAR Official", url: "https://www.uar.com.ar/entradas", icon: "💙" },
         { name: "Ticketek AR", url: "https://www.ticketek.com.ar/rugby", icon: "🎫" },
@@ -145,7 +184,7 @@ const TicketsPage = ({ onNavigateBack }) => {
     },
     {
       name: "Japan",
-      flag: "🇯🇵",
+      country: "japan",
       ticketSellers: [
         { name: "JRFU Official", url: "https://www.rugby-japan.jp/tickets/", icon: "🎌" },
         { name: "Lawson Ticket", url: "https://l-tike.com/rugby", icon: "🏪" },
@@ -158,20 +197,29 @@ const TicketsPage = ({ onNavigateBack }) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
+  const handleQuickAccess = (tournament) => {
+    alert(`Directing to ${tournament} ticket information...`);
+  };
+
   return (
     <div className="tickets-page">
-      {/* Top Ad Banner - Matching FlightsPage */}
+      {/* Navigation Bar */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Tickets")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
+      {/* Top Ad Banner */}
       <div className="top-ad-banner">
         🎟️ Rugby World Cup 2025 Tickets - Register for Early Access! ⚡
       </div>
-
-      {/* Standardized Navigation - Matching HomePage */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-      </nav>
 
       <div className="tickets-content">
         <div className="tickets-hero">
@@ -210,14 +258,16 @@ const TicketsPage = ({ onNavigateBack }) => {
         {/* Rugby Nations Ticket Sellers Section */}
         <div className="rugby-nations">
           <h2 className="section-title">Official Rugby Ticket Sellers</h2>
-          <p style={{textAlign: 'center', marginBottom: '2rem', color: '#e3f2fd'}}>
+          <p className="nations-subtitle">
             Direct links to official ticket sellers for each rugby nation
           </p>
           <div className="nations-grid">
             {rugbyNations.map((nation, index) => (
               <div key={index} className="nation-card">
                 <div className="nation-header">
-                  <span className="nation-flag">{nation.flag}</span>
+                  <div className="nation-flag">
+                    <Flag country={nation.country} size="large" />
+                  </div>
                   <h3 className="nation-name">{nation.name}</h3>
                 </div>
                 <div className="ticket-sellers">
@@ -237,7 +287,7 @@ const TicketsPage = ({ onNavigateBack }) => {
           </div>
         </div>
 
-        {/* Updated Feature Preview with Smaller Cards */}
+        {/* Feature Preview */}
         <div className="feature-preview">
           <h2 className="section-title">Why Choose Our Ticket Platform?</h2>
           <div className="feature-grid">
@@ -255,15 +305,23 @@ const TicketsPage = ({ onNavigateBack }) => {
         <div className="quick-access">
           <h2 className="section-title">Quick Tournament Access</h2>
           <div className="quick-buttons">
-            <button className="quick-btn">🏆 World Cup 2025</button>
-            <button className="quick-btn">🌍 Six Nations</button>
-            <button className="quick-btn">⭐ Rugby Championship</button>
-            <button className="quick-btn">👑 British & Irish Lions</button>
+            <button className="quick-btn" onClick={() => handleQuickAccess('World Cup 2025')}>
+              🏆 World Cup 2025
+            </button>
+            <button className="quick-btn" onClick={() => handleQuickAccess('Six Nations')}>
+              🌍 Six Nations
+            </button>
+            <button className="quick-btn" onClick={() => handleQuickAccess('Rugby Championship')}>
+              ⭐ Rugby Championship
+            </button>
+            <button className="quick-btn" onClick={() => handleQuickAccess('British & Irish Lions')}>
+              👑 British & Irish Lions
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Bottom Ad Banner - Matching FlightsPage */}
+      {/* Bottom Ad Banner */}
       <div className="bottom-ad-banner">
         🏨 Complete Your Rugby Experience - Book Hotels & Flights! ✈️
       </div>

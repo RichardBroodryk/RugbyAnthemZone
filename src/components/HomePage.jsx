@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './HomePage.css';
-import ThemeToggle from './ThemeToggle';
+import NavBar from './NavBar'; // NEW: Import NavBar component
 import FeaturedTournament from './FeaturedTournament';
 
 function HomePage({ 
@@ -126,7 +126,6 @@ function HomePage({
       case "hotels": onNavigateToHotels(); break;
       case "uber": onNavigateToUber(); break;
       case "search": onNavigateToSearch(); break;
-      case "profile": onNavigateToUserProfile(); break;
       
       default: console.log(`Action: ${action} - ${label}`);
     }
@@ -164,27 +163,18 @@ function HomePage({
 
   return (
     <div className="home-page">
-      {/* Premium Header Banner */}
-      <div className="premium-header-banner">
-        <div className="premium-badge">⭐ PREMIUM MEMBER</div>
-        <div className="header-actions">
-          <button className="header-btn" onClick={onNavigateToUserProfile}>👤 Profile</button>
-          <ThemeToggle />
-        </div>
-      </div>
-
-      {/* Main Navigation */}
-      <nav className="main-nav">
-        <button className="nav-btn nav-btn-secondary" onClick={onNavigateBack}>
-          ← Back
-        </button>
-        <button className="nav-btn nav-btn-primary" onClick={() => window.location.reload()}>
-          🏠 Home
-        </button>
-        <button className="nav-btn nav-btn-secondary" onClick={onNavigateToSearch}>
-          🔍 Search
-        </button>
-      </nav>
+      {/* NEW: Modern Navigation Bar */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={onNavigateToSearch}
+        onNavigateToProfile={onNavigateToUserProfile}
+      />
 
       <div className="home-content">
         {/* Hero Welcome Section */}

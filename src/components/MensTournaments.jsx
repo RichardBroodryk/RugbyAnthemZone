@@ -1,6 +1,6 @@
 import React from 'react';
 import './MensTournaments.css';
-import ThemeToggle from './ThemeToggle';
+import NavBar from './NavBar';
 
 const MensTournaments = ({ 
   onNavigateBack,
@@ -66,18 +66,30 @@ const MensTournaments = ({
 
   return (
     <div className="mens-tournaments-page">
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <ThemeToggle />
-      </nav>
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search clicked")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
+      <div className="top-ad-banner">
+        🏆 MEN'S RUGBY TOURNAMENTS - Official Partners! ⚡
+      </div>
 
       <div className="tournaments-content">
         <div className="tournament-header">
           <h1 className="tournament-title">Men's Rugby Tournaments</h1>
           <p className="tournament-subtitle">Select a tournament to explore</p>
+        </div>
+        
+        <div className="rotating-ad-banner">
+          🎟️ Book Tickets Now - Limited Availability! ⚡
         </div>
         
         <div className="tournaments-grid">
@@ -94,6 +106,10 @@ const MensTournaments = ({
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="bottom-ad-banner">
+        📺 Watch All Men's Rugby Live - Subscribe Now! 🎬
       </div>
     </div>
   );

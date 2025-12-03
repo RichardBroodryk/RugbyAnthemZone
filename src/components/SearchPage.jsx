@@ -1,16 +1,63 @@
 import React, { useState } from 'react';
 import './SearchPage.css';
 import ThemeToggle from './ThemeToggle';
+import NavBar from './NavBar'; // Import the professional NavBar
+
+// Flag Component with real images
+const Flag = ({ country, size = 'small' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'argentina': 'argentina',
+      'australia': 'australia',
+      'england': 'england',
+      'fiji': 'fiji',
+      'france': 'france',
+      'ireland': 'ireland',
+      'italy': 'italy',
+      'japan': 'japan',
+      'new zealand': 'new-zealand',
+      'newzealand': 'new-zealand',
+      'scotland': 'scotland',
+      'south africa': 'south-africa',
+      'southafrica': 'south-africa',
+      'wales': 'wales'
+    };
+    
+    const normalizedName = countryName.toLowerCase().trim();
+    return nameMap[normalizedName] || normalizedName;
+  };
+
+  const fileName = getCountryFileName(country);
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      try {
+        const flagImage = require(`../Assets/images/flags/${fileName}.svg`);
+        return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+      } catch (error3) {
+        return <div className={`flag-fallback flag-${size}`}>
+          {country.split(' ').map(word => word[0]).join('').toUpperCase()}
+        </div>;
+      }
+    }
+  }
+};
 
 function SearchPage({ onNavigateBack, onGameSelect, onNavigateToTournament, userPreferences }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  // Mock search data - in real app, this would come from API
+  // Updated search data with real flags
   const searchableData = [
-    { type: 'team', name: 'England', flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', tournament: 'Six Nations' },
-    { type: 'team', name: 'New Zealand', flag: '🇳🇿', tournament: 'Rugby Championship' },
-    { type: 'team', name: 'South Africa', flag: '🇿🇦', tournament: 'Rugby Championship' },
+    { type: 'team', name: 'England', tournament: 'Six Nations' },
+    { type: 'team', name: 'New Zealand', tournament: 'Rugby Championship' },
+    { type: 'team', name: 'South Africa', tournament: 'Rugby Championship' },
     { type: 'player', name: 'Marlie Packer', team: 'England', position: 'Flanker' },
     { type: 'player', name: 'Ruahei Demant', team: 'New Zealand', position: 'Fly-half' },
     { type: 'tournament', name: 'Women\'s Six Nations', icon: '🏆' },
@@ -36,21 +83,29 @@ function SearchPage({ onNavigateBack, onGameSelect, onNavigateToTournament, user
     if (result.type === 'tournament') {
       onNavigateToTournament?.(result.name);
     } else if (result.type === 'team') {
-      // Navigate to team details or tournament
       onNavigateToTournament?.(result.tournament);
     }
-    // Add more navigation handlers as needed
   };
 
   return (
     <div className="search-page">
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn active">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <ThemeToggle />
-      </nav>
+      {/* Professional NavBar at the top */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search clicked")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
+      {/* Top Ad Banner below the NavBar */}
+      <div className="top-ad-banner">
+        🔍 Rugby Pro Search - Find Teams, Players & Tournaments Instantly! ⚡
+      </div>
 
       <div className="search-container">
         <h1>🔍 Search Rugby Universe</h1>
@@ -90,7 +145,11 @@ function SearchPage({ onNavigateBack, onGameSelect, onNavigateToTournament, user
                     onClick={() => handleResultClick(result)}
                   >
                     <div className="result-icon">
-                      {result.flag || result.icon || '🔍'}
+                      {result.type === 'team' ? (
+                        <Flag country={result.name} size="large" />
+                      ) : result.icon ? (
+                        <span className="result-icon-symbol">{result.icon}</span>
+                      ) : '🔍'}
                     </div>
                     <div className="result-info">
                       <h4>{result.name}</h4>
@@ -114,16 +173,28 @@ function SearchPage({ onNavigateBack, onGameSelect, onNavigateToTournament, user
             <h3>Popular Searches</h3>
             <div className="suggestions-grid">
               <button className="suggestion-btn" onClick={() => handleSearch('England')}>
-                🏴󠁧󠁢󠁥󠁮󠁧󠁿 England
+                <Flag country="England" size="small" />
+                <span className="suggestion-text">England</span>
               </button>
               <button className="suggestion-btn" onClick={() => handleSearch('Six Nations')}>
-                🏆 Six Nations
+                <span className="suggestion-icon">🏆</span>
+                <span className="suggestion-text">Six Nations</span>
               </button>
               <button className="suggestion-btn" onClick={() => handleSearch('World Cup')}>
-                🌍 World Cup
+                <span className="suggestion-icon">🌍</span>
+                <span className="suggestion-text">World Cup</span>
               </button>
               <button className="suggestion-btn" onClick={() => handleSearch('Twickenham')}>
-                🏟️ Twickenham
+                <span className="suggestion-icon">🏟️</span>
+                <span className="suggestion-text">Twickenham</span>
+              </button>
+              <button className="suggestion-btn" onClick={() => handleSearch('New Zealand')}>
+                <Flag country="New Zealand" size="small" />
+                <span className="suggestion-text">New Zealand</span>
+              </button>
+              <button className="suggestion-btn" onClick={() => handleSearch('South Africa')}>
+                <Flag country="South Africa" size="small" />
+                <span className="suggestion-text">South Africa</span>
               </button>
             </div>
 
@@ -136,13 +207,19 @@ function SearchPage({ onNavigateBack, onGameSelect, onNavigateToTournament, user
                     className="recent-btn"
                     onClick={() => handleSearch(team)}
                   >
-                    {team}
+                    <Flag country={team} size="small" />
+                    <span className="recent-team-name">{team}</span>
                   </button>
                 ))}
               </div>
             </div>
           </div>
         )}
+      </div>
+
+      {/* Bottom Ad Banner */}
+      <div className="bottom-ad-banner">
+        📱 Download Rugby App - Enhanced Search & Live Updates! 📲
       </div>
     </div>
   );

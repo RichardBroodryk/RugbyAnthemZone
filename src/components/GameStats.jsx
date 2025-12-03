@@ -1,21 +1,69 @@
 import React, { useState } from 'react';
 import './GameStats.css';
+import NavBar from './NavBar'; // Import professional NavBar
 
-const GameStats = ({ game, onNavigateBack }) => {
+// Flag Component with real images
+const Flag = ({ country, size = 'large' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'argentina': 'argentina',
+      'australia': 'australia',
+      'england': 'england',
+      'fiji': 'fiji',
+      'france': 'france',
+      'ireland': 'ireland',
+      'italy': 'italy',
+      'japan': 'japan',
+      'new zealand': 'new-zealand',
+      'newzealand': 'new-zealand',
+      'scotland': 'scotland',
+      'south africa': 'south-africa',
+      'southafrica': 'south-africa',
+      'wales': 'wales'
+    };
+    
+    const normalizedName = countryName.toLowerCase().trim();
+    return nameMap[normalizedName] || normalizedName;
+  };
+
+  const fileName = getCountryFileName(country);
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      try {
+        const flagImage = require(`../Assets/images/flags/${fileName}.svg`);
+        return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+      } catch (error3) {
+        return <div className={`flag-fallback flag-${size}`}>
+          {country.split(' ').map(word => word[0]).join('').toUpperCase()}
+        </div>;
+      }
+    }
+  }
+};
+
+const GameStats = ({ game, onNavigateBack, onNavigateToTournament, onNavigateToGame }) => {
   const [selectedTeam, setSelectedTeam] = useState('home');
+  const [showPlayerStats, setShowPlayerStats] = useState(false);
   
   const gameData = game || {
     id: 1,
     tournament: "Six Nations Championship",
+    tournamentId: "six-nations",
     round: "Round 3",
-    date: "2024-02-24",
+    date: "24 February 2024",
     venue: "Twickenham Stadium, London",
     status: "Completed",
     homeTeam: {
       id: 1,
       name: "England",
       code: "ENG",
-      flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
       score: 23,
       stats: {
         possession: 58,
@@ -48,7 +96,6 @@ const GameStats = ({ game, onNavigateBack }) => {
       id: 2,
       name: "Ireland",
       code: "IRE",
-      flag: "🇮🇪",
       score: 22,
       stats: {
         possession: 42,
@@ -85,6 +132,7 @@ const GameStats = ({ game, onNavigateBack }) => {
   const statCategories = [
     {
       title: "Attack",
+      icon: "⚡",
       stats: [
         { key: "carries", label: "Carries" },
         { key: "meters", label: "Meters Gained" },
@@ -95,6 +143,7 @@ const GameStats = ({ game, onNavigateBack }) => {
     },
     {
       title: "Defense",
+      icon: "🛡️",
       stats: [
         { key: "tackles", label: "Tackles Made" },
         { key: "missedTackles", label: "Missed Tackles" },
@@ -104,6 +153,7 @@ const GameStats = ({ game, onNavigateBack }) => {
     },
     {
       title: "Set Piece",
+      icon: "🏉",
       stats: [
         { key: "lineoutsWon", label: "Lineouts Won", totalKey: "lineouts" },
         { key: "scrumsWon", label: "Scrums Won", totalKey: "scrums" },
@@ -112,6 +162,7 @@ const GameStats = ({ game, onNavigateBack }) => {
     },
     {
       title: "Kicking & Discipline",
+      icon: "🎯",
       stats: [
         { key: "kicks", label: "Kicks from Hand" },
         { key: "kickSuccess", label: "Kick Success %" },
@@ -122,6 +173,7 @@ const GameStats = ({ game, onNavigateBack }) => {
     },
     {
       title: "Game Control",
+      icon: "📊",
       stats: [
         { key: "possession", label: "Possession %" },
         { key: "territory", label: "Territory %" },
@@ -168,136 +220,274 @@ const GameStats = ({ game, onNavigateBack }) => {
     );
   };
 
+  // Related games from same tournament
+  const relatedGames = [
+    { id: 2, homeTeam: "France", awayTeam: "Wales", date: "23 Feb 2024", score: "28-24" },
+    { id: 3, homeTeam: "Scotland", awayTeam: "Italy", date: "25 Feb 2024", score: "31-19" },
+    { id: 4, homeTeam: "England", awayTeam: "Scotland", date: "10 Mar 2024", score: "TBD" }
+  ];
+
   return (
     <div className="game-stats-page">
-      {/* Navigation Bar */}
-      <nav className="stats-nav">
-        <button className="nav-back-btn" onClick={onNavigateBack}>
-          ← Back
-        </button>
-        <h1 className="nav-title">Game Statistics</h1>
-        <div className="nav-actions">
-          <button className="nav-action-btn">🏠</button>
-          <button className="nav-action-btn">🔍</button>
-        </div>
-      </nav>
+      {/* Professional NavBar */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Games")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
 
       {/* Top Ad Banner */}
-      <div className="ad-banner top-ad">
-        <p>ADVERTISEMENT</p>
-        <div className="ad-placeholder">
-          Ad Banner (728x90)
-        </div>
+      <div className="top-ad-banner">
+        📊 Rugby Pro Stats - Advanced Analytics & Live Player Tracking! 🏉
       </div>
 
       {/* Game Header */}
       <div className="game-header">
         <div className="container">
-          <div className="tournament-info">
-            <span className="tournament-name">{gameData.tournament}</span>
-            <span className="game-round">{gameData.round}</span>
-            <span className="game-date">{gameData.date}</span>
+          <div className="tournament-info-container">
+            <div className="tournament-name">{gameData.tournament}</div>
+            <div className="game-round">{gameData.round}</div>
+            <div className="game-date">{gameData.date}</div>
           </div>
           
           <div className="teams-display">
             <div className="team home-team">
-              <div className="team-flag">{gameData.homeTeam.flag}</div>
+              <Flag country={gameData.homeTeam.name} size="large" />
               <div className="team-name">{gameData.homeTeam.name}</div>
-              <div className="team-score">{gameData.homeTeam.score}</div>
+              <div className="team-score game-score">{gameData.homeTeam.score}</div>
             </div>
             
             <div className="vs-separator">VS</div>
             
             <div className="team away-team">
-              <div className="team-score">{gameData.awayTeam.score}</div>
+              <div className="team-score game-score">{gameData.awayTeam.score}</div>
               <div className="team-name">{gameData.awayTeam.name}</div>
-              <div className="team-flag">{gameData.awayTeam.flag}</div>
+              <Flag country={gameData.awayTeam.name} size="large" />
             </div>
           </div>
           
-          <div className="game-details">
+          <div className="game-details-container">
             <span className="venue">{gameData.venue}</span>
-            <span className="status">{gameData.status}</span>
+            <span className="game-status">{gameData.status}</span>
+          </div>
+
+          {/* Tournament Navigation */}
+          <div className="tournament-nav">
+            <button 
+              className="tournament-btn"
+              onClick={() => onNavigateToTournament?.(gameData.tournamentId)}
+            >
+              🏆 View Full Tournament
+            </button>
           </div>
         </div>
       </div>
 
       <div className="container">
-        {/* Team Selection Tabs */}
-        <div className="team-tabs">
+        {/* Stats View Toggle */}
+        <div className="stats-view-toggle">
           <button 
-            className={`team-tab ${selectedTeam === 'home' ? 'active' : ''}`}
-            onClick={() => setSelectedTeam('home')}
+            className={`view-toggle-btn ${!showPlayerStats ? 'active' : ''}`}
+            onClick={() => setShowPlayerStats(false)}
           >
-            {gameData.homeTeam.flag} {gameData.homeTeam.name} Statistics
+            📊 Team Statistics
           </button>
           <button 
-            className={`team-tab ${selectedTeam === 'away' ? 'active' : ''}`}
-            onClick={() => setSelectedTeam('away')}
+            className={`view-toggle-btn ${showPlayerStats ? 'active' : ''}`}
+            onClick={() => setShowPlayerStats(true)}
           >
-            {gameData.awayTeam.flag} {gameData.awayTeam.name} Statistics
+            👤 Player Statistics
           </button>
         </div>
 
-        {/* Team Stats Overview */}
-        <div className="team-stats-overview">
-          <div className="selected-team-header">
-            <h2>{currentTeam.flag} {currentTeam.name} Team Statistics</h2>
-            <div className="score-comparison">
-              <span className="team-score">{currentTeam.score}</span>
-              <span className="score-separator">-</span>
-              <span className="opponent-score">{opponentTeam.score}</span>
+        {!showPlayerStats ? (
+          <>
+            {/* Team Selection Tabs */}
+            <div className="team-tabs">
+              <button 
+                className={`team-tab ${selectedTeam === 'home' ? 'active' : ''}`}
+                onClick={() => setSelectedTeam('home')}
+              >
+                <Flag country={gameData.homeTeam.name} size="small" />
+                {gameData.homeTeam.name} Statistics
+              </button>
+              <button 
+                className={`team-tab ${selectedTeam === 'away' ? 'active' : ''}`}
+                onClick={() => setSelectedTeam('away')}
+              >
+                <Flag country={gameData.awayTeam.name} size="small" />
+                {gameData.awayTeam.name} Statistics
+              </button>
             </div>
-          </div>
 
-          {/* Stats by Category */}
-          {statCategories.map((category, index) => (
-            <div key={index} className="stats-category">
-              <h3 className="category-title">{category.title}</h3>
-              <div className="stats-grid">
-                {category.stats.map((stat, statIndex) => (
-                  <StatRow 
-                    key={statIndex}
-                    stat={stat}
-                    teamStats={currentTeam.stats}
-                    opponentStats={opponentTeam.stats}
-                  />
-                ))}
+            {/* Team Stats Overview */}
+            <div className="team-stats-overview">
+              <div className="selected-team-header">
+                <h2>
+                  <Flag country={currentTeam.name} size="small" />
+                  {currentTeam.name} Team Statistics
+                </h2>
+                <div className="score-comparison">
+                  <span className="comparison-team-score">{currentTeam.score}</span>
+                  <span className="score-separator">-</span>
+                  <span className="comparison-opponent-score">{opponentTeam.score}</span>
+                </div>
+              </div>
+
+              {/* Stats by Category */}
+              {statCategories.map((category, index) => (
+                <div key={index} className="stats-category">
+                  <h3 className="category-title">
+                    <span className="category-icon">{category.icon}</span>
+                    {category.title}
+                  </h3>
+                  <div className="stats-grid">
+                    {category.stats.map((stat, statIndex) => (
+                      <StatRow 
+                        key={statIndex}
+                        stat={stat}
+                        teamStats={currentTeam.stats}
+                        opponentStats={opponentTeam.stats}
+                      />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Key Performance Indicators */}
+            <div className="kpi-section">
+              <h3>🎯 Key Performance Indicators</h3>
+              <div className="kpi-grid">
+                <div className="kpi-item">
+                  <div className="kpi-value">{currentTeam.stats.tackleSuccess}%</div>
+                  <div className="kpi-label">Tackle Success</div>
+                </div>
+                <div className="kpi-item">
+                  <div className="kpi-value">{currentTeam.stats.territory}%</div>
+                  <div className="kpi-label">Territory</div>
+                </div>
+                <div className="kpi-item">
+                  <div className="kpi-value">{currentTeam.stats.possession}%</div>
+                  <div className="kpi-label">Possession</div>
+                </div>
+                <div className="kpi-item">
+                  <div className="kpi-value">{currentTeam.stats.pointsFromTurnovers}</div>
+                  <div className="kpi-label">Points from Turnovers</div>
+                </div>
               </div>
             </div>
-          ))}
-        </div>
+          </>
+        ) : (
+          /* Player Statistics View */
+          <div className="player-stats-view">
+            <h3>👤 Player Statistics</h3>
+            <div className="player-stats-message">
+              <p>Player statistics feature coming soon! This will include:</p>
+              <ul>
+                <li>Individual player performance metrics</li>
+                <li>Head-to-head player comparisons</li>
+                <li>Position-specific statistics</li>
+                <li>Player rating system</li>
+                <li>Fantasy rugby integration</li>
+              </ul>
+              <button 
+                className="player-stats-preview-btn"
+                onClick={() => onNavigateToTournament?.(gameData.tournamentId)}
+              >
+                View Tournament Player Stats →
+              </button>
+            </div>
+          </div>
+        )}
 
-        {/* Key Performance Indicators */}
-        <div className="kpi-section">
-          <h3>Key Performance Indicators</h3>
-          <div className="kpi-grid">
-            <div className="kpi-item">
-              <div className="kpi-value">{currentTeam.stats.tackleSuccess}%</div>
-              <div className="kpi-label">Tackle Success</div>
-            </div>
-            <div className="kpi-item">
-              <div className="kpi-value">{currentTeam.stats.territory}%</div>
-              <div className="kpi-label">Territory</div>
-            </div>
-            <div className="kpi-item">
-              <div className="kpi-value">{currentTeam.stats.possession}%</div>
-              <div className="kpi-label">Possession</div>
-            </div>
-            <div className="kpi-item">
-              <div className="kpi-value">{currentTeam.stats.pointsFromTurnovers}</div>
-              <div className="kpi-label">Points from Turnovers</div>
-            </div>
+        {/* Related Games Section */}
+        <div className="related-games-section">
+          <h3>📅 Other Games in {gameData.tournament}</h3>
+          <div className="related-games-grid">
+            {relatedGames.map((relatedGame, index) => (
+              <div 
+                key={index} 
+                className="related-game-card"
+                onClick={() => onNavigateToGame?.(relatedGame)}
+              >
+                <div className="related-game-teams">
+                  <div className="related-game-team">
+                    <Flag country={relatedGame.homeTeam} size="small" />
+                    <span className="related-game-team-name">{relatedGame.homeTeam}</span>
+                  </div>
+                  <div className="related-game-vs">VS</div>
+                  <div className="related-game-team">
+                    <Flag country={relatedGame.awayTeam} size="small" />
+                    <span className="related-game-team-name">{relatedGame.awayTeam}</span>
+                  </div>
+                </div>
+                <div className="related-game-info">
+                  <span className="related-game-date">{relatedGame.date}</span>
+                  <span className="related-game-score">{relatedGame.score}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Bottom Ad Banner */}
-        <div className="ad-banner bottom-ad">
-          <p>ADVERTISEMENT</p>
-          <div className="ad-placeholder">
-            Ad Banner (728x90)
+        {/* Tournament Links */}
+        <div className="tournament-links-section">
+          <h3>🏆 Explore More Tournaments</h3>
+          <div className="tournament-links-grid">
+            <button 
+              className="tournament-link"
+              onClick={() => onNavigateToTournament?.('six-nations')}
+            >
+              Six Nations
+            </button>
+            <button 
+              className="tournament-link"
+              onClick={() => onNavigateToTournament?.('rugby-championship')}
+            >
+              Rugby Championship
+            </button>
+            <button 
+              className="tournament-link"
+              onClick={() => onNavigateToTournament?.('world-cup')}
+            >
+              World Cup
+            </button>
+            <button 
+              className="tournament-link"
+              onClick={() => onNavigateToTournament?.('autumn-internationals')}
+            >
+              Autumn Internationals
+            </button>
           </div>
         </div>
+
+        {/* Mid Content Ad Banner */}
+        <div className="mid-ad-banner">
+          🎯 Fantasy Rugby - Pick Your Dream Team Based on Real Stats! 📈
+        </div>
+
+        {/* Stats Export Section */}
+        <div className="stats-export-section">
+          <h3>📥 Export Statistics</h3>
+          <div className="export-buttons">
+            <button className="export-btn">📄 PDF Report</button>
+            <button className="export-btn">📊 Excel Data</button>
+            <button className="export-btn">🖼️ Share Image</button>
+            <button className="export-btn">📱 Mobile App</button>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Ad Banner */}
+      <div className="bottom-ad-banner">
+        📲 Rugby Analytics Pro - Real-time Stats & Advanced Metrics! 📊
       </div>
     </div>
   );

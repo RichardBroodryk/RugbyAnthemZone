@@ -1,10 +1,57 @@
+import React from 'react';
 import './HotelsPage.css';
+import NavBar from './NavBar';
+
+// Flag Component with real images
+const Flag = ({ country, size = 'large' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'argentina': 'argentina',
+      'australia': 'australia',
+      'england': 'england',
+      'fiji': 'fiji',
+      'france': 'france',
+      'ireland': 'ireland',
+      'italy': 'italy',
+      'japan': 'japan',
+      'new zealand': 'new-zealand',
+      'newzealand': 'new-zealand',
+      'scotland': 'scotland',
+      'south africa': 'south-africa',
+      'southafrica': 'south-africa',
+      'wales': 'wales'
+    };
+    
+    const normalizedName = countryName.toLowerCase().trim();
+    return nameMap[normalizedName] || normalizedName;
+  };
+
+  const fileName = getCountryFileName(country);
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      try {
+        const flagImage = require(`../Assets/images/flags/${fileName}.svg`);
+        return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+      } catch (error3) {
+        return <div className={`flag-fallback flag-${size}`}>
+          {country.split(' ').map(word => word[0]).join('').toUpperCase()}
+        </div>;
+      }
+    }
+  }
+};
 
 function HotelsPage({ onNavigateBack }) {
   const rugbyHotels = [
     { 
       nation: "England", 
-      flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", 
       stadium: "Twickenham Stadium",
       hotels: [
         { 
@@ -41,7 +88,6 @@ function HotelsPage({ onNavigateBack }) {
     },
     { 
       nation: "Ireland", 
-      flag: "🇮🇪", 
       stadium: "Aviva Stadium",
       hotels: [
         { 
@@ -68,7 +114,6 @@ function HotelsPage({ onNavigateBack }) {
     },
     { 
       nation: "France", 
-      flag: "🇫🇷", 
       stadium: "Stade de France",
       hotels: [
         { 
@@ -95,7 +140,6 @@ function HotelsPage({ onNavigateBack }) {
     },
     { 
       nation: "New Zealand", 
-      flag: "🇳🇿", 
       stadium: "Eden Park",
       hotels: [
         { 
@@ -122,7 +166,6 @@ function HotelsPage({ onNavigateBack }) {
     },
     { 
       nation: "South Africa", 
-      flag: "🇿🇦", 
       stadium: "Ellis Park",
       hotels: [
         { 
@@ -149,7 +192,6 @@ function HotelsPage({ onNavigateBack }) {
     },
     { 
       nation: "Wales", 
-      flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", 
       stadium: "Principality Stadium",
       hotels: [
         { 
@@ -176,7 +218,6 @@ function HotelsPage({ onNavigateBack }) {
     },
     { 
       nation: "Scotland", 
-      flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", 
       stadium: "Murrayfield Stadium",
       hotels: [
         { 
@@ -203,7 +244,6 @@ function HotelsPage({ onNavigateBack }) {
     },
     { 
       nation: "Australia", 
-      flag: "🇦🇺", 
       stadium: "Sydney Football Stadium",
       hotels: [
         { 
@@ -232,7 +272,6 @@ function HotelsPage({ onNavigateBack }) {
 
   const handleBookingClick = (hotel) => {
     if (hotel.affiliate) {
-      // In production, this would use actual affiliate tracking
       const affiliateUrl = `${hotel.bookingUrl}?aid=rugbyunionapp`;
       window.open(affiliateUrl, '_blank', 'noopener,noreferrer');
     } else {
@@ -242,18 +281,23 @@ function HotelsPage({ onNavigateBack }) {
 
   return (
     <div className="hotels-page">
-      {/* Top Ad Banner */}
+      {/* Professional NavBar at the top */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Hotels")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
+      {/* Top Ad Banner below the NavBar */}
       <div className="top-ad-banner">
         🏨 Rugby World Cup 2025 - Official Hotel Partners! ⭐
       </div>
-
-      {/* Top Navigation */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-      </nav>
 
       {/* Main Content */}
       <div className="hotels-content">
@@ -270,7 +314,8 @@ function HotelsPage({ onNavigateBack }) {
           {rugbyHotels.map((country, index) => (
             <div key={index} className="country-hotels-card">
               <div className="country-header">
-                <div className="nation-flag">{country.flag}</div>
+                {/* Replaced emoji flag with real flag image */}
+                <Flag country={country.nation} size="large" />
                 <div className="country-info">
                   <h3 className="country-name">{country.nation}</h3>
                   <p className="stadium-name">{country.stadium}</p>

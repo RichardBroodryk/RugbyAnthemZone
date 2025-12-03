@@ -1,5 +1,5 @@
 import './FreemiumPage.css';
-import ThemeToggle from './ThemeToggle';
+import razNavIcon from '../Assets/images/raz-nav-icon.png';
 
 function FreemiumPage({ 
   onNavigateToPremium, 
@@ -65,17 +65,39 @@ function FreemiumPage({
 
   return (
     <div className="freemium-page">
+      {/* Professional Navbar */}
+      <nav className="raz-navbar">
+        <div className="nav-logo-section">
+          <img 
+            src={razNavIcon} 
+            alt="Rugby Anthem Zone" 
+            className="nav-main-logo" 
+          />
+        </div>
+
+        <div className="nav-icons-section">
+          <button className="nav-icon back-icon" onClick={onNavigateBack}>
+            ←
+          </button>
+          <button className="nav-icon home-icon" onClick={() => window.location.reload()}>
+            🏠
+          </button>
+          <button className="nav-icon search-icon">
+            🔍
+          </button>
+          <button className="nav-icon profile-icon">
+            👤
+          </button>
+          <button className="nav-icon menu-icon">
+            ☰
+          </button>
+        </div>
+      </nav>
+
+      {/* Top Ad Banner - UNDERNEATH NAVBAR */}
       <div className="top-ad-banner">
         🏆 Rugby World Cup 2025 - Free Access Available 🌍
       </div>
-
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn" onClick={() => window.location.reload()}>🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Guest</button>
-        <ThemeToggle />
-      </nav>
 
       <div className="home-content">
         <h1 className="welcome-title">Welcome to Rugby Union International</h1>

@@ -1,9 +1,10 @@
-/* FantasyLeagues.css - Complete Updated Version */
+/* FantasyLeagues.css - Fiery Red Theme */
 .fantasy-leagues-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a3d7c 0%, #2c5aa0 100%);
+  background: linear-gradient(135deg, #1a0a0a 0%, #2c1010 100%);
 }
 
+/* Ad Banners */
 .top-ad-banner {
   background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
   color: white;
@@ -12,43 +13,21 @@
   font-weight: bold;
   font-size: 1.1em;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #ff4444;
 }
 
 .bottom-ad-banner {
-  background: linear-gradient(90deg, #4ecdc4, #26a69a);
+  background: linear-gradient(90deg, #ff4444, #cc0000);
   color: white;
   text-align: center;
   padding: 12px;
   font-weight: bold;
   font-size: 1.1em;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  border-top: 2px solid #ff6b6b;
 }
 
-.top-nav {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-}
-
-.nav-btn {
-  background: #1a3d7c;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 25px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-.nav-btn:hover {
-  background: #2c5aa0;
-  transform: translateY(-2px);
-}
-
+/* Main Content */
 .fantasy-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -65,45 +44,72 @@
   font-size: 3em;
   margin: 0 0 10px 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #ff6b35, #e55a2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .fantasy-subtitle {
   font-size: 1.3em;
   opacity: 0.9;
   margin: 0;
+  color: #ffcccb;
 }
 
-/* Tournament Sections */
+/* Tournament Sections - FIERY RED */
 .tournament-section {
   margin-bottom: 50px;
+  border-radius: 15px;
+  padding: 40px 30px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(255, 0, 0, 0.15);
+}
+
+.mens-section {
+  background: linear-gradient(135deg, #8b0000, #b22222);
+  border: 2px solid #ff6b35;
+}
+
+.womens-section {
+  background: linear-gradient(135deg, #a52a2a, #dc143c);
+  border: 2px solid #ff4444;
 }
 
 .section-header {
   text-align: center;
   margin-bottom: 30px;
   color: white;
+  position: relative;
+  z-index: 2;
 }
 
 .section-title {
   font-size: 2.2em;
   margin: 0 0 15px 0;
   color: #ffcc00;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 12px 24px;
+  border-radius: 12px;
+  display: inline-block;
+  border: 2px solid #ffcc00;
 }
 
 .section-description {
   font-size: 1.1em;
   color: #ffffff;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 12px;
   border-left: 4px solid #ffcc00;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   line-height: 1.7;
   font-weight: 500;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Tournament Grid */
@@ -112,25 +118,29 @@
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 25px;
   margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
 }
 
 .tournament-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.98);
   border-radius: 15px;
   padding: 0;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  border-left: 4px solid #ffcc00;
+  border-left: 4px solid #ff4444;
   overflow: hidden;
 }
 
 .tournament-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 35px rgba(255, 204, 0, 0.2);
+  box-shadow: 0 12px 35px rgba(255, 68, 68, 0.3);
+  background: white;
+  border-left-color: #ff0000;
 }
 
 .tournament-header {
-  background: linear-gradient(135deg, #1a3d7c 0%, #2c5aa0 100%);
+  background: linear-gradient(135deg, #b22222, #8b0000);
   color: white;
   padding: 25px 20px;
   text-align: center;
@@ -160,7 +170,7 @@
   font-size: 1.4em;
   margin-bottom: 15px;
   text-align: center;
-  color: #1a3d7c;
+  color: #8b0000;
   font-weight: bold;
 }
 
@@ -180,7 +190,7 @@
 
 .affiliate-link {
   display: block;
-  background: #1a3d7c;
+  background: #b22222;
   color: white;
   text-align: center;
   padding: 12px 20px;
@@ -192,9 +202,9 @@
 }
 
 .affiliate-link:hover {
-  background: #2c5aa0;
+  background: #8b0000;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(26, 61, 124, 0.3);
+  box-shadow: 0 4px 12px rgba(139, 0, 0, 0.4);
 }
 
 .superbru-link {
@@ -205,7 +215,7 @@
 .superbru-link:hover {
   background: linear-gradient(135deg, #e55a2b, #cc4a23);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
 }
 
 /* Fantasy Features Section */
@@ -214,10 +224,11 @@
   border-radius: 15px;
   padding: 30px;
   margin-bottom: 40px;
+  border: 2px solid #ff4444;
 }
 
 .fantasy-features h3 {
-  color: #1a3d7c;
+  color: #8b0000;
   margin-bottom: 25px;
   text-align: center;
   font-size: 1.8em;
@@ -237,17 +248,19 @@
   background: #f8f9fa;
   border-radius: 12px;
   transition: all 0.3s ease;
+  border-left: 4px solid #ff4444;
 }
 
 .feature-item:hover {
   background: white;
   transform: translateX(5px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(255, 68, 68, 0.2);
 }
 
 .feature-icon {
   font-size: 2em;
   min-width: 50px;
+  color: #b22222;
 }
 
 .feature-text {
@@ -262,10 +275,11 @@
   border-radius: 15px;
   padding: 30px;
   text-align: center;
+  border: 2px solid #ff4444;
 }
 
 .quick-start h3 {
-  color: #1a3d7c;
+  color: #8b0000;
   margin-bottom: 20px;
   font-size: 1.8em;
 }
@@ -279,8 +293,8 @@
 }
 
 .quick-start-btn {
-  background: linear-gradient(135deg, #ffcc00, #ffaa00);
-  color: #1a3d7c;
+  background: linear-gradient(135deg, #ff4444, #cc0000);
+  color: white;
   border: none;
   padding: 15px 30px;
   border-radius: 25px;
@@ -292,11 +306,13 @@
   align-items: center;
   gap: 10px;
   margin: 10px;
+  border: 2px solid #ff6b35;
 }
 
 .quick-start-btn:hover {
+  background: linear-gradient(135deg, #cc0000, #990000);
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(255, 204, 0, 0.4);
+  box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
 }
 
 /* Responsive Design */
@@ -338,19 +354,20 @@
   .quick-start p {
     font-size: 1em;
   }
+  
+  .tournament-section {
+    padding: 30px 20px;
+  }
 }
 
 @media (max-width: 480px) {
-  .tournament-card {
-    margin: 0 10px;
-  }
-  
   .fantasy-title {
     font-size: 2em;
   }
   
   .section-title {
     font-size: 1.5em;
+    padding: 10px 20px;
   }
   
   .tournament-logo {

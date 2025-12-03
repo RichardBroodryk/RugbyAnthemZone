@@ -1,10 +1,62 @@
+import React from 'react';
 import './FlightsPage.css';
+import NavBar from './NavBar';
+
+// Flag Component with correct file name mapping
+const Flag = ({ country, size = 'small' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'argentina': 'argentina',
+      'australia': 'australia',
+      'england': 'england',
+      'fiji': 'fiji',
+      'france': 'france',
+      'ireland': 'ireland',
+      'italy': 'italy',
+      'japan': 'japan',
+      'new zealand': 'new-zealand',
+      'newzealand': 'new-zealand',  // Added this variant
+      'scotland': 'scotland',
+      'south africa': 'south-africa',  // Fixed: hyphenated
+      'southafrica': 'south-africa',   // Added this variant
+      'wales': 'wales'
+    };
+    
+    // Try exact match first, then try to find partial match
+    const normalizedName = countryName.toLowerCase().trim();
+    return nameMap[normalizedName] || normalizedName;
+  };
+
+  const fileName = getCountryFileName(country);
+  
+  try {
+    // Try PNG first
+    const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      // Try JPG as fallback
+      const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      try {
+        // Try SVG as another fallback
+        const flagImage = require(`../Assets/images/flags/${fileName}.svg`);
+        return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+      } catch (error3) {
+        // Final fallback - show initials
+        return <div className={`flag-fallback flag-${size}`}>
+          {country.split(' ').map(word => word[0]).join('').toUpperCase()}
+        </div>;
+      }
+    }
+  }
+};
 
 function FlightsPage({ onNavigateBack }) {
   const airlineVendors = [
     { 
       nation: "Argentina", 
-      flag: "🇦🇷", 
       airlines: [
         { name: "Aerolíneas Argentinas", url: "https://www.aerolineas.com.ar/" },
         { name: "LATAM Argentina", url: "https://www.latam.com/ar_es/" }
@@ -12,7 +64,6 @@ function FlightsPage({ onNavigateBack }) {
     },
     { 
       nation: "Australia", 
-      flag: "🇦🇺", 
       airlines: [
         { name: "Qantas Airways", url: "https://www.qantas.com/au/en.html" },
         { name: "Virgin Australia", url: "https://www.virginaustralia.com/au/en/" }
@@ -20,7 +71,6 @@ function FlightsPage({ onNavigateBack }) {
     },
     { 
       nation: "England", 
-      flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", 
       airlines: [
         { name: "British Airways", url: "https://www.britishairways.com/" },
         { name: "Virgin Atlantic", url: "https://www.virginatlantic.com/" },
@@ -29,14 +79,12 @@ function FlightsPage({ onNavigateBack }) {
     },
     { 
       nation: "Fiji", 
-      flag: "🇫🇯", 
       airlines: [
         { name: "Fiji Airways", url: "https://www.fijiairways.com/" }
       ]
     },
     { 
       nation: "France", 
-      flag: "🇫🇷", 
       airlines: [
         { name: "Air France", url: "https://www.airfrance.com/" },
         { name: "Air Corsica", url: "https://www.aircorsica.com/" }
@@ -44,7 +92,6 @@ function FlightsPage({ onNavigateBack }) {
     },
     { 
       nation: "Ireland", 
-      flag: "🇮🇪", 
       airlines: [
         { name: "Aer Lingus", url: "https://www.aerlingus.com/" },
         { name: "Ryanair", url: "https://www.ryanair.com/" }
@@ -52,7 +99,6 @@ function FlightsPage({ onNavigateBack }) {
     },
     { 
       nation: "Italy", 
-      flag: "🇮🇹", 
       airlines: [
         { name: "Alitalia", url: "https://www.alitalia.com/" },
         { name: "ITA Airways", url: "https://www.ita-airways.com/" }
@@ -60,15 +106,13 @@ function FlightsPage({ onNavigateBack }) {
     },
     { 
       nation: "Japan", 
-      flag: "🇯🇵", 
       airlines: [
         { name: "Japan Airlines", url: "https://www.jal.co.jp/" },
         { name: "ANA All Nippon Airways", url: "https://www.ana.co.jp/" }
       ]
     },
     { 
-      nation: "New Zealand", 
-      flag: "🇳🇿", 
+      nation: "New Zealand",  // This has a space
       airlines: [
         { name: "Air New Zealand", url: "https://www.airnewzealand.co.nz/" },
         { name: "Jetstar NZ", url: "https://www.jetstar.com/nz/en" }
@@ -76,15 +120,13 @@ function FlightsPage({ onNavigateBack }) {
     },
     { 
       nation: "Scotland", 
-      flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", 
       airlines: [
         { name: "Loganair", url: "https://www.loganair.co.uk/" },
         { name: "easyJet Scotland", url: "https://www.easyjet.com/" }
       ]
     },
     { 
-      nation: "South Africa", 
-      flag: "🇿🇦", 
+      nation: "South Africa",  // This has a space
       airlines: [
         { name: "South African Airways", url: "https://www.flysaa.com/" },
         { name: "Kulula.com", url: "https://www.kulula.com/" }
@@ -92,7 +134,6 @@ function FlightsPage({ onNavigateBack }) {
     },
     { 
       nation: "Wales", 
-      flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", 
       airlines: [
         { name: "Air Wales", url: "https://www.airwales.co.uk/" }
       ]
@@ -105,18 +146,23 @@ function FlightsPage({ onNavigateBack }) {
 
   return (
     <div className="flights-page">
-      {/* Top Ad Banner */}
+      {/* Professional NavBar at the top */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Flights")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
+      {/* Top Ad Banner below the NavBar */}
       <div className="top-ad-banner">
         ✈️ Rugby Travel Packages - Special Rates for Fans! ⚡
       </div>
-
-      {/* Top Navigation */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-      </nav>
 
       {/* Main Content */}
       <div className="flights-content">
@@ -130,7 +176,10 @@ function FlightsPage({ onNavigateBack }) {
           {airlineVendors.map((country, index) => (
             <div key={index} className="country-airlines-card">
               <div className="country-header">
-                <div className="nation-flag">{country.flag}</div>
+                {/* Debug: Show what country name is being used */}
+                {/* <small style={{color: 'red'}}>Looking for: {country.nation.toLowerCase().replace(' ', '-')}</small> */}
+                
+                <Flag country={country.nation} size="large" />
                 <div className="country-info">
                   <h3 className="country-name">{country.nation}</h3>
                   <p className="airlines-count">{country.airlines.length} airline(s) available</p>

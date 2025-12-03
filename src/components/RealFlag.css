@@ -1,0 +1,67 @@
+.flag {
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.flag-tiny {
+  width: 20px;
+  height: 13px;
+}
+
+.flag-small {
+  width: 30px;
+  height: 20px;
+}
+
+.flag-medium {
+  width: 45px;
+  height: 30px;
+}
+
+.flag-large {
+  width: 60px;
+  height: 40px;
+}
+
+.flag-xlarge {
+  width: 80px;
+  height: 53px;
+}
+
+.flag-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-weight: bold;
+  font-size: 0.7rem;
+  border-radius: 3px;
+}
+
+.flag-fallback.tiny {
+  width: 20px;
+  height: 13px;
+  font-size: 0.5rem;
+}
+
+.flag-fallback.small {
+  width: 30px;
+  height: 20px;
+  font-size: 0.6rem;
+}
+
+.flag-fallback.medium {
+  width: 45px;
+  height: 30px;
+  font-size: 0.7rem;
+}
+
+.flag-fallback.large {
+  width: 60px;
+  height: 40px;
+  font-size: 0.8rem;
+}
