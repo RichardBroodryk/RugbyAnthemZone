@@ -1,8 +1,48 @@
 import React, { useState } from 'react';
 import './MensAutumnTours.css';
-import ThemeToggle from './ThemeToggle';
-import StadiumPage from './StadiumPage'; // CHANGED: StadiumMap to StadiumPage
+import NavBar from './NavBar';
+import StadiumPage from './StadiumPage'; // Make sure this is StadiumPage not StadiumMap
 import VenueSelector from './VenueSelector';
+
+// Flag Component with real images
+const Flag = ({ country, size = 'medium' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'argentina': 'argentina',
+      'australia': 'australia',
+      'england': 'england',
+      'fiji': 'fiji',
+      'france': 'france',
+      'ireland': 'ireland',
+      'italy': 'italy',
+      'japan': 'japan',
+      'new zealand': 'new-zealand',
+      'scotland': 'scotland',
+      'south africa': 'south-africa',
+      'wales': 'wales',
+      'usa': 'united-states-of-america',
+      'canada': 'canada'
+    };
+    
+    return nameMap[countryName.toLowerCase()] || countryName.toLowerCase();
+  };
+
+  const fileName = getCountryFileName(country);
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      return <div className={`flag-fallback flag-${size}`}>
+        {country.slice(0, 3).toUpperCase()}
+      </div>;
+    }
+  }
+};
 
 function MensAutumnTours({ 
   onNavigateBack, 
@@ -17,10 +57,10 @@ function MensAutumnTours({
 }) {
   const [activeTab, setActiveTab] = useState('fixtures');
   const [matchFilter, setMatchFilter] = useState('all');
-  const [selectedVenue, setSelectedVenue] = useState('Twickenham');
+  const [selectedVenue, setSelectedVenue] = useState('Twickenham Stadium');
 
   const autumnToursStadiums = [
-    'Twickenham',
+    'Twickenham Stadium',
     'Murrayfield', 
     'Principality Stadium',
     'Aviva Stadium',
@@ -37,26 +77,26 @@ function MensAutumnTours({
     description: "The premier November test matches featuring Northern vs Southern Hemisphere rugby giants",
     logo: "🍂",
     teams: [
-      { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 5, form: 'WWLWW' },
-      { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland", ranking: 6, form: 'LWWLW' },
-      { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 8, form: 'LLWLL' },
-      { flag: "🇮🇪", name: "Ireland", ranking: 2, form: 'WWWWW' },
-      { flag: "🇫🇷", name: "France", ranking: 4, form: 'WLWLW' },
-      { flag: "🇮🇹", name: "Italy", ranking: 12, form: 'LLLLW' },
-      { flag: "🇿🇦", name: "South Africa", ranking: 1, form: 'WWLWW' },
-      { flag: "🇳🇿", name: "New Zealand", ranking: 3, form: 'WWWLW' },
-      { flag: "🇦🇺", name: "Australia", ranking: 9, form: 'LLLLL' },
-      { flag: "🇦🇷", name: "Argentina", ranking: 7, form: 'WLLWW' },
-      { flag: "🇫🇯", name: "Fiji", ranking: 10, form: 'WLWWW' },
-      { flag: "🇯🇵", name: "Japan", ranking: 11, form: 'LWWLL' }
+      { name: "England", ranking: 5, form: 'WWLWW' },
+      { name: "Scotland", ranking: 6, form: 'LWWLW' },
+      { name: "Wales", ranking: 8, form: 'LLWLL' },
+      { name: "Ireland", ranking: 2, form: 'WWWWW' },
+      { name: "France", ranking: 4, form: 'WLWLW' },
+      { name: "Italy", ranking: 12, form: 'LLLLW' },
+      { name: "South Africa", ranking: 1, form: 'WWLWW' },
+      { name: "New Zealand", ranking: 3, form: 'WWWLW' },
+      { name: "Australia", ranking: 9, form: 'LLLLL' },
+      { name: "Argentina", ranking: 7, form: 'WLLWW' },
+      { name: "Fiji", ranking: 10, form: 'WLWWW' },
+      { name: "Japan", ranking: 11, form: 'LWWLL' }
     ],
     matches: [
       {
         id: 1,
-        team1: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 5 },
-        team2: { flag: "🇳🇿", name: "New Zealand", ranking: 3 },
+        team1: { name: "England", ranking: 5 },
+        team2: { name: "New Zealand", ranking: 3 },
         venue: "Twickenham Stadium – London",
-        stadium: "Twickenham",
+        stadium: "Twickenham Stadium",
         date: "Nov 7, 2026",
         time: "15:00",
         status: "upcoming",
@@ -65,8 +105,8 @@ function MensAutumnTours({
       },
       {
         id: 2, 
-        team1: { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland", ranking: 6 },
-        team2: { flag: "🇦🇺", name: "Australia", ranking: 9 },
+        team1: { name: "Scotland", ranking: 6 },
+        team2: { name: "Australia", ranking: 9 },
         venue: "Murrayfield – Edinburgh",
         stadium: "Murrayfield",
         date: "Nov 8, 2026", 
@@ -77,8 +117,8 @@ function MensAutumnTours({
       },
       {
         id: 3,
-        team1: { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 8 },
-        team2: { flag: "🇿🇦", name: "South Africa", ranking: 1 },
+        team1: { name: "Wales", ranking: 8 },
+        team2: { name: "South Africa", ranking: 1 },
         venue: "Principality Stadium – Cardiff", 
         stadium: "Principality Stadium",
         date: "Nov 9, 2026",
@@ -89,8 +129,8 @@ function MensAutumnTours({
       },
       {
         id: 4,
-        team1: { flag: "🇮🇪", name: "Ireland", ranking: 2 },
-        team2: { flag: "🇦🇷", name: "Argentina", ranking: 7 },
+        team1: { name: "Ireland", ranking: 2 },
+        team2: { name: "Argentina", ranking: 7 },
         venue: "Aviva Stadium – Dublin",
         stadium: "Aviva Stadium",
         date: "Nov 14, 2026",
@@ -101,8 +141,8 @@ function MensAutumnTours({
       },
       {
         id: 5,
-        team1: { flag: "🇫🇷", name: "France", ranking: 4 },
-        team2: { flag: "🇫🇯", name: "Fiji", ranking: 10 },
+        team1: { name: "France", ranking: 4 },
+        team2: { name: "Fiji", ranking: 10 },
         venue: "Stade de France – Paris",
         stadium: "Stade de France",
         date: "Nov 15, 2026",
@@ -113,8 +153,8 @@ function MensAutumnTours({
       },
       {
         id: 6,
-        team1: { flag: "🇮🇹", name: "Italy", ranking: 12 },
-        team2: { flag: "🇯🇵", name: "Japan", ranking: 11 },
+        team1: { name: "Italy", ranking: 12 },
+        team2: { name: "Japan", ranking: 11 },
         venue: "Stadio Olimpico – Rome",
         stadium: "Stadio Olimpico",
         date: "Nov 16, 2026",
@@ -173,15 +213,19 @@ function MensAutumnTours({
 
   return (
     <div className="autumn-tours-page">
-      {/* FIXED: STANDARD WHITE TOP NAVIGATION */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <ThemeToggle />
-      </nav>
-      
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+      />
+
+      <div className="top-ad-banner">
+        🏉 Autumn Nations Series 2026 - Book Your Tickets Early! 🎟️
+      </div>
+
       <header className="tournament-hero">
         <div className="hero-content">
           <div className="tournament-badge">
@@ -222,7 +266,6 @@ function MensAutumnTours({
         )}
       </header>
 
-      {/* FIXED: TAB NAVIGATION - Now properly positioned below the header */}
       <nav className="tournament-tabs">
         <div className="nav-tabs">
           <button 
@@ -255,7 +298,9 @@ function MensAutumnTours({
       <main className="tournament-main">
         {activeTab === 'fixtures' && (
           <div className="fixtures-section">
-            <h2 className="section-title">Autumn Nations Series 2026 Fixtures</h2>
+            <h2 className="section-title centered-fixtures-title">
+              Autumn Nations Series 2026 Fixtures
+            </h2>
             
             {hasFavoriteTeams && (
               <div className="match-filters">
@@ -281,7 +326,6 @@ function MensAutumnTours({
                   className={`match-card ${match.isFavoriteMatch ? 'favorite-match' : ''}`}
                   onClick={() => handleMatchClick(match)}
                 >
-                  {/* FIXED: Visible star icon & featured wording */}
                   {match.isFavoriteMatch && (
                     <div className="match-highlight">
                       ⭐ Features {match.favoriteTeamsInvolved.join(' & ')}
@@ -294,22 +338,32 @@ function MensAutumnTours({
                   </div>
                   
                   <div className="teams-container">
+                    {/* Team 1 - Left Side */}
                     <div className={`team ${favoriteTeams.includes(match.team1.name) ? 'favorite' : ''}`}>
-                      <span className="team-flag">{match.team1.flag}</span>
+                      <div className="team-row">
+                        <div className="team-flag">
+                          <Flag country={match.team1.name} size="medium" />
+                        </div>
+                        <span className="team-ranking">#{match.team1.ranking}</span>
+                      </div>
                       <span className="team-name">{match.team1.name}</span>
-                      <span className="team-ranking">#{match.team1.ranking}</span>
-                      {favoriteTeams.includes(match.team1.name) && <span className="favorite-indicator">❤️</span>}
                     </div>
                     
+                    {/* VS Container */}
                     <div className="vs-container">
                       <span className="vs">VS</span>
+                      <span className="match-time">{match.time}</span>
                     </div>
                     
+                    {/* Team 2 - Right Side */}
                     <div className={`team ${favoriteTeams.includes(match.team2.name) ? 'favorite' : ''}`}>
-                      {favoriteTeams.includes(match.team2.name) && <span className="favorite-indicator">❤️</span>}
-                      <span className="team-ranking">#{match.team2.ranking}</span>
+                      <div className="team-row reverse">
+                        <div className="team-flag">
+                          <Flag country={match.team2.name} size="medium" />
+                        </div>
+                        <span className="team-ranking">#{match.team2.ranking}</span>
+                      </div>
                       <span className="team-name">{match.team2.name}</span>
-                      <span className="team-flag">{match.team2.flag}</span>
                     </div>
                   </div>
                   
@@ -338,10 +392,12 @@ function MensAutumnTours({
             <div className="teams-grid">
               {enhancedTeams.map((team, index) => (
                 <div key={index} className={`nation-card ${team.isFavorite ? 'favorite-team' : ''}`}>
-                  {team.isFavorite && <div className="favorite-badge">❤️ YOUR TEAM</div>}
+                  {team.isFavorite && <div className="favorite-badge">⭐ YOUR TEAM</div>}
                   
                   <div className="nation-header">
-                    <span className="nation-flag">{team.flag}</span>
+                    <div className="nation-flag">
+                      <Flag country={team.name} size="large" />
+                    </div>
                     <div className="nation-info">
                       <h3 className="nation-name">{team.name}</h3>
                       <span className="world-ranking">World Ranking: #{team.ranking}</span>
@@ -354,12 +410,6 @@ function MensAutumnTours({
                       {formatForm(team.form)}
                     </div>
                   </div>
-
-                  {team.isFavorite && (
-                    <div className="team-highlight">
-                      Your followed team
-                    </div>
-                  )}
                   
                   <div className="nation-actions">
                     <button className="team-btn">👀 Follow</button>
@@ -388,9 +438,12 @@ function MensAutumnTours({
               {autumnToursData.standings.map(team => (
                 <div key={team.position} className={`table-row ${favoriteTeams.includes(team.team) ? 'favorite-team' : ''}`}>
                   <span className="position">{team.position}</span>
-                  <span className="team-name">
-                    {team.team} 
-                    {favoriteTeams.includes(team.team) && <span className="favorite-indicator"> ❤️</span>}
+                  <span className="team-name-cell">
+                    <Flag country={team.team} size="small" />
+                    <div className="team-name-wrapper">
+                      <span className="team-name-text">{team.team}</span>
+                      {favoriteTeams.includes(team.team) && <span className="favorite-star">⭐</span>}
+                    </div>
                   </span>
                   <span>{team.played}</span>
                   <span>{team.won}</span>
@@ -414,12 +467,14 @@ function MensAutumnTours({
               onVenueChange={setSelectedVenue}
             />
             
-            {/* CHANGED: StadiumMap to StadiumPage */}
+            {/* IMPORTANT: Pass showNavBar={false} to hide the internal nav bar */}
             <StadiumPage 
               stadium={selectedVenue}
               onSeatSelect={handleSeatSelect}
               interactive={true}
               showInfo={true}
+              showNavBar={false}
+              onNavigateBack={onNavigateBack}
             />
             
             <div className="stadium-features">
@@ -456,37 +511,6 @@ function MensAutumnTours({
           </div>
         )}
 
-        {/* FIXED: Tournament Features Section - NOW WITH PROPER ALIGNMENT */}
-        <div className="features-section">
-          <h2 className="section-title">Tournament Features</h2>
-          <div className="features-grid">
-            <div className="feature-card" onClick={onNavigateToFantasy}>
-              <div className="feature-icon">🏅</div>
-              <div className="feature-title">Fantasy League</div>
-              <div className="feature-description">Build your dream Autumn Nations team</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToResults}>
-              <div className="feature-icon">📈</div>
-              <div className="feature-title">Live Results</div>
-              <div className="feature-description">Real-time scores and standings</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToPodcasts}>
-              <div className="feature-icon">🎧</div>
-              <div className="feature-title">Podcasts</div>
-              <div className="feature-description">Expert analysis and interviews</div>
-            </div>
-            
-            <div className="feature-card" onClick={() => setActiveTab('stadiums')}>
-              <div className="feature-icon">🏟️</div>
-              <div className="feature-title">Stadium Maps</div>
-              <div className="feature-description">Interactive venue exploration</div>
-            </div>
-          </div>
-        </div>
-
-        {/* FIXED: Quick Actions - NOW WITH PROPER ALIGNMENT */}
         <div className="quick-actions">
           <button className="quick-btn" onClick={onNavigateToFantasy}>
             🏅 Autumn Nations Fantasy

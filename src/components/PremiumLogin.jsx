@@ -1,43 +1,27 @@
+import React from 'react';
 import './PremiumLogin.css';
+import NavBar from './NavBar';
 import razNavIcon from '../Assets/images/raz-nav-icon.png';
 
 function PremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
   const handleSubscribe = () => {
     alert('🎉 Premium subscription activated! Welcome to Premium features!\n\nYou now have access to:\n• Official merchandise stores\n• Ad-free experience\n• Exclusive content');
-    // DON'T navigate away - stay on premium page or show success message
-    // Remove this line: onNavigateToHomePage();
   };
 
   return (
     <div className="premium-login-page">
-      {/* NEW: Professional Navbar */}
-      <nav className="raz-navbar">
-        <div className="nav-logo-section">
-          <img 
-            src={razNavIcon} 
-            alt="Rugby Anthem Zone" 
-            className="nav-main-logo" 
-          />
-        </div>
-
-        <div className="nav-icons-section">
-          <button className="nav-icon back-icon" onClick={onNavigateBack}>
-            ←
-          </button>
-          <button className="nav-icon home-icon">
-            🏠
-          </button>
-          <button className="nav-icon search-icon">
-            🔍
-          </button>
-          <button className="nav-icon profile-icon">
-            👤
-          </button>
-          <button className="nav-icon menu-icon">
-            ☰
-          </button>
-        </div>
-      </nav>
+      {/* CONSISTENT NAVBAR */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Premium")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
 
       {/* Top Ad Banner */}
       <div className="top-ad-banner">
@@ -135,7 +119,7 @@ function PremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
               <div className="security-badge">Secure SSL Encryption</div>
             </div>
 
-            {/* PREMIUM FEATURES - NOW WITH GOLD BACKGROUND */}
+            {/* PREMIUM FEATURES */}
             <div className="premium-features">
               <h4>🎯 Premium Features Included:</h4>
               <ul>
@@ -150,7 +134,7 @@ function PremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
               </ul>
             </div>
 
-            {/* TEMPORARY TEST BUTTON - REMOVE LATER */}
+            {/* TEMPORARY TEST BUTTON */}
             <div className="test-button-container">
               <button 
                 type="button"

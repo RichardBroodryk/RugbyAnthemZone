@@ -1,4 +1,4 @@
-/* ===== SUPER PREMIUM LOGIN PAGE - COMPLETE REDESIGN ===== */
+/* ===== SUPER PREMIUM LOGIN PAGE - UPDATED ===== */
 .super-premium-login-page {
   min-height: 100vh;
   background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
@@ -9,87 +9,7 @@
   overflow-x: hidden;
 }
 
-/* ===== PROFESSIONAL NAVBAR ===== */
-.raz-navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.8rem 1.5rem;
-  background: white;
-  border-bottom: 1px solid #e0e0e0;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-  height: 70px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  flex-shrink: 0;
-}
-
-.nav-logo-section {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.nav-main-logo {
-  height: 50px;
-  width: auto;
-  object-fit: contain;
-  max-width: 180px;
-  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
-}
-
-.nav-icons-section {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.8rem;
-  align-items: center;
-}
-
-.nav-icon {
-  border: none;
-  font-size: 1.3rem;
-  cursor: pointer;
-  padding: 0.6rem;
-  border-radius: 12px;
-  transition: all 0.25s ease;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-}
-
-.nav-icon:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.back-icon {
-  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
-}
-
-.home-icon {
-  background: linear-gradient(135deg, #66bb6a, #4caf50);
-}
-
-.search-icon {
-  background: linear-gradient(135deg, #ffb74d, #ff9800);
-}
-
-.profile-icon {
-  background: linear-gradient(135deg, #ba68c8, #9c27b0);
-}
-
-.menu-icon {
-  background: linear-gradient(135deg, #78909c, #546e7a);
-}
-
-/* ===== STANDARDIZED AD BANNERS ===== */
+/* ===== AD BANNERS ===== */
 .top-ad-banner {
   background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
   color: white;
@@ -457,26 +377,6 @@
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
-  .raz-navbar {
-    padding: 0.6rem 1rem;
-    height: 65px;
-  }
-  
-  .nav-main-logo {
-    height: 42px;
-    max-width: 150px;
-  }
-  
-  .nav-icons-section {
-    gap: 0.5rem;
-  }
-  
-  .nav-icon {
-    width: 44px;
-    height: 44px;
-    font-size: 1.2rem;
-  }
-  
   .super-premium-login-container {
     padding: 30px 20px;
     margin: 20px;
@@ -520,27 +420,6 @@
 }
 
 @media (max-width: 480px) {
-  .raz-navbar {
-    padding: 0.5rem;
-    height: 60px;
-  }
-  
-  .nav-main-logo {
-    height: 38px;
-    max-width: 130px;
-  }
-  
-  .nav-icons-section {
-    gap: 0.4rem;
-  }
-  
-  .nav-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
-    padding: 0.5rem;
-  }
-  
   .super-premium-login-content {
     padding: 20px 15px;
   }

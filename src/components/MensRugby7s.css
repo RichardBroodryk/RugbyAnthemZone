@@ -1,107 +1,101 @@
-/* MensRugby7s.css - COMPLETE NEW VERSION WITH PROPER STATUS BADGE POSITIONING */
-
+/* MensRugby7s.css - EXACT RIVAL TOURS/AUTUMN TOURS TEMPLATE */
 .mens-rugby-7s-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #4ECDC4 0%, #FF6B35 100%) !important; /* RUGBY 7s TEAL & ORANGE */
-  color: white;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  color: #333;
   font-family: 'Arial', sans-serif;
   overflow-x: hidden;
 }
 
-/* ===== STANDARD WHITE TOP NAVIGATION ===== */
-.top-nav {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  padding: 1rem !important;
-  background: white !important;
-  border-bottom: 2px solid #e0e0e0 !important;
-  gap: 10px !important;
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 1000 !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
-}
-
-.nav-btn {
-  background: #FF6B35 !important; /* RUGBY 7s ORANGE */
-  color: #4ECDC4 !important; /* RUGBY 7s TEAL */
-  border: none !important;
-  padding: 0.7rem 1.2rem !important;
-  border-radius: 20px !important;
-  cursor: pointer !important;
-  font-size: 0.9rem !important;
-  font-weight: 600 !important;
-  flex: 1 !important;
-  min-width: 70px !important;
-  transition: all 0.3s ease !important;
-  white-space: nowrap !important;
-}
-
-.nav-btn:hover {
-  background: #E55A2B !important; /* DARKER ORANGE */
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4) !important;
+/* ===== TOP AD BANNER ===== */
+.mens-rugby-7s-page .top-ad-banner {
+  background: linear-gradient(90deg, #1976d2, #42a5f5);
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border-bottom: 2px solid #1565c0;
+  width: 100%;
 }
 
 /* ===== TAB NAVIGATION ===== */
-.tournament-tabs {
-  display: flex;
-  justify-content: center;
-  padding: 1rem 2rem;
-  background: rgba(78, 205, 196, 0.9); /* RUGBY 7s TEAL */
-  border-bottom: 2px solid #FF6B35; /* RUGBY 7s ORANGE */
-  position: sticky;
-  top: 80px;
-  z-index: 999;
+.mens-rugby-7s-page .tournament-tabs {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 1rem 2rem !important;
+  background: #4fc3f7 !important;
+  border-bottom: 2px solid #29b6f6 !important;
+  position: sticky !important;
+  top: 80px !important;
+  z-index: 999 !important;
+  width: 100% !important;
 }
 
-.nav-tabs {
-  display: flex;
-  gap: 0.5rem;
+.mens-rugby-7s-page .nav-tabs {
+  display: flex !important;
+  gap: 0.5rem !important;
 }
 
-.tab-btn {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  white-space: nowrap;
+.mens-rugby-7s-page .tab-btn {
+  background: white !important;
+  color: #1565c0 !important;
+  border: none !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 25px !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  white-space: nowrap !important;
+  border: 2px solid #29b6f6 !important;
 }
 
-.tab-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
+.mens-rugby-7s-page .tab-btn:hover {
+  background: #f0f8ff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.4) !important;
 }
 
-.tab-btn.active {
-  background: #FF6B35; /* RUGBY 7s ORANGE */
-  color: #4ECDC4; /* RUGBY 7s TEAL */
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+.mens-rugby-7s-page .tab-btn.active {
+  background: #1565c0 !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(21, 101, 192, 0.4) !important;
+  border-color: #0d47a1 !important;
 }
 
-/* ===== HERO SECTION ===== */
-.tournament-hero {
-  background: linear-gradient(135deg, #4ECDC4 0%, #FF6B35 100%) !important;
+/* ===== FIXTURES/SERIES SECTION ===== */
+.mens-rugby-7s-page .fixtures-section {
+  text-align: center;
+}
+
+.mens-rugby-7s-page .centered-fixtures-title {
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin: 0 auto 30px auto;
+  color: #1565c0;
+  font-size: 2.5rem;
+  padding: 0 20px;
+}
+
+/* ===== TOURNAMENT HERO ===== */
+.mens-rugby-7s-page .tournament-hero {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
   padding: 3rem 2rem;
   text-align: center;
-  border-bottom: 3px solid #FF6B35;
+  border-bottom: 3px solid #4fc3f7;
   position: relative;
   overflow: hidden;
 }
 
-.hero-content {
+.mens-rugby-7s-page .hero-content {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
-.tournament-badge {
+.mens-rugby-7s-page .tournament-badge {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -109,7 +103,7 @@
   margin-bottom: 1rem;
 }
 
-.tournament-logo {
+.mens-rugby-7s-page .tournament-logo {
   font-size: 4rem;
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
@@ -117,23 +111,22 @@
   border: 3px solid rgba(255, 255, 255, 0.2);
 }
 
-.tournament-info h1 {
+.mens-rugby-7s-page .tournament-info h1 {
   font-size: 3rem;
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  color: white;
 }
 
-.tournament-year {
+.mens-rugby-7s-page .tournament-year {
   font-size: 1.5rem;
   opacity: 0.9;
   margin: 0;
-  color: #FFD700 !important; /* GOLD */
+  color: #e3f2fd;
   font-weight: 600;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.tournament-description {
+.mens-rugby-7s-page .tournament-description {
   font-size: 1.2rem;
   max-width: 600px;
   margin: 1rem auto 0;
@@ -144,10 +137,10 @@
   background: rgba(255, 255, 255, 0.9);
   padding: 1rem 1.5rem;
   border-radius: 10px;
-  border: 2px solid rgba(255, 107, 53, 0.3);
+  border: 2px solid rgba(79, 195, 247, 0.3);
 }
 
-.hero-stats {
+.mens-rugby-7s-page .hero-stats {
   display: flex;
   justify-content: center;
   gap: 3rem;
@@ -156,28 +149,28 @@
   z-index: 2;
 }
 
-.stat {
+.mens-rugby-7s-page .stat {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.stat-number {
+.mens-rugby-7s-page .stat-number {
   font-size: 2rem;
   font-weight: bold;
-  color: #FFD700 !important; /* GOLD */
+  color: #4fc3f7;
 }
 
-.stat-label {
+.mens-rugby-7s-page .stat-label {
   font-size: 0.9rem;
   opacity: 0.8;
 }
 
 /* ===== PERSONALIZATION BANNER ===== */
-.personalization-banner {
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.3), rgba(78, 205, 196, 0.3));
+.mens-rugby-7s-page .personalization-banner {
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.3), rgba(30, 60, 114, 0.3));
   backdrop-filter: blur(10px);
-  border: 2px solid #FF6B35;
+  border: 2px solid #4fc3f7;
   border-radius: 15px;
   padding: 1.5rem;
   margin: 1.5rem auto;
@@ -189,407 +182,589 @@
 }
 
 @keyframes glow {
-  from { box-shadow: 0 0 10px rgba(255, 107, 53, 0.3); }
-  to { box-shadow: 0 0 20px rgba(255, 107, 53, 0.6); }
+  from { box-shadow: 0 0 10px rgba(79, 195, 247, 0.3); }
+  to { box-shadow: 0 0 20px rgba(79, 195, 247, 0.6); }
 }
 
-.banner-icon {
+.mens-rugby-7s-page .banner-icon {
   font-size: 2rem;
   flex-shrink: 0;
 }
 
-.banner-content h3 {
+.mens-rugby-7s-page .banner-content h3 {
   margin: 0 0 0.5rem 0;
-  color: #FF6B35 !important;
+  color: #000000 !important;
   font-size: 1.2rem;
 }
 
-.banner-content p {
+.mens-rugby-7s-page .banner-content p {
   margin: 0;
   opacity: 0.9;
   font-size: 0.95rem;
 }
 
-/* ===== MAIN CONTENT STRUCTURE ===== */
-.tournament-main {
+/* ===== MAIN CONTENT ===== */
+.mens-rugby-7s-page .tournament-main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-.section-title {
+.mens-rugby-7s-page .section-title {
   font-size: 2rem;
   margin-bottom: 2rem;
   text-align: center;
-  color: #FF6B35 !important;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  color: #1565c0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: block;
 }
 
-/* ===== SERIES CARDS - PROPER BUTTON FIXES ===== */
-.series-grid {
+/* ===== MATCH/SERIES FILTERS ===== */
+.mens-rugby-7s-page .match-filters,
+.mens-rugby-7s-page .series-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mens-rugby-7s-page .filter-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 0.7rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.mens-rugby-7s-page .filter-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.mens-rugby-7s-page .filter-btn.active {
+  background: #4fc3f7;
+  color: white;
+  border-color: #4fc3f7;
+  box-shadow: 0 4px 15px rgba(79, 195, 247, 0.4);
+}
+
+/* ===== SERIES/MATCH CARD STYLING ===== */
+.mens-rugby-7s-page .matches-grid,
+.mens-rugby-7s-page .series-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 1.5rem;
-  margin-bottom: 2rem;
 }
 
-.series-card {
-  background: white !important;
-  color: #333 !important;
-  border: 2px solid #e0e0e0 !important;
-  border-radius: 12px;
-  padding: 1.2rem !important;
-  cursor: pointer;
+.mens-rugby-7s-page .match-card,
+.mens-rugby-7s-page .series-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
+  cursor: pointer;
+  border-left: 4px solid #4fc3f7;
+  margin-bottom: 16px;
+  overflow: hidden;
   position: relative;
-  min-height: 200px;
-  display: flex;
-  flex-direction: column;
 }
 
-.series-card:hover {
-  background: white !important;
-  transform: translateY(-3px) !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
-  border-color: #e0e0e0 !important;
+.mens-rugby-7s-page .match-card:hover,
+.mens-rugby-7s-page .series-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(79, 195, 247, 0.15);
 }
 
-.series-header {
+.mens-rugby-7s-page .match-card.favorite-match,
+.mens-rugby-7s-page .series-card.featured-series {
+  border-left-width: 6px;
+  background: linear-gradient(135deg, #f8fbff, #ffffff);
+}
+
+/* ===== MATCH/SERIES HIGHLIGHT ===== */
+.mens-rugby-7s-page .match-highlight {
+  background: linear-gradient(90deg, #ff6b35, #e55a2b);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+/* STATUS BADGE POSITIONING - UPDATED FOR AUTUMN TOURS TEMPLATE */
+.mens-rugby-7s-page .status-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #ff6b35;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mens-rugby-7s-page .status-badge.upcoming {
+  background: #4fc3f7 !important;
+}
+
+.mens-rugby-7s-page .status-badge.completed {
+  background: #28a745 !important;
+}
+
+/* ===== MATCH/SERIES HEADER ===== */
+.mens-rugby-7s-page .match-header,
+.mens-rugby-7s-page .series-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid #e0e0e0;
-  min-height: 40px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
   gap: 0.5rem;
-  width: 100%;
-  box-sizing: border-box;
-  position: relative;
 }
 
-.series-name {
-  font-size: 0.85rem !important;
-  font-weight: 600 !important;
-  color: #333 !important;
-  flex: 1;
-  min-width: 0;
+.mens-rugby-7s-page .match-tournament,
+.mens-rugby-7s-page .series-name {
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.8em;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+  max-width: 60%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-right: 0.5rem;
-  line-height: 1.2;
-  max-width: 60%;
 }
 
-.series-date {
-  font-size: 0.75rem !important;
-  font-weight: 600 !important;
-  color: #FF6B35 !important;
+.mens-rugby-7s-page .match-date,
+.mens-rugby-7s-page .series-date {
+  color: #666;
+  font-size: 0.9em;
+  font-weight: 500;
   white-space: nowrap;
-  flex-shrink: 0;
-  min-width: 90px;
-  text-align: right;
-  line-height: 1.2;
-  margin-left: auto;
-  z-index: 2;
 }
 
-/* ===== STATUS BADGE POSITIONING FIX - COMPACT & CENTERED ===== */
-.status-badge {
-  position: absolute !important;
-  top: -8px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  padding: 0.2rem 0.6rem !important; /* Reduced padding */
-  border-radius: 8px !important; /* Smaller radius */
-  font-size: 0.6rem !important; /* Smaller font */
-  font-weight: bold !important;
-  text-transform: uppercase !important;
-  z-index: 1000 !important;
-  pointer-events: none !important;
-  white-space: nowrap !important;
-  max-width: 80px !important; /* Limit width */
-  text-align: center !important;
-}
-
-.status-badge.upcoming {
-  background: #FF6B35 !important;
-  color: white !important;
-}
-
-.status-badge.completed {
-  background: #28a745 !important;
-  color: white !important;
-}
-
-.series-teams {
+/* ===== SERIES LOCATION ===== */
+.mens-rugby-7s-page .series-location {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 15px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  gap: 0.8rem;
-  flex: 1;
+  gap: 8px;
 }
 
-.team-preview {
+/* ===== TEAMS CONTAINER ===== */
+.mens-rugby-7s-page .teams-container,
+.mens-rugby-7s-page .series-teams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 16px;
+  min-height: 100px;
+}
+
+.mens-rugby-7s-page .team,
+.mens-rugby-7s-page .team-preview {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 1;
   min-width: 0;
-  padding: 0.3rem;
+  padding: 0 5px;
 }
 
-.team-flag {
-  font-size: 1.8rem !important;
-  margin-bottom: 0.3rem;
+.mens-rugby-7s-page .team-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  width: 100%;
+  justify-content: center;
 }
 
-.team-name {
-  font-weight: 600;
-  font-size: 0.85rem !important;
-  margin-bottom: 0.2rem;
+.mens-rugby-7s-page .team-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.mens-rugby-7s-page .team-flag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mens-rugby-7s-page .team-ranking {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #4fc3f7;
+  background: #f0f7ff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  min-width: 45px;
   text-align: center;
+}
+
+.mens-rugby-7s-page .team-name {
+  font-weight: 600;
+  color: #000000;
+  font-size: 1.3em;
+  text-align: center;
+  line-height: 1.2;
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 100%;
-  color: #333 !important;
 }
 
-.match-footer {
-  margin-bottom: 0.5rem !important;
-  padding-top: 0.8rem !important;
-  border-top: 1px solid #e0e0e0 !important;
-  text-align: center !important;
-  font-size: 0.8rem !important;
-  font-weight: 600 !important;
-  color: #333 !important;
-  line-height: 1.2 !important;
+/* ===== VS CONTAINER ===== */
+.mens-rugby-7s-page .vs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 70px;
+  flex-shrink: 0;
+  margin: 0 10px;
 }
 
-/* ===== SERIES ACTIONS - PROPER BUTTON FIXES ===== */
-.series-actions {
+.mens-rugby-7s-page .vs {
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.1em;
+  background: #f5f5f5;
+  padding: 8px 16px;
+  border-radius: 12px;
+  white-space: nowrap;
+  border: 2px solid #e0e0e0;
+}
+
+.mens-rugby-7s-page .match-time {
+  color: #666;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+/* ===== MATCH/SERIES FOOTER ===== */
+.mens-rugby-7s-page .match-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+  min-height: 32px;
+}
+
+.mens-rugby-7s-page .venue, .mens-rugby-7s-page .capacity {
+  color: #666;
+  font-size: 0.8em;
+  font-style: italic;
+  text-align: right;
+  flex: 1;
+  margin-left: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== MATCH/SERIES ACTIONS ===== */
+.mens-rugby-7s-page .match-actions,
+.mens-rugby-7s-page .series-actions {
   display: flex;
   gap: 0.5rem;
   margin-top: auto;
   padding-top: 0.8rem;
 }
 
-.action-btn {
+.mens-rugby-7s-page .action-btn {
   flex: 1;
-  padding: 0.5rem 0.4rem !important;
-  margin: 0 !important;
-  border: none !important;
-  border-radius: 6px !important;
-  min-height: 32px !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  font-size: 0.7rem !important;
-  font-weight: 600 !important;
-  line-height: 1 !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.2rem !important;
+  padding: 0.5rem 0.4rem;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: 600;
   transition: all 0.3s ease;
-  background: #FF6B35 !important;
-  color: #4ECDC4 !important;
-  box-sizing: border-box !important;
+  font-size: 0.7rem;
+  min-height: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
 }
 
-.action-btn.primary {
-  background: #FF6B35 !important;
-  color: #4ECDC4 !important;
-}
-
-.action-btn.secondary {
-  background: #4ECDC4 !important;
+/* WATCH BUTTON - NAVY BLUE */
+.mens-rugby-7s-page .action-btn.primary,
+.mens-rugby-7s-page .match-card .match-actions .action-btn:nth-of-type(1),
+.mens-rugby-7s-page .match-card .match-actions .action-btn:nth-child(1),
+.mens-rugby-7s-page .match-card .match-actions button:first-child,
+.mens-rugby-7s-page .match-card .match-actions .action-btn:first-child {
+  background-color: #0d47a1 !important;
   color: white !important;
-  border: 1px solid #45b8b0 !important;
+  border: none !important;
 }
 
-.action-btn:hover {
+/* LISTEN/AUDIO BUTTON - LIGHT BLUE */
+.mens-rugby-7s-page .action-btn.secondary,
+.mens-rugby-7s-page .match-card .match-actions .action-btn:nth-of-type(2),
+.mens-rugby-7s-page .match-card .match-actions .action-btn:nth-child(2),
+.mens-rugby-7s-page .match-card .match-actions button:last-child,
+.mens-rugby-7s-page .match-card .match-actions .action-btn:last-child {
+  background-color: #4fc3f7 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.mens-rugby-7s-page .action-btn:hover {
   transform: translateY(-1px);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== SERIES INDICATOR ===== */
-.series-indicator {
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #4ECDC4;
-  color: white;
-  padding: 0.2rem 1rem;
-  border-radius: 10px;
-  font-size: 0.7rem;
-  font-weight: bold;
-  z-index: 5;
+/* Hover effects */
+.mens-rugby-7s-page .action-btn.primary:hover {
+  background-color: #1565c0 !important;
 }
 
-/* ===== FEATURED SERIES STYLING ===== */
-.featured-series {
-  border: 3px solid #FF6B35 !important;
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.15), rgba(78, 205, 196, 0.25)) !important;
-  position: relative;
+.mens-rugby-7s-page .action-btn.secondary:hover {
+  background-color: #29b6f6 !important;
 }
 
 /* ===== TEAMS SECTION ===== */
-.teams-section {
-  margin-bottom: 2rem;
-}
-
-.teams-grid {
+.mens-rugby-7s-page .teams-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
 }
 
-.nation-card {
+.mens-rugby-7s-page .nation-card {
   background: white;
   color: #333;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 1.5rem;
   border: 2px solid #e0e0e0;
   transition: all 0.3s ease;
-  text-align: center;
   position: relative;
+  text-align: center;
 }
 
-.nation-card:hover {
-  background: white !important;
-  transform: translateY(-3px) !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
-  border-color: #e0e0e0 !important;
+.mens-rugby-7s-page .nation-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.nation-flag {
-  font-size: 2rem;
+.mens-rugby-7s-page .nation-flag {
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
 
-.nation-name {
-  font-size: 1rem;
+.mens-rugby-7s-page .nation-name {
+  font-size: 1.3rem;
   font-weight: 600;
   margin: 0 0 0.25rem 0;
-  color: #333;
+  color: #000000;
 }
 
-.world-ranking {
-  font-size: 0.8rem;
-  opacity: 0.8;
-  margin-bottom: 0.5rem;
-  color: #666;
-}
-
-.points {
+.mens-rugby-7s-page .world-ranking {
   font-size: 0.9rem;
-  font-weight: bold;
-  color: #FF6B35;
+  opacity: 0.8;
+  color: #666;
+  margin-bottom: 0.5rem;
 }
 
-/* ===== FEATURES GRID ===== */
-.features-grid {
+.mens-rugby-7s-page .points {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #4fc3f7;
+}
+
+/* ===== STANDINGS TABLE ===== */
+.mens-rugby-7s-page .standings-table {
+  background: white;
+  color: #333;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #e0e0e0;
+  margin-bottom: 2rem;
+}
+
+.mens-rugby-7s-page .table-header {
   display: grid;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 1rem !important;
-  margin-top: 2rem !important;
+  grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: #1e3c72;
+  font-weight: 600;
+  color: white;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.mens-rugby-7s-page .table-row {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.3s ease;
+  align-items: center;
+}
+
+.mens-rugby-7s-page .table-row:hover {
+  background: #f8f9fa;
+}
+
+.mens-rugby-7s-page .table-row:last-child {
+  border-bottom: none;
+}
+
+.mens-rugby-7s-page .position {
+  font-weight: bold;
+  color: #4fc3f7;
+}
+
+.mens-rugby-7s-page .team-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mens-rugby-7s-page .team-name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mens-rugby-7s-page .team-name-text {
+  font-weight: 600;
+  color: #000000;
+}
+
+.mens-rugby-7s-page .favorite-star {
+  color: #ffd700;
+  font-size: 1.1em;
+}
+
+/* ===== FEATURES GRID - NO BIG TITLE ===== */
+.mens-rugby-7s-page .features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
   max-width: 100%;
   overflow: hidden;
 }
 
-.feature-card {
-  background: white !important;
-  color: #333 !important;
-  border: 2px solid #e0e0e0 !important;
-  border-radius: 12px !important;
-  padding: 1rem !important;
+.mens-rugby-7s-page .feature-card {
+  background: white;
+  color: #333;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.2rem;
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
-  min-height: 120px !important;
+  min-height: 140px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.feature-card:hover {
-  background: white !important;
-  transform: translateY(-3px) !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
-  border-color: #e0e0e0 !important;
+.mens-rugby-7s-page .feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #4fc3f7;
 }
 
-.feature-icon {
-  font-size: 2rem !important;
-  margin-bottom: 0.5rem !important;
-  color: #FF6B35;
+.mens-rugby-7s-page .feature-icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  color: #4fc3f7;
 }
 
-.feature-title {
-  font-size: 1rem !important;
+.mens-rugby-7s-page .feature-title {
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
-  color: #4ECDC4 !important;
+  color: #1565c0;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.feature-description {
-  font-size: 0.8rem !important;
+.mens-rugby-7s-page .feature-description {
+  font-size: 0.8rem;
   color: #666;
   line-height: 1.3;
 }
 
 /* ===== QUICK ACTIONS ===== */
-.quick-actions {
+.mens-rugby-7s-page .quick-actions {
   display: grid;
-  grid-template-columns: repeat(4, 1fr) !important;
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.8rem;
   margin-top: 1.5rem;
   max-width: 100%;
 }
 
-.quick-btn {
-  background: linear-gradient(135deg, #FF6B35, #E55A2B) !important;
-  color: #4ECDC4 !important;
+.mens-rugby-7s-page .quick-btn {
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+  color: white;
   border: none;
-  padding: 0.8rem 1rem !important;
+  padding: 0.8rem 1rem;
   border-radius: 20px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 0.85rem !important;
+  font-size: 0.85rem;
   min-height: auto;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.quick-btn:hover {
+.mens-rugby-7s-page .quick-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 4px 15px rgba(79, 195, 247, 0.4);
 }
 
 /* ===== BOTTOM AD BANNER ===== */
-.bottom-ad-banner {
-  background: linear-gradient(90deg, #4ECDC4, #FF6B35);
+.mens-rugby-7s-page .bottom-ad-banner {
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
   color: white;
   text-align: center;
   padding: 1.5rem 2rem;
   font-weight: bold;
   font-size: 1.1rem;
-  border-top: 3px solid #FF6B35;
+  border-top: 3px solid #4fc3f7;
   margin-top: 3rem;
 }
 
-.bottom-ad-banner .ad-content {
+.mens-rugby-7s-page .bottom-ad-banner .ad-content {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -598,18 +773,17 @@
   margin: 0 auto;
 }
 
-.bottom-ad-banner .ad-icon {
+.mens-rugby-7s-page .bottom-ad-banner .ad-icon {
   font-size: 2rem;
 }
 
-.bottom-ad-banner .ad-text {
+.mens-rugby-7s-page .bottom-ad-banner .ad-text {
   flex: 1;
-  color: white;
 }
 
-.bottom-ad-banner .ad-cta {
-  background: #FF6B35;
-  color: #4ECDC4;
+.mens-rugby-7s-page .bottom-ad-banner .ad-cta {
+  background: #4fc3f7;
+  color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 25px;
   font-weight: bold;
@@ -618,90 +792,243 @@
   border: none;
 }
 
-.bottom-ad-banner .ad-cta:hover {
-  background: #E55A2B;
+.mens-rugby-7s-page .bottom-ad-banner .ad-cta:hover {
+  background: #29b6f6;
   transform: translateY(-2px);
+}
+
+/* ===== FLAG COMPONENT STYLES ===== */
+.mens-rugby-7s-page .flag-small, 
+.mens-rugby-7s-page .flag-medium, 
+.mens-rugby-7s-page .flag-large {
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid #e0e0e0;
+}
+
+.mens-rugby-7s-page .flag-small {
+  width: 40px;
+  height: 25px;
+}
+
+.mens-rugby-7s-page .flag-medium {
+  width: 60px;
+  height: 40px;
+}
+
+.mens-rugby-7s-page .flag-large {
+  width: 80px;
+  height: 50px;
+}
+
+.mens-rugby-7s-page .flag-fallback {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #666;
+  font-size: 0.8em;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
-  .tournament-tabs {
-    padding: 1rem;
-    top: 70px;
+  .mens-rugby-7s-page .tournament-tabs {
+    padding: 1rem !important;
+    top: 70px !important;
   }
   
-  .nav-tabs {
+  .mens-rugby-7s-page .nav-tabs {
     order: 3;
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
   }
   
-  .tab-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
+  .mens-rugby-7s-page .tab-btn {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.8rem !important;
   }
   
-  .bottom-ad-banner .ad-content {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
-  
-  .series-grid {
+  .mens-rugby-7s-page .matches-grid,
+  .mens-rugby-7s-page .series-grid {
     grid-template-columns: 1fr;
   }
   
-  .teams-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  .mens-rugby-7s-page .teams-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
   
-  .features-grid {
+  .mens-rugby-7s-page .features-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
   
-  .quick-actions {
+  .mens-rugby-7s-page .quick-actions {
     grid-template-columns: repeat(2, 1fr) !important;
   }
   
-  .quick-btn {
-    min-width: 250px;
-    width: 100%;
+  .mens-rugby-7s-page .table-header,
+  .mens-rugby-7s-page .table-row {
+    grid-template-columns: 0.5fr 1.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+    font-size: 0.8rem;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .tournament-hero {
+  .mens-rugby-7s-page .tournament-hero {
     padding: 2rem 1rem;
   }
   
-  .tournament-info h1 {
+  .mens-rugby-7s-page .tournament-info h1 {
     font-size: 2rem;
   }
   
-  .tournament-logo {
+  .mens-rugby-7s-page .tournament-logo {
     font-size: 3rem;
   }
   
-  .section-title {
+  .mens-rugby-7s-page .section-title {
     font-size: 1.5rem;
   }
   
-  .personalization-banner {
-    flex-direction: column;
-    text-align: center;
+  .mens-rugby-7s-page .features-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .mens-rugby-7s-page .quick-actions {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .mens-rugby-7s-page .match-card,
+  .mens-rugby-7s-page .series-card {
+    min-height: 200px;
     padding: 1rem;
   }
   
-  .tournament-tabs {
-    top: 60px;
+  .mens-rugby-7s-page .teams-container,
+  .mens-rugby-7s-page .series-teams {
+    flex-direction: column;
+    gap: 20px;
+    min-height: auto;
   }
   
-  .features-grid {
-    grid-template-columns: 1fr !important;
+  .mens-rugby-7s-page .team,
+  .mens-rugby-7s-page .team-preview {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
   }
   
-  .quick-actions {
-    grid-template-columns: 1fr !important;
+  .mens-rugby-7s-page .team-name {
+    font-size: 1em;
+    margin: 0 10px;
+    flex: 1;
+    min-height: auto;
+    text-align: left;
   }
+  
+  .mens-rugby-7s-page .team-ranking {
+    font-size: 0.8em;
+    margin-top: 0;
+    width: auto;
+    min-width: 40px;
+  }
+  
+  .mens-rugby-7s-page .vs-container {
+    flex-direction: row;
+    gap: 20px;
+    order: -1;
+    margin: 0;
+    min-width: auto;
+  }
+  
+  .mens-rugby-7s-page .match-footer {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  
+  .mens-rugby-7s-page .venue, .mens-rugby-7s-page .capacity {
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .mens-rugby-7s-page .status-badge {
+    top: 8px !important;
+    right: 8px !important;
+    font-size: 0.6rem !important;
+    max-width: 100px !important;
+  }
+  
+  .mens-rugby-7s-page .table-header,
+  .mens-rugby-7s-page .table-row {
+    grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+    font-size: 0.7rem;
+    gap: 0.3rem;
+    padding: 0.6rem 0.8rem;
+  }
+}
+/* ULTIMATE OVERRIDE FOR WATCH/LISTEN BUTTONS */
+.mens-rugby-7s-page .match-card .match-actions .action-btn:nth-of-type(1),
+.mens-rugby-7s-page .match-card .match-actions .action-btn:nth-child(1),
+.mens-rugby-7s-page .match-card .match-actions button:first-child,
+.mens-rugby-7s-page .match-card .match-actions .action-btn:first-child,
+.mens-rugby-7s-page .series-card .series-actions .action-btn:nth-of-type(1),
+.mens-rugby-7s-page .series-card .series-actions .action-btn:nth-child(1),
+.mens-rugby-7s-page .series-card .series-actions button:first-child,
+.mens-rugby-7s-page .series-card .series-actions .action-btn:first-child {
+  background-color: #0d47a1 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.mens-rugby-7s-page .match-card .match-actions .action-btn:nth-of-type(2),
+.mens-rugby-7s-page .match-card .match-actions .action-btn:nth-child(2),
+.mens-rugby-7s-page .match-card .match-actions button:last-child,
+.mens-rugby-7s-page .match-card .match-actions .action-btn:last-child,
+.mens-rugby-7s-page .series-card .series-actions .action-btn:nth-of-type(2),
+.mens-rugby-7s-page .series-card .series-actions .action-btn:nth-child(2),
+.mens-rugby-7s-page .series-card .series-actions button:last-child,
+.mens-rugby-7s-page .series-card .series-actions .action-btn:last-child {
+  background-color: #4fc3f7 !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Hover effects */
+.mens-rugby-7s-page .match-card .match-actions .action-btn:nth-of-type(1):hover,
+.mens-rugby-7s-page .match-card .match-actions .action-btn:nth-child(1):hover,
+.mens-rugby-7s-page .series-card .series-actions .action-btn:nth-of-type(1):hover,
+.mens-rugby-7s-page .series-card .series-actions .action-btn:nth-child(1):hover {
+  background-color: #1565c0 !important;
+}
+
+.mens-rugby-7s-page .match-card .match-actions .action-btn:nth-of-type(2):hover,
+.mens-rugby-7s-page .match-card .match-actions .action-btn:nth-child(2):hover,
+.mens-rugby-7s-page .series-card .series-actions .action-btn:nth-of-type(2):hover,
+.mens-rugby-7s-page .series-card .series-actions .action-btn:nth-child(2):hover {
+  background-color: #29b6f6 !important;
+}
+
+.mens-rugby-7s-page .personalization-banner .banner-content p {
+  color: #000000 !important;
+  opacity: 1 !important;
+}
+
+.mens-rugby-7s-page .centered-fixtures-title {
+  color: #000000 !important;
+}
+
+/* Simple centering solution */
+.mens-rugby-7s-page .tournament-hero .hero-content {
+  text-align: center;
+}
+
+.mens-rugby-7s-page .tournament-badge,
+.mens-rugby-7s-page .tournament-info {
+  justify-content: center;
+  text-align: center;
 }

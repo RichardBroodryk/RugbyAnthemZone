@@ -1,44 +1,29 @@
+import React from 'react';
 import './SuperPremiumLogin.css';
+import NavBar from './NavBar'; // Import consistent NavBar
 import razNavIcon from '../Assets/images/raz-nav-icon.png';
 
 function SuperPremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
   const handleSubscribe = () => {
     alert('🎉 SUPER PREMIUM subscription activated! Welcome to VIP features!\n\nYou now have access to:\n• Complete ad-free experience\n• 4K Ultra HD streaming\n• VIP customer support\n• Early access to new features\n• Exclusive super premium content');
-    // DON'T navigate away - stay on super premium page or show success message
   };
 
   return (
     <div className="super-premium-login-page">
-      {/* NEW: Professional Navbar */}
-      <nav className="raz-navbar">
-        <div className="nav-logo-section">
-          <img 
-            src={razNavIcon} 
-            alt="Rugby Anthem Zone" 
-            className="nav-main-logo" 
-          />
-        </div>
+      {/* CONSISTENT NAVBAR */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Super Premium")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
 
-        <div className="nav-icons-section">
-          <button className="nav-icon back-icon" onClick={onNavigateBack}>
-            ←
-          </button>
-          <button className="nav-icon home-icon">
-            🏠
-          </button>
-          <button className="nav-icon search-icon">
-            🔍
-          </button>
-          <button className="nav-icon profile-icon">
-            👤
-          </button>
-          <button className="nav-icon menu-icon">
-            ☰
-          </button>
-        </div>
-      </nav>
-
-      {/* Top Ad Banner - UNDERNEATH NAVBAR */}
+      {/* Top Ad Banner */}
       <div className="top-ad-banner">
         👑 SUPER PREMIUM VIP - The Ultimate Rugby Experience! 🏆
       </div>
@@ -155,7 +140,7 @@ function SuperPremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
               <div className="security-badge">Secure SSL Encryption</div>
             </div>
 
-            {/* SUPER PREMIUM FEATURES - ORANGE/RED GRADIENT */}
+            {/* SUPER PREMIUM FEATURES */}
             <div className="super-premium-features">
               <h4>👑 Super Premium VIP Features:</h4>
               <ul>
@@ -171,7 +156,7 @@ function SuperPremiumLogin({ onNavigateToHomePage, onNavigateBack }) {
               </ul>
             </div>
 
-            {/* TEMPORARY TEST BUTTON - REMOVE LATER */}
+            {/* TEMPORARY TEST BUTTON */}
             <div className="test-button-container">
               <button 
                 type="button"

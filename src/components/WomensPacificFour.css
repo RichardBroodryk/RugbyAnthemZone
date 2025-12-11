@@ -1,376 +1,101 @@
-/* WomensPacificFour.css - COMPLETE FIXED VERSION WITH ULTRA-SPECIFIC OVERRIDES */
-
+/* WomensPacificFour.css - EXACT TEMPLATE WITH FIXES APPLIED */
 .womens-pacific-four-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #FFE5B4 0%, #FAD6A5 100%) !important; /* LIGHT PEACH - WOMEN'S THEME */
-  color: #1e3a8a; /* DARK BLUE TEXT FOR CONTRAST */
+  background: linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 100%) !important; /* PACIFIC TURQUOISE */
+  color: #00695C; /* DARK TEAL TEXT */
   font-family: 'Arial', sans-serif;
   overflow-x: hidden;
 }
 
-/* ===== ULTRA-SPECIFIC OVERRIDE FOR ALL GLOBAL CONFLICTS ===== */
-
-/* Force tournament-specific button styles - Override ALL global conflicts */
-.womens-pacific-four-page .match-actions .action-btn {
-  /* Layout & Box Model */
-  padding: 0.5rem 0.4rem !important;
-  margin: 0 !important;
-  border: none !important;
-  border-radius: 6px !important;
-  min-height: 32px !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  
-  /* Typography */
-  font-size: 0.7rem !important;
-  font-weight: 600 !important;
-  line-height: 1 !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  
-  /* Layout */
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.2rem !important;
-  flex: 1 !important;
-  
-  /* Prevent inheritance */
-  background: #1e88e5 !important; /* PACIFIC BLUE */
-  color: white !important;
-  box-sizing: border-box !important;
-  isolation: isolate !important;
-  
-  /* Reset any transforms */
-  transform: none !important;
-  transition: all 0.3s ease !important;
-}
-
-/* Specific button type overrides */
-.womens-pacific-four-page .match-actions .action-btn.primary {
-  background: #1e88e5 !important; /* PACIFIC BLUE */
-  color: white !important;
-}
-
-.womens-pacific-four-page .match-actions .action-btn.secondary {
-  background: #0d47a1 !important; /* DARK BLUE */
-  color: white !important;
-  border: 1px solid #083a87 !important;
-}
-
-/* Override header layout conflicts - FIX DATE OVERLAP ISSUE */
-.womens-pacific-four-page .match-header {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: flex-start !important;
-  margin-bottom: 1rem !important;
-  padding-bottom: 0.8rem !important;
-  border-bottom: 1px solid #e0e0e0 !important;
-  min-height: 40px !important;
-  gap: 0.5rem !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  isolation: isolate !important;
-  position: relative !important;
-}
-
-.womens-pacific-four-page .match-tournament {
-  font-size: 0.75rem !important;
-  opacity: 0.8 !important;
-  color: #666 !important;
-  font-weight: 500 !important;
-  flex: 1 !important;
-  min-width: 0 !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  margin-right: 0.5rem !important;
-  line-height: 1.2 !important;
-  max-width: 60% !important;
-}
-
-.womens-pacific-four-page .match-date {
-  font-size: 0.75rem !important;
-  font-weight: 600 !important;
-  color: #1e88e5 !important; /* PACIFIC BLUE */
-  white-space: nowrap !important;
-  flex-shrink: 0 !important;
-  min-width: 90px !important;
-  text-align: right !important;
-  line-height: 1.2 !important;
-  margin-left: auto !important;
-  z-index: 2 !important; /* Ensure date stays above other elements */
-}
-
-/* Force rivalry indicator positioning - FIX OVERLAP WITH DATE */
-.womens-pacific-four-page .pacific-rivalry::before {
-  content: "🌊 PACIFIC RIVALRY" !important;
-  position: absolute !important;
-  top: -10px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  background: #ff6f00 !important; /* ORANGE ACCENT */
-  color: white !important;
-  padding: 0.2rem 0.8rem !important;
-  border-radius: 8px !important;
-  font-size: 0.6rem !important;
-  font-weight: bold !important;
-  z-index: 1000 !important;
-  pointer-events: none !important;
-  max-width: 80% !important; /* Prevent overflow */
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-}
-
-/* Force match highlight positioning */
-.womens-pacific-four-page .match-highlight {
-  background: linear-gradient(135deg, #ff6f00, #ff9800) !important;
-  color: white !important;
-  padding: 0.5rem 1rem !important;
-  border-radius: 10px !important;
-  font-size: 0.8rem !important;
-  font-weight: bold !important;
-  margin-bottom: 1rem !important;
-  text-align: center !important;
-  animation: slideIn 0.5s ease-out !important;
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-/* Force pacific power positioning */
-.womens-pacific-four-page .pacific-power::after {
-  content: "🏆 Pacific Power" !important;
-  position: absolute !important;
-  top: 10px !important;
-  right: 10px !important;
-  background: #ff6f00 !important; /* ORANGE ACCENT */
-  color: white !important;
-  padding: 0.2rem 0.6rem !important;
-  border-radius: 8px !important;
-  font-size: 0.6rem !important;
-  font-weight: bold !important;
-  z-index: 1000 !important;
-  pointer-events: none !important;
-}
-
-/* ===== APPLY BRITISH LIONS NAVIGATION STRUCTURE ===== */
-
-/* Standard White Top Navigation - FROM BRITISH LIONS */
-.top-nav {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  padding: 1rem !important;
-  background: white !important;
-  border-bottom: 2px solid #e0e0e0 !important;
-  gap: 10px !important;
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 1000 !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
-}
-
-.nav-btn {
-  background: #1e88e5 !important; /* PACIFIC BLUE */
-  color: white !important;
-  border: none !important;
-  padding: 0.7rem 1.2rem !important;
-  border-radius: 20px !important;
-  cursor: pointer !important;
-  font-size: 0.9rem !important;
-  font-weight: 600 !important;
-  flex: 1 !important;
-  min-width: 70px !important;
-  transition: all 0.3s ease !important;
-  white-space: nowrap !important;
-}
-
-.nav-btn:hover {
-  background: #1565c0 !important; /* DARKER BLUE */
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(30, 136, 229, 0.4) !important;
-}
-
-/* Tab Navigation Positioned Below Header - FROM BRITISH LIONS */
-.tournament-tabs {
-  display: flex;
-  justify-content: center;
-  padding: 1rem 2rem;
-  background: rgba(30, 136, 229, 0.9); /* PACIFIC BLUE */
-  border-bottom: 2px solid #ff6f00; /* ORANGE ACCENT */
-  position: sticky;
-  top: 80px;
-  z-index: 999;
-}
-
-.nav-tabs {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.tab-btn {
-  background: rgba(255, 255, 255, 0.2);
+/* ===== TOP AD BANNER ===== */
+.womens-pacific-four-page .top-ad-banner {
+  background: linear-gradient(90deg, #00695C, #00796B); /* PACIFIC TEAL GRADIENT */
   color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.tab-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-.tab-btn.active {
-  background: #ff6f00; /* ORANGE ACCENT */
-  color: white;
-  box-shadow: 0 4px 15px rgba(255, 111, 0, 0.4);
-}
-
-/* ===== APPLY BRITISH LIONS WHITE GAME BLOCKS ===== */
-
-.match-card, .nation-card, .feature-card, .fact-card {
-  background: white !important;
-  color: #333 !important;
-  border: 2px solid #e0e0e0 !important;
-}
-
-/* Remove ALL hover color changes - Keep white background */
-.match-card:hover, .nation-card:hover, .feature-card:hover, .fact-card:hover {
-  background: white !important;
-  transform: translateY(-3px) !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
-  border-color: #e0e0e0 !important;
-}
-
-/* ===== KEEP PACIFIC FOUR SPECIFIC RIVALRY INDICATOR ===== */
-
-.pacific-rivalry {
-  border: 3px solid #ff6f00 !important; /* ORANGE ACCENT */
-  background: linear-gradient(135deg, rgba(255, 111, 0, 0.15), rgba(30, 136, 229, 0.25)) !important;
-  position: relative;
-}
-
-.match-highlight {
-  background: linear-gradient(135deg, #ff6f00, #ff9800);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  font-size: 0.8rem;
+  text-align: center;
+  padding: 12px;
   font-weight: bold;
-  margin-bottom: 1rem;
-  text-align: center;
-  animation: slideIn 0.5s ease-out;
+  font-size: 0.9rem;
+  border-bottom: 2px solid #4DB6AC; /* LIGHT TEAL */
+  width: 100%;
 }
 
-@keyframes slideIn {
-  from { transform: translateY(-10px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+/* ===== TAB NAVIGATION ===== */
+.womens-pacific-four-page .tournament-tabs {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 1rem 2rem !important;
+  background: #00796B !important; /* PACIFIC TEAL */
+  border-bottom: 2px solid #4DB6AC !important; /* LIGHT TEAL */
+  position: sticky !important;
+  top: 80px !important;
+  z-index: 999 !important;
+  width: 100% !important;
 }
 
-/* ===== APPLY BRITISH LIONS BOTTOM FEATURE BLOCKS ALIGNMENT ===== */
-
-/* FIXED: Features Grid - Force 4 equal columns */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 1rem !important;
-  margin-top: 2rem !important;
-  max-width: 100%;
-  overflow: hidden;
+.womens-pacific-four-page .nav-tabs {
+  display: flex !important;
+  gap: 0.5rem !important;
 }
 
-/* FIXED: Feature Cards - Consistent sizing */
-.feature-card {
+.womens-pacific-four-page .tab-btn {
   background: white !important;
-  color: #333 !important;
-  border: 2px solid #e0e0e0 !important;
-  border-radius: 12px !important;
-  padding: 1rem !important;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  color: #00796B !important; /* PACIFIC TEAL */
+  border: none !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 25px !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  white-space: nowrap !important;
+  border: 2px solid #4DB6AC !important; /* LIGHT TEAL */
+}
+
+.womens-pacific-four-page .tab-btn:hover {
+  background: #E0F2F1 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 121, 107, 0.4) !important;
+}
+
+.womens-pacific-four-page .tab-btn.active {
+  background: #4DB6AC !important; /* LIGHT TEAL */
+  color: #004D40 !important; /* DARK TEAL */
+  box-shadow: 0 4px 15px rgba(77, 182, 172, 0.4) !important;
+  border-color: #4DB6AC !important;
+}
+
+/* ===== FIXTURES/MATCHES SECTION ===== */
+.womens-pacific-four-page .fixtures-section {
   text-align: center;
-  min-height: 120px !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-.feature-icon {
-  font-size: 2rem !important;
-  margin-bottom: 0.5rem !important;
-  color: #1e88e5; /* PACIFIC BLUE */
+.womens-pacific-four-page .centered-fixtures-title {
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin: 0 auto 30px auto;
+  color: #00796B !important; /* PACIFIC TEAL */
+  font-size: 2.5rem;
+  padding: 0 20px;
 }
 
-.feature-title {
-  font-size: 1rem !important;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  color: #1e3a8a !important; /* DARK BLUE */
-}
-
-.feature-description {
-  font-size: 0.8rem !important;
-  color: #666;
-  line-height: 1.3;
-}
-
-/* FIXED: Quick Actions - Proper grid alignment */
-.quick-actions {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 0.8rem;
-  margin-top: 1.5rem;
-  max-width: 100%;
-}
-
-.quick-btn {
-  background: linear-gradient(135deg, #1e88e5, #1565c0) !important; /* PACIFIC BLUE GRADIENT */
-  color: white !important;
-  border: none;
-  padding: 0.8rem 1rem !important;
-  border-radius: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.85rem !important;
-  min-height: auto;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.quick-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4);
-}
-
-/* ===== KEEP PACIFIC FOUR SPECIFIC HERO STYLING ===== */
-
-.tournament-hero {
-  background: linear-gradient(135deg, #FFE5B4 0%, #FAD6A5 100%) !important; /* PEACH COLORS */
+/* ===== TOURNAMENT HERO ===== */
+.womens-pacific-four-page .tournament-hero {
+  background: linear-gradient(135deg, #004D40 0%, #00796B 100%) !important; /* PACIFIC DARK TEAL GRADIENT */
   padding: 3rem 2rem;
   text-align: center;
-  border-bottom: 3px solid #1e88e5; /* PACIFIC BLUE BORDER */
+  border-bottom: 3px solid #4DB6AC; /* LIGHT TEAL */
   position: relative;
   overflow: hidden;
 }
 
-.hero-content {
+.womens-pacific-four-page .hero-content {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
-.tournament-badge {
+.womens-pacific-four-page .tournament-badge {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -378,45 +103,45 @@
   margin-bottom: 1rem;
 }
 
-.tournament-logo {
+.womens-pacific-four-page .tournament-logo {
   font-size: 4rem;
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
   border-radius: 20px;
-  border: 3px solid rgba(255, 255, 255, 0.2);
+  border: 3px solid rgba(77, 182, 172, 0.3); /* LIGHT TEAL */
 }
 
-.tournament-info h1 {
+.womens-pacific-four-page .tournament-info h1 {
   font-size: 3rem;
   margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  color: #1e3a8a; /* DARK BLUE */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: white;
 }
 
-.tournament-year {
+.womens-pacific-four-page .tournament-year {
   font-size: 1.5rem;
   opacity: 0.9;
   margin: 0;
-  color: #1e88e5 !important; /* PACIFIC BLUE */
+  color: #4DB6AC !important; /* LIGHT TEAL */
   font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.tournament-description {
+.womens-pacific-four-page .tournament-description {
   font-size: 1.2rem;
   max-width: 600px;
   margin: 1rem auto 0;
   opacity: 0.95;
   line-height: 1.6;
-  color: #1e3a8a !important; /* DARK BLUE */
+  color: #ffffff !important;
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(0, 121, 107, 0.2); /* PACIFIC TEAL TRANSPARENT */
   padding: 1rem 1.5rem;
   border-radius: 10px;
-  border: 2px solid rgba(30, 136, 229, 0.3); /* PACIFIC BLUE */
+  border: 2px solid rgba(77, 182, 172, 0.3); /* LIGHT TEAL */
 }
 
-.hero-stats {
+.womens-pacific-four-page .hero-stats {
   display: flex;
   justify-content: center;
   gap: 3rem;
@@ -425,30 +150,30 @@
   z-index: 2;
 }
 
-.stat {
+.womens-pacific-four-page .stat {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.stat-number {
+.womens-pacific-four-page .stat-number {
   font-size: 2rem;
   font-weight: bold;
-  color: #1e88e5 !important; /* PACIFIC BLUE */
+  color: #4DB6AC !important; /* LIGHT TEAL */
 }
 
-.stat-label {
+.womens-pacific-four-page .stat-label {
   font-size: 0.9rem;
-  opacity: 0.8;
-  color: #1e3a8a; /* DARK BLUE */
+  opacity: 1; /* REMOVE TRANSPARENCY */
+  color: #000000 !important; /* CHANGE TO BLACK FOR BETTER READABILITY */
+  font-weight: 600; /* ADD BOLDNESS */
 }
 
-/* ===== KEEP PACIFIC FOUR SPECIFIC PERSONALIZATION BANNER ===== */
-
-.personalization-banner {
-  background: linear-gradient(135deg, rgba(30, 136, 229, 0.3), rgba(255, 111, 0, 0.3)); /* PACIFIC COLORS */
+/* ===== PERSONALIZATION BANNER ===== */
+.womens-pacific-four-page .personalization-banner {
+  background: linear-gradient(135deg, rgba(77, 182, 172, 0.3), rgba(0, 121, 107, 0.3)); /* PACIFIC COLORS */
   backdrop-filter: blur(10px);
-  border: 2px solid #1e88e5; /* PACIFIC BLUE */
+  border: 2px solid #4DB6AC; /* LIGHT TEAL */
   border-radius: 15px;
   padding: 1.5rem;
   margin: 1.5rem auto;
@@ -460,31 +185,47 @@
 }
 
 @keyframes glow {
-  from { box-shadow: 0 0 10px rgba(30, 136, 229, 0.3); }
-  to { box-shadow: 0 0 20px rgba(30, 136, 229, 0.6); }
+  from { box-shadow: 0 0 10px rgba(77, 182, 172, 0.3); }
+  to { box-shadow: 0 0 20px rgba(77, 182, 172, 0.6); }
 }
 
-.banner-icon {
+.womens-pacific-four-page .banner-icon {
   font-size: 2rem;
   flex-shrink: 0;
 }
 
-.banner-content h3 {
+.womens-pacific-four-page .banner-content h3 {
   margin: 0 0 0.5rem 0;
-  color: #1e88e5 !important; /* PACIFIC BLUE */
+  color: #4DB6AC !important; /* LIGHT TEAL */
   font-size: 1.2rem;
 }
 
-.banner-content p {
+.womens-pacific-four-page .banner-content p {
   margin: 0;
   opacity: 0.9;
   font-size: 0.95rem;
-  color: #1e3a8a; /* DARK BLUE */
+  color: #ffffff !important;
 }
 
-/* ===== APPLY BRITISH LIONS MATCH FILTERS ===== */
+/* ===== MAIN CONTENT ===== */
+.womens-pacific-four-page .tournament-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 
-.match-filters {
+.womens-pacific-four-page .section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #00796B !important; /* PACIFIC TEAL */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: block;
+}
+
+/* ===== MATCH FILTERS ===== */
+.womens-pacific-four-page .match-filters {
   display: flex;
   gap: 1rem;
   margin-bottom: 1.5rem;
@@ -492,10 +233,10 @@
   flex-wrap: wrap;
 }
 
-.filter-btn {
+.womens-pacific-four-page .filter-btn {
   background: rgba(255, 255, 255, 0.1);
-  color: #1e3a8a; /* DARK BLUE */
-  border: 2px solid rgba(30, 58, 138, 0.2);
+  color: #00695C; /* DARK TEAL */
+  border: 2px solid rgba(0, 105, 92, 0.2);
   padding: 0.7rem 1.5rem;
   border-radius: 25px;
   cursor: pointer;
@@ -503,111 +244,140 @@
   transition: all 0.3s ease;
 }
 
-.filter-btn:hover {
+.womens-pacific-four-page .filter-btn:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
-.filter-btn.active {
-  background: #1e88e5; /* PACIFIC BLUE */
+.womens-pacific-four-page .filter-btn.active {
+  background: #00796B; /* PACIFIC TEAL */
   color: white;
-  border-color: #1e88e5;
-  box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4);
+  border-color: #00796B;
+  box-shadow: 0 4px 15px rgba(0, 121, 107, 0.4);
 }
 
-/* ===== KEEP PACIFIC FOUR SPECIFIC FAVORITE STYLING ===== */
+/* ===== MATCH CARD STYLING ===== */
+.womens-pacific-four-page .matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
 
-.favorite-team {
-  border: 3px solid #1e88e5 !important; /* PACIFIC BLUE */
-  background: linear-gradient(135deg, rgba(30, 136, 229, 0.2), rgba(255, 111, 0, 0.3)) !important;
+.womens-pacific-four-page .match-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-left: 4px solid #00796B; /* PACIFIC TEAL */
+  margin-bottom: 16px;
+  overflow: hidden;
   position: relative;
-  transform: scale(1.02);
 }
 
-.favorite-badge {
+.womens-pacific-four-page .match-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 121, 107, 0.15);
+}
+
+.womens-pacific-four-page .match-card.favorite-match {
+  border-left-width: 6px;
+  background: linear-gradient(135deg, #E8F5E9, #ffffff);
+}
+
+/* ===== MATCH HIGHLIGHT ===== */
+.womens-pacific-four-page .match-highlight {
+  background: linear-gradient(90deg, #00796B, #004D40); /* PACIFIC TEAL GRADIENT */
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+/* STATUS BADGE POSITIONING - FIXED TO LEFT SIDE */
+.womens-pacific-four-page .status-badge {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #1e88e5; /* PACIFIC BLUE */
+  top: 12px;
+  left: 12px; /* CHANGED TO LEFT SIDE */
+  background: #00796B; /* PACIFIC TEAL */
   color: white;
   padding: 0.3rem 0.8rem;
   border-radius: 12px;
   font-size: 0.7rem;
   font-weight: bold;
   z-index: 10;
-  animation: pulse 2s infinite;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+.womens-pacific-four-page .status-badge.upcoming {
+  background: #4DB6AC !important; /* LIGHT TEAL */
+  color: #004D40 !important; /* DARK TEAL */
 }
 
-.team-highlight {
-  background: rgba(30, 136, 229, 0.9); /* PACIFIC BLUE */
-  color: white;
-  padding: 0.3rem 0.8rem;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  margin-top: 0.5rem;
-  text-align: center;
+.womens-pacific-four-page .status-badge.completed {
+  background: #28a745 !important;
+  color: white !important;
 }
 
-/* Pacific Power Styling - PACIFIC FOUR SPECIFIC */
-.pacific-power {
-  border: 3px solid #ff6f00 !important; /* ORANGE ACCENT */
-  background: linear-gradient(135deg, rgba(255, 111, 0, 0.15), rgba(30, 136, 229, 0.25)) !important;
-  position: relative;
-}
-
-/* ===== APPLY BRITISH LIONS MAIN CONTENT STRUCTURE ===== */
-
-.tournament-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  color: #1e88e5 !important; /* PACIFIC BLUE */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-/* Matches Grid - FROM BRITISH LIONS */
-.matches-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 1.5rem;
-}
-
-/* Match card base styling - KEEP EXISTING but ensure high specificity */
-.womens-pacific-four-page .match-card {
-  background: white !important;
-  color: #333 !important;
-  border: 2px solid #e0e0e0 !important;
-  border-radius: 12px;
-  padding: 1.2rem !important;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  min-height: 220px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Teams container - ensure proper spacing */
-.womens-pacific-four-page .teams-container {
+/* ===== MATCH HEADER ===== */
+.womens-pacific-four-page .match-header {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  padding-left: 130px; /* Space for left status badge */
+  border-bottom: 1px solid #f0f0f0;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.womens-pacific-four-page .match-tournament {
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.8em;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #00796B, #004D40); /* PACIFIC TEAL GRADIENT */
+  max-width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.womens-pacific-four-page .match-date {
+  color: #00796B; /* PACIFIC TEAL */
+  font-size: 0.9em;
+  font-weight: 500;
+  white-space: nowrap;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 11;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* ===== TEAMS CONTAINER ===== */
+.womens-pacific-four-page .teams-container {
+  display: flex;
   align-items: center;
-  margin-bottom: 1rem;
-  gap: 0.8rem;
-  flex: 1;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 16px;
+  min-height: 100px;
 }
 
 .womens-pacific-four-page .team {
@@ -616,90 +386,175 @@
   align-items: center;
   flex: 1;
   min-width: 0;
-  padding: 0.3rem;
+  padding: 0 5px;
+}
+
+.womens-pacific-four-page .team-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  width: 100%;
+  justify-content: center;
+}
+
+.womens-pacific-four-page .team-row.reverse {
+  flex-direction: row-reverse;
 }
 
 .womens-pacific-four-page .team-flag {
-  font-size: 1.8rem !important;
-  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.womens-pacific-four-page .team-ranking {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #00796B; /* PACIFIC TEAL */
+  background: #E8F5E9;
+  padding: 4px 8px;
+  border-radius: 8px;
+  min-width: 45px;
+  text-align: center;
 }
 
 .womens-pacific-four-page .team-name {
   font-weight: 600;
-  font-size: 0.85rem !important;
-  margin-bottom: 0.2rem;
+  color: #000000;
+  font-size: 1.3em;
   text-align: center;
+  line-height: 1.2;
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 100%;
-  color: #333 !important;
 }
 
-.womens-pacific-four-page .team-ranking {
-  font-size: 0.65rem !important;
-  opacity: 0.7;
-  color: #000000 !important;
-  font-weight: 600;
-  background: #f8f9fa;
-  padding: 0.1rem 0.3rem !important;
-  border-radius: 4px;
-}
-
+/* ===== VS CONTAINER ===== */
 .womens-pacific-four-page .vs-container {
-  margin: 0 0.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 70px;
   flex-shrink: 0;
+  margin: 0 10px;
 }
 
 .womens-pacific-four-page .vs {
-  background: #1e88e5; /* PACIFIC BLUE */
-  color: white;
-  padding: 0.2rem 0.6rem !important;
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.1em;
+  background: #f5f5f5;
+  padding: 8px 16px;
   border-radius: 12px;
-  font-weight: bold;
-  font-size: 0.7rem !important;
+  white-space: nowrap;
+  border: 2px solid #e0e0e0;
 }
 
-/* Match footer - ensure proper spacing */
+.womens-pacific-four-page .match-time {
+  color: #666;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+/* ===== MATCH FOOTER ===== */
 .womens-pacific-four-page .match-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
-  padding-top: 0.8rem;
-  border-top: 1px solid #e0e0e0;
-  gap: 0.3rem;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+  min-height: 32px;
 }
 
-.womens-pacific-four-page .venue, 
-.womens-pacific-four-page .capacity {
-  font-size: 0.65rem !important;
-  opacity: 0.8;
-  color: #000000 !important;
-  font-weight: 500;
-  background: #f8f9fa;
-  padding: 0.15rem 0.4rem !important;
-  border-radius: 4px;
+.womens-pacific-four-page .venue, .womens-pacific-four-page .capacity {
+  color: #666;
+  font-size: 0.8em;
+  font-style: italic;
+  text-align: right;
+  flex: 1;
+  margin-left: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* ===== MATCH ACTIONS ===== */
+.womens-pacific-four-page .match-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.8rem;
+}
+
+.womens-pacific-four-page .action-btn {
   flex: 1;
+  padding: 0.5rem 0.4rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.7rem;
+  min-height: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
 }
 
-/* ===== KEEP PACIFIC FOUR SPECIFIC CONTENT STYLING ===== */
-
-/* Teams Section - PACIFIC FOUR SPECIFIC */
-.teams-section {
-  margin-bottom: 2rem;
+/* WATCH BUTTON - PACIFIC TEAL */
+.womens-pacific-four-page .action-btn.primary,
+.womens-pacific-four-page .match-card .match-actions .action-btn:nth-of-type(1),
+.womens-pacific-four-page .match-card .match-actions .action-btn:nth-child(1),
+.womens-pacific-four-page .match-card .match-actions button:first-child,
+.womens-pacific-four-page .match-card .match-actions .action-btn:first-child {
+  background-color: #00796B !important; /* PACIFIC TEAL */
+  color: white !important;
+  border: none !important;
 }
 
-.teams-grid {
+/* LISTEN/AUDIO BUTTON - LIGHT TEAL */
+.womens-pacific-four-page .action-btn.secondary,
+.womens-pacific-four-page .match-card .match-actions .action-btn:nth-of-type(2),
+.womens-pacific-four-page .match-card .match-actions .action-btn:nth-child(2),
+.womens-pacific-four-page .match-card .match-actions button:last-child,
+.womens-pacific-four-page .match-card .match-actions .action-btn:last-child {
+  background-color: #4DB6AC !important; /* LIGHT TEAL */
+  color: #004D40 !important; /* DARK TEAL */
+  border: none !important;
+}
+
+.womens-pacific-four-page .action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effects */
+.womens-pacific-four-page .action-btn.primary:hover {
+  background-color: #004D40 !important; /* DARKER TEAL */
+}
+
+.womens-pacific-four-page .action-btn.secondary:hover {
+  background-color: #26A69A !important; /* DARKER LIGHT TEAL */
+}
+
+/* ===== TEAMS SECTION ===== */
+.womens-pacific-four-page .teams-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
-.nation-card {
+.womens-pacific-four-page .nation-card {
   background: white;
   color: #333;
   border-radius: 12px;
@@ -707,216 +562,203 @@
   border: 2px solid #e0e0e0;
   transition: all 0.3s ease;
   position: relative;
+  text-align: center;
 }
 
-.nation-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+.womens-pacific-four-page .nation-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.nation-flag {
+.womens-pacific-four-page .nation-flag {
   font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.nation-info {
-  flex: 1;
-}
-
-.nation-name {
+.womens-pacific-four-page .nation-name {
   font-size: 1.3rem;
   font-weight: 600;
   margin: 0 0 0.25rem 0;
-  color: #333;
+  color: #000000;
 }
 
-.world-ranking {
+.womens-pacific-four-page .world-ranking {
   font-size: 0.9rem;
   opacity: 0.8;
   color: #666;
-}
-
-.nation-form {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background: #f8f9fa;
-  border-radius: 10px;
-}
-
-.form-label {
-  display: block;
-  font-size: 0.8rem;
-  opacity: 0.7;
   margin-bottom: 0.5rem;
-  color: #666;
 }
 
-.form-indicator {
-  display: flex;
-  gap: 0.3rem;
-}
-
-.form-dot {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
+.womens-pacific-four-page .points {
+  font-size: 1rem;
   font-weight: bold;
+  color: #00796B; /* PACIFIC TEAL */
 }
 
-.form-dot.win {
-  background: #28a745;
-  color: white;
-}
-
-.form-dot.loss {
-  background: #dc3545;
-  color: white;
-}
-
-.form-dot.draw {
-  background: #ffc107;
-  color: black;
-}
-
-.nation-actions {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.team-btn {
-  flex: 1;
-  padding: 0.5rem 1rem;
-  background: #1e88e5; /* PACIFIC BLUE */
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  transition: all 0.3s ease;
-}
-
-.team-btn:hover {
-  background: #1565c0; /* DARKER BLUE */
-  transform: translateY(-1px);
-}
-
-/* Standings Section - PACIFIC FOUR SPECIFIC */
-.standings-section {
-  margin-bottom: 2rem;
-}
-
-.standings-table {
+/* ===== STANDINGS TABLE ===== */
+.womens-pacific-four-page .standings-table {
   background: white;
   color: #333;
   border-radius: 12px;
   overflow: hidden;
   border: 2px solid #e0e0e0;
+  margin-bottom: 2rem;
 }
 
-.table-header {
+.womens-pacific-four-page .table-header {
   display: grid;
   grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  background: rgba(30, 136, 229, 0.8); /* PACIFIC BLUE */
+  background: #00796B; /* PACIFIC TEAL */
   font-weight: 600;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.table-row {
+.womens-pacific-four-page .table-row {
   display: grid;
   grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
   gap: 1rem;
   padding: 1rem 1.5rem;
   border-bottom: 1px solid #e0e0e0;
   transition: background 0.3s ease;
+  align-items: center;
 }
 
-.table-row:hover {
+.womens-pacific-four-page .table-row:hover {
   background: #f8f9fa;
 }
 
-.table-row:last-child {
+.womens-pacific-four-page .table-row:last-child {
   border-bottom: none;
 }
 
-.position {
+.womens-pacific-four-page .position {
   font-weight: bold;
-  color: #1e88e5; /* PACIFIC BLUE */
+  color: #00796B; /* PACIFIC TEAL */
 }
 
-.team-name {
-  font-weight: 600;
-}
-
-.points {
-  font-weight: bold;
-  color: #1e88e5; /* PACIFIC BLUE */
-}
-
-/* Pacific Series Section - PACIFIC FOUR SPECIFIC */
-.pacific-series {
-  margin-bottom: 3rem;
-}
-
-.series-card {
-  background: white;
-  color: #333;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border: 2px solid #e0e0e0;
-}
-
-.series-header {
+.womens-pacific-four-page .team-name-cell {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 12px;
 }
 
-.series-icon {
-  font-size: 2rem;
+.womens-pacific-four-page .team-name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.series-info h3 {
-  margin: 0;
-  color: #1e88e5; /* PACIFIC BLUE */
+.womens-pacific-four-page .team-name-text {
+  font-weight: 600;
+  color: #000000;
 }
 
-.series-teams {
+.womens-pacific-four-page .favorite-star {
+  color: #4DB6AC; /* LIGHT TEAL */
+  font-size: 1.1em;
+}
+
+/* ===== FEATURES GRID - NO BIG TITLE ===== */
+.womens-pacific-four-page .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+  margin-top: 2rem;
+  max-width: 100%;
+  overflow: hidden;
 }
 
-.series-team {
+.womens-pacific-four-page .feature-card {
+  background: white;
+  color: #333;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
   text-align: center;
-  padding: 1rem;
-  background: #f8f9fa;
-  border-radius: 8px;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-/* ===== APPLY BRITISH LIONS BOTTOM AD BANNER ===== */
+.womens-pacific-four-page .feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #00796B; /* PACIFIC TEAL */
+}
 
-.bottom-ad-banner {
-  background: linear-gradient(90deg, #1e88e5, #0d47a1); /* PACIFIC COLORS */
+.womens-pacific-four-page .feature-icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  color: #00796B; /* PACIFIC TEAL */
+}
+
+.womens-pacific-four-page .feature-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #00796B; /* PACIFIC TEAL */
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.womens-pacific-four-page .feature-description {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.3;
+}
+
+/* ===== QUICK ACTIONS ===== */
+.womens-pacific-four-page .quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+  max-width: 100%;
+}
+
+.womens-pacific-four-page .quick-btn {
+  background: linear-gradient(135deg, #00796B, #004D40); /* PACIFIC TEAL GRADIENT */
+  color: white;
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  min-height: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.womens-pacific-four-page .quick-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 121, 107, 0.4);
+}
+
+/* ===== BOTTOM AD BANNER ===== */
+.womens-pacific-four-page .bottom-ad-banner {
+  background: linear-gradient(90deg, #004D40, #00796B); /* PACIFIC DARK TEAL GRADIENT */
   color: white;
   text-align: center;
   padding: 1.5rem 2rem;
   font-weight: bold;
   font-size: 1.1rem;
-  border-top: 3px solid #ff6f00; /* ORANGE ACCENT */
+  border-top: 3px solid #4DB6AC; /* LIGHT TEAL */
   margin-top: 3rem;
 }
 
-.bottom-ad-banner .ad-content {
+.womens-pacific-four-page .bottom-ad-banner .ad-content {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -925,18 +767,17 @@
   margin: 0 auto;
 }
 
-.bottom-ad-banner .ad-icon {
+.womens-pacific-four-page .bottom-ad-banner .ad-icon {
   font-size: 2rem;
 }
 
-.bottom-ad-banner .ad-text {
+.womens-pacific-four-page .bottom-ad-banner .ad-text {
   flex: 1;
-  color: white;
 }
 
-.bottom-ad-banner .ad-cta {
-  background: #ff6f00; /* ORANGE ACCENT */
-  color: white;
+.womens-pacific-four-page .bottom-ad-banner .ad-cta {
+  background: #4DB6AC; /* LIGHT TEAL */
+  color: #004D40; /* DARK TEAL */
   padding: 0.5rem 1.5rem;
   border-radius: 25px;
   font-weight: bold;
@@ -945,111 +786,49 @@
   border: none;
 }
 
-.bottom-ad-banner .ad-cta:hover {
-  background: #e65100; /* DARKER ORANGE */
+.womens-pacific-four-page .bottom-ad-banner .ad-cta:hover {
+  background: #26A69A; /* DARKER LIGHT TEAL */
   transform: translateY(-2px);
 }
 
-/* ===== RESPONSIVE DESIGN - FROM BRITISH LIONS ===== */
-@media (max-width: 768px) {
-  .tournament-tabs {
-    padding: 1rem;
-    top: 70px;
-  }
-  
-  .nav-tabs {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .tab-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-  }
-  
-  .bottom-ad-banner .ad-content {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
-  
-  .matches-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .teams-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-  
-  /* FIXED: Responsive feature blocks */
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  
-  .quick-actions {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  
-  .quick-btn {
-    min-width: 250px;
-    width: 100%;
-  }
+/* ===== FLAG COMPONENT STYLES ===== */
+.womens-pacific-four-page .flag-small, 
+.womens-pacific-four-page .flag-medium, 
+.womens-pacific-four-page .flag-large {
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid #e0e0e0;
 }
 
-@media (max-width: 480px) {
-  .tournament-hero {
-    padding: 2rem 1rem;
-  }
-  
-  .tournament-info h1 {
-    font-size: 2rem;
-  }
-  
-  .tournament-logo {
-    font-size: 3rem;
-  }
-  
-  .section-title {
-    font-size: 1.5rem;
-  }
-  
-  .personalization-banner {
-    flex-direction: column;
-    text-align: center;
-    padding: 1rem;
-  }
-  
-  .match-filters {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .filter-btn {
-    width: 200px;
-  }
-  
-  .tournament-tabs {
-    top: 60px;
-  }
-  
-  /* FIXED: Mobile feature blocks */
-  .features-grid {
-    grid-template-columns: 1fr !important;
-  }
-  
-  .quick-actions {
-    grid-template-columns: 1fr !important;
-  }
+.womens-pacific-four-page .flag-small {
+  width: 40px;
+  height: 25px;
 }
 
-/* ===== PACIFIC FOUR SPECIFIC ENHANCEMENTS ===== */
+.womens-pacific-four-page .flag-medium {
+  width: 60px;
+  height: 40px;
+}
 
-/* Women's Rugby Badge */
-.womens-rugby-badge {
+.womens-pacific-four-page .flag-large {
+  width: 80px;
+  height: 50px;
+}
+
+.womens-pacific-four-page .flag-fallback {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #666;
+  font-size: 0.8em;
+}
+
+/* ===== WOMEN'S RUGBY BADGE ===== */
+.womens-pacific-four-page .womens-rugby-badge {
   display: inline-block;
-  background: #1e88e5; /* PACIFIC BLUE */
+  background: #00796B; /* PACIFIC TEAL */
   color: white;
   padding: 0.3rem 0.8rem;
   border-radius: 15px;
@@ -1059,47 +838,175 @@
   vertical-align: middle;
 }
 
-/* Favorite Team Indicators */
-.team.favorite .team-name {
-  color: #1e88e5; /* PACIFIC BLUE */
-  font-weight: bold;
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .womens-pacific-four-page .tournament-tabs {
+    padding: 1rem !important;
+    top: 70px !important;
+  }
+  
+  .womens-pacific-four-page .nav-tabs {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .womens-pacific-four-page .tab-btn {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .womens-pacific-four-page .matches-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .womens-pacific-four-page .teams-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .womens-pacific-four-page .features-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .womens-pacific-four-page .quick-actions {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .womens-pacific-four-page .table-header,
+  .womens-pacific-four-page .table-row {
+    grid-template-columns: 0.5fr 1.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+    font-size: 0.8rem;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+  }
 }
 
-.favorite-indicator {
-  color: #1e88e5; /* PACIFIC BLUE */
-  font-size: 0.9rem;
-  margin: 0 0.3rem;
-  animation: bounce 1s infinite;
+@media (max-width: 480px) {
+  .womens-pacific-four-page .tournament-hero {
+    padding: 2rem 1rem;
+  }
+  
+  .womens-pacific-four-page .tournament-info h1 {
+    font-size: 2rem;
+  }
+  
+  .womens-pacific-four-page .tournament-logo {
+    font-size: 3rem;
+  }
+  
+  .womens-pacific-four-page .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .womens-pacific-four-page .features-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .womens-pacific-four-page .quick-actions {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .womens-pacific-four-page .match-card {
+    min-height: 200px;
+    padding: 1rem;
+  }
+  
+  .womens-pacific-four-page .teams-container {
+    flex-direction: column;
+    gap: 20px;
+    min-height: auto;
+  }
+  
+  .womens-pacific-four-page .team {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+  }
+  
+  .womens-pacific-four-page .team-name {
+    font-size: 1em;
+    margin: 0 10px;
+    flex: 1;
+    min-height: auto;
+    text-align: left;
+  }
+  
+  .womens-pacific-four-page .team-ranking {
+    font-size: 0.8em;
+    margin-top: 0;
+    width: auto;
+    min-width: 40px;
+  }
+  
+  .womens-pacific-four-page .vs-container {
+    flex-direction: row;
+    gap: 20px;
+    order: -1;
+    margin: 0;
+    min-width: auto;
+  }
+  
+  .womens-pacific-four-page .match-footer {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  
+  .womens-pacific-four-page .venue, .womens-pacific-four-page .capacity {
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .womens-pacific-four-page .status-badge {
+    top: 8px !important;
+    left: 8px !important; /* CHANGED TO LEFT SIDE */
+    font-size: 0.6rem !important;
+    max-width: 100px !important;
+  }
+  
+  .womens-pacific-four-page .table-header,
+  .womens-pacific-four-page .table-row {
+    grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+    font-size: 0.7rem;
+    gap: 0.3rem;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .womens-pacific-four-page .womens-rugby-badge {
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
 }
 
-@keyframes bounce {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
+/* ULTIMATE OVERRIDE FOR WATCH/LISTEN BUTTONS */
+.womens-pacific-four-page .match-card .match-actions .action-btn:nth-of-type(1),
+.womens-pacific-four-page .match-card .match-actions .action-btn:nth-child(1),
+.womens-pacific-four-page .match-card .match-actions button:first-child,
+.womens-pacific-four-page .match-card .match-actions .action-btn:first-child {
+  background-color: #00796B !important; /* PACIFIC TEAL */
+  color: white !important;
+  border: none !important;
 }
 
-/* Featured Player Card */
-.featured-player {
-  background: rgba(30, 136, 229, 0.1); /* PACIFIC BLUE */
-  border-radius: 10px;
-  padding: 1rem;
-  margin-top: 1rem;
-  border-left: 4px solid #1e88e5;
-  transition: all 0.3s ease;
+.womens-pacific-four-page .match-card .match-actions .action-btn:nth-of-type(2),
+.womens-pacific-four-page .match-card .match-actions .action-btn:nth-child(2),
+.womens-pacific-four-page .match-card .match-actions button:last-child,
+.womens-pacific-four-page .match-card .match-actions .action-btn:last-child {
+  background-color: #4DB6AC !important; /* LIGHT TEAL */
+  color: #004D40 !important; /* DARK TEAL */
+  border: none !important;
 }
 
-.featured-player:hover {
-  background: rgba(30, 136, 229, 0.15);
-  transform: translateX(5px);
+/* Hover effects */
+.womens-pacific-four-page .match-card .match-actions .action-btn:nth-of-type(1):hover,
+.womens-pacific-four-page .match-card .match-actions .action-btn:nth-child(1):hover {
+  background-color: #004D40 !important; /* DARKER TEAL */
 }
 
-.featured-player h4 {
-  margin: 0 0 0.5rem 0;
-  color: #1e88e5; /* PACIFIC BLUE */
-  font-size: 0.9rem;
-}
-
-.featured-player p {
-  margin: 0;
-  font-size: 0.8rem;
-  opacity: 0.9;
+.womens-pacific-four-page .match-card .match-actions .action-btn:nth-of-type(2):hover,
+.womens-pacific-four-page .match-card .match-actions .action-btn:nth-child(2):hover {
+  background-color: #26A69A !important; /* DARKER LIGHT TEAL */
 }

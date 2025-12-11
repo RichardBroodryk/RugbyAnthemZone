@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './StadiumMap.css';
+import NavBar from './NavBar'; // Import the NavBar component
 
 function StadiumPage({ 
   stadium, 
   onSeatSelect, 
   onNavigateBack,
   interactive = true, 
-  showInfo = true 
+  showInfo = true,
+  showNavBar = false // This prop might be unused now since we'll always show the NavBar
 }) {
   const [selectedSection, setSelectedSection] = useState(null);
 
@@ -94,7 +96,6 @@ function StadiumPage({
         { icon: '📍', title: 'City Center', desc: 'Located in the heart of Cardiff' }
       ]
     }
-    // Add more stadiums with proper SVG maps...
   };
 
   const currentStadium = stadiumMaps[stadium] || stadiumMaps['Twickenham Stadium'];
@@ -115,28 +116,31 @@ function StadiumPage({
 
   const handleBookTickets = () => {
     alert(`🎟️ Redirecting to ticket booking for ${selectedSection} at ${stadium}`);
-    // In a real app, this would redirect to ticket vendor
   };
 
   const handleViewSeats = () => {
     alert(`🪑 Showing detailed seat map for ${selectedSection}`);
-    // In a real app, this would show detailed seat selection
   };
 
   return (
     <div className="stadium-page">
+      {/* Professional NavBar Component */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Stadiums")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
       {/* Top Ad Banner */}
       <div className="top-ad-banner">
         🎟️ OFFICIAL STADIUM TICKETS - BOOK YOUR SEATS NOW! ⚡
       </div>
-
-      {/* Standard Navigation */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back to Game</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-      </nav>
 
       <div className="stadium-content">
         {/* Stadium Header */}

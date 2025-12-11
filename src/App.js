@@ -8,7 +8,24 @@ import HomeScreen from './components/HomeScreen';
 import HomePage from './components/HomePage';
 import SearchPage from './components/SearchPage';
 
-// NEW COMPONENT - Tournament Selector
+// ALL 12 National Anthem Pages
+import SouthAfricaAnthem from './components/SouthAfricaAnthem';
+import NewZealandAnthem from './components/NewZealandAnthem';
+import AustraliaAnthem from './components/AustraliaAnthem';
+import EnglandAnthem from './components/EnglandAnthem';
+import IrelandAnthem from './components/IrelandAnthem';
+import FranceAnthem from './components/FranceAnthem';
+import WalesAnthem from './components/WalesAnthem';
+import ScotlandAnthem from './components/ScotlandAnthem';
+import ArgentinaAnthem from './components/ArgentinaAnthem';
+import FijiAnthem from './components/FijiAnthem';
+import JapanAnthem from './components/JapanAnthem';
+import ItalyAnthem from './components/ItalyAnthem';
+
+// Main National Anthems Page
+import NationalAnthems from './components/NationalAnthems';
+
+// Tournament Selector
 import TournamentSelector from './components/TournamentSelector';
 
 // Authentication
@@ -46,7 +63,6 @@ import UserProfile from './components/UserProfile';
 import MyTeams from './components/MyTeams';
 import NewsAggregation from './components/NewsAggregation';
 import GlobalCalendar from './components/GlobalCalendar';
-import NationalAnthems from './components/NationalAnthems';
 import TournamentMerchandise from './components/TournamentMerchandise';
 import FantasyLeagues from './components/FantasyLeagues';
 import FinalResultsPage from './components/FinalResultsPage';
@@ -62,6 +78,9 @@ import TransportPage from './components/TransportPage';
 import NotificationsPage from './components/NotificationsPage';
 import MatchVideosPage from './components/MatchVideosPage';
 import LiveMatchCenter from './components/LiveMatchCenter';
+
+// NEW: Fixtures Page
+import FixturesPage from './components/FixturesPage';
 
 // Loyalty System
 import LoyaltyPage from './components/LoyaltyPage';
@@ -79,7 +98,7 @@ function App() {
     favoriteTeams: ['New Zealand', 'South Africa'],
     favoritePlayers: [],
     followedTournaments: ['Six Nations', 'Rugby Championship'],
-    featuredTournament: null, // NEW: Store the featured tournament
+    featuredTournament: null,
     profileSettings: {
       rugbyFocus: 'both',
       notificationsEnabled: true
@@ -122,7 +141,7 @@ function App() {
     }
   };
 
-  // NEW: Tournament Selection Handler
+  // ========== TOURNAMENT SELECTION HANDLER ==========
   const handleTournamentSelected = (tournamentData) => {
     const updatedPreferences = {
       ...userPreferences,
@@ -139,7 +158,7 @@ function App() {
     localStorage.setItem('rugbyApp_preferences', JSON.stringify(newPreferences));
   };
 
-  // Core Navigation
+  // ========== CORE NAVIGATION ==========
   const goToHome = () => navigateTo('home');
   const goToSignup = () => navigateTo('signup');
   const goToFreemiumPage = () => navigateTo('freemium');
@@ -156,10 +175,10 @@ function App() {
     navigateTo('terms-and-conditions', { subscriptionType });
   };
 
-  // NEW: Tournament Selector Navigation
+  // ========== TOURNAMENT SELECTOR ==========
   const goToTournamentSelector = () => navigateTo('tournament-selector');
 
-  // Tournament Navigation
+  // ========== TOURNAMENT NAVIGATION ==========
   const goToMensTournaments = () => navigateTo('mens-tournaments');
   const goToWomensTournaments = () => navigateTo('womens-tournaments');
 
@@ -180,7 +199,7 @@ function App() {
   const goToMensBritishLions = () => navigateTo('mens-british-lions');
   const goToMensRivalTours = () => navigateTo('mens-rival-tours');
 
-  // Feature Navigation
+  // ========== FEATURE NAVIGATION ==========
   const goToFantasyLeagues = (tournamentData = null) => navigateTo('fantasy-leagues', tournamentData);
   const goToFinalResults = (tournamentData = null) => navigateTo('final-results', tournamentData);
   const goToPodcasts = (tournamentData = null) => navigateTo('podcasts', tournamentData);
@@ -193,20 +212,35 @@ function App() {
   const goToTickets = () => navigateTo('tickets');
   const goToFlights = () => navigateTo('flights');
   const goToHotels = () => navigateTo('hotels');
-  const goToUber = () => navigateTo('transport');
+  const goToTransport = () => navigateTo('transport');
   const goToNotifications = () => navigateTo('notifications');
   const goToMatchVideos = () => navigateTo('match-videos');
   const goToLiveMatchCenter = () => navigateTo('live-match-center');
+  const goToFixtures = () => navigateTo('fixtures');
 
-  // Stadium Navigation
+  // ========== INDIVIDUAL ANTHEM PAGES ==========
+  const goToSouthAfricaAnthem = () => navigateTo('south-africa-anthem');
+  const goToNewZealandAnthem = () => navigateTo('new-zealand-anthem');
+  const goToAustraliaAnthem = () => navigateTo('australia-anthem');
+  const goToEnglandAnthem = () => navigateTo('england-anthem');
+  const goToIrelandAnthem = () => navigateTo('ireland-anthem');
+  const goToFranceAnthem = () => navigateTo('france-anthem');
+  const goToWalesAnthem = () => navigateTo('wales-anthem');
+  const goToScotlandAnthem = () => navigateTo('scotland-anthem');
+  const goToArgentinaAnthem = () => navigateTo('argentina-anthem');
+  const goToFijiAnthem = () => navigateTo('fiji-anthem');
+  const goToJapanAnthem = () => navigateTo('japan-anthem');
+  const goToItalyAnthem = () => navigateTo('italy-anthem');
+
+  // ========== STADIUM NAVIGATION ==========
   const goToStadiumMap = (stadiumData = null) => {
     navigateTo('stadium-map', stadiumData);
   };
 
-  // Game Navigation
+  // ========== GAME NAVIGATION ==========
   const goToGameOverview = (gameData) => navigateTo('game-overview', gameData);
 
-  // Authentication Navigation
+  // ========== AUTHENTICATION NAVIGATION ==========
   const goToFreemiumLogin = () => {
     setUserStatus('freemium');
     navigateTo('signup');
@@ -234,7 +268,7 @@ function App() {
     }
   };
 
-  // Terms Acceptance Handler
+  // ========== TERMS ACCEPTANCE HANDLER ==========
   const handleAcceptTerms = (subscriptionType) => {
     console.log(`Terms accepted for ${subscriptionType} subscription`);
     
@@ -251,13 +285,13 @@ function App() {
     }
   };
 
-  // Stadium Handler
+  // ========== STADIUM HANDLER ==========
   const handleSeatSelect = (seatInfo) => {
     console.log('Seat selected:', seatInfo);
     alert(`Selected ${seatInfo.section} at ${seatInfo.stadium}`);
   };
 
-  // Search Navigation Handler
+  // ========== SEARCH NAVIGATION HANDLER ==========
   const handleSearchNavigation = (tournamentName) => {
     const tournamentMap = {
       "Men's Six Nations": goToMensSixNations,
@@ -267,6 +301,25 @@ function App() {
       "Women's Summer Tests": goToWomensSummerTests
     };
     tournamentMap[tournamentName]?.();
+  };
+
+  // ========== NATIONAL ANTHEMS NAVIGATION HANDLER ==========
+  const handleAnthemNavigation = (nationId) => {
+    const anthemMap = {
+      'south-africa': goToSouthAfricaAnthem,
+      'new-zealand': goToNewZealandAnthem,
+      'australia': goToAustraliaAnthem,
+      'england': goToEnglandAnthem,
+      'ireland': goToIrelandAnthem,
+      'france': goToFranceAnthem,
+      'wales': goToWalesAnthem,
+      'scotland': goToScotlandAnthem,
+      'argentina': goToArgentinaAnthem,
+      'fiji': goToFijiAnthem,
+      'japan': goToJapanAnthem,
+      'italy': goToItalyAnthem
+    };
+    anthemMap[nationId]?.();
   };
 
   // ========== SCREEN CONFIGURATIONS ==========
@@ -298,7 +351,102 @@ function App() {
       }
     },
 
-    // NEW: Tournament Selector Screen
+    // ALL 12 NATIONAL ANTHEM PAGES
+    'south-africa-anthem': {
+      component: SouthAfricaAnthem,
+      props: { 
+        onNavigateBack: navigateBack,
+        onNavigateToHome: goToHomePage
+      }
+    },
+    'new-zealand-anthem': {
+      component: NewZealandAnthem,
+      props: { 
+        onNavigateBack: navigateBack,
+        onNavigateToHome: goToHomePage
+      }
+    },
+    'australia-anthem': {
+      component: AustraliaAnthem,
+      props: { 
+        onNavigateBack: navigateBack,
+        onNavigateToHome: goToHomePage
+      }
+    },
+    'england-anthem': {
+      component: EnglandAnthem,
+      props: { 
+        onNavigateBack: navigateBack,
+        onNavigateToHome: goToHomePage
+      }
+    },
+    'ireland-anthem': {
+      component: IrelandAnthem,
+      props: { 
+        onNavigateBack: navigateBack,
+        onNavigateToHome: goToHomePage
+      }
+    },
+    'france-anthem': {
+      component: FranceAnthem,
+      props: { 
+        onNavigateBack: navigateBack,
+        onNavigateToHome: goToHomePage
+      }
+    },
+    'wales-anthem': {
+      component: WalesAnthem,
+      props: { 
+        onNavigateBack: navigateBack,
+        onNavigateToHome: goToHomePage
+      }
+    },
+    'scotland-anthem': {
+      component: ScotlandAnthem,
+      props: { 
+        onNavigateBack: navigateBack,
+        onNavigateToHome: goToHomePage
+      }
+    },
+    'argentina-anthem': {
+      component: ArgentinaAnthem,
+      props: { 
+        onNavigateBack: navigateBack,
+        onNavigateToHome: goToHomePage
+      }
+    },
+    'fiji-anthem': {
+      component: FijiAnthem,
+      props: { 
+        onNavigateBack: navigateBack,
+        onNavigateToHome: goToHomePage
+      }
+    },
+    'japan-anthem': {
+      component: JapanAnthem,
+      props: { 
+        onNavigateBack: navigateBack,
+        onNavigateToHome: goToHomePage
+      }
+    },
+    'italy-anthem': {
+      component: ItalyAnthem,
+      props: { 
+        onNavigateBack: navigateBack,
+        onNavigateToHome: goToHomePage
+      }
+    },
+
+    // Main National Anthems Directory Page
+    'national-anthems': { 
+      component: NationalAnthems, 
+      props: { 
+        onNavigateBack: navigateBack,
+        onNavigateToAnthem: handleAnthemNavigation
+      }
+    },
+
+    // Tournament Selector Screen
     'tournament-selector': {
       component: TournamentSelector,
       props: {
@@ -399,14 +547,13 @@ function App() {
         onNavigateToTickets: goToTickets,
         onNavigateToFlights: goToFlights,
         onNavigateToHotels: goToHotels,
-        onNavigateToUber: goToUber,
+        onNavigateToUber: goToTransport,
         onNavigateToNotifications: goToNotifications,
         onNavigateToMatchVideos: goToMatchVideos,
         onNavigateToLiveMatchCenter: goToLiveMatchCenter,
         onNavigateToMensSixNations: goToMensSixNations,
         onNavigateToWomensSixNations: goToWomensSixNations,
         onNavigateToLoyalty: goToLoyalty,
-        // NEW: Tournament navigation for FeaturedTournament
         onNavigateToTournamentSelector: goToTournamentSelector,
         onNavigateToMensWorldCup: goToMensWorldCup,
         onNavigateToWomensWorldCup: goToWomensWorldCup,
@@ -421,6 +568,17 @@ function App() {
         onNavigateToWomensRugby7s: goToWomensRugby7s,
         onNavigateToMensBritishLions: goToMensBritishLions,
         onNavigateToMensRivalTours: goToMensRivalTours,
+        // NEW: Add these missing navigation functions
+        onNavigateToFixtures: goToFixtures,
+        onNavigateToResultsStats: () => navigateTo('final-results'),
+        onNavigateToBreakingNews: goToNews,
+        onNavigateToAllStadiums: () => navigateTo('stadium-map', { stadium: 'All Stadiums' }),
+        onNavigateToLoyaltyRewards: goToLoyalty,
+        onNavigateToFantasyRugby: goToFantasyLeagues,
+        onNavigateToMerchandise: goToTournamentMerchandise,
+        onNavigateToAnthems: goToNationalAnthems,
+        onNavigateToLivePPV: goToPPV,
+        onNavigateToLiveAudio: goToPPA,
         userPreferences: userPreferences
       }
     },
@@ -568,12 +726,6 @@ function App() {
         game: currentGame 
       }
     },
-    'national-anthems': { 
-      component: NationalAnthems, 
-      props: { 
-        onNavigateBack: navigateBack 
-      }
-    },
     'tournament-merchandise': { 
       component: TournamentMerchandise, 
       props: { 
@@ -630,6 +782,12 @@ function App() {
         onNavigateBack: navigateBack 
       }
     },
+    'fixtures': {
+      component: FixturesPage,
+      props: {
+        onNavigateBack: navigateBack
+      }
+    },
     'game-overview': { 
       component: GameOverview, 
       props: { 
@@ -637,7 +795,7 @@ function App() {
         userStatus: userStatus,
         onNavigateBack: navigateBack,
         onNavigateToStadium: () => goToStadiumMap({ stadium: currentGame?.stadium }),
-        onNavigateToAnthem: () => navigateTo('national-anthems'),
+        onNavigateToAnthem: goToNationalAnthems,
         onNavigateToMerchandise: () => navigateTo('tournament-merchandise'),
         onNavigateToStats: () => goToGameStats(currentGame),
         onNavigateToPPV: () => goToPPV(currentGame),

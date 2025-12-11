@@ -1,6 +1,46 @@
 import React, { useState } from 'react';
 import './MensRivalTours.css';
-import ThemeToggle from './ThemeToggle';
+import NavBar from './NavBar';
+
+// Flag Component with real images - EXACT from Autumn Tours
+const Flag = ({ country, size = 'medium' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'argentina': 'argentina',
+      'australia': 'australia',
+      'england': 'england',
+      'fiji': 'fiji',
+      'france': 'france',
+      'ireland': 'ireland',
+      'italy': 'italy',
+      'japan': 'japan',
+      'new zealand': 'new-zealand',
+      'scotland': 'scotland',
+      'south africa': 'south-africa',
+      'wales': 'wales',
+      'usa': 'united-states-of-america',
+      'canada': 'canada'
+    };
+    
+    return nameMap[countryName.toLowerCase()] || countryName.toLowerCase();
+  };
+
+  const fileName = getCountryFileName(country);
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      return <div className={`flag-fallback flag-${size}`}>
+        {country.slice(0, 3).toUpperCase()}
+      </div>;
+    }
+  }
+};
 
 function MensRivalTours({ 
   onNavigateBack, 
@@ -15,32 +55,31 @@ function MensRivalTours({
 }) {
   const [activeTab, setActiveTab] = useState('fixtures');
   const [matchFilter, setMatchFilter] = useState('all');
-  
-  // Get user's favorite teams
+
   const favoriteTeams = userPreferences?.favoriteTeams || [];
   const hasFavoriteTeams = favoriteTeams.length > 0;
 
   const rivalToursData = {
     name: "Rival Tours",
-    year: "2026",
+    year: "2026", 
     description: "Historic rugby rivalries and traditional test matches between rugby's greatest opponents",
     logo: "⚔️",
     teams: [
-      { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 5, form: 'WWLWW' },
-      { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland", ranking: 6, form: 'LWWLW' },
-      { flag: "🇮🇪", name: "Ireland", ranking: 2, form: 'WWWWW' },
-      { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 8, form: 'LLWLL' },
-      { flag: "🇫🇷", name: "France", ranking: 4, form: 'WLWLW' },
-      { flag: "🇳🇿", name: "New Zealand", ranking: 3, form: 'WWWLW' },
-      { flag: "🇿🇦", name: "South Africa", ranking: 1, form: 'WWLWW' },
-      { flag: "🇦🇺", name: "Australia", ranking: 9, form: 'LLLLL' },
-      { flag: "🇦🇷", name: "Argentina", ranking: 7, form: 'WLLWW' }
+      { name: "England", ranking: 5, form: 'WWLWW' },
+      { name: "Scotland", ranking: 6, form: 'LWWLW' },
+      { name: "Wales", ranking: 8, form: 'LLWLL' },
+      { name: "Ireland", ranking: 2, form: 'WWWWW' },
+      { name: "France", ranking: 4, form: 'WLWLW' },
+      { name: "New Zealand", ranking: 3, form: 'WWWLW' },
+      { name: "South Africa", ranking: 1, form: 'WWLWW' },
+      { name: "Australia", ranking: 9, form: 'LLLLL' },
+      { name: "Argentina", ranking: 7, form: 'WLLWW' }
     ],
     matches: [
       {
         id: 1,
-        team1: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 5 },
-        team2: { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland", ranking: 6 },
+        team1: { name: "England", ranking: 5 },
+        team2: { name: "Scotland", ranking: 6 },
         venue: "Twickenham Stadium – London",
         date: "Mar 14, 2026",
         time: "16:45",
@@ -51,11 +90,11 @@ function MensRivalTours({
         trophy: "Calcutta Cup"
       },
       {
-        id: 2,
-        team1: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 5 },
-        team2: { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 8 },
+        id: 2, 
+        team1: { name: "England", ranking: 5 },
+        team2: { name: "Wales", ranking: 8 },
         venue: "Twickenham Stadium – London",
-        date: "Mar 7, 2026",
+        date: "Mar 7, 2026", 
         time: "16:45",
         status: "upcoming",
         tournament: "Six Nations",
@@ -65,11 +104,11 @@ function MensRivalTours({
       },
       {
         id: 3,
-        team1: { flag: "🇮🇪", name: "Ireland", ranking: 2 },
-        team2: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 5 },
+        team1: { name: "Ireland", ranking: 2 },
+        team2: { name: "England", ranking: 5 },
         venue: "Aviva Stadium – Dublin",
         date: "Mar 21, 2026",
-        time: "15:00",
+        time: "15:00", 
         status: "upcoming",
         tournament: "Six Nations",
         capacity: "51,700",
@@ -78,21 +117,21 @@ function MensRivalTours({
       },
       {
         id: 4,
-        team1: { flag: "🇳🇿", name: "New Zealand", ranking: 3 },
-        team2: { flag: "🇦🇺", name: "Australia", ranking: 9 },
+        team1: { name: "New Zealand", ranking: 3 },
+        team2: { name: "Australia", ranking: 9 },
         venue: "Eden Park – Auckland",
         date: "Aug 15, 2026",
         time: "19:35",
         status: "upcoming",
-        tournament: "Bledisloe Cup",
+        tournament: "Bledisloe Cup", 
         capacity: "48,000",
         isRivalry: true,
         trophy: "Bledisloe Cup"
       },
       {
         id: 5,
-        team1: { flag: "🇿🇦", name: "South Africa", ranking: 1 },
-        team2: { flag: "🇦🇺", name: "Australia", ranking: 9 },
+        team1: { name: "South Africa", ranking: 1 },
+        team2: { name: "Australia", ranking: 9 },
         venue: "Ellis Park – Johannesburg",
         date: "Aug 22, 2026",
         time: "17:05",
@@ -104,8 +143,8 @@ function MensRivalTours({
       },
       {
         id: 6,
-        team1: { flag: "🇦🇷", name: "Argentina", ranking: 7 },
-        team2: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 5 },
+        team1: { name: "Argentina", ranking: 7 },
+        team2: { name: "England", ranking: 5 },
         venue: "Estadio José Amalfitani – Buenos Aires",
         date: "Jul 4, 2026",
         time: "20:10",
@@ -114,84 +153,6 @@ function MensRivalTours({
         capacity: "49,540",
         isRivalry: false,
         trophy: "No Trophy"
-      },
-      {
-        id: 7,
-        team1: { flag: "🇫🇷", name: "France", ranking: 4 },
-        team2: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 5 },
-        venue: "Stade de France – Paris",
-        date: "Mar 28, 2026",
-        time: "21:00",
-        status: "upcoming",
-        tournament: "Six Nations",
-        capacity: "81,338",
-        isRivalry: true,
-        trophy: "Le Crunch"
-      },
-      {
-        id: 8,
-        team1: { flag: "🇿🇦", name: "South Africa", ranking: 1 },
-        team2: { flag: "🇳🇿", name: "New Zealand", ranking: 3 },
-        venue: "FNB Stadium – Johannesburg",
-        date: "Aug 29, 2026",
-        time: "17:05",
-        status: "upcoming",
-        tournament: "Rugby Championship",
-        capacity: "94,736",
-        isRivalry: true,
-        trophy: "Freedom Cup"
-      },
-      {
-        id: 9,
-        team1: { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 8 },
-        team2: { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland", ranking: 6 },
-        venue: "Principality Stadium – Cardiff",
-        date: "Feb 28, 2026",
-        time: "14:15",
-        status: "upcoming",
-        tournament: "Six Nations",
-        capacity: "74,500",
-        isRivalry: true,
-        trophy: "Doddie Weir Cup"
-      },
-      {
-        id: 10,
-        team1: { flag: "🇦🇺", name: "Australia", ranking: 9 },
-        team2: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 5 },
-        venue: "Suncorp Stadium – Brisbane",
-        date: "Jul 11, 2026",
-        time: "20:00",
-        status: "upcoming",
-        tournament: "Summer Tour",
-        capacity: "52,500",
-        isRivalry: true,
-        trophy: "Cook Cup"
-      },
-      {
-        id: 11,
-        team1: { flag: "🇮🇪", name: "Ireland", ranking: 2 },
-        team2: { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 8 },
-        venue: "Aviva Stadium – Dublin",
-        date: "Feb 14, 2026",
-        time: "14:15",
-        status: "upcoming",
-        tournament: "Six Nations",
-        capacity: "51,700",
-        isRivalry: true,
-        trophy: "No Trophy"
-      },
-      {
-        id: 12,
-        team1: { flag: "🇳🇿", name: "New Zealand", ranking: 3 },
-        team2: { flag: "🇿🇦", name: "South Africa", ranking: 1 },
-        venue: "Forsyth Barr Stadium – Dunedin",
-        date: "Sep 5, 2026",
-        time: "19:35",
-        status: "upcoming",
-        tournament: "Rugby Championship",
-        capacity: "30,748",
-        isRivalry: true,
-        trophy: "Freedom Cup"
       }
     ],
     rivalries: [
@@ -199,8 +160,8 @@ function MensRivalTours({
         name: "England vs Scotland",
         icon: "🏆",
         description: "The Calcutta Cup - Oldest rugby rivalry dating back to 1871",
-        team1: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", record: "76 Wins" },
-        team2: { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland", record: "46 Wins" },
+        team1: { name: "England", record: "76 Wins" },
+        team2: { name: "Scotland", record: "46 Wins" },
         draws: "19",
         currentHolder: "Scotland"
       },
@@ -208,8 +169,8 @@ function MensRivalTours({
         name: "New Zealand vs Australia",
         icon: "🥝",
         description: "Bledisloe Cup - Trans-Tasman rivalry since 1903",
-        team1: { flag: "🇳🇿", name: "New Zealand", record: "122 Wins" },
-        team2: { flag: "🇦🇺", name: "Australia", record: "45 Wins" },
+        team1: { name: "New Zealand", record: "122 Wins" },
+        team2: { name: "Australia", record: "45 Wins" },
         draws: "8",
         currentHolder: "New Zealand"
       },
@@ -217,42 +178,22 @@ function MensRivalTours({
         name: "South Africa vs New Zealand",
         icon: "🌍",
         description: "World's top two rugby nations - ultimate rivalry",
-        team1: { flag: "🇿🇦", name: "South Africa", record: "39 Wins" },
-        team2: { flag: "🇳🇿", name: "New Zealand", record: "60 Wins" },
+        team1: { name: "South Africa", record: "39 Wins" },
+        team2: { name: "New Zealand", record: "60 Wins" },
         draws: "3",
         currentHolder: "South Africa"
-      },
-      {
-        name: "England vs Wales",
-        icon: "🌹",
-        description: "Battle of the Roses vs the Dragon since 1881",
-        team1: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", record: "67 Wins" },
-        team2: { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", record: "60 Wins" },
-        draws: "12",
-        currentHolder: "Wales"
-      },
-      {
-        name: "Ireland vs England",
-        icon: "☘️",
-        description: "Millennium Trophy - Celtic vs English rivalry",
-        team1: { flag: "🇮🇪", name: "Ireland", record: "54 Wins" },
-        team2: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", record: "80 Wins" },
-        draws: "8",
-        currentHolder: "Ireland"
-      },
-      {
-        name: "France vs England",
-        icon: "🥐",
-        description: "Le Crunch - Cross-channel rivalry since 1906",
-        team1: { flag: "🇫🇷", name: "France", record: "42 Wins" },
-        team2: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", record: "60 Wins" },
-        draws: "7",
-        currentHolder: "France"
       }
     ]
   };
 
-  // Enhanced data with favorite status
+  const handleMatchClick = (match) => {
+    onGameSelect?.({
+      ...match,
+      tournament: 'Rival Tours',
+      userFavorite: match.isFavoriteMatch
+    });
+  };
+
   const enhancedTeams = rivalToursData.teams.map(team => ({
     ...team,
     isFavorite: favoriteTeams.includes(team.name)
@@ -260,7 +201,8 @@ function MensRivalTours({
 
   const enhancedMatches = rivalToursData.matches.map(match => ({
     ...match,
-    isFavoriteMatch: favoriteTeams.includes(match.team1.name) || favoriteTeams.includes(match.team2.name)
+    isFavoriteMatch: favoriteTeams.includes(match.team1.name) || favoriteTeams.includes(match.team2.name),
+    favoriteTeamsInvolved: [match.team1.name, match.team2.name].filter(team => favoriteTeams.includes(team))
   }));
 
   const enhancedRivalries = rivalToursData.rivalries.map(rivalry => ({
@@ -282,25 +224,24 @@ function MensRivalTours({
     ));
   };
 
-  const handleMatchClick = (match) => {
-    onGameSelect?.({
-      ...match,
-      tournament: 'Rival Tours'
-    });
-  };
-
   return (
     <div className="mens-rival-tours-page">
-      {/* BRITISH LIONS NAVIGATION STRUCTURE */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <ThemeToggle />
-      </nav>
-      
-      {/* BRITISH LIONS HERO STRUCTURE */}
+      {/* EXACT Autumn Tours NavBar */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+      />
+
+      {/* EXACT Autumn Tours Top Ad Banner */}
+      <div className="top-ad-banner">
+        ⚔️ Rival Tours 2026 - Experience Rugby's Greatest Rivalries Live! 🎟️
+      </div>
+
+      {/* EXACT Autumn Tours Hero Structure */}
       <header className="tournament-hero">
         <div className="hero-content">
           <div className="tournament-badge">
@@ -327,8 +268,7 @@ function MensRivalTours({
           </div>
         </div>
 
-        {/* PERSONALIZATION BANNER */}
-        {hasFavoriteTeams && userRivalNations.length > 0 && (
+        {hasFavoriteTeams && (
           <div className="personalization-banner">
             <div className="banner-icon">⭐</div>
             <div className="banner-content">
@@ -342,7 +282,7 @@ function MensRivalTours({
         )}
       </header>
 
-      {/* BRITISH LIONS TAB NAVIGATION */}
+      {/* EXACT Autumn Tours Tab Navigation */}
       <nav className="tournament-tabs">
         <div className="nav-tabs">
           <button 
@@ -367,37 +307,44 @@ function MensRivalTours({
       </nav>
 
       <main className="tournament-main">
-        {/* FIXTURES TAB - BRITISH LIONS STRUCTURE */}
         {activeTab === 'fixtures' && (
           <div className="fixtures-section">
-            <h2 className="section-title">Historic Rivalry Matches</h2>
+            <h2 className="section-title centered-fixtures-title">
+              Rival Tours 2026 Fixtures
+            </h2>
             
-            <div className="match-filters">
-              <button 
-                className={`filter-btn ${matchFilter === 'all' ? 'active' : ''}`}
-                onClick={() => setMatchFilter('all')}
-              >
-                All Matches
-              </button>
-              <button 
-                className={`filter-btn ${matchFilter === 'rivalries-only' ? 'active' : ''}`}
-                onClick={() => setMatchFilter('rivalries-only')}
-              >
-                Rivalries Only
-              </button>
-            </div>
+            {hasFavoriteTeams && (
+              <div className="match-filters">
+                <button 
+                  className={`filter-btn ${matchFilter === 'all' ? 'active' : ''}`}
+                  onClick={() => setMatchFilter('all')}
+                >
+                  All Matches
+                </button>
+                <button 
+                  className={`filter-btn ${matchFilter === 'rivalries-only' ? 'active' : ''}`}
+                  onClick={() => setMatchFilter('rivalries-only')}
+                >
+                  Rivalries Only
+                </button>
+              </div>
+            )}
 
-            {/* MATCHES GRID - NOW WITH 12 MATCH CARDS FOR SCROLLING */}
             <div className="matches-grid">
               {filteredMatches.map(match => (
                 <div 
                   key={match.id} 
-                  className={`match-card ${match.isRivalry ? 'rivalry-match' : ''}`}
+                  className={`match-card ${match.isFavoriteMatch ? 'favorite-match' : ''}`}
                   onClick={() => handleMatchClick(match)}
                 >
-                  {/* TROPHY INDICATOR */}
+                  {match.isFavoriteMatch && (
+                    <div className="match-highlight">
+                      ⭐ Features {match.favoriteTeamsInvolved.join(' & ')}
+                    </div>
+                  )}
+                  
                   {match.trophy !== "No Trophy" && (
-                    <div className="trophy-indicator">
+                    <div className="match-highlight">
                       🏆 {match.trophy}
                     </div>
                   )}
@@ -408,20 +355,32 @@ function MensRivalTours({
                   </div>
                   
                   <div className="teams-container">
-                    <div className="team">
-                      <span className="team-flag">{match.team1.flag}</span>
+                    {/* Team 1 - Left Side */}
+                    <div className={`team ${favoriteTeams.includes(match.team1.name) ? 'favorite' : ''}`}>
+                      <div className="team-row">
+                        <div className="team-flag">
+                          <Flag country={match.team1.name} size="medium" />
+                        </div>
+                        <span className="team-ranking">#{match.team1.ranking}</span>
+                      </div>
                       <span className="team-name">{match.team1.name}</span>
-                      <span className="team-ranking">#{match.team1.ranking}</span>
                     </div>
                     
+                    {/* VS Container */}
                     <div className="vs-container">
                       <span className="vs">VS</span>
+                      <span className="match-time">{match.time}</span>
                     </div>
                     
-                    <div className="team">
-                      <span className="team-ranking">#{match.team2.ranking}</span>
+                    {/* Team 2 - Right Side */}
+                    <div className={`team ${favoriteTeams.includes(match.team2.name) ? 'favorite' : ''}`}>
+                      <div className="team-row reverse">
+                        <div className="team-flag">
+                          <Flag country={match.team2.name} size="medium" />
+                        </div>
+                        <span className="team-ranking">#{match.team2.ranking}</span>
+                      </div>
                       <span className="team-name">{match.team2.name}</span>
-                      <span className="team-flag">{match.team2.flag}</span>
                     </div>
                   </div>
                   
@@ -431,10 +390,10 @@ function MensRivalTours({
                   </div>
                   
                   <div className="match-actions">
-                    <button className="action-btn primary" onClick={(e) => { e.stopPropagation(); onNavigateToPPV?.(); }}>
+                    <button className="action-btn" onClick={(e) => { e.stopPropagation(); onNavigateToPPV?.(); }}>
                       📺 Watch
                     </button>
-                    <button className="action-btn secondary" onClick={(e) => { e.stopPropagation(); onNavigateToAudio?.(); }}>
+                    <button className="action-btn" onClick={(e) => { e.stopPropagation(); onNavigateToAudio?.(); }}>
                       🔊 Listen
                     </button>
                   </div>
@@ -444,15 +403,18 @@ function MensRivalTours({
           </div>
         )}
 
-        {/* TEAMS TAB - BRITISH LIONS STRUCTURE */}
         {activeTab === 'teams' && (
           <div className="teams-section">
             <h2 className="section-title">Rival Nations</h2>
             <div className="teams-grid">
               {enhancedTeams.map((team, index) => (
-                <div key={index} className="nation-card">
+                <div key={index} className={`nation-card ${team.isFavorite ? 'favorite-team' : ''}`}>
+                  {team.isFavorite && <div className="favorite-badge">⭐ YOUR TEAM</div>}
+                  
                   <div className="nation-header">
-                    <span className="nation-flag">{team.flag}</span>
+                    <div className="nation-flag">
+                      <Flag country={team.name} size="large" />
+                    </div>
                     <div className="nation-info">
                       <h3 className="nation-name">{team.name}</h3>
                       <span className="world-ranking">World Ranking: #{team.ranking}</span>
@@ -477,7 +439,6 @@ function MensRivalTours({
           </div>
         )}
 
-        {/* RIVALRIES TAB */}
         {activeTab === 'rivalries' && (
           <div className="rivalries-section">
             <h2 className="section-title">Historic Rugby Rivalries</h2>
@@ -492,13 +453,17 @@ function MensRivalTours({
                 </div>
                 <div className="rivalry-stats">
                   <div className="rivalry-team">
-                    <span className="rivalry-team-flag">{rivalry.team1.flag}</span>
+                    <span className="rivalry-team-flag">
+                      <Flag country={rivalry.team1.name} size="medium" />
+                    </span>
                     <div className="rivalry-team-name">{rivalry.team1.name}</div>
                     <div className="rivalry-record">{rivalry.team1.record}</div>
                   </div>
                   <div className="rivalry-vs">VS</div>
                   <div className="rivalry-team">
-                    <span className="rivalry-team-flag">{rivalry.team2.flag}</span>
+                    <span className="rivalry-team-flag">
+                      <Flag country={rivalry.team2.name} size="medium" />
+                    </span>
                     <div className="rivalry-team-name">{rivalry.team2.name}</div>
                     <div className="rivalry-record">{rivalry.team2.record}</div>
                   </div>
@@ -513,37 +478,33 @@ function MensRivalTours({
           </div>
         )}
 
-        {/* BRITISH LIONS FEATURE GRID */}
-        <div className="features-section">
-          <h2 className="section-title">Rival Tours Features</h2>
-          <div className="features-grid">
-            <div className="feature-card" onClick={onNavigateToFantasy}>
-              <div className="feature-icon">🏅</div>
-              <div className="feature-title">Rivalry Fantasy</div>
-              <div className="feature-description">Build your dream rivalry team</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToResults}>
-              <div className="feature-icon">📈</div>
-              <div className="feature-title">Rivalry Results</div>
-              <div className="feature-description">Historic results and analysis</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToPodcasts}>
-              <div className="feature-icon">🎧</div>
-              <div className="feature-title">Rivalry Podcasts</div>
-              <div className="feature-description">Stories from historic clashes</div>
-            </div>
-            
-            <div className="feature-card" onClick={() => setActiveTab('rivalries')}>
-              <div className="feature-icon">⚔️</div>
-              <div className="feature-title">Historic Rivalries</div>
-              <div className="feature-description">Explore legendary matchups</div>
-            </div>
+        {/* FEATURES GRID - NO BIG TITLE (Applied Lions Tours correction) */}
+        <div className="features-grid">
+          <div className="feature-card" onClick={onNavigateToFantasy}>
+            <div className="feature-icon">🏅</div>
+            <div className="feature-title">Rivalry Fantasy</div>
+            <div className="feature-description">Build your dream rivalry team</div>
+          </div>
+          
+          <div className="feature-card" onClick={onNavigateToResults}>
+            <div className="feature-icon">📈</div>
+            <div className="feature-title">Rivalry Results</div>
+            <div className="feature-description">Historic results and analysis</div>
+          </div>
+          
+          <div className="feature-card" onClick={onNavigateToPodcasts}>
+            <div className="feature-icon">🎧</div>
+            <div className="feature-title">Rivalry Podcasts</div>
+            <div className="feature-description">Stories from historic clashes</div>
+          </div>
+          
+          <div className="feature-card" onClick={() => setActiveTab('rivalries')}>
+            <div className="feature-icon">⚔️</div>
+            <div className="feature-title">Historic Rivalries</div>
+            <div className="feature-description">Explore legendary matchups</div>
           </div>
         </div>
 
-        {/* BRITISH LIONS QUICK ACTIONS */}
         <div className="quick-actions">
           <button className="quick-btn" onClick={onNavigateToFantasy}>
             🏅 Rivalry Fantasy
@@ -560,7 +521,6 @@ function MensRivalTours({
         </div>
       </main>
 
-      {/* BRITISH LIONS BOTTOM AD BANNER */}
       <div className="bottom-ad-banner">
         <div className="ad-content">
           <div className="ad-icon">⚔️</div>

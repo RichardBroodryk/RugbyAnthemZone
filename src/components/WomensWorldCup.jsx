@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import './WomensWorldCup.css';
-import ThemeToggle from './ThemeToggle';
-import StadiumPage from './StadiumPage';
-import VenueSelector from './VenueSelector';
+import NavBar from './NavBar';
 
 function WomensWorldCup({ 
   onNavigateBack, 
@@ -17,19 +15,6 @@ function WomensWorldCup({
 }) {
   const [activeTab, setActiveTab] = useState('fixtures');
   const [matchFilter, setMatchFilter] = useState('all');
-  const [selectedVenue, setSelectedVenue] = useState('Twickenham Stadium');
-  
-  // World Cup Stadiums
-  const worldCupStadiums = [
-    'Twickenham Stadium',
-    'Eden Park',
-    'BC Place',
-    'Principality Stadium',
-    'Ellis Park',
-    'ANZ Stadium',
-    'Stade de France',
-    'Sydney Cricket Ground'
-  ];
 
   // World Cup Data
   const favoriteTeams = userPreferences?.favoriteTeams || [];
@@ -41,28 +26,28 @@ function WomensWorldCup({
     description: "The premier international women's rugby union competition, showcasing the best teams globally in the ultimate test of skill, strength, and strategy.",
     logo: "🏆",
     teams: [
-      { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 1, isFavorite: false },
-      { flag: "🇳🇿", name: "New Zealand", ranking: 2, isFavorite: false },
-      { flag: "🇫🇷", name: "France", ranking: 3, isFavorite: false },
-      { flag: "🇨🇦", name: "Canada", ranking: 4, isFavorite: false },
-      { flag: "🇺🇸", name: "USA", ranking: 5, isFavorite: false },
-      { flag: "🇦🇺", name: "Australia", ranking: 6, isFavorite: false },
-      { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 7, isFavorite: false },
-      { flag: "🇮🇪", name: "Ireland", ranking: 8, isFavorite: false },
-      { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland", ranking: 9, isFavorite: false },
-      { flag: "🇮🇹", name: "Italy", ranking: 10, isFavorite: false },
-      { flag: "🇿🇦", name: "South Africa", ranking: 11, isFavorite: false },
-      { flag: "🇪🇸", name: "Spain", ranking: 12, isFavorite: false },
-      { flag: "🇯🇵", name: "Japan", ranking: 13, isFavorite: false },
-      { flag: "🇫🇯", name: "Fiji", ranking: 14, isFavorite: false },
-      { flag: "🇧🇷", name: "Brazil", ranking: 15, isFavorite: false },
-      { flag: "🇰🇿", name: "Kazakhstan", ranking: 16, isFavorite: false }
+      { flag: "https://flagcdn.com/w320/gb-eng.png", name: "England", ranking: 1, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/nz.png", name: "New Zealand", ranking: 2, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/fr.png", name: "France", ranking: 3, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/ca.png", name: "Canada", ranking: 4, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/us.png", name: "USA", ranking: 5, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/au.png", name: "Australia", ranking: 6, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/gb-wls.png", name: "Wales", ranking: 7, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/ie.png", name: "Ireland", ranking: 8, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/gb-sct.png", name: "Scotland", ranking: 9, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/it.png", name: "Italy", ranking: 10, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/za.png", name: "South Africa", ranking: 11, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/es.png", name: "Spain", ranking: 12, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/jp.png", name: "Japan", ranking: 13, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/fj.png", name: "Fiji", ranking: 14, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/br.png", name: "Brazil", ranking: 15, isFavorite: false },
+      { flag: "https://flagcdn.com/w320/kz.png", name: "Kazakhstan", ranking: 16, isFavorite: false }
     ],
     matches: [
       {
         id: 1,
-        team1: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 1 },
-        team2: { flag: "🇫🇷", name: "France", ranking: 3 },
+        team1: { flag: "https://flagcdn.com/w320/gb-eng.png", name: "England", ranking: 1 },
+        team2: { flag: "https://flagcdn.com/w320/fr.png", name: "France", ranking: 3 },
         venue: "Twickenham Stadium – London",
         stadium: "Twickenham Stadium",
         date: "Sep 12, 2025",
@@ -75,8 +60,8 @@ function WomensWorldCup({
       },
       {
         id: 2,
-        team1: { flag: "🇳🇿", name: "New Zealand", ranking: 2 },
-        team2: { flag: "🇦🇺", name: "Australia", ranking: 6 },
+        team1: { flag: "https://flagcdn.com/w320/nz.png", name: "New Zealand", ranking: 2 },
+        team2: { flag: "https://flagcdn.com/w320/au.png", name: "Australia", ranking: 6 },
         venue: "Eden Park – Auckland",
         stadium: "Eden Park",
         date: "Sep 13, 2025",
@@ -89,8 +74,8 @@ function WomensWorldCup({
       },
       {
         id: 3,
-        team1: { flag: "🇨🇦", name: "Canada", ranking: 4 },
-        team2: { flag: "🇺🇸", name: "USA", ranking: 5 },
+        team1: { flag: "https://flagcdn.com/w320/ca.png", name: "Canada", ranking: 4 },
+        team2: { flag: "https://flagcdn.com/w320/us.png", name: "USA", ranking: 5 },
         venue: "BC Place – Vancouver",
         stadium: "BC Place",
         date: "Sep 14, 2025",
@@ -103,8 +88,8 @@ function WomensWorldCup({
       },
       {
         id: 4,
-        team1: { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 7 },
-        team2: { flag: "🇮🇪", name: "Ireland", ranking: 8 },
+        team1: { flag: "https://flagcdn.com/w320/gb-wls.png", name: "Wales", ranking: 7 },
+        team2: { flag: "https://flagcdn.com/w320/ie.png", name: "Ireland", ranking: 8 },
         venue: "Principality Stadium – Cardiff",
         stadium: "Principality Stadium",
         date: "Sep 19, 2025",
@@ -117,8 +102,8 @@ function WomensWorldCup({
       },
       {
         id: 5,
-        team1: { flag: "🇿🇦", name: "South Africa", ranking: 11 },
-        team2: { flag: "🇯🇵", name: "Japan", ranking: 13 },
+        team1: { flag: "https://flagcdn.com/w320/za.png", name: "South Africa", ranking: 11 },
+        team2: { flag: "https://flagcdn.com/w320/jp.png", name: "Japan", ranking: 13 },
         venue: "Ellis Park – Johannesburg",
         stadium: "Ellis Park",
         date: "Sep 20, 2025",
@@ -131,8 +116,8 @@ function WomensWorldCup({
       },
       {
         id: 6,
-        team1: { flag: "🇫🇯", name: "Fiji", ranking: 14 },
-        team2: { flag: "🇧🇷", name: "Brazil", ranking: 15 },
+        team1: { flag: "https://flagcdn.com/w320/fj.png", name: "Fiji", ranking: 14 },
+        team2: { flag: "https://flagcdn.com/w320/br.png", name: "Brazil", ranking: 15 },
         venue: "ANZ Stadium – Suva",
         stadium: "ANZ Stadium",
         date: "Sep 21, 2025",
@@ -154,12 +139,6 @@ function WomensWorldCup({
       { position: 7, team: "Wales", played: 3, won: 1, drawn: 0, lost: 2, points: 5, isFavorite: false },
       { position: 8, team: "Ireland", played: 3, won: 1, drawn: 0, lost: 2, points: 5, isFavorite: false }
     ]
-  };
-
-  // Handle seat selection for stadium maps
-  const handleSeatSelect = (seatInfo) => {
-    console.log('Selected seat:', seatInfo);
-    alert(`Selected ${seatInfo.section} at ${seatInfo.stadium}`);
   };
 
   // Enhanced data with favorite status
@@ -195,16 +174,37 @@ function WomensWorldCup({
     });
   };
 
+  const Flag = ({ src, alt, size = 'small', fallback }) => {
+    const [error, setError] = useState(false);
+    
+    const sizeClass = `flag-${size}`;
+    
+    return error ? (
+      <div className={`${sizeClass} flag-fallback`}>
+        {fallback || alt?.slice(0, 2) || 'FL'}
+      </div>
+    ) : (
+      <img 
+        src={src} 
+        alt={alt || 'Flag'} 
+        className={sizeClass}
+        onError={() => setError(true)}
+        loading="lazy"
+      />
+    );
+  };
+
   return (
     <div className="womens-world-cup-page">
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <ThemeToggle />
-      </nav>
+      {/* Top Navigation */}
+      <NavBar onNavigateBack={onNavigateBack} />
       
+      {/* Top Ad Banner */}
+      <div className="top-ad-banner">
+        🏆 Women's Rugby World Cup 2025 - Official Tournament Hub
+      </div>
+
+      {/* Hero Section */}
       <header className="tournament-hero">
         <div className="hero-content">
           <div className="tournament-badge">
@@ -212,13 +212,15 @@ function WomensWorldCup({
             <div className="tournament-info">
               <h1 className="tournament-name">
                 {womensWorldCupData.name}
-                <span className="womens-rugby-badge">WOMEN'S RUGBY</span>
+                <span className="womens-rugby-badge">WORLD CUP</span>
               </h1>
               <p className="tournament-year">{womensWorldCupData.year}</p>
             </div>
           </div>
           <p className="tournament-description">{womensWorldCupData.description}</p>
         </div>
+        
+        {/* FIXED: Hero Stats with BLACK TEXT */}
         <div className="hero-stats">
           <div className="stat">
             <span className="stat-number">16</span>
@@ -234,6 +236,7 @@ function WomensWorldCup({
           </div>
         </div>
 
+        {/* Personalization Banner */}
         {hasFavoriteTeams && userWorldCupTeams.length > 0 && (
           <div className="personalization-banner">
             <div className="banner-icon">🏆</div>
@@ -248,6 +251,7 @@ function WomensWorldCup({
         )}
       </header>
 
+      {/* Tab Navigation */}
       <nav className="tournament-tabs">
         <div className="nav-tabs">
           <button 
@@ -268,25 +272,14 @@ function WomensWorldCup({
           >
             📊 Standings
           </button>
-          <button 
-            className={`tab-btn ${activeTab === 'stadiums' ? 'active' : ''}`}
-            onClick={() => setActiveTab('stadiums')}
-          >
-            🏟️ Stadiums
-          </button>
-          <button 
-            className={`tab-btn ${activeTab === 'legacy' ? 'active' : ''}`}
-            onClick={() => setActiveTab('legacy')}
-          >
-            📜 Legacy
-          </button>
         </div>
       </nav>
 
+      {/* Main Content */}
       <main className="tournament-main">
         {activeTab === 'fixtures' && (
           <div className="fixtures-section">
-            <h2 className="section-title">World Cup 2025 Fixtures</h2>
+            <h2 className="section-title centered-fixtures-title">World Cup 2025 Fixtures</h2>
             
             <div className="match-filters">
               <button 
@@ -315,54 +308,71 @@ function WomensWorldCup({
               {filteredMatches.map(match => (
                 <div 
                   key={match.id} 
-                  className={`match-card ${match.isFeatured ? 'featured-match' : ''} ${match.isFavoriteMatch ? 'favorite-match' : ''}`}
+                  className={`match-card ${match.isFavoriteMatch ? 'favorite-match' : ''}`}
                   onClick={() => handleMatchClick(match)}
                 >
-                  {match.isFavoriteMatch && (
-                    <div className="match-highlight">
-                      ⭐ Features {match.favoriteTeamsInvolved.join(' & ')}
-                    </div>
-                  )}
+                  {/* FIXED: Status badge moved to LEFT side */}
+                  <div className={`status-badge ${match.status}`}>
+                    {match.status.toUpperCase()}
+                  </div>
                   
-                  <div className="round-indicator">
+                  {/* World Cup Round Indicator */}
+                  <div className="world-cup-round">
                     {match.round}
                   </div>
                   
+                  {/* Match Tournament and Date - Date positioned on RIGHT */}
                   <div className="match-header">
                     <span className="match-tournament">{match.tournament}</span>
                     <span className="match-date">{match.date} • {match.time}</span>
                   </div>
                   
+                  {/* Teams Container */}
                   <div className="teams-container">
                     <div className={`team ${favoriteTeams.includes(match.team1.name) ? 'favorite' : ''}`}>
-                      <span className="team-flag">{match.team1.flag}</span>
+                      <div className="team-row">
+                        <span className="team-ranking">#{match.team1.ranking}</span>
+                        <div className="team-flag">
+                          <Flag src={match.team1.flag} alt={match.team1.name} size="large" fallback={match.team1.name.slice(0, 2)} />
+                        </div>
+                      </div>
                       <span className="team-name">{match.team1.name}</span>
-                      <span className="team-ranking">#{match.team1.ranking}</span>
-                      {favoriteTeams.includes(match.team1.name) && <span className="favorite-indicator">♀</span>}
                     </div>
                     
                     <div className="vs-container">
                       <span className="vs">VS</span>
+                      <span className="match-time">{match.time}</span>
                     </div>
                     
                     <div className={`team ${favoriteTeams.includes(match.team2.name) ? 'favorite' : ''}`}>
-                      {favoriteTeams.includes(match.team2.name) && <span className="favorite-indicator">♀</span>}
-                      <span className="team-ranking">#{match.team2.ranking}</span>
+                      <div className="team-row reverse">
+                        <div className="team-flag">
+                          <Flag src={match.team2.flag} alt={match.team2.name} size="large" fallback={match.team2.name.slice(0, 2)} />
+                        </div>
+                        <span className="team-ranking">#{match.team2.ranking}</span>
+                      </div>
                       <span className="team-name">{match.team2.name}</span>
-                      <span className="team-flag">{match.team2.flag}</span>
                     </div>
                   </div>
                   
+                  {/* Match Footer */}
                   <div className="match-footer">
                     <span className="venue">🏟️ {match.venue}</span>
                     <span className="capacity">👥 {match.capacity}</span>
                   </div>
                   
+                  {/* Match Actions */}
                   <div className="match-actions">
-                    <button className="action-btn primary" onClick={(e) => { e.stopPropagation(); onNavigateToPPV?.(); }}>
+                    <button 
+                      className="action-btn primary" 
+                      onClick={(e) => { e.stopPropagation(); onNavigateToPPV?.(); }}
+                    >
                       📺 Watch
                     </button>
-                    <button className="action-btn secondary" onClick={(e) => { e.stopPropagation(); onNavigateToAudio?.(); }}>
+                    <button 
+                      className="action-btn secondary" 
+                      onClick={(e) => { e.stopPropagation(); onNavigateToAudio?.(); }}
+                    >
                       🔊 Listen
                     </button>
                   </div>
@@ -379,18 +389,17 @@ function WomensWorldCup({
               {enhancedTeams.map((team, index) => (
                 <div 
                   key={index} 
-                  className={`team-card ${team.isFavorite ? 'favorite-team' : ''}`}
+                  className={`nation-card ${team.isFavorite ? 'favorite-team' : ''}`}
                 >
-                  {team.isFavorite && <div className="favorite-badge">♀ YOUR TEAM</div>}
+                  {team.isFavorite && <div className="favorite-badge">⭐ YOUR TEAM</div>}
                   
-                  <div className="team-header">
-                    <span className="team-flag-large">{team.flag}</span>
-                    <div className="team-info">
-                      <div className="team-name-large">{team.name}</div>
-                      <div className="world-ranking">World Rank: #{team.ranking}</div>
-                    </div>
+                  <div className="team-flag-large">
+                    <Flag src={team.flag} alt={team.name} size="large" fallback={team.name.slice(0, 2)} />
                   </div>
-
+                  
+                  <div className="nation-name">{team.name}</div>
+                  <div className="world-ranking">World Rank: #{team.ranking}</div>
+                  
                   {team.isFavorite && (
                     <div className="team-highlight">
                       Your World Cup team
@@ -413,19 +422,25 @@ function WomensWorldCup({
                 <span>W</span>
                 <span>D</span>
                 <span>L</span>
+                <span>PF</span>
+                <span>PA</span>
                 <span>Pts</span>
               </div>
               {enhancedStandings.map(team => (
                 <div key={team.position} className={`table-row ${team.isFavorite ? 'favorite-team' : ''}`}>
                   <span className="position">{team.position}</span>
-                  <span className="team-name">
-                    {team.team} 
-                    {team.isFavorite && <span className="favorite-indicator"> ♀</span>}
+                  <span className="team-name-cell">
+                    <div className="team-name-wrapper">
+                      <span className="team-name-text">{team.team}</span>
+                      {team.isFavorite && <span className="favorite-star">⭐</span>}
+                    </div>
                   </span>
                   <span>{team.played}</span>
                   <span>{team.won}</span>
                   <span>{team.drawn}</span>
                   <span>{team.lost}</span>
+                  <span>120</span>
+                  <span>45</span>
                   <span className="points">{team.points}</span>
                 </div>
               ))}
@@ -433,95 +448,34 @@ function WomensWorldCup({
           </div>
         )}
 
-        {activeTab === 'stadiums' && (
-          <div className="stadiums-section">
-            <h2 className="section-title">🏟️ Women's World Cup Stadiums</h2>
-            <p>Explore the iconic global venues hosting the pinnacle of women's rugby competition</p>
-            
-            <VenueSelector 
-              venues={worldCupStadiums}
-              selectedVenue={selectedVenue}
-              onVenueChange={setSelectedVenue}
-            />
-            
-            <StadiumPage 
-              stadium={selectedVenue}
-              onSeatSelect={handleSeatSelect}
-              interactive={true}
-              showInfo={true}
-            />
-            
-            <div className="stadium-features">
-              <h3>World Cup Stadium Features:</h3>
-              <ul>
-                <li>🎯 Click on stadium sections to explore seating</li>
-                <li>🎫 Integrated with World Cup ticket packages</li>
-                <li>🌍 Global stadiums from London to Auckland</li>
-                <li>📱 Mobile-optimized interactive maps</li>
-                <li>🏆 World Cup final venue included</li>
-              </ul>
-            </div>
+        {/* Features Grid - NO BIG TITLE ABOVE */}
+        <div className="features-grid">
+          <div className="feature-card" onClick={onNavigateToFantasy}>
+            <div className="feature-icon">🏅</div>
+            <div className="feature-title">World Cup Fantasy</div>
+            <div className="feature-description">Build your dream World Cup team</div>
           </div>
-        )}
-
-        {activeTab === 'legacy' && (
-          <div className="legacy-section">
-            <h2 className="section-title">World Cup Legacy</h2>
-            <div className="world-cup-legacy">
-              <h3 className="legacy-title">Women's Rugby World Cup Legacy</h3>
-              <p>Celebrating the growth and excellence of women's rugby on the global stage</p>
-              
-              <div className="legacy-stats">
-                <div className="legacy-stat">
-                  <div className="stat-number">9th</div>
-                  <div className="stat-label">Edition</div>
-                </div>
-                <div className="legacy-stat">
-                  <div className="stat-number">16</div>
-                  <div className="stat-label">Competing Nations</div>
-                </div>
-                <div className="legacy-stat">
-                  <div className="stat-number">48</div>
-                  <div className="stat-label">Total Matches</div>
-                </div>
-                <div className="legacy-stat">
-                  <div className="stat-number">♀</div>
-                  <div className="stat-label">Women's Rugby Excellence</div>
-                </div>
-              </div>
-            </div>
+          
+          <div className="feature-card" onClick={onNavigateToResults}>
+            <div className="feature-icon">📈</div>
+            <div className="feature-title">Live Results</div>
+            <div className="feature-description">Real-time World Cup scores</div>
           </div>
-        )}
-
-        <div className="features-section">
-          <h2 className="section-title">World Cup Features</h2>
-          <div className="features-grid">
-            <div className="feature-card" onClick={onNavigateToFantasy}>
-              <div className="feature-icon">🏅</div>
-              <div className="feature-title">World Cup Fantasy</div>
-              <div className="feature-description">Build your dream World Cup team</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToResults}>
-              <div className="feature-icon">📈</div>
-              <div className="feature-title">Live Results</div>
-              <div className="feature-description">Real-time World Cup scores</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToPodcasts}>
-              <div className="feature-icon">🎧</div>
-              <div className="feature-title">World Cup Podcasts</div>
-              <div className="feature-description">Tournament analysis</div>
-            </div>
-            
-            <div className="feature-card" onClick={() => setActiveTab('stadiums')}>
-              <div className="feature-icon">🏟️</div>
-              <div className="feature-title">Stadium Maps</div>
-              <div className="feature-description">Explore World Cup venues</div>
-            </div>
+          
+          <div className="feature-card" onClick={onNavigateToPodcasts}>
+            <div className="feature-icon">🎧</div>
+            <div className="feature-title">World Cup Podcasts</div>
+            <div className="feature-description">Tournament analysis</div>
+          </div>
+          
+          <div className="feature-card" onClick={() => alert('World Cup Stats coming soon!')}>
+            <div className="feature-icon">📊</div>
+            <div className="feature-title">World Cup Stats</div>
+            <div className="feature-description">Player & team statistics</div>
           </div>
         </div>
 
+        {/* Quick Actions */}
         <div className="quick-actions">
           <button className="quick-btn" onClick={onNavigateToFantasy}>
             🏅 World Cup Fantasy
@@ -532,12 +486,13 @@ function WomensWorldCup({
           <button className="quick-btn" onClick={onNavigateToPodcasts}>
             🎧 World Cup Podcasts
           </button>
-          <button className="quick-btn" onClick={() => setActiveTab('stadiums')}>
-            🏟️ World Cup Stadiums
+          <button className="quick-btn" onClick={() => alert('World Cup History coming soon!')}>
+            📜 World Cup History
           </button>
         </div>
       </main>
 
+      {/* Bottom Ad Banner */}
       <div className="bottom-ad-banner">
         <div className="ad-content">
           <div className="ad-icon">🏆</div>
@@ -545,7 +500,9 @@ function WomensWorldCup({
             Women's Rugby World Cup 2025 - The Ultimate Women's Rugby Championship!
             Official packages, hospitality, and exclusive World Cup experiences.
           </div>
-          <button className="ad-cta">🎫 Get World Cup Tickets</button>
+          <button className="ad-cta" onClick={() => alert('Redirecting to ticket sales...')}>
+            🎫 Get World Cup Tickets
+          </button>
         </div>
       </div>
     </div>

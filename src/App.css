@@ -16,12 +16,23 @@
   --warning-color: #ff9800;
   --error-color: #f44336;
   
+  /* Rugby Brand Colors */
+  --rugby-green: #007749;        /* Springbok/Field Green */
+  --rugby-dark-green: #005530;   /* Dark Green */
+  --rugby-light-green: #009B5E;  /* Light Green */
+  --rugby-red: #BC002D;          /* Try Line Red */
+  --rugby-gold: #FFD700;         /* Trophy Gold */
+  
   /* Gradients */
   --gradient-primary: linear-gradient(135deg, #2c5aa0 0%, #3a6bc0 100%);
   --gradient-accent: linear-gradient(135deg, #4fc3f7, #29b6f6);
   --gradient-success: linear-gradient(135deg, #4caf50, #45a049);
   --gradient-warning: linear-gradient(135deg, #ff9800, #f57c00);
   --gradient-error: linear-gradient(135deg, #f44336, #d32f2f);
+  
+  /* STANDARDIZED BANNER GRADIENTS */
+  --top-banner-gradient: linear-gradient(90deg, var(--rugby-green), var(--rugby-dark-green));
+  --bottom-banner-gradient: linear-gradient(90deg, var(--rugby-light-green), var(--rugby-green));
 }
 
 /* Dark Theme */
@@ -41,12 +52,52 @@
   --warning-color: #ffb74d;
   --error-color: #ef5350;
   
+  /* Rugby Brand Colors (Dark Theme) */
+  --rugby-green: #006B3D;
+  --rugby-dark-green: #004C29;
+  --rugby-light-green: #008C45;
+  --rugby-red: #A51B22;
+  --rugby-gold: #D4AF37;
+  
   /* Dark Theme Gradients */
   --gradient-primary: linear-gradient(135deg, #0a1428 0%, #1a237e 100%);
   --gradient-accent: linear-gradient(135deg, #64b5f6, #42a5f5);
   --gradient-success: linear-gradient(135deg, #66bb6a, #4caf50);
   --gradient-warning: linear-gradient(135deg, #ffb74d, #ff9800);
   --gradient-error: linear-gradient(135deg, #ef5350, #f44336);
+  
+  /* Dark Theme Banners */
+  --top-banner-gradient: linear-gradient(90deg, var(--rugby-green), var(--rugby-dark-green));
+  --bottom-banner-gradient: linear-gradient(90deg, var(--rugby-light-green), var(--rugby-green));
+}
+
+/* ===== STANDARDIZED BANNERS FOR ALL ANTHEM PAGES ===== */
+.top-ad-banner {
+  background: var(--top-banner-gradient) !important;
+  color: white !important;
+  text-align: center !important;
+  padding: 12px !important;
+  font-weight: bold !important;
+  font-size: 1.1em !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+  width: 100% !important;
+  position: relative !important;
+  z-index: 2 !important;
+  border-bottom: 3px solid var(--rugby-gold) !important;
+}
+
+.bottom-ad-banner {
+  background: var(--bottom-banner-gradient) !important;
+  color: white !important;
+  text-align: center !important;
+  padding: 12px !important;
+  font-weight: bold !important;
+  font-size: 1.1em !important;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1) !important;
+  width: 100% !important;
+  position: relative !important;
+  z-index: 2 !important;
+  border-top: 3px solid var(--rugby-gold) !important;
 }
 
 /* ===== BASE STYLES USING CSS VARIABLES ===== */
@@ -83,7 +134,7 @@ nav.top-nav {
 }
 
 .nav-btn {
-  background: #4fc3f7 !important;
+  background: var(--rugby-green) !important;
   color: white !important;
   border: none !important;
   padding: 0.7rem 1.2rem !important;
@@ -98,9 +149,9 @@ nav.top-nav {
 }
 
 .nav-btn:hover {
-  background: #29b6f6 !important;
+  background: var(--rugby-dark-green) !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.4) !important;
+  box-shadow: 0 4px 12px rgba(0, 119, 73, 0.4) !important;
 }
 
 /* ===== COMPONENT STYLES USING CSS VARIABLES ===== */
@@ -142,29 +193,10 @@ nav.top-nav {
   border: 1px solid var(--border-color);
 }
 
-/* Ad Banners */
-.top-ad-banner {
-  background: linear-gradient(90deg, #ff6b35, #e55a2b);
-  color: white;
-  text-align: center;
-  padding: 12px;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-.bottom-ad-banner {
-  background: linear-gradient(90deg, #4ecdc4, #26a69a);
-  color: white;
-  text-align: center;
-  padding: 12px;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
 /* Personalized Items */
 .personalized-item {
-  background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
-  border: 2px solid #ff6b6b !important;
+  background: linear-gradient(135deg, var(--rugby-red), #ee5a52) !important;
+  border: 2px solid var(--rugby-red) !important;
 }
 
 /* Ensure all components inherit theme colors */
@@ -441,4 +473,57 @@ nav.top-nav {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
+}
+
+/* ===== ANTHEM PAGE COMMON STYLES ===== */
+/* These help ensure consistency across all anthem pages */
+.nation-anthem-page {
+  min-height: 100vh;
+  position: relative;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  overflow-x: hidden; /* Prevents horizontal scroll */
+}
+
+/* Rugby-themed decorative elements */
+.rugby-field-line {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--rugby-green), transparent);
+  margin: 20px 0;
+}
+
+.rugby-ball-icon {
+  color: var(--rugby-gold);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Standardized anthem page components */
+.anthem-header {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+  border-radius: 20px !important;
+  margin-bottom: 30px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.springbok-logo {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)) !important;
+  background: white !important;
+  padding: 5px !important;
+  border-radius: 10px !important;
+}
+
+.flag-container {
+  border: 3px solid white !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Enhanced contrast for better readability */
+.anthem-page-title {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+.anthem-subtitle {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
 }

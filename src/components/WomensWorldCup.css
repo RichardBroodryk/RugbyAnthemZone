@@ -7,7 +7,994 @@
   font-family: 'Arial', sans-serif;
   overflow-x: hidden;
 }
+/* WomensWorldCup.css - EXACT WOMEN'S SIX NATIONS TEMPLATE WITH ALL FIXES */
+.womens-world-cup-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #FFE5B4 0%, #FAD6A5 100%) !important; /* LIGHT PEACH - WOMEN'S THEME */
+  color: #512DA8; /* PURPLE TEXT */
+  font-family: 'Arial', sans-serif;
+  overflow-x: hidden;
+}
 
+/* ===== TOP AD BANNER ===== */
+.womens-world-cup-page .top-ad-banner {
+  background: linear-gradient(90deg, #512DA8, #673AB7); /* PURPLE GRADIENT */
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border-bottom: 2px solid #9575CD; /* LIGHT PURPLE */
+  width: 100%;
+}
+
+/* ===== TAB NAVIGATION ===== */
+.womens-world-cup-page .tournament-tabs {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 1rem 2rem !important;
+  background: #512DA8 !important; /* DARK PURPLE */
+  border-bottom: 2px solid #9575CD !important; /* LIGHT PURPLE */
+  position: sticky !important;
+  top: 80px !important;
+  z-index: 999 !important;
+  width: 100% !important;
+}
+
+.womens-world-cup-page .nav-tabs {
+  display: flex !important;
+  gap: 0.5rem !important;
+}
+
+.womens-world-cup-page .tab-btn {
+  background: white !important;
+  color: #512DA8 !important; /* DARK PURPLE */
+  border: none !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 25px !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  white-space: nowrap !important;
+  border: 2px solid #9575CD !important; /* LIGHT PURPLE */
+}
+
+.womens-world-cup-page .tab-btn:hover {
+  background: #F3E5F5 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(81, 45, 168, 0.4) !important;
+}
+
+.womens-world-cup-page .tab-btn.active {
+  background: #673AB7 !important; /* MEDIUM PURPLE */
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(103, 58, 183, 0.4) !important;
+  border-color: #512DA8 !important;
+}
+
+/* ===== FIXTURES/MATCHES SECTION ===== */
+.womens-world-cup-page .fixtures-section {
+  text-align: center;
+}
+
+.womens-world-cup-page .centered-fixtures-title {
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin: 0 auto 30px auto;
+  color: #512DA8 !important; /* DARK PURPLE */
+  font-size: 2.5rem;
+  padding: 0 20px;
+}
+
+/* ===== TOURNAMENT HERO ===== */
+.womens-world-cup-page .tournament-hero {
+  background: linear-gradient(135deg, #FFE5B4 0%, #FAD6A5 100%) !important; /* PEACH COLORS */
+  padding: 3rem 2rem;
+  text-align: center;
+  border-bottom: 3px solid #512DA8; /* DARK PURPLE */
+  position: relative;
+  overflow: hidden;
+}
+
+.womens-world-cup-page .hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.womens-world-cup-page .tournament-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.womens-world-cup-page .tournament-logo {
+  font-size: 4rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 20px;
+  border: 3px solid rgba(149, 117, 205, 0.3); /* LIGHT PURPLE */
+}
+
+.womens-world-cup-page .tournament-info h1 {
+  font-size: 3rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  color: #512DA8; /* DARK PURPLE */
+}
+
+.womens-world-cup-page .tournament-year {
+  font-size: 1.5rem;
+  opacity: 0.9;
+  margin: 0;
+  color: #9575CD !important; /* LIGHT PURPLE */
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.womens-world-cup-page .tournament-description {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 1rem auto 0;
+  opacity: 0.95;
+  line-height: 1.6;
+  color: #512DA8 !important; /* DARK PURPLE */
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  border: 2px solid rgba(149, 117, 205, 0.3); /* LIGHT PURPLE */
+}
+
+/* ===== HERO STATS - FIXED BLACK TEXT ===== */
+.womens-world-cup-page .hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.womens-world-cup-page .stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* FIXED: BLACK TEXT FOR READABILITY */
+.womens-world-cup-page .stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000000 !important; /* BLACK FOR MAXIMUM READABILITY */
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* FIXED: BLACK TEXT FOR READABILITY */
+.womens-world-cup-page .stat-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  color: #000000 !important; /* BLACK FOR MAXIMUM READABILITY */
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* ===== PERSONALIZATION BANNER ===== */
+.womens-world-cup-page .personalization-banner {
+  background: linear-gradient(135deg, rgba(149, 117, 205, 0.3), rgba(81, 45, 168, 0.3)); /* PURPLE COLORS */
+  backdrop-filter: blur(10px);
+  border: 2px solid #9575CD; /* LIGHT PURPLE */
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px rgba(149, 117, 205, 0.3); }
+  to { box-shadow: 0 0 20px rgba(149, 117, 205, 0.6); }
+}
+
+.womens-world-cup-page .banner-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.womens-world-cup-page .banner-content h3 {
+  margin: 0 0 0.5rem 0;
+  color: #9575CD !important; /* LIGHT PURPLE */
+  font-size: 1.2rem;
+}
+
+.womens-world-cup-page .banner-content p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+  color: #512DA8 !important; /* DARK PURPLE */
+}
+
+/* ===== MAIN CONTENT ===== */
+.womens-world-cup-page .tournament-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.womens-world-cup-page .section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #512DA8 !important; /* DARK PURPLE */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: block;
+}
+
+/* ===== MATCH FILTERS ===== */
+.womens-world-cup-page .match-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.womens-world-cup-page .filter-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #512DA8; /* DARK PURPLE */
+  border: 2px solid rgba(81, 45, 168, 0.2);
+  padding: 0.7rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.womens-world-cup-page .filter-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.womens-world-cup-page .filter-btn.active {
+  background: #512DA8; /* DARK PURPLE */
+  color: white;
+  border-color: #512DA8;
+  box-shadow: 0 4px 15px rgba(81, 45, 168, 0.4);
+}
+
+/* ===== MATCH CARD STYLING ===== */
+.womens-world-cup-page .matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.womens-world-cup-page .match-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-left: 4px solid #512DA8; /* DARK PURPLE */
+  margin-bottom: 16px;
+  overflow: hidden;
+  position: relative;
+}
+
+.womens-world-cup-page .match-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(81, 45, 168, 0.15);
+}
+
+.womens-world-cup-page .match-card.favorite-match {
+  border-left-width: 6px;
+  background: linear-gradient(135deg, #F3E5F5, #ffffff);
+}
+
+/* ===== WORLD CUP ROUND INDICATOR ===== */
+.womens-world-cup-page .world-cup-round {
+  background: linear-gradient(90deg, #512DA8, #311B92); /* PURPLE GRADIENT */
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+/* STATUS BADGE POSITIONING - FIXED TO LEFT SIDE */
+.womens-world-cup-page .status-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px; /* CHANGED TO LEFT */
+  background: #512DA8; /* DARK PURPLE */
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.womens-world-cup-page .status-badge.upcoming {
+  background: #9575CD !important; /* LIGHT PURPLE */
+  color: #311B92 !important; /* DARK PURPLE */
+}
+
+.womens-world-cup-page .status-badge.completed {
+  background: #28a745 !important;
+  color: white !important;
+}
+
+/* ===== MATCH HEADER ===== */
+.womens-world-cup-page .match-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  gap: 0.5rem;
+  position: relative;
+  padding-left: 130px; /* Make room for status badge on left */
+}
+
+.womens-world-cup-page .match-tournament {
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.8em;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #512DA8, #311B92); /* PURPLE GRADIENT */
+  max-width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* DATE POSITIONING FIXED */
+.womens-world-cup-page .match-date {
+  color: #512DA8; /* DARK PURPLE */
+  font-size: 0.9em;
+  font-weight: 500;
+  white-space: nowrap;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 11;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* ===== TEAMS CONTAINER ===== */
+.womens-world-cup-page .teams-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 16px;
+  min-height: 100px;
+}
+
+.womens-world-cup-page .team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  padding: 0 5px;
+}
+
+.womens-world-cup-page .team-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  width: 100%;
+  justify-content: center;
+}
+
+.womens-world-cup-page .team-row.reverse {
+  flex-direction: row-reverse;
+}
+
+.womens-world-cup-page .team-flag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.womens-world-cup-page .team-ranking {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #512DA8; /* DARK PURPLE */
+  background: #F3E5F5;
+  padding: 4px 8px;
+  border-radius: 8px;
+  min-width: 45px;
+  text-align: center;
+}
+
+.womens-world-cup-page .team-name {
+  font-weight: 600;
+  color: #000000;
+  font-size: 1.3em;
+  text-align: center;
+  line-height: 1.2;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== VS CONTAINER ===== */
+.womens-world-cup-page .vs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 70px;
+  flex-shrink: 0;
+  margin: 0 10px;
+}
+
+.womens-world-cup-page .vs {
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.1em;
+  background: #f5f5f5;
+  padding: 8px 16px;
+  border-radius: 12px;
+  white-space: nowrap;
+  border: 2px solid #e0e0e0;
+}
+
+.womens-world-cup-page .match-time {
+  color: #666;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+/* ===== MATCH FOOTER ===== */
+.womens-world-cup-page .match-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+  min-height: 32px;
+}
+
+.womens-world-cup-page .venue, .womens-world-cup-page .capacity {
+  color: #666;
+  font-size: 0.8em;
+  font-style: italic;
+  text-align: right;
+  flex: 1;
+  margin-left: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== MATCH ACTIONS ===== */
+.womens-world-cup-page .match-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.8rem;
+}
+
+.womens-world-cup-page .action-btn {
+  flex: 1;
+  padding: 0.5rem 0.4rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.7rem;
+  min-height: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+/* WATCH BUTTON - DARK PURPLE */
+.womens-world-cup-page .action-btn.primary,
+.womens-world-cup-page .match-card .match-actions .action-btn:nth-of-type(1),
+.womens-world-cup-page .match-card .match-actions .action-btn:nth-child(1),
+.womens-world-cup-page .match-card .match-actions button:first-child,
+.womens-world-cup-page .match-card .match-actions .action-btn:first-child {
+  background-color: #512DA8 !important; /* DARK PURPLE */
+  color: white !important;
+  border: none !important;
+}
+
+/* LISTEN/AUDIO BUTTON - LIGHT PURPLE */
+.womens-world-cup-page .action-btn.secondary,
+.womens-world-cup-page .match-card .match-actions .action-btn:nth-of-type(2),
+.womens-world-cup-page .match-card .match-actions .action-btn:nth-child(2),
+.womens-world-cup-page .match-card .match-actions button:last-child,
+.womens-world-cup-page .match-card .match-actions .action-btn:last-child {
+  background-color: #9575CD !important; /* LIGHT PURPLE */
+  color: white !important;
+  border: none !important;
+}
+
+.womens-world-cup-page .action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effects */
+.womens-world-cup-page .action-btn.primary:hover {
+  background-color: #311B92 !important; /* DARKER PURPLE */
+}
+
+.womens-world-cup-page .action-btn.secondary:hover {
+  background-color: #7E57C2 !important; /* DARKER LIGHT PURPLE */
+}
+
+/* ===== TEAMS SECTION ===== */
+.womens-world-cup-page .teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.womens-world-cup-page .nation-card {
+  background: white;
+  color: #333;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 2px solid #e0e0e0;
+  transition: all 0.3s ease;
+  position: relative;
+  text-align: center;
+}
+
+.womens-world-cup-page .nation-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.womens-world-cup-page .nation-flag {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.womens-world-cup-page .nation-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: #000000;
+}
+
+.womens-world-cup-page .world-ranking {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.womens-world-cup-page .points {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #512DA8; /* DARK PURPLE */
+}
+
+/* ===== STANDINGS TABLE ===== */
+.womens-world-cup-page .standings-table {
+  background: white;
+  color: #333;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #e0e0e0;
+  margin-bottom: 2rem;
+}
+
+.womens-world-cup-page .table-header {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: #512DA8; /* DARK PURPLE */
+  font-weight: 600;
+  color: white;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.womens-world-cup-page .table-row {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.3s ease;
+  align-items: center;
+}
+
+.womens-world-cup-page .table-row:hover {
+  background: #f8f9fa;
+}
+
+.womens-world-cup-page .table-row:last-child {
+  border-bottom: none;
+}
+
+.womens-world-cup-page .position {
+  font-weight: bold;
+  color: #512DA8; /* DARK PURPLE */
+}
+
+.womens-world-cup-page .team-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.womens-world-cup-page .team-name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.womens-world-cup-page .team-name-text {
+  font-weight: 600;
+  color: #000000;
+}
+
+.womens-world-cup-page .favorite-star {
+  color: #9575CD; /* LIGHT PURPLE */
+  font-size: 1.1em;
+}
+
+/* ===== FEATURES GRID - NO BIG TITLE ===== */
+.womens-world-cup-page .features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.womens-world-cup-page .feature-card {
+  background: white;
+  color: #333;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.womens-world-cup-page .feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #512DA8; /* DARK PURPLE */
+}
+
+.womens-world-cup-page .feature-icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  color: #512DA8; /* DARK PURPLE */
+}
+
+.womens-world-cup-page .feature-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #512DA8 !important; /* DARK PURPLE */
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.womens-world-cup-page .feature-description {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.3;
+}
+
+/* ===== QUICK ACTIONS ===== */
+.womens-world-cup-page .quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+  max-width: 100%;
+}
+
+.womens-world-cup-page .quick-btn {
+  background: linear-gradient(135deg, #512DA8, #311B92); /* PURPLE GRADIENT */
+  color: white;
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  min-height: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.womens-world-cup-page .quick-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(81, 45, 168, 0.4);
+}
+
+/* ===== BOTTOM AD BANNER ===== */
+.womens-world-cup-page .bottom-ad-banner {
+  background: linear-gradient(90deg, #311B92, #512DA8); /* DARK PURPLE GRADIENT */
+  color: white;
+  text-align: center;
+  padding: 1.5rem 2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-top: 3px solid #9575CD; /* LIGHT PURPLE */
+  margin-top: 3rem;
+}
+
+.womens-world-cup-page .bottom-ad-banner .ad-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.womens-world-cup-page .bottom-ad-banner .ad-icon {
+  font-size: 2rem;
+}
+
+.womens-world-cup-page .bottom-ad-banner .ad-text {
+  flex: 1;
+}
+
+.womens-world-cup-page .bottom-ad-banner .ad-cta {
+  background: #9575CD; /* LIGHT PURPLE */
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.womens-world-cup-page .bottom-ad-banner .ad-cta:hover {
+  background: #7E57C2; /* DARKER LIGHT PURPLE */
+  transform: translateY(-2px);
+}
+
+/* ===== FLAG COMPONENT STYLES ===== */
+.womens-world-cup-page .flag-small, 
+.womens-world-cup-page .flag-medium, 
+.womens-world-cup-page .flag-large {
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid #e0e0e0;
+}
+
+.womens-world-cup-page .flag-small {
+  width: 40px;
+  height: 25px;
+}
+
+.womens-world-cup-page .flag-medium {
+  width: 60px;
+  height: 40px;
+}
+
+.womens-world-cup-page .flag-large {
+  width: 80px;
+  height: 50px;
+}
+
+.womens-world-cup-page .flag-fallback {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #666;
+  font-size: 0.8em;
+}
+
+/* ===== WOMEN'S RUGBY BADGE ===== */
+.womens-world-cup-page .womens-rugby-badge {
+  display: inline-block;
+  background: #9575CD; /* LIGHT PURPLE */
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-left: 1rem;
+  vertical-align: middle;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .womens-world-cup-page .tournament-tabs {
+    padding: 1rem !important;
+    top: 70px !important;
+  }
+  
+  .womens-world-cup-page .nav-tabs {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .womens-world-cup-page .tab-btn {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .womens-world-cup-page .matches-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .womens-world-cup-page .teams-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .womens-world-cup-page .features-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .womens-world-cup-page .quick-actions {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .womens-world-cup-page .table-header,
+  .womens-world-cup-page .table-row {
+    grid-template-columns: 0.5fr 1.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+    font-size: 0.8rem;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .womens-world-cup-page .tournament-hero {
+    padding: 2rem 1rem;
+  }
+  
+  .womens-world-cup-page .tournament-info h1 {
+    font-size: 2rem;
+  }
+  
+  .womens-world-cup-page .tournament-logo {
+    font-size: 3rem;
+  }
+  
+  .womens-world-cup-page .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .womens-world-cup-page .features-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .womens-world-cup-page .quick-actions {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .womens-world-cup-page .match-card {
+    min-height: 200px;
+    padding: 1rem;
+  }
+  
+  .womens-world-cup-page .teams-container {
+    flex-direction: column;
+    gap: 20px;
+    min-height: auto;
+  }
+  
+  .womens-world-cup-page .team {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+  }
+  
+  .womens-world-cup-page .team-name {
+    font-size: 1em;
+    margin: 0 10px;
+    flex: 1;
+    min-height: auto;
+    text-align: left;
+  }
+  
+  .womens-world-cup-page .team-ranking {
+    font-size: 0.8em;
+    margin-top: 0;
+    width: auto;
+    min-width: 40px;
+  }
+  
+  .womens-world-cup-page .vs-container {
+    flex-direction: row;
+    gap: 20px;
+    order: -1;
+    margin: 0;
+    min-width: auto;
+  }
+  
+  .womens-world-cup-page .match-footer {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  
+  .womens-world-cup-page .venue, .womens-world-cup-page .capacity {
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .womens-world-cup-page .status-badge {
+    top: 8px !important;
+    left: 8px !important; /* CHANGED TO LEFT */
+    font-size: 0.6rem !important;
+    max-width: 100px !important;
+  }
+  
+  .womens-world-cup-page .table-header,
+  .womens-world-cup-page .table-row {
+    grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+    font-size: 0.7rem;
+    gap: 0.3rem;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .womens-world-cup-page .womens-rugby-badge {
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
 /* ===== ULTRA-SPECIFIC OVERRIDE FOR ALL GLOBAL CONFLICTS ===== */
 
 /* Force tournament-specific button styles - Override ALL global conflicts */

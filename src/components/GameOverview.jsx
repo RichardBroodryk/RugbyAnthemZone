@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './GameOverview.css';
+import NavBar from './NavBar';
 
 const GameOverview = ({ 
   game, 
@@ -12,12 +13,11 @@ const GameOverview = ({
   onNavigateToAudio,
   onNavigateToFantasy,
   onNavigateToPodcasts,
-  onNavigateToStadium // ✅ ADDED THIS PROP
+  onNavigateToStadium
 }) => {
   const [gameData, setGameData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Mock team squads data - EXPANDED to include more teams
   const teamSquads = {
     "New Zealand": {
       startingXV: [
@@ -135,7 +135,6 @@ const GameOverview = ({
         { number: 23, name: "Robbie Henshaw", position: "Centre" }
       ]
     },
-    // Add more teams as needed
     "Australia": {
       startingXV: [
         { number: 1, name: "James Slipper", position: "Prop" },
@@ -197,13 +196,10 @@ const GameOverview = ({
   };
 
   useEffect(() => {
-    // Use the passed game prop or fallback data
     if (game) {
-      console.log("Game prop received:", game); // Debug log
       setGameData(game);
       setLoading(false);
     } else {
-      // Enhanced fallback data with proper team names
       setTimeout(() => {
         const fallbackGame = {
           tournament: "Rugby Championship",
@@ -223,7 +219,6 @@ const GameOverview = ({
           time: "19:35", 
           status: "Completed"
         };
-        console.log("Using fallback game:", fallbackGame); // Debug log
         setGameData(fallbackGame);
         setLoading(false);
       }, 500);
@@ -247,19 +242,28 @@ const GameOverview = ({
   };
 
   const renderSquad = (teamName) => {
-    console.log("Looking for squad for:", teamName); // Debug log
     const squad = teamSquads[teamName];
-    console.log("Found squad:", squad); // Debug log
     
     if (!squad) {
       return (
-        <div className="team-squads">
-          <div className="squad-section">
-            <h4 className="squad-title">Team Squad</h4>
-            <div className="squad-grid">
-              <div className="player-card">
-                <div className="player-name">Squad data not available</div>
-                <div className="player-position">Check back later</div>
+        <div className="team-players">
+          <div className="players-section">
+            <div className="players-columns">
+              <div className="players-column starting-column">
+                <h4 className="players-title">Starting XV</h4>
+                <div className="player-line">
+                  <div className="player-num">-</div>
+                  <div className="player-fullname">Squad data not available</div>
+                  <div className="player-role">-</div>
+                </div>
+              </div>
+              <div className="players-column reserves-column">
+                <h4 className="players-title">Reserves</h4>
+                <div className="player-line">
+                  <div className="player-num">-</div>
+                  <div className="player-fullname">Check back later</div>
+                  <div className="player-role">-</div>
+                </div>
               </div>
             </div>
           </div>
@@ -268,30 +272,30 @@ const GameOverview = ({
     }
 
     return (
-      <div className="team-squads">
-        <div className="squad-section">
-          <h4 className="squad-title">Starting XV</h4>
-          <div className="squad-grid">
-            {squad.startingXV.map((player, index) => (
-              <div key={index} className="player-card">
-                <div className="player-number">#{player.number}</div>
-                <div className="player-name">{player.name}</div>
-                <div className="player-position">{player.position}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-        
-        <div className="squad-section">
-          <h4 className="squad-title">Reserves</h4>
-          <div className="squad-grid">
-            {squad.reserves.map((player, index) => (
-              <div key={index} className="player-card">
-                <div className="player-number">#{player.number}</div>
-                <div className="player-name">{player.name}</div>
-                <div className="player-position">{player.position}</div>
-              </div>
-            ))}
+      <div className="team-players">
+        <div className="players-section">
+          <div className="players-columns">
+            <div className="players-column starting-column">
+              <h4 className="players-title">Starting XV</h4>
+              {squad.startingXV.map((player, index) => (
+                <div key={index} className="player-line">
+                  <div className="player-num">#{player.number}</div>
+                  <div className="player-fullname">{player.name}</div>
+                  <div className="player-role">{player.position}</div>
+                </div>
+              ))}
+            </div>
+            
+            <div className="players-column reserves-column">
+              <h4 className="players-title">Reserves</h4>
+              {squad.reserves.map((player, index) => (
+                <div key={index} className="player-line">
+                  <div className="player-num">#{player.number}</div>
+                  <div className="player-fullname">{player.name}</div>
+                  <div className="player-role">{player.position}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -300,159 +304,176 @@ const GameOverview = ({
 
   if (loading) {
     return (
-      <div className="game-overview">
-        <div className="loading">Loading game details...</div>
+      <div className="game-overview-page">
+        <NavBar 
+          showBackButton={true}
+          showHomeButton={true}
+          showSearchButton={true}
+          showProfileButton={true}
+          showThemeToggle={true}
+          onNavigateBack={onNavigateBack}
+          onNavigateToHome={() => window.location.reload()}
+          onNavigateToSearch={() => console.log("Search")}
+          onNavigateToProfile={() => console.log("Profile")}
+        />
+        <div className="game-loading">Loading game details...</div>
       </div>
     );
   }
 
   if (!gameData) {
     return (
-      <div className="game-overview">
-        <div className="error">Game not found</div>
+      <div className="game-overview-page">
+        <NavBar 
+          showBackButton={true}
+          showHomeButton={true}
+          showSearchButton={true}
+          showProfileButton={true}
+          showThemeToggle={true}
+          onNavigateBack={onNavigateBack}
+          onNavigateToHome={() => window.location.reload()}
+          onNavigateToSearch={() => console.log("Search")}
+          onNavigateToProfile={() => console.log("Profile")}
+        />
+        <div className="game-error">Game not found</div>
       </div>
     );
   }
 
-  // FIXED: Proper team name extraction with fallbacks
   const homeTeamName = gameData.home?.name || gameData.homeTeam?.name || "Home Team";
   const awayTeamName = gameData.away?.name || gameData.awayTeam?.name || "Away Team";
-  
-  console.log("Rendering with teams:", { homeTeamName, awayTeamName }); // Debug log
 
   return (
-    <div className="game-overview">
-      {/* Top Ad Banner - Matching FlightsPage */}
+    <div className="game-overview-page">
+      {/* Professional NavBar Component FIRST */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={() => window.location.reload()}
+        onNavigateToSearch={() => console.log("Search Game")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
+
+      {/* Top Ad Banner BELOW NavBar */}
       <div className="top-ad-banner">
         🏉 RUGBY CHAMPIONSHIP 2024 - WATCH LIVE ON PPV! 📺
       </div>
 
-      {/* FIXED: Navigation with Stadium Button Added */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        {/* ✅ ADDED STADIUM BUTTON */}
-        <button className="nav-btn" onClick={onNavigateToStadium}>🏟️ Stadium</button>
-      </nav>
-
-      <div className="game-content">
-        {/* Game Header */}
-        <div className="game-header">
-          <h1 className="game-title">Game Overview</h1>
-          <div className="game-meta">
-            <span className="game-meta-item">📅 {gameData.date} at {gameData.time}</span>
-            <span className="game-meta-item">🏟️ {gameData.venue}</span>
-            <span className={`game-meta-item status ${(gameData.status || 'completed').toLowerCase()}`}>
+      <div className="game-overview-content">
+        <div className="game-header-section">
+          <h1 className="game-main-title">Game Overview</h1>
+          <div className="game-meta-info">
+            <span className="meta-item">📅 {gameData.date} at {gameData.time}</span>
+            <span className="meta-item">🏟️ {gameData.venue}</span>
+            <span className={`meta-item status ${(gameData.status || 'completed').toLowerCase()}`}>
               {gameData.status || 'Completed'}
             </span>
           </div>
         </div>
 
-        {/* Teams Container - NOW WITH VISIBLE TEAM NAMES AND SQUADS */}
-        <div className="teams-container">
-          {/* Home Team */}
-          <div className="team-section home-team">
-            <div className="team-header">
-              <div className="team-flag">{gameData.home?.flag || gameData.homeTeam?.flag || "🏴"}</div>
-              <h2 className="team-name">{homeTeamName}</h2>
-              <div className="team-score">{gameData.home?.score || gameData.homeTeam?.score || 0}</div>
+        <div className="teams-layout">
+          {/* HOME TEAM */}
+          <div className="team-display home-team">
+            <div className="team-top">
+              <div className="team-flag-icon">{gameData.home?.flag || gameData.homeTeam?.flag || "🏴"}</div>
+              <h2 className="team-name-text">{homeTeamName}</h2>
+              <div className="team-score-number">{gameData.home?.score || gameData.homeTeam?.score || 0}</div>
             </div>
             
-            <div className="team-features">
+            <div className="team-actions">
               <button 
-                className="anthem-btn" 
+                className="anthem-action-btn" 
                 onClick={() => handleAnthemClick(homeTeamName)}
               >
                 🎵 National Anthem
               </button>
             </div>
 
-            {/* Team Squad - NOW VISIBLE */}
             {renderSquad(homeTeamName)}
           </div>
 
-          {/* VS Section */}
-          <div className="vs-section">
-            <div className="vs-circle">VS</div>
+          {/* VS SECTION */}
+          <div className="vs-middle">
+            <div className="vs-circle-icon">VS</div>
           </div>
 
-          {/* Away Team */}
-          <div className="team-section away-team">
-            <div className="team-header">
-              <div className="team-flag">{gameData.away?.flag || gameData.awayTeam?.flag || "🏴"}</div>
-              <h2 className="team-name">{awayTeamName}</h2>
-              <div className="team-score">{gameData.away?.score || gameData.awayTeam?.score || 0}</div>
+          {/* AWAY TEAM */}
+          <div className="team-display away-team">
+            <div className="team-top">
+              <div className="team-flag-icon">{gameData.away?.flag || gameData.awayTeam?.flag || "🏴"}</div>
+              <h2 className="team-name-text">{awayTeamName}</h2>
+              <div className="team-score-number">{gameData.away?.score || gameData.awayTeam?.score || 0}</div>
             </div>
             
-            <div className="team-features">
+            <div className="team-actions">
               <button 
-                className="anthem-btn" 
+                className="anthem-action-btn" 
                 onClick={() => handleAnthemClick(awayTeamName)}
               >
                 🎵 National Anthem
               </button>
             </div>
 
-            {/* Team Squad - NOW VISIBLE */}
             {renderSquad(awayTeamName)}
           </div>
         </div>
 
-        {/* Game Features - Including Merchandise */}
-        <div className="game-features">
+        {/* GAME FEATURES */}
+        <div className="game-options">
           <h3>Game Features & Services</h3>
-          <div className="features-grid">
-            <button className="feature-card" onClick={() => onNavigateToStats && onNavigateToStats()}>
-              <span className="icon">📊</span>
-              <span className="label">Game Statistics</span>
-              <span className="description">Live stats & analysis</span>
+          <div className="options-grid">
+            <button className="option-card" onClick={() => onNavigateToStats && onNavigateToStats()}>
+              <span className="option-icon">📊</span>
+              <span className="option-label">Game Statistics</span>
+              <span className="option-desc">Live stats & analysis</span>
             </button>
             
-            <button className="feature-card" onClick={() => onNavigateToPPV && onNavigateToPPV()}>
-              <span className="icon">📺</span>
-              <span className="label">Watch Live</span>
-              <span className="description">PPV streaming</span>
+            <button className="option-card" onClick={() => onNavigateToPPV && onNavigateToPPV()}>
+              <span className="option-icon">📺</span>
+              <span className="option-label">Watch Live</span>
+              <span className="option-desc">PPV streaming</span>
             </button>
             
-            <button className="feature-card" onClick={() => onNavigateToAudio && onNavigateToAudio()}>
-              <span className="icon">🔊</span>
-              <span className="label">Live Audio</span>
-              <span className="description">Radio commentary</span>
+            <button className="option-card" onClick={() => onNavigateToAudio && onNavigateToAudio()}>
+              <span className="option-icon">🔊</span>
+              <span className="option-label">Live Audio</span>
+              <span className="option-desc">Radio commentary</span>
             </button>
             
-            <button className="feature-card" onClick={() => onNavigateToFantasy && onNavigateToFantasy()}>
-              <span className="icon">🏅</span>
-              <span className="label">Fantasy League</span>
-              <span className="description">Build your team</span>
+            <button className="option-card" onClick={() => onNavigateToFantasy && onNavigateToFantasy()}>
+              <span className="option-icon">🏅</span>
+              <span className="option-label">Fantasy League</span>
+              <span className="option-desc">Build your team</span>
             </button>
             
-            <button className="feature-card" onClick={() => onNavigateToPodcasts && onNavigateToPodcasts()}>
-              <span className="icon">🎧</span>
-              <span className="label">Podcasts</span>
-              <span className="description">Expert analysis</span>
+            <button className="option-card" onClick={() => onNavigateToPodcasts && onNavigateToPodcasts()}>
+              <span className="option-icon">🎧</span>
+              <span className="option-label">Podcasts</span>
+              <span className="option-desc">Expert analysis</span>
             </button>
             
-            {/* Merchandise Feature Card */}
             {userStatus === 'premium' ? (
-              <button className="feature-card" onClick={handleMerchandiseClick}>
-                <span className="icon">🛍️</span>
-                <span className="label">Team Merchandise</span>
-                <span className="description">Official stores</span>
+              <button className="option-card" onClick={handleMerchandiseClick}>
+                <span className="option-icon">🛍️</span>
+                <span className="option-label">Team Merchandise</span>
+                <span className="option-desc">Official stores</span>
               </button>
             ) : (
-              <button className="feature-card upgrade-btn" onClick={handleUpgradeClick}>
-                <span className="icon">⭐</span>
-                <span className="label">Premium Merchandise</span>
-                <span className="description">Upgrade to access</span>
+              <button className="option-card upgrade-option-btn" onClick={handleUpgradeClick}>
+                <span className="option-icon">⭐</span>
+                <span className="option-label">Premium Merchandise</span>
+                <span className="option-desc">Upgrade to access</span>
               </button>
             )}
           </div>
         </div>
       </div>
 
-      {/* Bottom Ad Banner - Matching FlightsPage */}
+      {/* Bottom Ad Banner */}
       <div className="bottom-ad-banner">
         🎟️ GET TICKETS FOR UPCOMING MATCHES - LIMITED AVAILABILITY! ⚡
       </div>

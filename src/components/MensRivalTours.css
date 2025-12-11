@@ -1,330 +1,101 @@
-/* MensRivalTours.css - USING BRITISH LIONS TEMPLATE STRUCTURE */
-
+/* MensRivalTours.css - EXACT COPY OF AUTUMN TOURS WITH NAME CHANGE */
 .mens-rival-tours-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #8B0000 0%, #D4AF37 100%) !important; /* RIVALRY RED & GOLD */
-  color: white;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  color: #333;
   font-family: 'Arial', sans-serif;
   overflow-x: hidden;
 }
 
-/* ===== ADD ULTRA-SPECIFIC OVERRIDE FOR ALL GLOBAL CONFLICTS ===== */
-
-/* Force tournament-specific button styles - Override ALL global conflicts */
-.mens-rival-tours-page .match-actions .action-btn {
-  /* Layout & Box Model */
-  padding: 0.5rem 0.4rem !important;
-  margin: 0 !important;
-  border: none !important;
-  border-radius: 6px !important;
-  min-height: 32px !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  
-  /* Typography */
-  font-size: 0.7rem !important;
-  font-weight: 600 !important;
-  line-height: 1 !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  
-  /* Layout */
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.2rem !important;
-  flex: 1 !important;
-  
-  /* Prevent inheritance */
-  background: #D4AF37 !important; /* RIVALRY GOLD */
-  color: #8B0000 !important; /* RIVALRY RED */
-  box-sizing: border-box !important;
-  isolation: isolate !important;
-  
-  /* Reset any transforms */
-  transform: none !important;
-  transition: all 0.3s ease !important;
-}
-
-/* Specific button type overrides */
-.mens-rival-tours-page .match-actions .action-btn.primary {
-  background: #D4AF37 !important; /* RIVALRY GOLD */
-  color: #8B0000 !important; /* RIVALRY RED */
-}
-
-.mens-rival-tours-page .match-actions .action-btn.secondary {
-  background: #8B0000 !important; /* RIVALRY RED */
-  color: white !important;
-  border: 1px solid #660000 !important;
-}
-
-/* Override header layout conflicts */
-.mens-rival-tours-page .match-header {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: flex-start !important;
-  margin-bottom: 1rem !important;
-  padding-bottom: 0.8rem !important;
-  border-bottom: 1px solid #e0e0e0 !important;
-  min-height: 40px !important;
-  gap: 0.5rem !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  isolation: isolate !important;
-}
-
-.mens-rival-tours-page .match-tournament {
-  font-size: 0.75rem !important;
-  opacity: 0.8 !important;
-  color: #666 !important;
-  font-weight: 500 !important;
-  flex: 1 !important;
-  min-width: 0 !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  margin-right: 0.5rem !important;
-  line-height: 1.2 !important;
-  max-width: 60% !important;
-}
-
-.mens-rival-tours-page .match-date {
-  font-size: 0.75rem !important;
-  font-weight: 600 !important;
-  color: #D4AF37 !important; /* RIVALRY GOLD */
-  white-space: nowrap !important;
-  flex-shrink: 0 !important;
-  min-width: 90px !important;
-  text-align: right !important;
-  line-height: 1.2 !important;
-  margin-left: auto !important;
-}
-
-/* Force trophy badges positioning */
-.mens-rival-tours-page .trophy-indicator {
-  content: '🏆 TROPHY MATCH' !important;
-  position: absolute !important;
-  top: -10px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  background: #8B0000 !important; /* RIVALRY RED */
-  color: white !important;
-  padding: 0.2rem 0.8rem !important;
-  border-radius: 8px !important;
-  font-size: 0.6rem !important;
-  font-weight: bold !important;
-  z-index: 1000 !important;
-  pointer-events: none !important;
-}
-
-/* ===== APPLY BRITISH LIONS NAVIGATION STRUCTURE ===== */
-
-/* Standard White Top Navigation - FROM BRITISH LIONS */
-.top-nav {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  padding: 1rem !important;
-  background: white !important;
-  border-bottom: 2px solid #e0e0e0 !important;
-  gap: 10px !important;
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 1000 !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
-}
-
-.nav-btn {
-  background: #D4AF37 !important; /* RIVALRY GOLD */
-  color: #8B0000 !important; /* RIVALRY RED */
-  border: none !important;
-  padding: 0.7rem 1.2rem !important;
-  border-radius: 20px !important;
-  cursor: pointer !important;
-  font-size: 0.9rem !important;
-  font-weight: 600 !important;
-  flex: 1 !important;
-  min-width: 70px !important;
-  transition: all 0.3s ease !important;
-  white-space: nowrap !important;
-}
-
-.nav-btn:hover {
-  background: #B8860B !important; /* DARKER GOLD */
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4) !important;
-}
-
-/* Tab Navigation Positioned Below Header - FROM BRITISH LIONS */
-.tournament-tabs {
-  display: flex;
-  justify-content: center;
-  padding: 1rem 2rem;
-  background: rgba(139, 0, 0, 0.9); /* RIVALRY RED */
-  border-bottom: 2px solid #D4AF37; /* RIVALRY GOLD */
-  position: sticky;
-  top: 80px;
-  z-index: 999;
-}
-
-.nav-tabs {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.tab-btn {
-  background: rgba(255, 255, 255, 0.2);
+/* ===== TOP AD BANNER ===== */
+.mens-rival-tours-page .top-ad-banner {
+  background: linear-gradient(90deg, #1976d2, #42a5f5);
   color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.tab-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-.tab-btn.active {
-  background: #D4AF37; /* RIVALRY GOLD */
-  color: #8B0000; /* RIVALRY RED */
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-}
-
-/* ===== APPLY BRITISH LIONS WHITE GAME BLOCKS ===== */
-
-.match-card, .nation-card, .feature-card, .rivalry-card, .fact-card {
-  background: white !important;
-  color: #333 !important;
-  border: 2px solid #e0e0e0 !important;
-}
-
-/* Remove ALL hover color changes - Keep white background */
-.match-card:hover, .nation-card:hover, .feature-card:hover, .rivalry-card:hover, .fact-card:hover {
-  background: white !important;
-  transform: translateY(-3px) !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
-  border-color: #e0e0e0 !important;
-}
-
-/* ===== RIVAL TOURS TROPHY INDICATOR ===== */
-
-.trophy-indicator {
-  position: absolute;
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #8B0000; /* RIVALRY RED */
-  color: white;
-  padding: 0.2rem 1rem;
-  border-radius: 10px;
-  font-size: 0.7rem;
-  font-weight: bold;
-  z-index: 5;
-}
-
-/* ===== APPLY BRITISH LIONS BOTTOM FEATURE BLOCKS ALIGNMENT ===== */
-
-/* FIXED: Features Grid - Force 4 equal columns */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 1rem !important;
-  margin-top: 2rem !important;
-  max-width: 100%;
-  overflow: hidden;
-}
-
-/* FIXED: Feature Cards - Consistent sizing */
-.feature-card {
-  background: white !important;
-  color: #333 !important;
-  border: 2px solid #e0e0e0 !important;
-  border-radius: 12px !important;
-  padding: 1rem !important;
-  cursor: pointer;
-  transition: all 0.3s ease;
   text-align: center;
-  min-height: 120px !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border-bottom: 2px solid #1565c0;
+  width: 100%;
 }
 
-.feature-icon {
-  font-size: 2rem !important;
-  margin-bottom: 0.5rem !important;
-  color: #D4AF37; /* RIVALRY GOLD */
+/* ===== TAB NAVIGATION - SPECIFIC SELECTORS WITH !important ===== */
+.mens-rival-tours-page .tournament-tabs {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 1rem 2rem !important;
+  background: #4fc3f7 !important;
+  border-bottom: 2px solid #29b6f6 !important;
+  position: sticky !important;
+  top: 80px !important;
+  z-index: 999 !important;
+  width: 100% !important;
 }
 
-.feature-title {
-  font-size: 1rem !important;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  color: #8B0000 !important; /* RIVALRY RED */
+.mens-rival-tours-page .nav-tabs {
+  display: flex !important;
+  gap: 0.5rem !important;
 }
 
-.feature-description {
-  font-size: 0.8rem !important;
-  color: #666;
-  line-height: 1.3;
+.mens-rival-tours-page .tab-btn {
+  background: white !important;
+  color: #1565c0 !important;
+  border: none !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 25px !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  white-space: nowrap !important;
+  border: 2px solid #29b6f6 !important;
 }
 
-/* FIXED: Quick Actions - Proper grid alignment */
-.quick-actions {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 0.8rem;
-  margin-top: 1.5rem;
-  max-width: 100%;
+.mens-rival-tours-page .tab-btn:hover {
+  background: #f0f8ff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.4) !important;
 }
 
-.quick-btn {
-  background: linear-gradient(135deg, #D4AF37, #B8860B) !important; /* RIVALRY GOLD */
-  color: #8B0000 !important; /* RIVALRY RED */
-  border: none;
-  padding: 0.8rem 1rem !important;
-  border-radius: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.85rem !important;
-  min-height: auto;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.mens-rival-tours-page .tab-btn.active {
+  background: #1565c0 !important;
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(21, 101, 192, 0.4) !important;
+  border-color: #0d47a1 !important;
 }
 
-.quick-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+/* ===== FIXTURES SECTION ===== */
+.mens-rival-tours-page .fixtures-section {
+  text-align: center;
 }
 
-/* ===== RIVAL TOURS HERO STYLING ===== */
+.mens-rival-tours-page .centered-fixtures-title {
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin: 0 auto 30px auto;
+  color: #1565c0;
+  font-size: 2.5rem;
+  padding: 0 20px;
+}
 
-.tournament-hero {
-  background: linear-gradient(135deg, #8B0000 0%, #D4AF37 100%) !important; /* RIVALRY COLORS */
+/* ===== TOURNAMENT HERO ===== */
+.mens-rival-tours-page .tournament-hero {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
   padding: 3rem 2rem;
   text-align: center;
-  border-bottom: 3px solid #D4AF37; /* RIVALRY GOLD */
+  border-bottom: 3px solid #4fc3f7;
   position: relative;
   overflow: hidden;
 }
 
-.hero-content {
+.mens-rival-tours-page .hero-content {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
-.tournament-badge {
+.mens-rival-tours-page .tournament-badge {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -332,7 +103,7 @@
   margin-bottom: 1rem;
 }
 
-.tournament-logo {
+.mens-rival-tours-page .tournament-logo {
   font-size: 4rem;
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
@@ -340,22 +111,22 @@
   border: 3px solid rgba(255, 255, 255, 0.2);
 }
 
-.tournament-info h1 {
+.mens-rival-tours-page .tournament-info h1 {
   font-size: 3rem;
   margin: 0;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.tournament-year {
+.mens-rival-tours-page .tournament-year {
   font-size: 1.5rem;
   opacity: 0.9;
   margin: 0;
-  color: #FFD700 !important; /* GOLD */
+  color: #e3f2fd;
   font-weight: 600;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.tournament-description {
+.mens-rival-tours-page .tournament-description {
   font-size: 1.2rem;
   max-width: 600px;
   margin: 1rem auto 0;
@@ -366,10 +137,10 @@
   background: rgba(255, 255, 255, 0.9);
   padding: 1rem 1.5rem;
   border-radius: 10px;
-  border: 2px solid rgba(212, 175, 55, 0.3); /* RIVALRY GOLD */
+  border: 2px solid rgba(79, 195, 247, 0.3);
 }
 
-.hero-stats {
+.mens-rival-tours-page .hero-stats {
   display: flex;
   justify-content: center;
   gap: 3rem;
@@ -378,29 +149,28 @@
   z-index: 2;
 }
 
-.stat {
+.mens-rival-tours-page .stat {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.stat-number {
+.mens-rival-tours-page .stat-number {
   font-size: 2rem;
   font-weight: bold;
-  color: #FFD700 !important; /* GOLD */
+  color: #4fc3f7;
 }
 
-.stat-label {
+.mens-rival-tours-page .stat-label {
   font-size: 0.9rem;
   opacity: 0.8;
 }
 
-/* ===== RIVAL TOURS PERSONALIZATION BANNER ===== */
-
-.personalization-banner {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(139, 0, 0, 0.3)); /* RIVALRY COLORS */
+/* ===== PERSONALIZATION BANNER ===== */
+.mens-rival-tours-page .personalization-banner {
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.3), rgba(30, 60, 114, 0.3));
   backdrop-filter: blur(10px);
-  border: 2px solid #D4AF37; /* RIVALRY GOLD */
+  border: 2px solid #4fc3f7;
   border-radius: 15px;
   padding: 1.5rem;
   margin: 1.5rem auto;
@@ -412,30 +182,46 @@
 }
 
 @keyframes glow {
-  from { box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); }
-  to { box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
+  from { box-shadow: 0 0 10px rgba(79, 195, 247, 0.3); }
+  to { box-shadow: 0 0 20px rgba(79, 195, 247, 0.6); }
 }
 
-.banner-icon {
+.mens-rival-tours-page .banner-icon {
   font-size: 2rem;
   flex-shrink: 0;
 }
 
-.banner-content h3 {
+.mens-rival-tours-page .banner-content h3 {
   margin: 0 0 0.5rem 0;
-  color: #D4AF37 !important; /* RIVALRY GOLD */
+  color: #000000 !important;
   font-size: 1.2rem;
 }
 
-.banner-content p {
+.mens-rival-tours-page .banner-content p {
   margin: 0;
   opacity: 0.9;
   font-size: 0.95rem;
 }
 
-/* ===== APPLY BRITISH LIONS MATCH FILTERS ===== */
+/* ===== MAIN CONTENT ===== */
+.mens-rival-tours-page .tournament-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 
-.match-filters {
+.mens-rival-tours-page .section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #1565c0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: block;
+}
+
+/* ===== MATCH FILTERS ===== */
+.mens-rival-tours-page .match-filters {
   display: flex;
   gap: 1rem;
   margin-bottom: 1.5rem;
@@ -443,7 +229,7 @@
   flex-wrap: wrap;
 }
 
-.filter-btn {
+.mens-rival-tours-page .filter-btn {
   background: rgba(255, 255, 255, 0.1);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -454,72 +240,95 @@
   transition: all 0.3s ease;
 }
 
-.filter-btn:hover {
+.mens-rival-tours-page .filter-btn:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
-.filter-btn.active {
-  background: #D4AF37; /* RIVALRY GOLD */
-  color: #8B0000; /* RIVALRY RED */
-  border-color: #D4AF37;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+.mens-rival-tours-page .filter-btn.active {
+  background: #4fc3f7;
+  color: white;
+  border-color: #4fc3f7;
+  box-shadow: 0 4px 15px rgba(79, 195, 247, 0.4);
 }
 
-/* ===== RIVALRY MATCH STYLING ===== */
-
-.rivalry-match {
-  border: 3px solid #D4AF37 !important; /* RIVALRY GOLD */
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(139, 0, 0, 0.25)) !important;
-  position: relative;
-}
-
-/* ===== APPLY BRITISH LIONS MAIN CONTENT STRUCTURE ===== */
-
-.tournament-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  color: #D4AF37 !important; /* RIVALRY GOLD */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Matches Grid - FROM BRITISH LIONS */
-.matches-grid {
+/* ===== MATCH CARD STYLING ===== */
+.mens-rival-tours-page .matches-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 1.5rem;
 }
 
-/* Match card base styling - KEEP EXISTING but ensure high specificity */
 .mens-rival-tours-page .match-card {
-  background: white !important;
-  color: #333 !important;
-  border: 2px solid #e0e0e0 !important;
-  border-radius: 12px;
-  padding: 1.2rem !important;
-  cursor: pointer;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
-  position: relative;
-  min-height: 220px;
-  display: flex;
-  flex-direction: column;
+  cursor: pointer;
+  border-left: 4px solid #4fc3f7;
+  margin-bottom: 16px;
+  overflow: hidden;
 }
 
-/* Teams container - ensure proper spacing */
-.mens-rival-tours-page .teams-container {
+.mens-rival-tours-page .match-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(79, 195, 247, 0.15);
+}
+
+.mens-rival-tours-page .match-card.favorite-match {
+  border-left-width: 6px;
+  background: linear-gradient(135deg, #f8fbff, #ffffff);
+}
+
+/* ===== MATCH HIGHLIGHT ===== */
+.mens-rival-tours-page .match-highlight {
+  background: linear-gradient(90deg, #ff6b35, #e55a2b);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+/* ===== MATCH HEADER - FIXED ALIGNMENT ===== */
+.mens-rival-tours-page .match-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  gap: 0.8rem;
-  flex: 1;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.mens-rival-tours-page .match-tournament {
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.8em;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+}
+
+.mens-rival-tours-page .match-date {
+  color: #666;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+/* ===== TEAMS CONTAINER - FIXED LAYOUT ===== */
+.mens-rival-tours-page .teams-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 16px;
+  min-height: 100px;
 }
 
 .mens-rival-tours-page .team {
@@ -528,219 +337,249 @@
   align-items: center;
   flex: 1;
   min-width: 0;
-  padding: 0.3rem;
+  padding: 0 5px;
+}
+
+.mens-rival-tours-page .team-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  width: 100%;
+  justify-content: center;
+}
+
+.mens-rival-tours-page .team-row.reverse {
+  flex-direction: row-reverse;
 }
 
 .mens-rival-tours-page .team-flag {
-  font-size: 1.8rem !important;
-  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mens-rival-tours-page .team-ranking {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #4fc3f7;
+  background: #f0f7ff;
+  padding: 4px 8px;
+  border-radius: 8px;
+  min-width: 45px;
+  text-align: center;
 }
 
 .mens-rival-tours-page .team-name {
   font-weight: 600;
-  font-size: 0.85rem !important;
-  margin-bottom: 0.2rem;
+  color: #000000;
+  font-size: 1.3em;
   text-align: center;
+  line-height: 1.2;
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 100%;
-  color: #333 !important;
 }
 
-.mens-rival-tours-page .team-ranking {
-  font-size: 0.65rem !important;
-  opacity: 0.7;
-  color: #000000 !important;
-  font-weight: 600;
-  background: #f8f9fa;
-  padding: 0.1rem 0.3rem !important;
-  border-radius: 4px;
-}
-
+/* ===== VS CONTAINER - BLACK TEXT ===== */
 .mens-rival-tours-page .vs-container {
-  margin: 0 0.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 70px;
   flex-shrink: 0;
+  margin: 0 10px;
 }
 
 .mens-rival-tours-page .vs {
-  background: #D4AF37; /* RIVALRY GOLD */
-  color: #8B0000; /* RIVALRY RED */
-  padding: 0.2rem 0.6rem !important;
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.1em;
+  background: #f5f5f5;
+  padding: 8px 16px;
   border-radius: 12px;
-  font-weight: bold;
-  font-size: 0.7rem !important;
+  white-space: nowrap;
+  border: 2px solid #e0e0e0;
 }
 
-/* Match footer - ensure proper spacing */
+.mens-rival-tours-page .match-time {
+  color: #666;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+/* ===== MATCH FOOTER ===== */
 .mens-rival-tours-page .match-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
-  padding-top: 0.8rem;
-  border-top: 1px solid #e0e0e0;
-  gap: 0.3rem;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+  min-height: 32px;
 }
 
-.mens-rival-tours-page .venue, 
-.mens-rival-tours-page .capacity {
-  font-size: 0.65rem !important;
-  opacity: 0.8;
-  color: #000000 !important;
-  font-weight: 500;
-  background: #f8f9fa;
-  padding: 0.15rem 0.4rem !important;
-  border-radius: 4px;
+.mens-rival-tours-page .venue, .mens-rival-tours-page .capacity {
+  color: #666;
+  font-size: 0.8em;
+  font-style: italic;
+  text-align: right;
+  flex: 1;
+  margin-left: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* ===== MATCH ACTIONS - ONLY CHANGED WATCH/LISTEN BUTTONS ===== */
+.mens-rival-tours-page .match-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.8rem;
+}
+
+.mens-rival-tours-page .action-btn {
   flex: 1;
-}
-
-/* ===== RIVAL TOURS CONTENT STYLING ===== */
-
-/* Rivalries Section */
-.rivalries-section {
-  margin-bottom: 2rem;
-}
-
-.rivalry-card {
-  background: white !important;
-  color: #333 !important;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border: 2px solid #e0e0e0 !important;
-  position: relative;
-}
-
-.rivalry-header {
+  padding: 0.5rem 0.4rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.7rem;
+  min-height: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  min-width: 0;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid #e0e0e0;
+  justify-content: center;
+  gap: 0.2rem;
 }
 
-.rivalry-icon {
-  font-size: 2.5rem;
+/* WATCH BUTTON - NAVY BLUE */
+.mens-rival-tours-page .action-btn.watch {
+  background: #0d47a1 !important;
+  color: white !important;
 }
 
-.rivalry-info h3 {
-  margin: 0 0 0.5rem 0;
-  color: #8B0000;
-  font-size: 1.3rem;
+/* LISTEN BUTTON - LIGHT BLUE */
+.mens-rival-tours-page .action-btn.listen {
+  background: #4fc3f7 !important;
+  color: white !important;
 }
 
-.rivalry-info p {
-  margin: 0;
-  color: #666;
-  font-size: 0.9rem;
+.mens-rival-tours-page .action-btn.primary {
+  background: #4fc3f7;
+  color: white;
 }
 
-.rivalry-stats {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 1rem;
-  align-items: center;
-  margin-bottom: 1rem;
+.mens-rival-tours-page .action-btn.secondary {
+  background: #1e3c72;
+  color: white;
+  border: 1px solid #2a5298;
 }
 
-.rivalry-team {
-  text-align: center;
+.mens-rival-tours-page .action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.rivalry-team-flag {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+/* Hover effects for Watch/Listen buttons */
+.mens-rival-tours-page .action-btn.watch:hover {
+  background: #1565c0 !important;
 }
 
-.rivalry-team-name {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #333;
+.mens-rival-tours-page .action-btn.listen:hover {
+  background: #29b6f6 !important;
 }
 
-.rivalry-record {
-  font-size: 0.9rem;
-  opacity: 0.8;
-  color: #666;
-}
-
-.rivalry-vs {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #D4AF37;
-}
-
-.trophy-winner {
-  background: #f8f9fa;
-  padding: 1rem;
-  border-radius: 8px;
-  text-align: center;
-  border: 1px solid #e0e0e0;
-  font-size: 0.9rem;
-}
-
-.trophy-winner strong {
-  color: #8B0000;
-}
-
-/* Teams Section */
-.teams-grid {
+/* ===== TEAMS GRID ===== */
+.mens-rival-tours-page .teams-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
-.nation-card {
-  background: white !important;
-  color: #333 !important;
+.mens-rival-tours-page .nation-card {
+  background: white;
+  color: #333;
   border-radius: 12px;
   padding: 1.5rem;
-  border: 2px solid #e0e0e0 !important;
+  border: 2px solid #e0e0e0;
   transition: all 0.3s ease;
   position: relative;
 }
 
-.nation-header {
+.mens-rival-tours-page .nation-card.favorite-team {
+  border: 3px solid #4fc3f7;
+  background: linear-gradient(135deg, rgba(79, 195, 247, 0.2), rgba(30, 60, 114, 0.3));
+  position: relative;
+  transform: scale(1.02);
+}
+
+.mens-rival-tours-page .favorite-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #4fc3f7;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  z-index: 10;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.mens-rival-tours-page .nation-header {
   display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
 }
 
-.nation-flag {
-  font-size: 2.5rem;
+.mens-rival-tours-page .nation-flag {
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-.nation-info {
+.mens-rival-tours-page .nation-info {
   flex: 1;
 }
 
-.nation-name {
+.mens-rival-tours-page .nation-name {
   font-size: 1.3rem;
   font-weight: 600;
   margin: 0 0 0.25rem 0;
-  color: #333;
+  color: #000000;
 }
 
-.world-ranking {
+.mens-rival-tours-page .world-ranking {
   font-size: 0.9rem;
   opacity: 0.8;
   color: #666;
 }
 
-.nation-form {
+.mens-rival-tours-page .nation-form {
   margin-bottom: 1rem;
   padding: 1rem;
   background: #f8f9fa;
   border-radius: 10px;
 }
 
-.form-label {
+.mens-rival-tours-page .form-label {
   display: block;
   font-size: 0.8rem;
   opacity: 0.7;
@@ -748,13 +587,12 @@
   color: #666;
 }
 
-.form-indicator {
+.mens-rival-tours-page .form-indicator {
   display: flex;
   gap: 0.3rem;
-  justify-content: center;
 }
 
-.form-dot {
+.mens-rival-tours-page .form-dot {
   width: 24px;
   height: 24px;
   border-radius: 50%;
@@ -765,31 +603,31 @@
   font-weight: bold;
 }
 
-.form-dot.win {
+.mens-rival-tours-page .form-dot.win {
   background: #28a745;
   color: white;
 }
 
-.form-dot.loss {
+.mens-rival-tours-page .form-dot.loss {
   background: #dc3545;
   color: white;
 }
 
-.form-dot.draw {
+.mens-rival-tours-page .form-dot.draw {
   background: #ffc107;
   color: black;
 }
 
-.nation-actions {
+.mens-rival-tours-page .nation-actions {
   display: flex;
   gap: 0.5rem;
 }
 
-.team-btn {
+.mens-rival-tours-page .team-btn {
   flex: 1;
   padding: 0.5rem 1rem;
-  background: #D4AF37; /* RIVALRY GOLD */
-  color: #8B0000; /* RIVALRY RED */
+  background: #4fc3f7;
+  color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -797,25 +635,269 @@
   transition: all 0.3s ease;
 }
 
-.team-btn:hover {
-  background: #B8860B; /* DARKER GOLD */
+.mens-rival-tours-page .team-btn:hover {
+  background: #29b6f6;
   transform: translateY(-1px);
 }
 
-/* ===== APPLY BRITISH LIONS BOTTOM AD BANNER ===== */
+/* ===== STANDINGS TABLE ===== */
+.mens-rival-tours-page .standings-table {
+  background: white;
+  color: #333;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #e0e0e0;
+}
 
-.bottom-ad-banner {
-  background: linear-gradient(90deg, #8B0000, #D4AF37); /* RIVALRY COLORS */
+.mens-rival-tours-page .table-header {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: #1e3c72;
+  font-weight: 600;
+  color: white;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.mens-rival-tours-page .table-row {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.3s ease;
+  align-items: center;
+}
+
+.mens-rival-tours-page .table-row:hover {
+  background: #f8f9fa;
+}
+
+.mens-rival-tours-page .table-row:last-child {
+  border-bottom: none;
+}
+
+.mens-rival-tours-page .position {
+  font-weight: bold;
+  color: #4fc3f7;
+}
+
+.mens-rival-tours-page .team-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mens-rival-tours-page .team-name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mens-rival-tours-page .team-name-text {
+  font-weight: 600;
+  color: #000000;
+}
+
+.mens-rival-tours-page .favorite-star {
+  color: #ffd700;
+  font-size: 1.1em;
+}
+
+.mens-rival-tours-page .points {
+  font-weight: bold;
+  color: #4fc3f7;
+}
+
+/* ===== RIVALRIES SECTION ===== */
+.mens-rival-tours-page .rivalries-section {
+  margin-bottom: 2rem;
+}
+
+.mens-rival-tours-page .rivalry-card {
+  background: white;
+  color: #333;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid #e0e0e0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.mens-rival-tours-page .rivalry-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.mens-rival-tours-page .rivalry-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.mens-rival-tours-page .rivalry-icon {
+  font-size: 2.5rem;
+}
+
+.mens-rival-tours-page .rivalry-info h3 {
+  margin: 0 0 0.5rem 0;
+  color: #1565c0;
+  font-size: 1.3rem;
+}
+
+.mens-rival-tours-page .rivalry-info p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.mens-rival-tours-page .rivalry-stats {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.mens-rival-tours-page .rivalry-team {
+  text-align: center;
+}
+
+.mens-rival-tours-page .rivalry-team-flag {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.mens-rival-tours-page .rivalry-team-name {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.mens-rival-tours-page .rivalry-record {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  color: #666;
+}
+
+.mens-rival-tours-page .rivalry-vs {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4fc3f7;
+}
+
+.mens-rival-tours-page .trophy-winner {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+}
+
+.mens-rival-tours-page .trophy-winner strong {
+  color: #1565c0;
+}
+
+/* ===== QUICK ACTIONS ===== */
+.mens-rival-tours-page .quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+  max-width: 100%;
+}
+
+.mens-rival-tours-page .quick-btn {
+  background: linear-gradient(135deg, #4fc3f7, #29b6f6);
+  color: white;
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  min-height: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mens-rival-tours-page .quick-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(79, 195, 247, 0.4);
+}
+
+/* ===== FEATURES GRID - NO BIG TITLE (Lions Tours correction) ===== */
+.mens-rival-tours-page .features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.mens-rival-tours-page .feature-card {
+  background: white;
+  color: #333;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mens-rival-tours-page .feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #4fc3f7;
+}
+
+.mens-rival-tours-page .feature-icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  color: #4fc3f7;
+}
+
+.mens-rival-tours-page .feature-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #1565c0;
+}
+
+.mens-rival-tours-page .feature-description {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.3;
+}
+
+/* ===== BOTTOM AD BANNER ===== */
+.mens-rival-tours-page .bottom-ad-banner {
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
   color: white;
   text-align: center;
   padding: 1.5rem 2rem;
   font-weight: bold;
   font-size: 1.1rem;
-  border-top: 3px solid #D4AF37; /* RIVALRY GOLD */
+  border-top: 3px solid #4fc3f7;
   margin-top: 3rem;
 }
 
-.bottom-ad-banner .ad-content {
+.mens-rival-tours-page .bottom-ad-banner .ad-content {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -824,17 +906,17 @@
   margin: 0 auto;
 }
 
-.bottom-ad-banner .ad-icon {
+.mens-rival-tours-page .bottom-ad-banner .ad-icon {
   font-size: 2rem;
 }
 
-.bottom-ad-banner .ad-text {
+.mens-rival-tours-page .bottom-ad-banner .ad-text {
   flex: 1;
 }
 
-.bottom-ad-banner .ad-cta {
-  background: #D4AF37; /* RIVALRY GOLD */
-  color: #8B0000; /* RIVALRY RED */
+.mens-rival-tours-page .bottom-ad-banner .ad-cta {
+  background: #4fc3f7;
+  color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 25px;
   font-weight: bold;
@@ -843,101 +925,201 @@
   border: none;
 }
 
-.bottom-ad-banner .ad-cta:hover {
-  background: #B8860B; /* DARKER GOLD */
+.mens-rival-tours-page .bottom-ad-banner .ad-cta:hover {
+  background: #29b6f6;
   transform: translateY(-2px);
 }
 
-/* ===== RESPONSIVE DESIGN - FROM BRITISH LIONS ===== */
+/* ===== FLAG COMPONENT STYLES ===== */
+.mens-rival-tours-page .flag-small, 
+.mens-rival-tours-page .flag-medium, 
+.mens-rival-tours-page .flag-large {
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid #e0e0e0;
+}
+
+.mens-rival-tours-page .flag-small {
+  width: 40px;
+  height: 25px;
+}
+
+.mens-rival-tours-page .flag-medium {
+  width: 60px;
+  height: 40px;
+}
+
+.mens-rival-tours-page .flag-large {
+  width: 80px;
+  height: 50px;
+}
+
+.mens-rival-tours-page .flag-fallback {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #666;
+  font-size: 0.8em;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
-  .tournament-tabs {
-    padding: 1rem;
-    top: 70px;
+  .mens-rival-tours-page .tournament-tabs {
+    padding: 1rem !important;
+    top: 70px !important;
   }
   
-  .nav-tabs {
+  .mens-rival-tours-page .nav-tabs {
     order: 3;
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
   }
   
-  .tab-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
+  .mens-rival-tours-page .tab-btn {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.8rem !important;
   }
   
-  .bottom-ad-banner .ad-content {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
-  
-  .matches-grid {
+  .mens-rival-tours-page .matches-grid {
     grid-template-columns: 1fr;
   }
   
-  .teams-grid {
+  .mens-rival-tours-page .teams-grid {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
   
-  /* FIXED: Responsive feature blocks */
-  .features-grid {
+  .mens-rival-tours-page .features-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
   
-  .quick-actions {
+  .mens-rival-tours-page .quick-actions {
     grid-template-columns: repeat(2, 1fr) !important;
-  }
-  
-  .quick-btn {
-    min-width: 250px;
-    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .tournament-hero {
+  .mens-rival-tours-page .tournament-hero {
     padding: 2rem 1rem;
   }
   
-  .tournament-info h1 {
+  .mens-rival-tours-page .tournament-info h1 {
     font-size: 2rem;
   }
   
-  .tournament-logo {
+  .mens-rival-tours-page .tournament-logo {
     font-size: 3rem;
   }
   
-  .section-title {
+  .mens-rival-tours-page .section-title {
     font-size: 1.5rem;
   }
   
-  .personalization-banner {
-    flex-direction: column;
-    text-align: center;
+  .mens-rival-tours-page .features-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .mens-rival-tours-page .quick-actions {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .mens-rival-tours-page .match-card {
+    min-height: 200px;
     padding: 1rem;
   }
   
-  .match-filters {
+  .mens-rival-tours-page .teams-container {
     flex-direction: column;
-    align-items: center;
+    gap: 20px;
+    min-height: auto;
   }
   
-  .filter-btn {
-    width: 200px;
+  .mens-rival-tours-page .team {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
   }
   
-  .tournament-tabs {
-    top: 60px;
+  .mens-rival-tours-page .team-name {
+    font-size: 1em;
+    margin: 0 10px;
+    flex: 1;
+    min-height: auto;
+    text-align: left;
   }
   
-  /* FIXED: Mobile feature blocks */
-  .features-grid {
-    grid-template-columns: 1fr !important;
+  .mens-rival-tours-page .team-ranking {
+    font-size: 0.8em;
+    margin-top: 0;
+    width: auto;
+    min-width: 40px;
   }
   
-  .quick-actions {
-    grid-template-columns: 1fr !important;
+  .mens-rival-tours-page .vs-container {
+    flex-direction: row;
+    gap: 20px;
+    order: -1;
+    margin: 0;
+    min-width: auto;
   }
+  
+  .mens-rival-tours-page .match-footer {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  
+  .mens-rival-tours-page .venue, .mens-rival-tours-page .capacity {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+/* ULTIMATE OVERRIDE FOR WATCH/LISTEN BUTTONS */
+.mens-rival-tours-page .match-card .match-actions .action-btn:nth-of-type(1),
+.mens-rival-tours-page .match-card .match-actions .action-btn:nth-child(1),
+.mens-rival-tours-page .match-card .match-actions button:first-child,
+.mens-rival-tours-page .match-card .match-actions .action-btn:first-child {
+  background-color: #0d47a1 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.mens-rival-tours-page .match-card .match-actions .action-btn:nth-of-type(2),
+.mens-rival-tours-page .match-card .match-actions .action-btn:nth-child(2),
+.mens-rival-tours-page .match-card .match-actions button:last-child,
+.mens-rival-tours-page .match-card .match-actions .action-btn:last-child {
+  background-color: #4fc3f7 !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Hover effects */
+.mens-rival-tours-page .match-card .match-actions .action-btn:nth-of-type(1):hover,
+.mens-rival-tours-page .match-card .match-actions .action-btn:nth-child(1):hover {
+  background-color: #1565c0 !important;
+}
+
+.mens-rival-tours-page .match-card .match-actions .action-btn:nth-of-type(2):hover,
+.mens-rival-tours-page .match-card .match-actions .action-btn:nth-child(2):hover {
+  background-color: #29b6f6 !important;
+}
+.mens-rival-tours-page .personalization-banner .banner-content p {
+  color: #000000 !important;
+  opacity: 1 !important;
+}
+.mens-rival-tours-page .centered-fixtures-title {
+  color: #000000 !important;
+}
+/* Simple centering solution */
+.mens-rival-tours-page .tournament-hero .hero-content {
+  text-align: center;
+}
+
+.mens-rival-tours-page .tournament-badge,
+.mens-rival-tours-page .tournament-info {
+  justify-content: center;
+  text-align: center;
 }

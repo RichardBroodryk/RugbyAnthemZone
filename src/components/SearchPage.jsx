@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './SearchPage.css';
-import ThemeToggle from './ThemeToggle';
 import NavBar from './NavBar'; // Import the professional NavBar
 
 // Flag Component with real images

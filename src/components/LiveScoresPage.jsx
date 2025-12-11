@@ -324,12 +324,7 @@ const LiveScoresPage = ({ onNavigateBack }) => {
 
   return (
     <div className="live-scores-page">
-      {/* Top Ad Banner - MOVED TO TOP */}
-      <div className="top-ad-banner">
-        🌍 International Rugby Live Scores - Follow Your Nation! 🏉
-      </div>
-
-      {/* Professional NavBar - REPLACED CUSTOM NAV */}
+      {/* Professional NavBar at the TOP */}
       <NavBar 
         showBackButton={true}
         showHomeButton={true}
@@ -341,6 +336,11 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         onNavigateToSearch={() => console.log("Search Live Scores")}
         onNavigateToProfile={() => console.log("Profile clicked")}
       />
+
+      {/* Top Ad Banner BELOW the NavBar */}
+      <div className="top-ad-banner">
+        🌍 International Rugby Live Scores - Follow Your Nation! 🏉
+      </div>
 
       {/* Main Content */}
       <div className="live-scores-content">
@@ -435,7 +435,7 @@ const LiveScoresPage = ({ onNavigateBack }) => {
         )}
       </div>
 
-      {/* Bottom Ad Banner - MOVED TO BOTTOM */}
+      {/* Bottom Ad Banner */}
       <div className="bottom-ad-banner">
         🎟️ Book Tickets for International Matches - Limited Availability! ⭐
       </div>

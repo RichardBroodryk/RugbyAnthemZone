@@ -80,18 +80,6 @@ function LoyaltyPage({ onNavigateBack, userPreferences, onNavigateToTickets, onN
     }
   };
 
-  const getProgressPercentage = () => {
-    const basePoints = (loyaltyData.userTier === 'bronze') ? 0 : 
-                      (loyaltyData.userTier === 'silver') ? 500 : 
-                      (loyaltyData.userTier === 'gold') ? 1000 : 2000;
-    const totalRange = (loyaltyData.nextTier === 'silver') ? 500 : 
-                      (loyaltyData.nextTier === 'gold') ? 500 : 
-                      (loyaltyData.nextTier === 'platinum') ? 1000 : 1000;
-    
-    const earnedInCurrent = loyaltyData.points - basePoints;
-    return Math.min(100, (earnedInCurrent / totalRange) * 100);
-  };
-
   return (
     <div className="loyalty-page">
       <NavBar 

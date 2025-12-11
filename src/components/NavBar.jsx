@@ -9,7 +9,7 @@ const NavBar = ({
   showBackButton = true,
   showHomeButton = true,
   showSearchButton = true,
-  showProfileButton = false,
+  showProfileButton = true,
   showThemeToggle = true,
   onNavigateBack,
   onNavigateToHome,

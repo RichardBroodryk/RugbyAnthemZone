@@ -1,0 +1,215 @@
+/* ===== ITALY ANTHEM PAGE ===== */
+.nation-anthem-page.italy {
+  min-height: 100vh;
+  position: relative;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  overflow-x: hidden; /* ADDED: Prevent horizontal scroll */
+}
+
+/* Feather logo background */
+.nation-anthem-page.italy::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../Assets/images/featherlogos/italyfl.png');
+  background-size: 40%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.nation-anthem-page.italy > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ... existing banner styles remain the same ... */
+
+.anthem-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box; /* ADDED: Ensure proper box sizing */
+}
+
+/* ... existing header styles remain the same ... */
+
+/* Tab Navigation - FIXED */
+.content-tabs {
+  display: flex;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  border: 2px solid rgba(0, 140, 69, 0.3);
+  overflow-x: auto; /* ADDED: Allow horizontal scroll if needed */
+  overflow-y: hidden;
+  flex-wrap: nowrap; /* ADDED: Keep tabs in single row */
+  white-space: nowrap; /* ADDED: Prevent text wrapping */
+  -webkit-overflow-scrolling: touch; /* ADDED: Smooth scrolling on mobile */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.content-tabs::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+.tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: 700;
+  color: #008C45 !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(0, 140, 69, 0.3);
+  min-width: 120px; /* ADDED: Minimum width for readability */
+  max-width: 200px; /* ADDED: Maximum width */
+  box-sizing: border-box; /* ADDED: Include padding in width */
+  text-align: center; /* ADDED: Center text */
+  white-space: normal; /* ADDED: Allow text wrapping within button */
+  word-break: break-word; /* ADDED: Break long words */
+  display: flex; /* ADDED: Center content */
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-btn:hover {
+  background: rgba(0, 140, 69, 0.15);
+  color: #006B34 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 140, 69, 0.2);
+  border: 2px solid rgba(0, 140, 69, 0.5);
+}
+
+.tab-btn.active {
+  background: #008C45;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(0, 140, 69, 0.3);
+  border: 2px solid #CD212A;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+}
+
+.tab-content {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 15px;
+  padding: 30px;
+  min-height: 400px;
+  color: #333;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border: 3px solid #008C45;
+  overflow-y: auto; /* ADDED: Allow vertical scroll if needed */
+  max-height: 600px; /* ADDED: Limit height */
+}
+
+/* ... existing content styles remain the same ... */
+
+/* Responsive - ENHANCED */
+@media (max-width: 900px) {
+  .anthem-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .anthem-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .header-center {
+    padding: 0;
+  }
+  
+  .springbok-logo {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .anthem-page-title {
+    font-size: 2em;
+  }
+  
+  /* ADDED: Stack 2 tabs per row on tablets */
+  .content-tabs {
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: center;
+  }
+  
+  .tab-btn {
+    flex: 0 0 calc(50% - 10px); /* 2 per row with gap */
+    min-width: 140px;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* MODIFIED: Stack 1 tab per row on phones */
+  .content-tabs {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .tab-btn {
+    flex: 1 0 auto; /* Full width on mobile */
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-bottom: 8px;
+    padding: 12px;
+  }
+  
+  .rugby-details {
+    flex-direction: column;
+  }
+  
+  .team-colors {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .anthem-content {
+    padding: 15px;
+  }
+  
+  .nation-anthem-page.italy::before {
+    background-size: 60%;
+    opacity: 0.3;
+  }
+  
+  .tab-content {
+    padding: 20px;
+    min-height: 300px;
+    max-height: 500px;
+  }
+}
+
+/* ADDED: Extra small screens */
+@media (max-width: 400px) {
+  .tab-btn {
+    font-size: 0.9em;
+    padding: 10px 8px;
+  }
+  
+  .anthem-page-title {
+    font-size: 1.6em;
+  }
+  
+  .anthem-subtitle {
+    font-size: 1em;
+  }
+}

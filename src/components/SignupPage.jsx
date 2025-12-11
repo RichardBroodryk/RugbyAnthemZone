@@ -1,5 +1,6 @@
 import React from 'react';
 import './SignupPage.css';
+import NavBar from './NavBar'; // Import consistent NavBar
 import razNavIcon from '../Assets/images/raz-nav-icon.png';
 
 function SignupPage({ 
@@ -13,53 +14,34 @@ function SignupPage({
 }) {
 
   const handleFreemiumSignup = () => {
-    // Process freemium signup
     alert('🎉 Welcome to Rugby Union International!\n\nYou now have access to:\n• Basic match information\n• Live scores\n• Tournament schedules\n• Limited features');
     onNavigateToFreemium();
   };
 
   const handleTermsClick = (subscriptionType = 'freemium') => {
-    // Navigate to Terms page with the selected subscription type
     onNavigateToTerms(subscriptionType);
   };
 
   const handlePrivacyClick = () => {
-    // Will navigate to Privacy Policy page when built
     alert('Privacy Policy page will be implemented soon');
   };
 
   return (
     <div className="signup-page">
-      {/* Professional Navbar */}
-      <nav className="raz-navbar">
-        <div className="nav-logo-section">
-          <img 
-            src={razNavIcon} 
-            alt="Rugby Anthem Zone" 
-            className="nav-main-logo" 
-          />
-        </div>
+      {/* CONSISTENT NAVBAR */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+        onNavigateToHome={onNavigateToHome}
+        onNavigateToSearch={() => console.log("Search Signup")}
+        onNavigateToProfile={() => console.log("Profile clicked")}
+      />
 
-        <div className="nav-icons-section">
-          <button className="nav-icon back-icon" onClick={onNavigateBack}>
-            ←
-          </button>
-          <button className="nav-icon home-icon" onClick={onNavigateToHome}>
-            🏠
-          </button>
-          <button className="nav-icon search-icon">
-            🔍
-          </button>
-          <button className="nav-icon profile-icon">
-            👤
-          </button>
-          <button className="nav-icon menu-icon">
-            ☰
-          </button>
-        </div>
-      </nav>
-
-      {/* Top Ad Banner - UNDERNEATH NAVBAR */}
+      {/* Top Ad Banner */}
       <div className="top-ad-banner">
         🎟️ Rugby World Cup 2025 Tickets - Book Now! ⚡
       </div>

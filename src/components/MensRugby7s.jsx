@@ -1,6 +1,51 @@
 import React, { useState } from 'react';
 import './MensRugby7s.css';
-import ThemeToggle from './ThemeToggle';
+import NavBar from './NavBar';
+
+// Flag Component with real images (From Autumn/Rival Tours)
+const Flag = ({ country, size = 'medium' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'argentina': 'argentina',
+      'australia': 'australia',
+      'england': 'england',
+      'fiji': 'fiji',
+      'france': 'france',
+      'ireland': 'ireland',
+      'italy': 'italy',
+      'japan': 'japan',
+      'new zealand': 'new-zealand',
+      'scotland': 'scotland',
+      'south africa': 'south-africa',
+      'wales': 'wales',
+      'usa': 'united-states-of-america',
+      'canada': 'canada',
+      'samoa': 'samoa',
+      'spain': 'spain',
+      'kenya': 'kenya',
+      'uruguay': 'uruguay',
+      'germany': 'germany'
+    };
+    
+    return nameMap[countryName.toLowerCase()] || countryName.toLowerCase();
+  };
+
+  const fileName = getCountryFileName(country);
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      return <div className={`flag-fallback flag-${size}`}>
+        {country.slice(0, 3).toUpperCase()}
+      </div>;
+    }
+  }
+};
 
 function MensRugby7s({ 
   onNavigateBack, 
@@ -26,22 +71,22 @@ function MensRugby7s({
     description: "The premier global circuit of international rugby sevens tournaments featuring fast-paced, high-scoring action",
     logo: "⚡",
     teams: [
-      { flag: "🇳🇿", name: "New Zealand", ranking: 1, points: 126, coreTeam: true },
-      { flag: "🇦🇷", name: "Argentina", ranking: 2, points: 118, coreTeam: true },
-      { flag: "🇫🇯", name: "Fiji", ranking: 3, points: 112, coreTeam: true },
-      { flag: "🇫🇷", name: "France", ranking: 4, points: 104, coreTeam: true },
-      { flag: "🇦🇺", name: "Australia", ranking: 5, points: 98, coreTeam: true },
-      { flag: "🇮🇪", name: "Ireland", ranking: 6, points: 86, coreTeam: true },
-      { flag: "🇺🇸", name: "USA", ranking: 7, points: 82, coreTeam: true },
-      { flag: "🇿🇦", name: "South Africa", ranking: 8, points: 78, coreTeam: true },
-      { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 9, points: 72, coreTeam: true },
-      { flag: "🇸🇲", name: "Samoa", ranking: 10, points: 68, coreTeam: true },
-      { flag: "🇪🇸", name: "Spain", ranking: 11, points: 54, coreTeam: false },
-      { flag: "🇯🇵", name: "Japan", ranking: 12, points: 48, coreTeam: false },
-      { flag: "🇨🇦", name: "Canada", ranking: 13, points: 42, coreTeam: false },
-      { flag: "🇰🇪", name: "Kenya", ranking: 14, points: 38, coreTeam: false },
-      { flag: "🇺🇾", name: "Uruguay", ranking: 15, points: 32, coreTeam: false },
-      { flag: "🇩🇪", name: "Germany", ranking: 16, points: 28, coreTeam: false }
+      { name: "New Zealand", ranking: 1, points: 126, coreTeam: true },
+      { name: "Argentina", ranking: 2, points: 118, coreTeam: true },
+      { name: "Fiji", ranking: 3, points: 112, coreTeam: true },
+      { name: "France", ranking: 4, points: 104, coreTeam: true },
+      { name: "Australia", ranking: 5, points: 98, coreTeam: true },
+      { name: "Ireland", ranking: 6, points: 86, coreTeam: true },
+      { name: "USA", ranking: 7, points: 82, coreTeam: true },
+      { name: "South Africa", ranking: 8, points: 78, coreTeam: true },
+      { name: "England", ranking: 9, points: 72, coreTeam: true },
+      { name: "Samoa", ranking: 10, points: 68, coreTeam: true },
+      { name: "Spain", ranking: 11, points: 54, coreTeam: false },
+      { name: "Japan", ranking: 12, points: 48, coreTeam: false },
+      { name: "Canada", ranking: 13, points: 42, coreTeam: false },
+      { name: "Kenya", ranking: 14, points: 38, coreTeam: false },
+      { name: "Uruguay", ranking: 15, points: 32, coreTeam: false },
+      { name: "Germany", ranking: 16, points: 28, coreTeam: false }
     ],
     series: [
       {
@@ -50,7 +95,7 @@ function MensRugby7s({
         location: "The Sevens Stadium – Dubai",
         date: "Dec 5-6, 2025",
         status: "completed",
-        winner: { flag: "🇦🇷", name: "Argentina" },
+        winner: { name: "Argentina" },
         featured: true,
         participatingTeams: ["Argentina", "New Zealand", "Fiji", "France", "Australia", "South Africa"],
         capacity: "50,000"
@@ -61,7 +106,7 @@ function MensRugby7s({
         location: "Cape Town Stadium – South Africa",
         date: "Dec 12-13, 2025",
         status: "completed",
-        winner: { flag: "🇳🇿", name: "New Zealand" },
+        winner: { name: "New Zealand" },
         featured: true,
         participatingTeams: ["New Zealand", "Argentina", "Fiji", "Australia", "France", "Ireland"],
         capacity: "55,000"
@@ -213,16 +258,22 @@ function MensRugby7s({
 
   return (
     <div className="mens-rugby-7s-page">
-      {/* BRITISH LIONS NAVIGATION STRUCTURE */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <ThemeToggle />
-      </nav>
-      
-      {/* BRITISH LIONS HERO STRUCTURE */}
+      {/* EXACT Autumn/Rival Tours NavBar */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+      />
+
+      {/* EXACT Autumn/Rival Tours Top Ad Banner */}
+      <div className="top-ad-banner">
+        ⚡ World Rugby Sevens Series 2025-2026 - Fastest Rugby on Earth! 🏉
+      </div>
+
+      {/* EXACT Autumn/Rival Tours Hero Structure */}
       <header className="tournament-hero">
         <div className="hero-content">
           <div className="tournament-badge">
@@ -249,7 +300,7 @@ function MensRugby7s({
           </div>
         </div>
 
-        {/* PERSONALIZATION BANNER */}
+        {/* PERSONALIZATION BANNER - Autumn/Rival Tours pattern */}
         {hasFavoriteTeams && userRugby7sTeams.length > 0 && (
           <div className="personalization-banner">
             <div className="banner-icon">⭐</div>
@@ -264,7 +315,7 @@ function MensRugby7s({
         )}
       </header>
 
-      {/* BRITISH LIONS TAB NAVIGATION */}
+      {/* EXACT Autumn/Rival Tours Tab Navigation */}
       <nav className="tournament-tabs">
         <div className="nav-tabs">
           <button 
@@ -289,10 +340,12 @@ function MensRugby7s({
       </nav>
 
       <main className="tournament-main">
-        {/* SERIES TAB - ALL SERIES VISIBLE & SCROLLABLE */}
+        {/* SERIES TAB - Autumn/Rival Tours pattern */}
         {activeTab === 'series' && (
           <div className="fixtures-section">
-            <h2 className="section-title">World Series Tournaments 2025-2026</h2>
+            <h2 className="section-title centered-fixtures-title">
+              World Rugby Sevens Series 2025-2026
+            </h2>
             
             <div className="series-filters">
               <button 
@@ -315,7 +368,6 @@ function MensRugby7s({
               </button>
             </div>
 
-            {/* SCROLLABLE SERIES GRID - ALL CARDS VISIBLE */}
             <div className="series-grid">
               {filteredSeries.map(series => (
                 <div 
@@ -323,12 +375,14 @@ function MensRugby7s({
                   className={`series-card ${series.featured ? 'featured-series' : ''}`}
                   onClick={() => handleSeriesClick(series)}
                 >
+                  {/* STATUS BADGE - Autumn/Rival Tours positioning */}
+                  <div className={`status-badge ${series.status}`}>
+                    {series.status.toUpperCase()}
+                  </div>
+                  
                   <div className="series-header">
                     <span className="series-name">{series.name}</span>
                     <span className="series-date">{series.date}</span>
-                    <div className={`status-badge ${series.status}`}>
-                      {series.status.toUpperCase()}
-                    </div>
                   </div>
                   
                   <div className="series-location">
@@ -339,23 +393,29 @@ function MensRugby7s({
                   <div className="series-teams">
                     {getTopTeams(series).map((team, index) => (
                       <div key={index} className="team-preview">
-                        <span className="team-flag">{team.flag}</span>
+                        <div className="team-flag">
+                          <Flag country={team.name} size="medium" />
+                        </div>
                         <span className="team-name">{team.name}</span>
                       </div>
                     ))}
                   </div>
                   
+                  <div className="match-footer">
+                    <span className="capacity">👥 {series.capacity}</span>
+                  </div>
+                  
                   {series.winner && (
-                    <div className="match-footer">
-                      <span>🏆 Winner: {series.winner.flag} {series.winner.name}</span>
+                    <div className="match-highlight">
+                      🏆 Winner: {series.winner.name}
                     </div>
                   )}
                   
                   <div className="series-actions">
-                    <button className="action-btn primary" onClick={(e) => { e.stopPropagation(); onNavigateToPPV?.(); }}>
+                    <button className="action-btn" onClick={(e) => { e.stopPropagation(); onNavigateToPPV?.(); }}>
                       {series.status === 'completed' ? '📺 Highlights' : '🎟️ Tickets'}
                     </button>
-                    <button className="action-btn secondary" onClick={(e) => { e.stopPropagation(); onNavigateToAudio?.(); }}>
+                    <button className="action-btn" onClick={(e) => { e.stopPropagation(); onNavigateToAudio?.(); }}>
                       🔊 Audio
                     </button>
                   </div>
@@ -365,24 +425,31 @@ function MensRugby7s({
           </div>
         )}
 
-        {/* TEAMS TAB - ALL TEAMS VISIBLE & SCROLLABLE */}
+        {/* TEAMS TAB - Autumn/Rival Tours pattern */}
         {activeTab === 'teams' && (
           <div className="teams-section">
             <h2 className="section-title">Core & Invited Teams</h2>
             <div className="teams-grid">
               {enhancedTeams.map((team, index) => (
-                <div key={index} className={`nation-card ${team.coreTeam ? 'core-team' : ''}`}>
-                  <span className="nation-flag">{team.flag}</span>
+                <div key={index} className={`nation-card ${team.coreTeam ? 'featured-series' : ''}`}>
+                  <div className="nation-flag">
+                    <Flag country={team.name} size="large" />
+                  </div>
                   <h3 className="nation-name">{team.name}</h3>
                   <span className="world-ranking">Rank: #{team.ranking}</span>
                   <span className="points">{team.points} pts</span>
+                  {team.coreTeam && (
+                    <div className="match-highlight" style={{marginTop: '0.5rem'}}>
+                      Core Team
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
           </div>
         )}
 
-        {/* STANDINGS TAB - FULL TABLE VISIBLE & SCROLLABLE */}
+        {/* STANDINGS TAB - Autumn/Rival Tours pattern */}
         {activeTab === 'standings' && (
           <div className="standings-section">
             <h2 className="section-title">World Series Standings 2025-2026</h2>
@@ -399,9 +466,15 @@ function MensRugby7s({
                 <span>Pts</span>
               </div>
               {enhancedStandings.map(team => (
-                <div key={team.position} className="table-row">
+                <div key={team.position} className={`table-row ${team.isFavorite ? 'featured-series' : ''}`}>
                   <span className="position">{team.position}</span>
-                  <span className="team-name">{team.team}</span>
+                  <span className="team-name-cell">
+                    <Flag country={team.team} size="small" />
+                    <div className="team-name-wrapper">
+                      <span className="team-name-text">{team.team}</span>
+                      {team.isFavorite && <span className="favorite-star">⭐</span>}
+                    </div>
+                  </span>
                   <span>{team.played}</span>
                   <span>{team.won}</span>
                   <span>{team.drawn}</span>
@@ -415,37 +488,34 @@ function MensRugby7s({
           </div>
         )}
 
-        {/* BRITISH LIONS FEATURE GRID */}
-        <div className="features-section">
-          <h2 className="section-title">Rugby 7s Features</h2>
-          <div className="features-grid">
-            <div className="feature-card" onClick={onNavigateToFantasy}>
-              <div className="feature-icon">🏅</div>
-              <div className="feature-title">7s Fantasy</div>
-              <div className="feature-description">Build your dream 7s team</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToResults}>
-              <div className="feature-icon">📈</div>
-              <div className="feature-title">Live Results</div>
-              <div className="feature-description">Real-time 7s scores</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToPodcasts}>
-              <div className="feature-icon">🎧</div>
-              <div className="feature-title">7s Podcasts</div>
-              <div className="feature-description">Fast-paced analysis</div>
-            </div>
-            
-            <div className="feature-card" onClick={() => setActiveTab('series')}>
-              <div className="feature-icon">⚡</div>
-              <div className="feature-title">Global Series</div>
-              <div className="feature-description">10 tournaments worldwide</div>
-            </div>
+        {/* FEATURES GRID - NO BIG TITLE (Lions Tours correction) */}
+        <div className="features-grid">
+          <div className="feature-card" onClick={onNavigateToFantasy}>
+            <div className="feature-icon">🏅</div>
+            <div className="feature-title">7s Fantasy</div>
+            <div className="feature-description">Build your dream 7s team</div>
+          </div>
+          
+          <div className="feature-card" onClick={onNavigateToResults}>
+            <div className="feature-icon">📈</div>
+            <div className="feature-title">Live Results</div>
+            <div className="feature-description">Real-time 7s scores</div>
+          </div>
+          
+          <div className="feature-card" onClick={onNavigateToPodcasts}>
+            <div className="feature-icon">🎧</div>
+            <div className="feature-title">7s Podcasts</div>
+            <div className="feature-description">Fast-paced analysis</div>
+          </div>
+          
+          <div className="feature-card" onClick={() => setActiveTab('series')}>
+            <div className="feature-icon">⚡</div>
+            <div className="feature-title">Global Series</div>
+            <div className="feature-description">10 tournaments worldwide</div>
           </div>
         </div>
 
-        {/* BRITISH LIONS QUICK ACTIONS */}
+        {/* QUICK ACTIONS - Autumn/Rival Tours pattern */}
         <div className="quick-actions">
           <button className="quick-btn" onClick={onNavigateToFantasy}>
             🏅 7s Fantasy
@@ -462,7 +532,7 @@ function MensRugby7s({
         </div>
       </main>
 
-      {/* BRITISH LIONS BOTTOM AD BANNER */}
+      {/* BOTTOM AD BANNER - Autumn/Rival Tours pattern */}
       <div className="bottom-ad-banner">
         <div className="ad-content">
           <div className="ad-icon">⚡</div>

@@ -7,7 +7,7 @@ const MatchCard = ({
   onSelect, 
   tournamentColor = '#1976d2',
   showTournament = true,
-  FlagComponent = null // Accept Flag component prop
+  FlagComponent = null
 }) => {
   const getStatusClass = (status) => {
     switch(status?.toUpperCase()) {
@@ -17,9 +17,6 @@ const MatchCard = ({
       case 'FT': 
       case 'FULL TIME': 
         return 'status-completed';
-      case 'HT': 
-      case 'HALF TIME': 
-        return 'status-ht';
       default: return 'status-upcoming';
     }
   };
@@ -30,26 +27,12 @@ const MatchCard = ({
       case 'UPCOMING': return time || 'UPCOMING';
       case 'COMPLETED': 
       case 'FT': return 'FT';
-      case 'HT': return 'HT';
       default: return time || status || 'UPCOMING';
     }
   };
 
-  const homeTeam = match.homeTeam || match.teams?.[0] || 'TBD';
-  const awayTeam = match.awayTeam || match.teams?.[1] || 'TBD';
-
-  // Render flag with FlagComponent if provided, otherwise fallback to emoji/text
-  const renderFlag = (flagData, size = 'medium') => {
-    if (FlagComponent && flagData) {
-      return (
-        <div className="team-flag-container">
-          <FlagComponent country={flagData} size={size} />
-        </div>
-      );
-    }
-    // Fallback to existing emoji/text display
-    return <div className="team-flag">{flagData || '🏉'}</div>;
-  };
+  const homeTeam = match.homeTeam || 'TBD';
+  const awayTeam = match.awayTeam || 'TBD';
 
   return (
     <div 
@@ -57,7 +40,7 @@ const MatchCard = ({
       onClick={() => onSelect && onSelect(match)}
       style={{ borderLeftColor: tournamentColor }}
     >
-      {/* Tournament Badge */}
+      {/* Tournament Badge - BLACK TEXT */}
       {showTournament && match.tournament && (
         <div 
           className="match-tournament"
@@ -69,16 +52,22 @@ const MatchCard = ({
         </div>
       )}
 
-      {/* COMPLETELY REDESIGNED LAYOUT */}
+      {/* Match Teams */}
       <div className="match-teams-container">
-        {/* Home Team - Stacked Layout */}
+        {/* Home Team */}
         <div className="team-section home-team">
-          {renderFlag(match.homeFlag, 'medium')}
+          {FlagComponent ? (
+            <div className="team-flag-container">
+              <FlagComponent country={homeTeam} size="medium" />
+            </div>
+          ) : (
+            <div className="team-flag">🏉</div>
+          )}
           <div className="team-name">{homeTeam}</div>
-          <div className="team-score">{match.homeScore ?? match.scores?.[0] ?? 0}</div>
+          <div className="team-score">{match.homeScore || 0}</div>
         </div>
 
-        {/* VS and Time - Centered */}
+        {/* Center Section */}
         <div className="match-center-section">
           <div className="vs-indicator">VS</div>
           <div className="match-time">
@@ -89,11 +78,17 @@ const MatchCard = ({
           )}
         </div>
 
-        {/* Away Team - Stacked Layout */}
+        {/* Away Team */}
         <div className="team-section away-team">
-          {renderFlag(match.awayFlag, 'medium')}
+          {FlagComponent ? (
+            <div className="team-flag-container">
+              <FlagComponent country={awayTeam} size="medium" />
+            </div>
+          ) : (
+            <div className="team-flag">🏉</div>
+          )}
           <div className="team-name">{awayTeam}</div>
-          <div className="team-score">{match.awayScore ?? match.scores?.[1] ?? 0}</div>
+          <div className="team-score">{match.awayScore || 0}</div>
         </div>
       </div>
 

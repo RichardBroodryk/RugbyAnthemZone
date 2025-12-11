@@ -1,8 +1,44 @@
 import React, { useState } from 'react';
 import './MensSummerInternationals.css';
-import ThemeToggle from './ThemeToggle';
-import StadiumPage from './StadiumPage'; // CHANGED: StadiumMap to StadiumPage
-import VenueSelector from './VenueSelector';
+import NavBar from './NavBar';
+
+// Flag Component with real images (From Autumn/Rival Tours)
+const Flag = ({ country, size = 'medium' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'england': 'england',
+      'wales': 'wales',
+      'scotland': 'scotland',
+      'ireland': 'ireland',
+      'france': 'france',
+      'italy': 'italy',
+      'new zealand': 'new-zealand',
+      'australia': 'australia',
+      'south africa': 'south-africa',
+      'argentina': 'argentina',
+      'japan': 'japan',
+      'fiji': 'fiji'
+    };
+    
+    return nameMap[countryName.toLowerCase()] || countryName.toLowerCase();
+  };
+
+  const fileName = getCountryFileName(country);
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      return <div className={`flag-fallback flag-${size}`}>
+        {country.slice(0, 3).toUpperCase()}
+      </div>;
+    }
+  }
+};
 
 function MensSummerInternationals({ 
   onNavigateBack, 
@@ -17,20 +53,7 @@ function MensSummerInternationals({
 }) {
   const [activeTab, setActiveTab] = useState('fixtures');
   const [matchFilter, setMatchFilter] = useState('all');
-  const [selectedVenue, setSelectedVenue] = useState('Eden Park');
-
-  // Summer Internationals iconic stadiums
-  const summerStadiums = [
-    'Eden Park',
-    'Sydney Cricket Ground',
-    'Loftus Versfeld',
-    'Estadio José Amalfitani',
-    'National Stadium Tokyo',
-    'ANZ National Stadium',
-    'Forsyth Barr Stadium',
-    'Suncorp Stadium'
-  ];
-
+  
   // Get user's favorite teams
   const favoriteTeams = userPreferences?.favoriteTeams || [];
   const hasFavoriteTeams = favoriteTeams.length > 0;
@@ -41,26 +64,25 @@ function MensSummerInternationals({
     description: "Mid-year test matches featuring Northern Hemisphere tours to Southern Hemisphere nations",
     logo: "☀️",
     teams: [
-      { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 5, form: 'WWLWW', isFavorite: false },
-      { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 8, form: 'LLWLL', isFavorite: false },
-      { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland", ranking: 6, form: 'LWWLW', isFavorite: false },
-      { flag: "🇮🇪", name: "Ireland", ranking: 2, form: 'WWWWW', isFavorite: false },
-      { flag: "🇫🇷", name: "France", ranking: 4, form: 'WLWLW', isFavorite: false },
-      { flag: "🇮🇹", name: "Italy", ranking: 12, form: 'LLLLW', isFavorite: false },
-      { flag: "🇳🇿", name: "New Zealand", ranking: 3, form: 'WWWLW', isFavorite: false },
-      { flag: "🇦🇺", name: "Australia", ranking: 9, form: 'LLLLL', isFavorite: false },
-      { flag: "🇿🇦", name: "South Africa", ranking: 1, form: 'WWLWW', isFavorite: false },
-      { flag: "🇦🇷", name: "Argentina", ranking: 7, form: 'WLLWW', isFavorite: false },
-      { flag: "🇯🇵", name: "Japan", ranking: 11, form: 'LWWLL', isFavorite: false },
-      { flag: "🇫🇯", name: "Fiji", ranking: 10, form: 'WLWWW', isFavorite: false }
+      { name: "England", ranking: 5, form: 'WWLWW' },
+      { name: "Wales", ranking: 8, form: 'LLWLL' },
+      { name: "Scotland", ranking: 6, form: 'LWWLW' },
+      { name: "Ireland", ranking: 2, form: 'WWWWW' },
+      { name: "France", ranking: 4, form: 'WLWLW' },
+      { name: "Italy", ranking: 12, form: 'LLLLW' },
+      { name: "New Zealand", ranking: 3, form: 'WWWLW' },
+      { name: "Australia", ranking: 9, form: 'LLLLL' },
+      { name: "South Africa", ranking: 1, form: 'WWLWW' },
+      { name: "Argentina", ranking: 7, form: 'WLLWW' },
+      { name: "Japan", ranking: 11, form: 'LWWLL' },
+      { name: "Fiji", ranking: 10, form: 'WLWWW' }
     ],
     matches: [
       {
         id: 1,
-        team1: { flag: "🇳🇿", name: "New Zealand", ranking: 3 },
-        team2: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 5 },
+        team1: { name: "New Zealand", ranking: 3 },
+        team2: { name: "England", ranking: 5 },
         venue: "Eden Park – Auckland",
-        stadium: "Eden Park",
         date: "Jul 4, 2026",
         time: "19:35",
         status: "upcoming",
@@ -71,10 +93,9 @@ function MensSummerInternationals({
       },
       {
         id: 2,
-        team1: { flag: "🇦🇺", name: "Australia", ranking: 9 },
-        team2: { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 8 },
+        team1: { name: "Australia", ranking: 9 },
+        team2: { name: "Wales", ranking: 8 },
         venue: "Sydney Cricket Ground – Sydney",
-        stadium: "Sydney Cricket Ground",
         date: "Jul 5, 2026",
         time: "20:05",
         status: "upcoming",
@@ -85,10 +106,9 @@ function MensSummerInternationals({
       },
       {
         id: 3,
-        team1: { flag: "🇿🇦", name: "South Africa", ranking: 1 },
-        team2: { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland", ranking: 6 },
+        team1: { name: "South Africa", ranking: 1 },
+        team2: { name: "Scotland", ranking: 6 },
         venue: "Loftus Versfeld – Pretoria",
-        stadium: "Loftus Versfeld",
         date: "Jul 5, 2026",
         time: "17:05",
         status: "upcoming",
@@ -99,10 +119,9 @@ function MensSummerInternationals({
       },
       {
         id: 4,
-        team1: { flag: "🇦🇷", name: "Argentina", ranking: 7 },
-        team2: { flag: "🇫🇷", name: "France", ranking: 4 },
+        team1: { name: "Argentina", ranking: 7 },
+        team2: { name: "France", ranking: 4 },
         venue: "Estadio José Amalfitani – Buenos Aires",
-        stadium: "Estadio José Amalfitani",
         date: "Jul 11, 2026",
         time: "16:10",
         status: "upcoming",
@@ -113,10 +132,9 @@ function MensSummerInternationals({
       },
       {
         id: 5,
-        team1: { flag: "🇯🇵", name: "Japan", ranking: 11 },
-        team2: { flag: "🇮🇪", name: "Ireland", ranking: 2 },
+        team1: { name: "Japan", ranking: 11 },
+        team2: { name: "Ireland", ranking: 2 },
         venue: "National Stadium – Tokyo",
-        stadium: "National Stadium Tokyo",
         date: "Jul 12, 2026",
         time: "14:00",
         status: "upcoming",
@@ -127,10 +145,9 @@ function MensSummerInternationals({
       },
       {
         id: 6,
-        team1: { flag: "🇫🇯", name: "Fiji", ranking: 10 },
-        team2: { flag: "🇮🇹", name: "Italy", ranking: 12 },
+        team1: { name: "Fiji", ranking: 10 },
+        team2: { name: "Italy", ranking: 12 },
         venue: "ANZ National Stadium – Suva",
-        stadium: "ANZ National Stadium",
         date: "Jul 12, 2026",
         time: "15:00",
         status: "upcoming",
@@ -141,10 +158,9 @@ function MensSummerInternationals({
       },
       {
         id: 7,
-        team1: { flag: "🇳🇿", name: "New Zealand", ranking: 3 },
-        team2: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 5 },
+        team1: { name: "New Zealand", ranking: 3 },
+        team2: { name: "England", ranking: 5 },
         venue: "Forsyth Barr Stadium – Dunedin",
-        stadium: "Forsyth Barr Stadium",
         date: "Jul 18, 2026",
         time: "19:35",
         status: "upcoming",
@@ -155,10 +171,9 @@ function MensSummerInternationals({
       },
       {
         id: 8,
-        team1: { flag: "🇦🇺", name: "Australia", ranking: 9 },
-        team2: { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 8 },
+        team1: { name: "Australia", ranking: 9 },
+        team2: { name: "Wales", ranking: 8 },
         venue: "Suncorp Stadium – Brisbane",
-        stadium: "Suncorp Stadium",
         date: "Jul 19, 2026",
         time: "20:05",
         status: "upcoming",
@@ -169,10 +184,9 @@ function MensSummerInternationals({
       },
       {
         id: 9,
-        team1: { flag: "🇿🇦", name: "South Africa", ranking: 1 },
-        team2: { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland", ranking: 6 },
+        team1: { name: "South Africa", ranking: 1 },
+        team2: { name: "Scotland", ranking: 6 },
         venue: "Ellis Park – Johannesburg",
-        stadium: "Ellis Park",
         date: "Jul 19, 2026",
         time: "17:05",
         status: "upcoming",
@@ -183,10 +197,9 @@ function MensSummerInternationals({
       },
       {
         id: 10,
-        team1: { flag: "🇦🇷", name: "Argentina", ranking: 7 },
-        team2: { flag: "🇫🇷", name: "France", ranking: 4 },
+        team1: { name: "Argentina", ranking: 7 },
+        team2: { name: "France", ranking: 4 },
         venue: "Estadio Mario Alberto Kempes – Córdoba",
-        stadium: "Estadio Mario Alberto Kempes",
         date: "Jul 18, 2026",
         time: "16:10",
         status: "upcoming",
@@ -212,26 +225,17 @@ function MensSummerInternationals({
     ]
   };
 
-  // Handle seat selection for stadium maps
-  const handleSeatSelect = (seatInfo) => {
-    console.log('Selected seat:', seatInfo);
-    alert(`Selected ${seatInfo.section} at ${seatInfo.stadium}`);
-  };
-
-  // Add favorite status to teams
+  // Enhanced data with favorite status
   const enhancedTeams = summerInternationalsData.teams.map(team => ({
     ...team,
     isFavorite: favoriteTeams.includes(team.name)
   }));
 
-  // Add favorite status to matches
   const enhancedMatches = summerInternationalsData.matches.map(match => ({
     ...match,
-    isFavoriteMatch: favoriteTeams.includes(match.team1.name) || favoriteTeams.includes(match.team2.name),
-    favoriteTeamsInvolved: [match.team1.name, match.team2.name].filter(team => favoriteTeams.includes(team))
+    isFavoriteMatch: favoriteTeams.includes(match.team1.name) || favoriteTeams.includes(match.team2.name)
   }));
 
-  // Add favorite status to standings
   const enhancedStandings = summerInternationalsData.standings.map(team => ({
     ...team,
     isFavorite: favoriteTeams.includes(team.team)
@@ -244,7 +248,6 @@ function MensSummerInternationals({
     ? enhancedMatches.filter(match => match.isTourSeries)
     : enhancedMatches;
 
-  // Get user's Summer Internationals teams
   const userSummerTeams = enhancedTeams.filter(team => team.isFavorite);
 
   const formatForm = (form) => {
@@ -258,23 +261,27 @@ function MensSummerInternationals({
   const handleMatchClick = (match) => {
     onGameSelect?.({
       ...match,
-      tournament: 'Summer Internationals',
-      userFavorite: match.isFavoriteMatch
+      tournament: 'Summer Internationals'
     });
   };
 
   return (
     <div className="mens-summer-internationals-page">
-      {/* APPLY BRITISH LIONS NAVIGATION STRUCTURE */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <ThemeToggle />
-      </nav>
-      
-      {/* SUMMER TOURS HERO HEADER */}
+      {/* EXACT Autumn/Rival Tours NavBar */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        onNavigateBack={onNavigateBack}
+      />
+
+      {/* EXACT Autumn/Rival Tours Top Ad Banner */}
+      <div className="top-ad-banner">
+        ☀️ Summer Internationals 2026 - Northern Hemisphere Tours South!
+      </div>
+
+      {/* EXACT Autumn/Rival Tours Hero Structure */}
       <header className="tournament-hero">
         <div className="hero-content">
           <div className="tournament-badge">
@@ -296,12 +303,12 @@ function MensSummerInternationals({
             <span className="stat-label">Matches</span>
           </div>
           <div className="stat">
-            <span className="stat-number">Jul 2026</span>
-            <span className="stat-label">Tournament</span>
+            <span className="stat-number">☀️</span>
+            <span className="stat-label">Summer Rugby</span>
           </div>
         </div>
 
-        {/* PERSONALIZATION BANNER */}
+        {/* PERSONALIZATION BANNER - Autumn/Rival Tours pattern */}
         {hasFavoriteTeams && userSummerTeams.length > 0 && (
           <div className="personalization-banner">
             <div className="banner-icon">⭐</div>
@@ -316,7 +323,7 @@ function MensSummerInternationals({
         )}
       </header>
 
-      {/* APPLY BRITISH LIONS TAB NAVIGATION STRUCTURE */}
+      {/* EXACT Autumn/Rival Tours Tab Navigation */}
       <nav className="tournament-tabs">
         <div className="nav-tabs">
           <button 
@@ -337,20 +344,16 @@ function MensSummerInternationals({
           >
             📊 Standings
           </button>
-          <button 
-            className={`tab-btn ${activeTab === 'stadiums' ? 'active' : ''}`}
-            onClick={() => setActiveTab('stadiums')}
-          >
-            🏟️ Stadiums
-          </button>
         </div>
       </nav>
 
       <main className="tournament-main">
-        {/* FIXTURES TAB CONTENT */}
+        {/* FIXTURES TAB - Autumn/Rival Tours pattern */}
         {activeTab === 'fixtures' && (
           <div className="fixtures-section">
-            <h2 className="section-title">Summer Test Series 2026</h2>
+            <h2 className="section-title centered-fixtures-title">
+              Summer Internationals 2026
+            </h2>
             
             {/* MATCH FILTERS */}
             <div className="match-filters">
@@ -380,15 +383,13 @@ function MensSummerInternationals({
               {filteredMatches.map(match => (
                 <div 
                   key={match.id} 
-                  className={`match-card ${match.isTourSeries ? 'tour-series' : ''}`}
+                  className={`match-card ${match.isFavoriteMatch ? 'favorite-match' : ''}`}
                   onClick={() => handleMatchClick(match)}
                 >
-                  {/* TOUR SERIES INDICATOR */}
-                  {match.isTourSeries && (
-                    <div className="tour-series-indicator">
-                      🌏 {match.tourName}
-                    </div>
-                  )}
+                  {/* STATUS BADGE - Autumn/Rival Tours positioning */}
+                  <div className={`status-badge ${match.status}`}>
+                    {match.status.toUpperCase()}
+                  </div>
                   
                   <div className="match-header">
                     <span className="match-tournament">{match.tournament}</span>
@@ -397,7 +398,9 @@ function MensSummerInternationals({
                   
                   <div className="teams-container">
                     <div className="team">
-                      <span className="team-flag">{match.team1.flag}</span>
+                      <div className="team-flag">
+                        <Flag country={match.team1.name} size="medium" />
+                      </div>
                       <span className="team-name">{match.team1.name}</span>
                       <span className="team-ranking">#{match.team1.ranking}</span>
                     </div>
@@ -407,9 +410,11 @@ function MensSummerInternationals({
                     </div>
                     
                     <div className="team">
-                      <span className="team-ranking">#{match.team2.ranking}</span>
+                      <div className="team-flag">
+                        <Flag country={match.team2.name} size="medium" />
+                      </div>
                       <span className="team-name">{match.team2.name}</span>
-                      <span className="team-flag">{match.team2.flag}</span>
+                      <span className="team-ranking">#{match.team2.ranking}</span>
                     </div>
                   </div>
                   
@@ -418,11 +423,17 @@ function MensSummerInternationals({
                     <span className="capacity">👥 {match.capacity}</span>
                   </div>
                   
+                  {match.isTourSeries && (
+                    <div className="tour-series-highlight">
+                      🌏 {match.tourName}
+                    </div>
+                  )}
+                  
                   <div className="match-actions">
-                    <button className="action-btn primary" onClick={(e) => { e.stopPropagation(); onNavigateToPPV?.(); }}>
+                    <button className="action-btn" onClick={(e) => { e.stopPropagation(); onNavigateToPPV?.(); }}>
                       📺 Watch
                     </button>
-                    <button className="action-btn secondary" onClick={(e) => { e.stopPropagation(); onNavigateToAudio?.(); }}>
+                    <button className="action-btn" onClick={(e) => { e.stopPropagation(); onNavigateToAudio?.(); }}>
                       🔊 Listen
                     </button>
                   </div>
@@ -432,35 +443,20 @@ function MensSummerInternationals({
           </div>
         )}
 
-        {/* TEAMS TAB CONTENT */}
+        {/* TEAMS TAB - Autumn/Rival Tours pattern */}
         {activeTab === 'teams' && (
           <div className="teams-section">
             <h2 className="section-title">Participating Nations</h2>
             <div className="teams-grid">
               {enhancedTeams.map((team, index) => (
-                <div key={index} className={`nation-card ${team.isFavorite ? 'favorite-team' : ''}`}>
-                  {/* FAVORITE TEAM BADGE */}
-                  {team.isFavorite && <div className="favorite-badge">❤️ YOUR TEAM</div>}
-                  
-                  <div className="nation-header">
-                    <span className="nation-flag">{team.flag}</span>
-                    <div className="nation-info">
-                      <h3 className="nation-name">{team.name}</h3>
-                      <span className="world-ranking">World Ranking: #{team.ranking}</span>
-                    </div>
+                <div key={index} className={`nation-card ${team.isFavorite ? 'featured-series' : ''}`}>
+                  <div className="nation-flag">
+                    <Flag country={team.name} size="large" />
                   </div>
-                  
-                  <div className="nation-form">
-                    <span className="form-label">Recent Form:</span>
-                    <div className="form-indicator">
-                      {formatForm(team.form)}
-                    </div>
-                  </div>
-                  
-                  <div className="nation-actions">
-                    <button className="team-btn">👀 Follow</button>
-                    <button className="team-btn">📊 Stats</button>
-                    <button className="team-btn">🌏 Tour Info</button>
+                  <h3 className="nation-name">{team.name}</h3>
+                  <span className="world-ranking">Rank: #{team.ranking}</span>
+                  <div className="form-indicator">
+                    {formatForm(team.form)}
                   </div>
                 </div>
               ))}
@@ -468,7 +464,7 @@ function MensSummerInternationals({
           </div>
         )}
 
-        {/* STANDINGS TAB CONTENT */}
+        {/* STANDINGS TAB - Autumn/Rival Tours pattern */}
         {activeTab === 'standings' && (
           <div className="standings-section">
             <h2 className="section-title">Tournament Standings</h2>
@@ -483,11 +479,14 @@ function MensSummerInternationals({
                 <span>Pts</span>
               </div>
               {enhancedStandings.map(team => (
-                <div key={team.position} className={`table-row ${team.isFavorite ? 'favorite-team' : ''}`}>
+                <div key={team.position} className={`table-row ${team.isFavorite ? 'featured-series' : ''}`}>
                   <span className="position">{team.position}</span>
-                  <span className="team-name">
-                    {team.team} 
-                    {team.isFavorite && <span className="favorite-indicator"> ❤️</span>}
+                  <span className="team-name-cell">
+                    <Flag country={team.team} size="small" />
+                    <div className="team-name-wrapper">
+                      <span className="team-name-text">{team.team}</span>
+                      {team.isFavorite && <span className="favorite-star">⭐</span>}
+                    </div>
                   </span>
                   <span>{team.played}</span>
                   <span>{team.won}</span>
@@ -500,188 +499,34 @@ function MensSummerInternationals({
           </div>
         )}
 
-        {/* STADIUMS TAB CONTENT */}
-        {activeTab === 'stadiums' && (
-          <div className="stadiums-section">
-            <h2 className="section-title">🏟️ Summer Tours Stadiums</h2>
-            <p>Explore the iconic venues across the Southern Hemisphere that host summer test matches</p>
-            
-            <VenueSelector 
-              venues={summerStadiums}
-              selectedVenue={selectedVenue}
-              onVenueChange={setSelectedVenue}
-            />
-            
-            {/* CHANGED: StadiumMap to StadiumPage */}
-            <StadiumPage 
-              stadium={selectedVenue}
-              onSeatSelect={handleSeatSelect}
-              interactive={true}
-              showInfo={true}
-            />
-            
-            <div className="stadium-features">
-              <h3>Summer Tours Stadium Features:</h3>
-              <ul>
-                <li>🎯 Click on stadium sections to explore seating</li>
-                <li>🎫 Integrated with summer tour ticket packages</li>
-                <li>🌏 Global stadiums from New Zealand to Argentina</li>
-                <li>📱 Mobile-optimized interactive maps</li>
-                <li>✈️ International travel information</li>
-              </ul>
-            </div>
-
-            {/* Stadium Quick Facts */}
-            <div className="stadium-quick-facts">
-              <h3>Summer Tours Stadiums Quick Facts:</h3>
-              <div className="facts-grid">
-                <div className="fact-card">
-                  <div className="fact-icon">🇳🇿</div>
-                  <div className="fact-title">Eden Park</div>
-                  <div className="fact-desc">New Zealand's largest stadium - 50,000 capacity</div>
-                </div>
-                <div className="fact-card">
-                  <div className="fact-icon">🇦🇺</div>
-                  <div className="fact-title">Sydney Cricket Ground</div>
-                  <div className="fact-desc">Historic Australian venue - 48,000 capacity</div>
-                </div>
-                <div className="fact-card">
-                  <div className="fact-icon">🇿🇦</div>
-                  <div className="fact-title">Loftus Versfeld</div>
-                  <div className="fact-desc">Pretoria's iconic stadium - 51,762 capacity</div>
-                </div>
-                <div className="fact-card">
-                  <div className="fact-icon">🇦🇷</div>
-                  <div className="fact-title">Estadio José Amalfitani</div>
-                  <div className="fact-desc">Buenos Aires rugby venue - 49,540 capacity</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Summer Tours Atmosphere */}
-            <div className="summer-tours-atmosphere">
-              <h3>🌞 Summer Tours Championship Atmosphere</h3>
-              <div className="atmosphere-features">
-                <div className="atmosphere-feature">
-                  <div className="feature-icon">🇳🇿</div>
-                  <div className="feature-details">
-                    <h4>Eden Park - New Zealand</h4>
-                    <p>Iconic Auckland stadium with passionate All Blacks support and traditional haka performances</p>
-                  </div>
-                </div>
-                <div className="atmosphere-feature">
-                  <div className="feature-icon">🇦🇺</div>
-                  <div className="feature-details">
-                    <h4>SCG - Australia</h4>
-                    <p>Historic Sydney venue with passionate Wallabies support and traditional Australian rugby atmosphere</p>
-                  </div>
-                </div>
-                <div className="atmosphere-feature">
-                  <div className="feature-icon">🇿🇦</div>
-                  <div className="feature-details">
-                    <h4>Loftus Versfeld - South Africa</h4>
-                    <p>Electric Pretoria atmosphere with passionate Springboks support and traditional African songs</p>
-                  </div>
-                </div>
-                <div className="atmosphere-feature">
-                  <div className="feature-icon">🇦🇷</div>
-                  <div className="feature-details">
-                    <h4>Estadio Amalfitani - Argentina</h4>
-                    <p>Lively Buenos Aires atmosphere with passionate Pumas support and Latin American flair</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Travel Information */}
-            <div className="travel-info">
-              <h3>✈️ Summer Tours Travel Guide</h3>
-              <div className="travel-tips">
-                <div className="travel-tip">
-                  <strong>Auckland (Eden Park):</strong> Excellent transport links via train and bus services
-                </div>
-                <div className="travel-tip">
-                  <strong>Sydney (SCG):</strong> Light rail and train services to Moore Park station
-                </div>
-                <div className="travel-tip">
-                  <strong>Pretoria (Loftus Versfeld):</strong> Gautrain service to Hatfield station
-                </div>
-                <div className="travel-tip">
-                  <strong>Buenos Aires (Estadio Amalfitani):</strong> Subte Line D to Plaza Italia station
-                </div>
-                <div className="travel-tip">
-                  <strong>Tokyo (National Stadium):</strong> Multiple train lines to Shinjuku station
-                </div>
-                <div className="travel-tip">
-                  <strong>Suva (ANZ Stadium):</strong> Local bus services and taxi access
-                </div>
-              </div>
-            </div>
-
-            {/* Historical Facts */}
-            <div className="historical-facts">
-              <h3>📜 Summer Tours Historical Facts</h3>
-              <div className="facts-timeline">
-                <div className="fact-item">
-                  <div className="fact-year">1904</div>
-                  <div className="fact-details">
-                    <strong>First British & Irish Lions Tour:</strong> First official tour to Australia and New Zealand
-                  </div>
-                </div>
-                <div className="fact-item">
-                  <div className="fact-year">1971</div>
-                  <div className="fact-details">
-                    <strong>Legendary Lions Tour:</strong> Only Lions team to win a series in New Zealand
-                  </div>
-                </div>
-                <div className="fact-item">
-                  <div className="fact-year">1995</div>
-                  <div className="fact-details">
-                    <strong>Professional Era:</strong> Summer tours became annual professional events
-                  </div>
-                </div>
-                <div className="fact-item">
-                  <div className="fact-year">2021</div>
-                  <div className="fact-details">
-                    <strong>Global Expansion:</strong> Tours expanded to include Japan, Argentina, and Pacific Islands
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* FEATURES GRID - NO BIG TITLE (Lions Tours correction) */}
+        <div className="features-grid">
+          <div className="feature-card" onClick={onNavigateToFantasy}>
+            <div className="feature-icon">🏅</div>
+            <div className="feature-title">Summer Fantasy</div>
+            <div className="feature-description">Build your dream tour team</div>
           </div>
-        )}
-
-        {/* APPLY BRITISH LIONS BOTTOM FEATURE BLOCKS STRUCTURE */}
-        <div className="features-section">
-          <h2 className="section-title">Summer Tours Features</h2>
-          <div className="features-grid">
-            <div className="feature-card" onClick={onNavigateToFantasy}>
-              <div className="feature-icon">🏅</div>
-              <div className="feature-title">Summer Fantasy</div>
-              <div className="feature-description">Build your dream tour team</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToResults}>
-              <div className="feature-icon">📈</div>
-              <div className="feature-title">Tour Results</div>
-              <div className="feature-description">Live summer test scores</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToPodcasts}>
-              <div className="feature-icon">🎧</div>
-              <div className="feature-title">Tour Podcasts</div>
-              <div className="feature-description">Summer tour analysis</div>
-            </div>
-            
-            <div className="feature-card" onClick={() => setActiveTab('stadiums')}>
-              <div className="feature-icon">🏟️</div>
-              <div className="feature-title">Global Stadiums</div>
-              <div className="feature-description">Explore worldwide venues</div>
-            </div>
+          
+          <div className="feature-card" onClick={onNavigateToResults}>
+            <div className="feature-icon">📈</div>
+            <div className="feature-title">Tour Results</div>
+            <div className="feature-description">Live summer test scores</div>
+          </div>
+          
+          <div className="feature-card" onClick={onNavigateToPodcasts}>
+            <div className="feature-icon">🎧</div>
+            <div className="feature-title">Tour Podcasts</div>
+            <div className="feature-description">Summer tour analysis</div>
+          </div>
+          
+          <div className="feature-card" onClick={() => window.open('https://www.world.rugby/travel', '_blank')}>
+            <div className="feature-icon">✈️</div>
+            <div className="feature-title">Travel Packages</div>
+            <div className="feature-description">Book summer tours</div>
           </div>
         </div>
 
-        {/* APPLY BRITISH LIONS QUICK ACTIONS STRUCTURE */}
+        {/* QUICK ACTIONS - Autumn/Rival Tours pattern */}
         <div className="quick-actions">
           <button className="quick-btn" onClick={onNavigateToFantasy}>
             🏅 Summer Fantasy
@@ -692,13 +537,13 @@ function MensSummerInternationals({
           <button className="quick-btn" onClick={onNavigateToPodcasts}>
             🎧 Tour Podcasts
           </button>
-          <button className="quick-btn" onClick={() => setActiveTab('stadiums')}>
-            🏟️ Global Stadiums
+          <button className="quick-btn" onClick={() => window.open('https://www.world.rugby/travel', '_blank')}>
+            ✈️ Travel Packages
           </button>
         </div>
       </main>
 
-      {/* APPLY BRITISH LIONS BOTTOM AD BANNER STRUCTURE */}
+      {/* BOTTOM AD BANNER - Autumn/Rival Tours pattern */}
       <div className="bottom-ad-banner">
         <div className="ad-content">
           <div className="ad-icon">✈️</div>
@@ -706,7 +551,9 @@ function MensSummerInternationals({
             Summer Rugby Tours 2026 - Official Travel Packages Available!
             Follow your team Down Under with our exclusive tour packages to New Zealand, Australia, and South Africa.
           </div>
-          <button className="ad-cta">🌏 Book Tour</button>
+          <button className="ad-cta" onClick={() => window.open('https://www.world.rugby/travel', '_blank')}>
+            🌏 Book Tour
+          </button>
         </div>
       </div>
     </div>

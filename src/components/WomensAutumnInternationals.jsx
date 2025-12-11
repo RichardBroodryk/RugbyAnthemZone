@@ -1,8 +1,48 @@
 import React, { useState } from 'react';
 import './WomensAutumnInternationals.css';
-import ThemeToggle from './ThemeToggle';
-import StadiumPage from './StadiumPage'; // CHANGED: StadiumMap to StadiumPage
-import VenueSelector from './VenueSelector';
+import NavBar from './NavBar';
+
+// Flag Component with real images (From Autumn/Rival Tours)
+const Flag = ({ country, size = 'medium' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'argentina': 'argentina',
+      'australia': 'australia',
+      'england': 'england',
+      'fiji': 'fiji',
+      'france': 'france',
+      'ireland': 'ireland',
+      'italy': 'italy',
+      'japan': 'japan',
+      'new zealand': 'new-zealand',
+      'scotland': 'scotland',
+      'south africa': 'south-africa',
+      'wales': 'wales',
+      'usa': 'united-states-of-america',
+      'canada': 'canada',
+      'samoa': 'samoa',
+      'spain': 'spain'
+    };
+    
+    return nameMap[countryName.toLowerCase()] || countryName.toLowerCase();
+  };
+
+  const fileName = getCountryFileName(country);
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      return <div className={`flag-fallback flag-${size}`}>
+        {country.slice(0, 3).toUpperCase()}
+      </div>;
+    }
+  }
+};
 
 function WomensAutumnInternationals({ 
   onNavigateBack, 
@@ -17,20 +57,7 @@ function WomensAutumnInternationals({
 }) {
   const [activeTab, setActiveTab] = useState('fixtures');
   const [matchFilter, setMatchFilter] = useState('all');
-  const [selectedVenue, setSelectedVenue] = useState('Twickenham Stadium');
   
-  // Women's Autumn Internationals stadiums
-  const womensStadiums = [
-    'Twickenham Stadium',
-    'Cardiff Arms Park',
-    'Scotstoun Stadium',
-    'Aviva Stadium',
-    'Stade Jean-Bouin',
-    'Stadio Sergio Lanfranchi',
-    'Sandy Park',
-    'Principality Stadium'
-  ];
-
   // Get user's favorite teams
   const favoriteTeams = userPreferences?.favoriteTeams || [];
   const hasFavoriteTeams = favoriteTeams.length > 0;
@@ -41,122 +68,96 @@ function WomensAutumnInternationals({
     description: "End-of-year women's test matches featuring cross-hemisphere competitions",
     logo: "🍁",
     teams: [
-      { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 1, form: 'WWWWW', isFavorite: false },
-      { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 8, form: 'LLWLL', isFavorite: false },
-      { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland", ranking: 9, form: 'LWWLW', isFavorite: false },
-      { flag: "🇮🇪", name: "Ireland", ranking: 6, form: 'WWLWW', isFavorite: false },
-      { flag: "🇫🇷", name: "France", ranking: 3, form: 'WLWLW', isFavorite: false },
-      { flag: "🇮🇹", name: "Italy", ranking: 7, form: 'LLLLW', isFavorite: false },
-      { flag: "🇳🇿", name: "New Zealand", ranking: 2, form: 'WWWLW', isFavorite: false },
-      { flag: "🇦🇺", name: "Australia", ranking: 5, form: 'WLLWL', isFavorite: false },
-      { flag: "🇨🇦", name: "Canada", ranking: 4, form: 'WWLWW', isFavorite: false },
-      { flag: "🇺🇸", name: "USA", ranking: 10, form: 'LLWLL', isFavorite: false },
-      { flag: "🇿🇦", name: "South Africa", ranking: 12, form: 'WLWWW', isFavorite: false },
-      { flag: "🇯🇵", name: "Japan", ranking: 11, form: 'LWWLL', isFavorite: false }
+      { name: "England", ranking: 1, coreTeam: true },
+      { name: "Wales", ranking: 8, coreTeam: true },
+      { name: "Scotland", ranking: 9, coreTeam: true },
+      { name: "Ireland", ranking: 6, coreTeam: true },
+      { name: "France", ranking: 3, coreTeam: true },
+      { name: "Italy", ranking: 7, coreTeam: true },
+      { name: "New Zealand", ranking: 2, coreTeam: true },
+      { name: "Australia", ranking: 5, coreTeam: true },
+      { name: "Canada", ranking: 4, coreTeam: true },
+      { name: "USA", ranking: 10, coreTeam: true },
+      { name: "South Africa", ranking: 12, coreTeam: false },
+      { name: "Japan", ranking: 11, coreTeam: false }
     ],
     matches: [
       {
         id: 1,
-        team1: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 1 },
-        team2: { flag: "🇳🇿", name: "New Zealand", ranking: 2 },
+        team1: { name: "England", ranking: 1 },
+        team2: { name: "New Zealand", ranking: 2 },
         venue: "Twickenham Stadium – London",
         stadium: "Twickenham Stadium",
         date: "Nov 7, 2026",
         time: "17:30",
         status: "upcoming",
-        tournament: "Women's Autumn Internationals",
+        tournament: "Autumn Internationals",
         capacity: "82,000",
         isFeatured: true
       },
       {
         id: 2,
-        team1: { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 8 },
-        team2: { flag: "🇦🇺", name: "Australia", ranking: 5 },
+        team1: { name: "Wales", ranking: 8 },
+        team2: { name: "Australia", ranking: 5 },
         venue: "Cardiff Arms Park – Cardiff",
         stadium: "Cardiff Arms Park",
         date: "Nov 8, 2026",
         time: "14:15",
         status: "upcoming",
-        tournament: "Women's Autumn Internationals",
+        tournament: "Autumn Internationals",
         capacity: "12,500",
         isFeatured: false
       },
       {
         id: 3,
-        team1: { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland", ranking: 9 },
-        team2: { flag: "🇨🇦", name: "Canada", ranking: 4 },
+        team1: { name: "Scotland", ranking: 9 },
+        team2: { name: "Canada", ranking: 4 },
         venue: "Scotstoun Stadium – Glasgow",
         stadium: "Scotstoun Stadium",
         date: "Nov 8, 2026",
         time: "19:35",
         status: "upcoming",
-        tournament: "Women's Autumn Internationals",
+        tournament: "Autumn Internationals",
         capacity: "9,708",
         isFeatured: false
       },
       {
         id: 4,
-        team1: { flag: "🇮🇪", name: "Ireland", ranking: 6 },
-        team2: { flag: "🇺🇸", name: "USA", ranking: 10 },
+        team1: { name: "Ireland", ranking: 6 },
+        team2: { name: "USA", ranking: 10 },
         venue: "Aviva Stadium – Dublin",
         stadium: "Aviva Stadium",
         date: "Nov 14, 2026",
         time: "15:00",
         status: "upcoming",
-        tournament: "Women's Autumn Internationals",
+        tournament: "Autumn Internationals",
         capacity: "51,700",
         isFeatured: false
       },
       {
         id: 5,
-        team1: { flag: "🇫🇷", name: "France", ranking: 3 },
-        team2: { flag: "🇿🇦", name: "South Africa", ranking: 12 },
+        team1: { name: "France", ranking: 3 },
+        team2: { name: "South Africa", ranking: 12 },
         venue: "Stade Jean-Bouin – Paris",
         stadium: "Stade Jean-Bouin",
         date: "Nov 15, 2026",
         time: "20:00",
         status: "upcoming",
-        tournament: "Women's Autumn Internationals",
+        tournament: "Autumn Internationals",
         capacity: "20,000",
         isFeatured: true
       },
       {
         id: 6,
-        team1: { flag: "🇮🇹", name: "Italy", ranking: 7 },
-        team2: { flag: "🇯🇵", name: "Japan", ranking: 11 },
+        team1: { name: "Italy", ranking: 7 },
+        team2: { name: "Japan", ranking: 11 },
         venue: "Stadio Sergio Lanfranchi – Parma",
         stadium: "Stadio Sergio Lanfranchi",
         date: "Nov 16, 2026",
         time: "15:00",
         status: "upcoming",
-        tournament: "Women's Autumn Internationals",
+        tournament: "Autumn Internationals",
         capacity: "5,000",
-        isFeatured: false
-      },
-      {
-        id: 7,
-        team1: { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "England", ranking: 1 },
-        team2: { flag: "🇨🇦", name: "Canada", ranking: 4 },
-        venue: "Sandy Park – Exeter",
-        stadium: "Sandy Park",
-        date: "Nov 21, 2026",
-        time: "12:45",
-        status: "upcoming",
-        tournament: "Women's Autumn Internationals",
-        capacity: "12,800",
-        isFeatured: false
-      },
-      {
-        id: 8,
-        team1: { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales", ranking: 8 },
-        team2: { flag: "🇺🇸", name: "USA", ranking: 10 },
-        venue: "Principality Stadium – Cardiff",
-        stadium: "Principality Stadium",
-        date: "Nov 22, 2026",
-        time: "14:30",
-        status: "upcoming",
-        tournament: "Women's Autumn Internationals",
-        capacity: "74,500",
         isFeatured: false
       }
     ],
@@ -172,26 +173,18 @@ function WomensAutumnInternationals({
     ]
   };
 
-  // Handle seat selection for stadium maps
-  const handleSeatSelect = (seatInfo) => {
-    console.log('Selected seat:', seatInfo);
-    alert(`Selected ${seatInfo.section} at ${seatInfo.stadium}`);
-  };
-
-  // Add favorite status to teams
+  // Enhanced data with favorite status
   const enhancedTeams = womensAutumnInternationalsData.teams.map(team => ({
     ...team,
     isFavorite: favoriteTeams.includes(team.name)
   }));
 
-  // Add favorite status to matches
   const enhancedMatches = womensAutumnInternationalsData.matches.map(match => ({
     ...match,
     isFavoriteMatch: favoriteTeams.includes(match.team1.name) || favoriteTeams.includes(match.team2.name),
     favoriteTeamsInvolved: [match.team1.name, match.team2.name].filter(team => favoriteTeams.includes(team))
   }));
 
-  // Add favorite status to standings
   const enhancedStandings = womensAutumnInternationalsData.standings.map(team => ({
     ...team,
     isFavorite: favoriteTeams.includes(team.team)
@@ -204,16 +197,7 @@ function WomensAutumnInternationals({
     ? enhancedMatches.filter(match => match.isFeatured)
     : enhancedMatches;
 
-  // Get user's Women's Autumn Internationals teams
   const userWomensTeams = enhancedTeams.filter(team => team.isFavorite);
-
-  const formatForm = (form) => {
-    return form.split('').map((result, index) => (
-      <span key={index} className={`form-dot ${result === 'W' ? 'win' : result === 'L' ? 'loss' : 'draw'}`}>
-        {result}
-      </span>
-    ));
-  };
 
   const getFeaturedPlayer = (teamName) => {
     const players = {
@@ -243,16 +227,22 @@ function WomensAutumnInternationals({
 
   return (
     <div className="womens-autumn-internationals-page">
-      {/* APPLY BRITISH LIONS NAVIGATION STRUCTURE */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <ThemeToggle />
-      </nav>
-      
-      {/* WOMEN'S SPECIFIC HERO HEADER WITH PEACH COLORS */}
+      {/* EXACT Autumn/Rival Tours NavBar */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        showThemeToggle={true}
+        onNavigateBack={onNavigateBack}
+      />
+
+      {/* EXACT Autumn/Rival Tours Top Ad Banner */}
+      <div className="top-ad-banner">
+        ♀ Women's Autumn Internationals 2026 - Elite Women's Rugby Showcase! 🍁
+      </div>
+
+      {/* EXACT Autumn/Rival Tours Hero Structure */}
       <header className="tournament-hero">
         <div className="hero-content">
           <div className="tournament-badge">
@@ -268,26 +258,26 @@ function WomensAutumnInternationals({
           <p className="tournament-description">{womensAutumnInternationalsData.description}</p>
         </div>
         <div className="hero-stats">
-          <div className="stat">
-            <span className="stat-number">12</span>
-            <span className="stat-label">Nations</span>
-          </div>
-          <div className="stat">
-            <span className="stat-number">8</span>
-            <span className="stat-label">Matches</span>
-          </div>
-          <div className="stat">
-            <span className="stat-number">♀</span>
-            <span className="stat-label">Women's Rugby</span>
-          </div>
-        </div>
+  <div className="stat">
+    <span className="stat-number">12</span>
+    <span className="stat-label">Nations</span>
+  </div>
+  <div className="stat">
+    <span className="stat-number">8</span>
+    <span className="stat-label">Matches</span>
+  </div>
+  <div className="stat">
+    <span className="stat-number">🍁</span> {/* CHANGED TO LEAF/TOURNAMENT ICON */}
+    <span className="stat-label">Autumn Tests</span> {/* CHANGED TEXT */}
+  </div>
+</div>
 
-        {/* PERSONALIZATION BANNER */}
+        {/* PERSONALIZATION BANNER - Autumn/Rival Tours pattern */}
         {hasFavoriteTeams && userWomensTeams.length > 0 && (
           <div className="personalization-banner">
             <div className="banner-icon">⭐</div>
             <div className="banner-content">
-              <h3>Your Women's Rugby Experience</h3>
+              <h3>Your Women's Rugby Journey</h3>
               <p>
                 Following {userWomensTeams.length} women's team{userWomensTeams.length !== 1 ? 's' : ''}:{' '}
                 {userWomensTeams.map(team => team.name).join(', ')}
@@ -297,7 +287,7 @@ function WomensAutumnInternationals({
         )}
       </header>
 
-      {/* APPLY BRITISH LIONS TAB NAVIGATION STRUCTURE */}
+      {/* EXACT Autumn/Rival Tours Tab Navigation */}
       <nav className="tournament-tabs">
         <div className="nav-tabs">
           <button 
@@ -318,22 +308,17 @@ function WomensAutumnInternationals({
           >
             📊 Standings
           </button>
-          <button 
-            className={`tab-btn ${activeTab === 'stadiums' ? 'active' : ''}`}
-            onClick={() => setActiveTab('stadiums')}
-          >
-            🏟️ Stadiums
-          </button>
         </div>
       </nav>
 
       <main className="tournament-main">
-        {/* FIXTURES TAB CONTENT */}
+        {/* FIXTURES TAB - Autumn/Rival Tours pattern */}
         {activeTab === 'fixtures' && (
           <div className="fixtures-section">
-            <h2 className="section-title">Autumn Test Series</h2>
+            <h2 className="section-title centered-fixtures-title">
+              Women's Autumn Internationals 2026
+            </h2>
             
-            {/* MATCH FILTERS */}
             <div className="match-filters">
               <button 
                 className={`filter-btn ${matchFilter === 'all' ? 'active' : ''}`}
@@ -345,14 +330,14 @@ function WomensAutumnInternationals({
                 className={`filter-btn ${matchFilter === 'featured' ? 'active' : ''}`}
                 onClick={() => setMatchFilter('featured')}
               >
-                Featured Matches
+                Featured
               </button>
               {hasFavoriteTeams && (
                 <button 
                   className={`filter-btn ${matchFilter === 'my-teams' ? 'active' : ''}`}
                   onClick={() => setMatchFilter('my-teams')}
                 >
-                  My Teams Only
+                  My Teams
                 </button>
               )}
             </div>
@@ -371,28 +356,36 @@ function WomensAutumnInternationals({
                     </div>
                   )}
                   
+                  {/* STATUS BADGE - Autumn/Rival Tours positioning */}
+                  <div className={`status-badge ${match.status}`}>
+                    {match.status.toUpperCase()}
+                  </div>
+                  
                   <div className="match-header">
                     <span className="match-tournament">{match.tournament}</span>
                     <span className="match-date">{match.date} • {match.time}</span>
                   </div>
                   
                   <div className="teams-container">
-                    <div className={`team ${favoriteTeams.includes(match.team1.name) ? 'favorite' : ''}`}>
-                      <span className="team-flag">{match.team1.flag}</span>
+                    <div className="team">
+                      <div className="team-flag">
+                        <Flag country={match.team1.name} size="medium" />
+                      </div>
                       <span className="team-name">{match.team1.name}</span>
                       <span className="team-ranking">#{match.team1.ranking}</span>
-                      {favoriteTeams.includes(match.team1.name) && <span className="favorite-indicator">♀</span>}
                     </div>
                     
                     <div className="vs-container">
                       <span className="vs">VS</span>
+                      <span className="match-time">{match.time}</span>
                     </div>
                     
-                    <div className={`team ${favoriteTeams.includes(match.team2.name) ? 'favorite' : ''}`}>
-                      {favoriteTeams.includes(match.team2.name) && <span className="favorite-indicator">♀</span>}
-                      <span className="team-ranking">#{match.team2.ranking}</span>
+                    <div className="team">
+                      <div className="team-flag">
+                        <Flag country={match.team2.name} size="medium" />
+                      </div>
                       <span className="team-name">{match.team2.name}</span>
-                      <span className="team-flag">{match.team2.flag}</span>
+                      <span className="team-ranking">#{match.team2.ranking}</span>
                     </div>
                   </div>
                   
@@ -402,11 +395,11 @@ function WomensAutumnInternationals({
                   </div>
                   
                   <div className="match-actions">
-                    <button className="action-btn primary" onClick={(e) => { e.stopPropagation(); onNavigateToPPV?.(); }}>
+                    <button className="action-btn" onClick={(e) => { e.stopPropagation(); onNavigateToPPV?.(); }}>
                       📺 Watch
                     </button>
-                    <button className="action-btn secondary" onClick={(e) => { e.stopPropagation(); onNavigateToAudio?.(); }}>
-                      🔊 Listen
+                    <button className="action-btn" onClick={(e) => { e.stopPropagation(); onNavigateToAudio?.(); }}>
+                      🔊 Audio
                     </button>
                   </div>
                 </div>
@@ -415,7 +408,7 @@ function WomensAutumnInternationals({
           </div>
         )}
 
-        {/* TEAMS TAB CONTENT */}
+        {/* TEAMS TAB - Autumn/Rival Tours pattern */}
         {activeTab === 'teams' && (
           <div className="teams-section">
             <h2 className="section-title">Participating Nations</h2>
@@ -423,45 +416,24 @@ function WomensAutumnInternationals({
               {enhancedTeams.map((team, index) => {
                 const featuredPlayer = getFeaturedPlayer(team.name);
                 return (
-                  <div key={index} className={`nation-card ${team.isFavorite ? 'favorite-team' : ''}`}>
-                    {/* FAVORITE TEAM BADGE */}
-                    {team.isFavorite && <div className="favorite-badge">♀ YOUR TEAM</div>}
-                    
-                    <div className="nation-header">
-                      <span className="nation-flag">{team.flag}</span>
-                      <div className="nation-info">
-                        <h3 className="nation-name">{team.name}</h3>
-                        <span className="world-ranking">World Ranking: #{team.ranking}</span>
-                      </div>
+                  <div key={index} className={`nation-card ${team.isFavorite ? 'featured-series' : ''}`}>
+                    <div className="nation-flag">
+                      <Flag country={team.name} size="large" />
                     </div>
-                    
-                    <div className="nation-form">
-                      <span className="form-label">Recent Form:</span>
-                      <div className="form-indicator">
-                        {formatForm(team.form)}
-                      </div>
-                    </div>
-
-                    {/* TEAM HIGHLIGHT FOR FAVORITE TEAMS */}
-                    {team.isFavorite && (
-                      <div className="team-highlight">
-                        Your women's rugby team
+                    <h3 className="nation-name">{team.name}</h3>
+                    <span className="world-ranking">Rank: #{team.ranking}</span>
+                    {team.coreTeam && (
+                      <div className="match-highlight" style={{marginTop: '0.5rem'}}>
+                        Core Team
                       </div>
                     )}
                     
                     {featuredPlayer && (
-                      <div className="featured-player">
-                        <h4>⭐ Star Player</h4>
-                        <p><strong>{featuredPlayer.name}</strong> ({featuredPlayer.position})</p>
-                        <p>{featuredPlayer.fact}</p>
+                      <div style={{marginTop: '0.5rem', fontSize: '0.8rem', color: '#666'}}>
+                        <strong>⭐ {featuredPlayer.name}</strong>
+                        <div>{featuredPlayer.position}</div>
                       </div>
                     )}
-                    
-                    <div className="nation-actions">
-                      <button className="team-btn">👀 Follow</button>
-                      <button className="team-btn">📊 Stats</button>
-                      <button className="team-btn">♀ Squad</button>
-                    </div>
                   </div>
                 );
               })}
@@ -469,7 +441,7 @@ function WomensAutumnInternationals({
           </div>
         )}
 
-        {/* STANDINGS TAB CONTENT */}
+        {/* STANDINGS TAB - Autumn/Rival Tours pattern */}
         {activeTab === 'standings' && (
           <div className="standings-section">
             <h2 className="section-title">Tournament Standings</h2>
@@ -484,11 +456,14 @@ function WomensAutumnInternationals({
                 <span>Pts</span>
               </div>
               {enhancedStandings.map(team => (
-                <div key={team.position} className={`table-row ${team.isFavorite ? 'favorite-team' : ''}`}>
+                <div key={team.position} className={`table-row ${team.isFavorite ? 'featured-series' : ''}`}>
                   <span className="position">{team.position}</span>
-                  <span className="team-name">
-                    {team.team} 
-                    {team.isFavorite && <span className="favorite-indicator"> ♀</span>}
+                  <span className="team-name-cell">
+                    <Flag country={team.team} size="small" />
+                    <div className="team-name-wrapper">
+                      <span className="team-name-text">{team.team}</span>
+                      {team.isFavorite && <span className="favorite-star">⭐</span>}
+                    </div>
                   </span>
                   <span>{team.played}</span>
                   <span>{team.won}</span>
@@ -501,70 +476,34 @@ function WomensAutumnInternationals({
           </div>
         )}
 
-        {/* STADIUMS TAB CONTENT */}
-        {activeTab === 'stadiums' && (
-          <div className="stadiums-section">
-            <h2 className="section-title">🏟️ Women's Autumn Internationals Stadiums</h2>
-            <p>Explore the venues hosting women's test matches across Europe and beyond</p>
-            
-            <VenueSelector 
-              venues={womensStadiums}
-              selectedVenue={selectedVenue}
-              onVenueChange={setSelectedVenue}
-            />
-            
-            {/* CHANGED: StadiumMap to StadiumPage */}
-            <StadiumPage 
-              stadium={selectedVenue}
-              onSeatSelect={handleSeatSelect}
-              interactive={true}
-              showInfo={true}
-            />
-            
-            <div className="stadium-features">
-              <h3>Women's Rugby Stadium Features:</h3>
-              <ul>
-                <li>🎯 Click on stadium sections to explore seating</li>
-                <li>🎫 Integrated with women's rugby ticket packages</li>
-                <li>♀ Family-friendly women's rugby atmosphere</li>
-                <li>📱 Mobile-optimized interactive maps</li>
-                <li>🌟 Women's rugby heritage and history</li>
-              </ul>
-            </div>
+        {/* FEATURES GRID - NO BIG TITLE (Lions Tours correction) */}
+        <div className="features-grid">
+          <div className="feature-card" onClick={onNavigateToFantasy}>
+            <div className="feature-icon">🏅</div>
+            <div className="feature-title">Women's Fantasy</div>
+            <div className="feature-description">Build your dream women's team</div>
           </div>
-        )}
-
-        {/* APPLY BRITISH LIONS BOTTOM FEATURE BLOCKS STRUCTURE */}
-        <div className="features-section">
-          <h2 className="section-title">Women's Rugby Features</h2>
-          <div className="features-grid">
-            <div className="feature-card" onClick={onNavigateToFantasy}>
-              <div className="feature-icon">🏅</div>
-              <div className="feature-title">Women's Fantasy</div>
-              <div className="feature-description">Build your dream women's team</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToResults}>
-              <div className="feature-icon">📈</div>
-              <div className="feature-title">Live Results</div>
-              <div className="feature-description">Real-time women's scores</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToPodcasts}>
-              <div className="feature-icon">🎧</div>
-              <div className="feature-title">Women's Podcasts</div>
-              <div className="feature-description">Women's rugby analysis</div>
-            </div>
-            
-            <div className="feature-card" onClick={() => setActiveTab('stadiums')}>
-              <div className="feature-icon">🏟️</div>
-              <div className="feature-title">Stadium Maps</div>
-              <div className="feature-description">Explore women's rugby venues</div>
-            </div>
+          
+          <div className="feature-card" onClick={onNavigateToResults}>
+            <div className="feature-icon">📈</div>
+            <div className="feature-title">Live Results</div>
+            <div className="feature-description">Real-time women's scores</div>
+          </div>
+          
+          <div className="feature-card" onClick={onNavigateToPodcasts}>
+            <div className="feature-icon">🎧</div>
+            <div className="feature-title">Women's Podcasts</div>
+            <div className="feature-description">Women's rugby analysis</div>
+          </div>
+          
+          <div className="feature-card" onClick={() => setActiveTab('fixtures')}>
+            <div className="feature-icon">♀</div>
+            <div className="feature-title">Women's Rugby</div>
+            <div className="feature-description">Elite women's competition</div>
           </div>
         </div>
 
-        {/* APPLY BRITISH LIONS QUICK ACTIONS STRUCTURE */}
+        {/* QUICK ACTIONS - Autumn/Rival Tours pattern */}
         <div className="quick-actions">
           <button className="quick-btn" onClick={onNavigateToFantasy}>
             🏅 Women's Fantasy
@@ -575,13 +514,13 @@ function WomensAutumnInternationals({
           <button className="quick-btn" onClick={onNavigateToPodcasts}>
             🎧 Women's Podcasts
           </button>
-          <button className="quick-btn" onClick={() => setActiveTab('stadiums')}>
-            🏟️ Women's Stadiums
+          <button className="quick-btn" onClick={() => setActiveTab('fixtures')}>
+            ♀ Women's Rugby
           </button>
         </div>
       </main>
 
-      {/* APPLY BRITISH LIONS BOTTOM AD BANNER STRUCTURE */}
+      {/* BOTTOM AD BANNER - Autumn/Rival Tours pattern */}
       <div className="bottom-ad-banner">
         <div className="ad-content">
           <div className="ad-icon">♀</div>

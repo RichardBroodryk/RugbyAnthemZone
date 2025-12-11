@@ -1,6 +1,36 @@
 import React, { useState } from 'react';
 import './MensRugbyChampionship.css';
-import ThemeToggle from './ThemeToggle';
+import NavBar from './NavBar';
+
+// Flag Component with real images (From Autumn/Rival Tours)
+const Flag = ({ country, size = 'medium' }) => {
+  const getCountryFileName = (countryName) => {
+    const nameMap = {
+      'argentina': 'argentina',
+      'australia': 'australia',
+      'new zealand': 'new-zealand',
+      'south africa': 'south-africa'
+    };
+    
+    return nameMap[countryName.toLowerCase()] || countryName.toLowerCase();
+  };
+
+  const fileName = getCountryFileName(country);
+  
+  try {
+    const flagImage = require(`../Assets/images/flags/${fileName}.jpg`);
+    return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+  } catch (error) {
+    try {
+      const flagImage = require(`../Assets/images/flags/${fileName}.png`);
+      return <img src={flagImage} alt={`${country} flag`} className={`flag-${size}`} />;
+    } catch (error2) {
+      return <div className={`flag-fallback flag-${size}`}>
+        {country.slice(0, 3).toUpperCase()}
+      </div>;
+    }
+  }
+};
 
 function MensRugbyChampionship({ 
   onNavigateBack, 
@@ -26,186 +56,162 @@ function MensRugbyChampionship({
     description: "Southern Hemisphere's premier rugby competition featuring the top four rugby nations",
     logo: "🏉",
     teams: [
-      { flag: "🇳🇿", name: "New Zealand", ranking: 3, form: 'WWWLW', triNations: true },
-      { flag: "🇿🇦", name: "South Africa", ranking: 1, form: 'WWLWW', triNations: true },
-      { flag: "🇦🇺", name: "Australia", ranking: 9, form: 'LLLLL', triNations: true },
-      { flag: "🇦🇷", name: "Argentina", ranking: 7, form: 'WLLWW', triNations: false }
+      { name: "New Zealand", ranking: 3, form: 'WWWLW', triNations: true },
+      { name: "South Africa", ranking: 1, form: 'WWLWW', triNations: true },
+      { name: "Australia", ranking: 9, form: 'LLLLL', triNations: true },
+      { name: "Argentina", ranking: 7, form: 'WLLWW', triNations: false }
     ],
     matches: [
       {
         id: 1,
-        team1: { flag: "🇦🇺", name: "Australia", ranking: 9 },
-        team2: { flag: "🇿🇦", name: "South Africa", ranking: 1 },
+        team1: { name: "Australia", ranking: 9 },
+        team2: { name: "South Africa", ranking: 1 },
         venue: "Suncorp Stadium – Brisbane",
         date: "Aug 9, 2026",
         time: "20:05",
         status: "upcoming",
         tournament: "Rugby Championship Round 1",
         capacity: "52,500",
-        isBledisloeCup: false,
-        isFreedomCup: false,
         trophy: null
       },
       {
         id: 2,
-        team1: { flag: "🇦🇷", name: "Argentina", ranking: 7 },
-        team2: { flag: "🇳🇿", name: "New Zealand", ranking: 3 },
+        team1: { name: "Argentina", ranking: 7 },
+        team2: { name: "New Zealand", ranking: 3 },
         venue: "Estadio José Amalfitani – Buenos Aires",
         date: "Aug 9, 2026",
         time: "16:10",
         status: "upcoming",
         tournament: "Rugby Championship Round 1",
         capacity: "49,540",
-        isBledisloeCup: false,
-        isFreedomCup: false,
         trophy: null
       },
       {
         id: 3,
-        team1: { flag: "🇳🇿", name: "New Zealand", ranking: 3 },
-        team2: { flag: "🇦🇺", name: "Australia", ranking: 9 },
+        team1: { name: "New Zealand", ranking: 3 },
+        team2: { name: "Australia", ranking: 9 },
         venue: "Eden Park – Auckland",
         date: "Aug 16, 2026",
         time: "19:35",
         status: "upcoming",
         tournament: "Rugby Championship Round 2 - BLEDISLOE CUP",
         capacity: "50,000",
-        isBledisloeCup: true,
-        isFreedomCup: false,
         trophy: "Bledisloe Cup"
       },
       {
         id: 4,
-        team1: { flag: "🇿🇦", name: "South Africa", ranking: 1 },
-        team2: { flag: "🇦🇷", name: "Argentina", ranking: 7 },
+        team1: { name: "South Africa", ranking: 1 },
+        team2: { name: "Argentina", ranking: 7 },
         venue: "Ellis Park – Johannesburg",
         date: "Aug 16, 2026",
         time: "17:05",
         status: "upcoming",
         tournament: "Rugby Championship Round 2",
         capacity: "62,567",
-        isBledisloeCup: false,
-        isFreedomCup: false,
         trophy: null
       },
       {
         id: 5,
-        team1: { flag: "🇦🇺", name: "Australia", ranking: 9 },
-        team2: { flag: "🇳🇿", name: "New Zealand", ranking: 3 },
+        team1: { name: "Australia", ranking: 9 },
+        team2: { name: "New Zealand", ranking: 3 },
         venue: "ANZ Stadium – Sydney",
         date: "Aug 30, 2026",
         time: "20:05",
         status: "upcoming",
         tournament: "Rugby Championship Round 3 - BLEDISLOE CUP",
         capacity: "83,500",
-        isBledisloeCup: true,
-        isFreedomCup: false,
         trophy: "Bledisloe Cup"
       },
       {
         id: 6,
-        team1: { flag: "🇦🇷", name: "Argentina", ranking: 7 },
-        team2: { flag: "🇿🇦", name: "South Africa", ranking: 1 },
+        team1: { name: "Argentina", ranking: 7 },
+        team2: { name: "South Africa", ranking: 1 },
         venue: "Estadio Mario Alberto Kempes – Córdoba",
         date: "Aug 30, 2026",
         time: "16:10",
         status: "upcoming",
         tournament: "Rugby Championship Round 3",
         capacity: "57,000",
-        isBledisloeCup: false,
-        isFreedomCup: true,
         trophy: "Freedom Cup"
       },
       {
         id: 7,
-        team1: { flag: "🇳🇿", name: "New Zealand", ranking: 3 },
-        team2: { flag: "🇦🇷", name: "Argentina", ranking: 7 },
+        team1: { name: "New Zealand", ranking: 3 },
+        team2: { name: "Argentina", ranking: 7 },
         venue: "Forsyth Barr Stadium – Dunedin",
         date: "Sep 13, 2026",
         time: "19:35",
         status: "upcoming",
         tournament: "Rugby Championship Round 4",
         capacity: "30,748",
-        isBledisloeCup: false,
-        isFreedomCup: false,
         trophy: null
       },
       {
         id: 8,
-        team1: { flag: "🇿🇦", name: "South Africa", ranking: 1 },
-        team2: { flag: "🇦🇺", name: "Australia", ranking: 9 },
+        team1: { name: "South Africa", ranking: 1 },
+        team2: { name: "Australia", ranking: 9 },
         venue: "Loftus Versfeld – Pretoria",
         date: "Sep 13, 2026",
         time: "17:05",
         status: "upcoming",
         tournament: "Rugby Championship Round 4",
         capacity: "51,762",
-        isBledisloeCup: false,
-        isFreedomCup: false,
         trophy: "Mandela Challenge Plate"
       },
       {
         id: 9,
-        team1: { flag: "🇦🇺", name: "Australia", ranking: 9 },
-        team2: { flag: "🇦🇷", name: "Argentina", ranking: 7 },
+        team1: { name: "Australia", ranking: 9 },
+        team2: { name: "Argentina", ranking: 7 },
         venue: "Perth Stadium – Perth",
         date: "Sep 27, 2026",
         time: "20:05",
         status: "upcoming",
         tournament: "Rugby Championship Round 5",
         capacity: "65,000",
-        isBledisloeCup: false,
-        isFreedomCup: false,
         trophy: "Puma Trophy"
       },
       {
         id: 10,
-        team1: { flag: "🇳🇿", name: "New Zealand", ranking: 3 },
-        team2: { flag: "🇿🇦", name: "South Africa", ranking: 1 },
+        team1: { name: "New Zealand", ranking: 3 },
+        team2: { name: "South Africa", ranking: 1 },
         venue: "Eden Park – Auckland",
         date: "Sep 27, 2026",
         time: "19:35",
         status: "upcoming",
-        tournament: "Rugby Championship Round 5 - FREEDOM CUP",
+        tournament: "Rugby Championship Round 5",
         capacity: "50,000",
-        isBledisloeCup: false,
-        isFreedomCup: true,
         trophy: "Freedom Cup"
       },
       {
         id: 11,
-        team1: { flag: "🇦🇷", name: "Argentina", ranking: 7 },
-        team2: { flag: "🇦🇺", name: "Australia", ranking: 9 },
+        team1: { name: "Argentina", ranking: 7 },
+        team2: { name: "Australia", ranking: 9 },
         venue: "Estadio José Amalfitani – Buenos Aires",
         date: "Oct 4, 2026",
         time: "16:10",
         status: "upcoming",
         tournament: "Rugby Championship Round 6",
         capacity: "49,540",
-        isBledisloeCup: false,
-        isFreedomCup: false,
         trophy: "Puma Trophy"
       },
       {
         id: 12,
-        team1: { flag: "🇿🇦", name: "South Africa", ranking: 1 },
-        team2: { flag: "🇳🇿", name: "New Zealand", ranking: 3 },
+        team1: { name: "South Africa", ranking: 1 },
+        team2: { name: "New Zealand", ranking: 3 },
         venue: "Ellis Park – Johannesburg",
         date: "Oct 4, 2026",
         time: "17:05",
         status: "upcoming",
-        tournament: "Rugby Championship Round 6 - FREEDOM CUP",
+        tournament: "Rugby Championship Round 6",
         capacity: "62,567",
-        isBledisloeCup: false,
-        isFreedomCup: true,
         trophy: "Freedom Cup"
       }
     ],
     standings: [
-      { position: 1, team: "South Africa", played: 6, won: 5, drawn: 0, lost: 1, points: 25, tries: 18, pointsFor: 195, pointsAgainst: 112 },
-      { position: 2, team: "New Zealand", played: 6, won: 4, drawn: 0, lost: 2, points: 19, tries: 15, pointsFor: 178, pointsAgainst: 145 },
-      { position: 3, team: "Argentina", played: 6, won: 2, drawn: 0, lost: 4, points: 9, tries: 8, pointsFor: 120, pointsAgainst: 185 },
-      { position: 4, team: "Australia", played: 6, won: 1, drawn: 0, lost: 5, points: 5, tries: 6, pointsFor: 98, pointsAgainst: 149 }
+      { position: 1, team: "South Africa", played: 6, won: 5, drawn: 0, lost: 1, points: 25 },
+      { position: 2, team: "New Zealand", played: 6, won: 4, drawn: 0, lost: 2, points: 19 },
+      { position: 3, team: "Argentina", played: 6, won: 2, drawn: 0, lost: 4, points: 9 },
+      { position: 4, team: "Australia", played: 6, won: 1, drawn: 0, lost: 5, points: 5 }
     ],
     trophies: [
       {
@@ -286,16 +292,21 @@ function MensRugbyChampionship({
 
   return (
     <div className="mens-rugby-championship-page">
-      {/* BRITISH LIONS NAVIGATION STRUCTURE */}
-      <nav className="top-nav">
-        <button className="nav-btn" onClick={onNavigateBack}>← Back</button>
-        <button className="nav-btn">🏠 Home</button>
-        <button className="nav-btn">🔍 Search</button>
-        <button className="nav-btn">👤 Profile</button>
-        <ThemeToggle />
-      </nav>
-      
-      {/* BRITISH LIONS HERO STRUCTURE */}
+      {/* EXACT Autumn/Rival Tours NavBar */}
+      <NavBar 
+        showBackButton={true}
+        showHomeButton={true}
+        showSearchButton={true}
+        showProfileButton={true}
+        onNavigateBack={onNavigateBack}
+      />
+
+      {/* EXACT Autumn/Rival Tours Top Ad Banner */}
+      <div className="top-ad-banner">
+        🏉 Rugby Championship 2026 - Southern Hemisphere's Premier Competition!
+      </div>
+
+      {/* EXACT Autumn/Rival Tours Hero Structure */}
       <header className="tournament-hero">
         <div className="hero-content">
           <div className="tournament-badge">
@@ -322,7 +333,7 @@ function MensRugbyChampionship({
           </div>
         </div>
 
-        {/* PERSONALIZATION BANNER */}
+        {/* PERSONALIZATION BANNER - Autumn/Rival Tours pattern */}
         {hasFavoriteTeams && userChampionshipTeams.length > 0 && (
           <div className="personalization-banner">
             <div className="banner-icon">⭐</div>
@@ -337,7 +348,7 @@ function MensRugbyChampionship({
         )}
       </header>
 
-      {/* BRITISH LIONS TAB NAVIGATION */}
+      {/* EXACT Autumn/Rival Tours Tab Navigation */}
       <nav className="tournament-tabs">
         <div className="nav-tabs">
           <button 
@@ -368,10 +379,12 @@ function MensRugbyChampionship({
       </nav>
 
       <main className="tournament-main">
-        {/* FIXTURES TAB - ALL MATCHES VISIBLE & SCROLLABLE */}
+        {/* FIXTURES TAB - Autumn/Rival Tours pattern */}
         {activeTab === 'fixtures' && (
           <div className="fixtures-section">
-            <h2 className="section-title">Rugby Championship 2026</h2>
+            <h2 className="section-title centered-fixtures-title">
+              Rugby Championship 2026
+            </h2>
             
             <div className="match-filters">
               <button 
@@ -388,20 +401,17 @@ function MensRugbyChampionship({
               </button>
             </div>
 
-            {/* SCROLLABLE MATCHES GRID - ALL CARDS VISIBLE */}
             <div className="matches-grid">
               {filteredMatches.map(match => (
                 <div 
                   key={match.id} 
-                  className={`match-card ${match.isBledisloeCup ? 'bledisloe-cup' : ''} ${match.isFreedomCup ? 'freedom-cup' : ''}`}
+                  className={`match-card ${match.isFavoriteMatch ? 'favorite-match' : ''}`}
                   onClick={() => handleMatchClick(match)}
                 >
-                  {/* TROPHY INDICATOR */}
-                  {match.trophy && (
-                    <div className="trophy-indicator">
-                      🏆 {match.trophy}
-                    </div>
-                  )}
+                  {/* STATUS BADGE - Autumn/Rival Tours positioning */}
+                  <div className={`status-badge ${match.status}`}>
+                    {match.status.toUpperCase()}
+                  </div>
                   
                   <div className="match-header">
                     <span className="match-tournament">{match.tournament}</span>
@@ -410,7 +420,9 @@ function MensRugbyChampionship({
                   
                   <div className="teams-container">
                     <div className="team">
-                      <span className="team-flag">{match.team1.flag}</span>
+                      <div className="team-flag">
+                        <Flag country={match.team1.name} size="medium" />
+                      </div>
                       <span className="team-name">{match.team1.name}</span>
                       <span className="team-ranking">#{match.team1.ranking}</span>
                     </div>
@@ -420,9 +432,11 @@ function MensRugbyChampionship({
                     </div>
                     
                     <div className="team">
-                      <span className="team-ranking">#{match.team2.ranking}</span>
+                      <div className="team-flag">
+                        <Flag country={match.team2.name} size="medium" />
+                      </div>
                       <span className="team-name">{match.team2.name}</span>
-                      <span className="team-flag">{match.team2.flag}</span>
+                      <span className="team-ranking">#{match.team2.ranking}</span>
                     </div>
                   </div>
                   
@@ -431,11 +445,17 @@ function MensRugbyChampionship({
                     <span className="capacity">👥 {match.capacity}</span>
                   </div>
                   
+                  {match.trophy && (
+                    <div className="trophy-highlight">
+                      🏆 {match.trophy}
+                    </div>
+                  )}
+                  
                   <div className="match-actions">
-                    <button className="action-btn primary" onClick={(e) => { e.stopPropagation(); onNavigateToPPV?.(); }}>
+                    <button className="action-btn" onClick={(e) => { e.stopPropagation(); onNavigateToPPV?.(); }}>
                       📺 Watch
                     </button>
-                    <button className="action-btn secondary" onClick={(e) => { e.stopPropagation(); onNavigateToAudio?.(); }}>
+                    <button className="action-btn" onClick={(e) => { e.stopPropagation(); onNavigateToAudio?.(); }}>
                       🔊 Listen
                     </button>
                   </div>
@@ -445,32 +465,20 @@ function MensRugbyChampionship({
           </div>
         )}
 
-        {/* TEAMS TAB - ALL TEAMS VISIBLE & SCROLLABLE */}
+        {/* TEAMS TAB - Autumn/Rival Tours pattern */}
         {activeTab === 'teams' && (
           <div className="teams-section">
             <h2 className="section-title">Rugby Championship Teams</h2>
             <div className="teams-grid">
               {enhancedTeams.map((team, index) => (
-                <div key={index} className={`nation-card ${team.triNations ? 'tri-nations' : ''}`}>
-                  <div className="nation-header">
-                    <span className="nation-flag">{team.flag}</span>
-                    <div className="nation-info">
-                      <h3 className="nation-name">{team.name}</h3>
-                      <span className="world-ranking">World Ranking: #{team.ranking}</span>
-                    </div>
+                <div key={index} className={`nation-card ${team.triNations ? 'featured-series' : ''}`}>
+                  <div className="nation-flag">
+                    <Flag country={team.name} size="large" />
                   </div>
-                  
-                  <div className="nation-form">
-                    <span className="form-label">Recent Form:</span>
-                    <div className="form-indicator">
-                      {formatForm(team.form)}
-                    </div>
-                  </div>
-                  
-                  <div className="nation-actions">
-                    <button className="team-btn">👀 Follow</button>
-                    <button className="team-btn">📊 Stats</button>
-                    <button className="team-btn">🏆 History</button>
+                  <h3 className="nation-name">{team.name}</h3>
+                  <span className="world-ranking">Rank: #{team.ranking}</span>
+                  <div className="form-indicator">
+                    {formatForm(team.form)}
                   </div>
                 </div>
               ))}
@@ -478,7 +486,7 @@ function MensRugbyChampionship({
           </div>
         )}
 
-        {/* STANDINGS TAB - FULL TABLE VISIBLE & SCROLLABLE */}
+        {/* STANDINGS TAB - Autumn/Rival Tours pattern */}
         {activeTab === 'standings' && (
           <div className="standings-section">
             <h2 className="section-title">Championship Table</h2>
@@ -490,20 +498,24 @@ function MensRugbyChampionship({
                 <span>W</span>
                 <span>D</span>
                 <span>L</span>
-                <span>T</span>
                 <span>PF</span>
                 <span>PA</span>
                 <span>Pts</span>
               </div>
               {enhancedStandings.map(team => (
-                <div key={team.position} className="table-row">
+                <div key={team.position} className={`table-row ${team.isFavorite ? 'featured-series' : ''}`}>
                   <span className="position">{team.position}</span>
-                  <span className="team-name">{team.team}</span>
+                  <span className="team-name-cell">
+                    <Flag country={team.team} size="small" />
+                    <div className="team-name-wrapper">
+                      <span className="team-name-text">{team.team}</span>
+                      {team.isFavorite && <span className="favorite-star">⭐</span>}
+                    </div>
+                  </span>
                   <span>{team.played}</span>
                   <span>{team.won}</span>
                   <span>{team.drawn}</span>
                   <span>{team.lost}</span>
-                  <span>{team.tries}</span>
                   <span>{team.pointsFor}</span>
                   <span>{team.pointsAgainst}</span>
                   <span className="points">{team.points}</span>
@@ -513,59 +525,55 @@ function MensRugbyChampionship({
           </div>
         )}
 
-        {/* TROPHIES TAB - ALL TROPHIES VISIBLE & SCROLLABLE */}
+        {/* TROPHIES TAB - Autumn/Rival Tours pattern */}
         {activeTab === 'trophies' && (
           <div className="trophies-section">
             <h2 className="section-title">Rugby Championship Trophies</h2>
-            {enhancedTrophies.map((trophy, index) => (
-              <div key={index} className="trophy-card">
-                <div className="trophy-header">
-                  <span className="trophy-icon">{trophy.icon}</span>
+            <div className="trophies-section">
+              {enhancedTrophies.map((trophy, index) => (
+                <div key={index} className="trophy-card">
+                  <div className="trophy-icon">{trophy.icon}</div>
                   <div className="trophy-info">
                     <h3>{trophy.name}</h3>
                     <p>{trophy.description}</p>
                   </div>
+                  <div className="match-highlight" style={{marginTop: '0.5rem'}}>
+                    Current Holder: {trophy.currentHolder}
+                  </div>
                 </div>
-                <div className="trophy-winner">
-                  <span>Current Holder: </span>
-                  <strong>{trophy.currentHolder}</strong>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         )}
 
-        {/* BRITISH LIONS FEATURE GRID */}
-        <div className="features-section">
-          <h2 className="section-title">Championship Features</h2>
-          <div className="features-grid">
-            <div className="feature-card" onClick={onNavigateToFantasy}>
-              <div className="feature-icon">🏅</div>
-              <div className="feature-title">Championship Fantasy</div>
-              <div className="feature-description">Build your dream SH team</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToResults}>
-              <div className="feature-icon">📈</div>
-              <div className="feature-title">Live Results</div>
-              <div className="feature-description">Real-time championship scores</div>
-            </div>
-            
-            <div className="feature-card" onClick={onNavigateToPodcasts}>
-              <div className="feature-icon">🎧</div>
-              <div className="feature-title">Podcasts</div>
-              <div className="feature-description">SH rugby analysis</div>
-            </div>
-            
-            <div className="feature-card" onClick={() => setActiveTab('trophies')}>
-              <div className="feature-icon">🏆</div>
-              <div className="feature-title">Championship Trophies</div>
-              <div className="feature-description">Explore legendary cups</div>
-            </div>
+        {/* FEATURES GRID - NO BIG TITLE (Lions Tours correction) */}
+        <div className="features-grid">
+          <div className="feature-card" onClick={onNavigateToFantasy}>
+            <div className="feature-icon">🏅</div>
+            <div className="feature-title">Championship Fantasy</div>
+            <div className="feature-description">Build your dream SH team</div>
+          </div>
+          
+          <div className="feature-card" onClick={onNavigateToResults}>
+            <div className="feature-icon">📈</div>
+            <div className="feature-title">Live Results</div>
+            <div className="feature-description">Real-time championship scores</div>
+          </div>
+          
+          <div className="feature-card" onClick={onNavigateToPodcasts}>
+            <div className="feature-icon">🎧</div>
+            <div className="feature-title">Podcasts</div>
+            <div className="feature-description">SH rugby analysis</div>
+          </div>
+          
+          <div className="feature-card" onClick={() => setActiveTab('trophies')}>
+            <div className="feature-icon">🏆</div>
+            <div className="feature-title">Championship Trophies</div>
+            <div className="feature-description">Explore legendary cups</div>
           </div>
         </div>
 
-        {/* BRITISH LIONS QUICK ACTIONS */}
+        {/* QUICK ACTIONS - Autumn/Rival Tours pattern */}
         <div className="quick-actions">
           <button className="quick-btn" onClick={onNavigateToFantasy}>
             🏅 Championship Fantasy
@@ -582,7 +590,7 @@ function MensRugbyChampionship({
         </div>
       </main>
 
-      {/* BRITISH LIONS BOTTOM AD BANNER */}
+      {/* BOTTOM AD BANNER - Autumn/Rival Tours pattern */}
       <div className="bottom-ad-banner">
         <div className="ad-content">
           <div className="ad-icon">🏉</div>

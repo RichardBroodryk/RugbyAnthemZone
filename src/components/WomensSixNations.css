@@ -1,376 +1,101 @@
-/* WomensSixNations.css - COMPLETE FIXED VERSION WITH ULTRA-SPECIFIC OVERRIDES */
-
+/* WomensSixNations.css - EXACT RIVAL TOURS/AUTUMN TOURS TEMPLATE WITH SIX NATIONS THEME */
 .womens-six-nations-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #FFE5B4 0%, #FAD6A5 100%) !important; /* LIGHT PEACH - WOMEN'S THEME */
-  color: #673ab7; /* DARK PURPLE TEXT FOR CONTRAST */
+  background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%) !important; /* LIGHT GREY WOMEN'S THEME */
+  color: #512DA8; /* DEEP PURPLE TEXT */
   font-family: 'Arial', sans-serif;
   overflow-x: hidden;
 }
 
-/* ===== ULTRA-SPECIFIC OVERRIDE FOR ALL GLOBAL CONFLICTS ===== */
-
-/* Force tournament-specific button styles - Override ALL global conflicts */
-.womens-six-nations-page .match-actions .action-btn {
-  /* Layout & Box Model */
-  padding: 0.5rem 0.4rem !important;
-  margin: 0 !important;
-  border: none !important;
-  border-radius: 6px !important;
-  min-height: 32px !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  
-  /* Typography */
-  font-size: 0.7rem !important;
-  font-weight: 600 !important;
-  line-height: 1 !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  
-  /* Layout */
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0.2rem !important;
-  flex: 1 !important;
-  
-  /* Prevent inheritance */
-  background: #9c27b0 !important; /* SIX NATIONS PURPLE */
-  color: white !important;
-  box-sizing: border-box !important;
-  isolation: isolate !important;
-  
-  /* Reset any transforms */
-  transform: none !important;
-  transition: all 0.3s ease !important;
-}
-
-/* Specific button type overrides */
-.womens-six-nations-page .match-actions .action-btn.primary {
-  background: #9c27b0 !important; /* SIX NATIONS PURPLE */
-  color: white !important;
-}
-
-.womens-six-nations-page .match-actions .action-btn.secondary {
-  background: #673ab7 !important; /* DARK PURPLE */
-  color: white !important;
-  border: 1px solid #5e35b1 !important;
-}
-
-/* Override header layout conflicts - FIX DATE OVERLAP ISSUE */
-.womens-six-nations-page .match-header {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: flex-start !important;
-  margin-bottom: 1rem !important;
-  padding-bottom: 0.8rem !important;
-  border-bottom: 1px solid #e0e0e0 !important;
-  min-height: 40px !important;
-  gap: 0.5rem !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  isolation: isolate !important;
-  position: relative !important;
-}
-
-.womens-six-nations-page .match-tournament {
-  font-size: 0.75rem !important;
-  opacity: 0.8 !important;
-  color: #666 !important;
-  font-weight: 500 !important;
-  flex: 1 !important;
-  min-width: 0 !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  margin-right: 0.5rem !important;
-  line-height: 1.2 !important;
-  max-width: 60% !important;
-}
-
-.womens-six-nations-page .match-date {
-  font-size: 0.75rem !important;
-  font-weight: 600 !important;
-  color: #9c27b0 !important; /* SIX NATIONS PURPLE */
-  white-space: nowrap !important;
-  flex-shrink: 0 !important;
-  min-width: 90px !important;
-  text-align: right !important;
-  line-height: 1.2 !important;
-  margin-left: auto !important;
-  z-index: 2 !important; /* Ensure date stays above other elements */
-}
-
-/* Force rivalry indicator positioning - FIX OVERLAP WITH DATE */
-.womens-six-nations-page .womens-rivalry::before {
-  content: "♀ WOMEN'S RIVALRY" !important;
-  position: absolute !important;
-  top: -10px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  background: #ff4081 !important; /* PINK ACCENT */
-  color: white !important;
-  padding: 0.2rem 0.8rem !important;
-  border-radius: 8px !important;
-  font-size: 0.6rem !important;
-  font-weight: bold !important;
-  z-index: 1000 !important;
-  pointer-events: none !important;
-  max-width: 80% !important; /* Prevent overflow */
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-}
-
-/* Force grand slam positioning */
-.womens-six-nations-page .grand-slam::after {
-  content: "🏆 Grand Slam" !important;
-  position: absolute !important;
-  top: 10px !important;
-  right: 10px !important;
-  background: #ff4081 !important; /* PINK ACCENT */
-  color: white !important;
-  padding: 0.2rem 0.6rem !important;
-  border-radius: 8px !important;
-  font-size: 0.6rem !important;
-  font-weight: bold !important;
-  z-index: 1000 !important;
-  pointer-events: none !important;
-}
-
-/* Force match highlight positioning */
-.womens-six-nations-page .match-highlight {
-  background: linear-gradient(135deg, #ff4081, #ff79b0) !important;
-  color: white !important;
-  padding: 0.5rem 1rem !important;
-  border-radius: 10px !important;
-  font-size: 0.8rem !important;
-  font-weight: bold !important;
-  margin-bottom: 1rem !important;
-  text-align: center !important;
-  animation: slideIn 0.5s ease-out !important;
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-/* ===== APPLY BRITISH LIONS NAVIGATION STRUCTURE ===== */
-
-/* Standard White Top Navigation - FROM BRITISH LIONS */
-.top-nav {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  padding: 1rem !important;
-  background: white !important;
-  border-bottom: 2px solid #e0e0e0 !important;
-  gap: 10px !important;
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 1000 !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
-}
-
-.nav-btn {
-  background: #9c27b0 !important; /* SIX NATIONS PURPLE */
-  color: white !important;
-  border: none !important;
-  padding: 0.7rem 1.2rem !important;
-  border-radius: 20px !important;
-  cursor: pointer !important;
-  font-size: 0.9rem !important;
-  font-weight: 600 !important;
-  flex: 1 !important;
-  min-width: 70px !important;
-  transition: all 0.3s ease !important;
-  white-space: nowrap !important;
-}
-
-.nav-btn:hover {
-  background: #7b1fa2 !important; /* DARKER PURPLE */
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(156, 39, 176, 0.4) !important;
-}
-
-/* Tab Navigation Positioned Below Header - FROM BRITISH LIONS */
-.tournament-tabs {
-  display: flex;
-  justify-content: center;
-  padding: 1rem 2rem;
-  background: rgba(156, 39, 176, 0.9); /* SIX NATIONS PURPLE */
-  border-bottom: 2px solid #ff4081; /* PINK ACCENT */
-  position: sticky;
-  top: 80px;
-  z-index: 999;
-}
-
-.nav-tabs {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.tab-btn {
-  background: rgba(255, 255, 255, 0.2);
+/* ===== TOP AD BANNER ===== */
+.womens-six-nations-page .top-ad-banner {
+  background: linear-gradient(90deg, #512DA8, #673AB7); /* PURPLE GRADIENT */
   color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.tab-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-2px);
-}
-
-.tab-btn.active {
-  background: #ff4081; /* PINK ACCENT */
-  color: white;
-  box-shadow: 0 4px 15px rgba(255, 64, 129, 0.4);
-}
-
-/* ===== APPLY BRITISH LIONS WHITE GAME BLOCKS ===== */
-
-.match-card, .nation-card, .feature-card, .fact-card, .trophy-card {
-  background: white !important;
-  color: #333 !important;
-  border: 2px solid #e0e0e0 !important;
-}
-
-/* Remove ALL hover color changes - Keep white background */
-.match-card:hover, .nation-card:hover, .feature-card:hover, .fact-card:hover, .trophy-card:hover {
-  background: white !important;
-  transform: translateY(-3px) !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
-  border-color: #e0e0e0 !important;
-}
-
-/* ===== KEEP SIX NATIONS SPECIFIC RIVALRY INDICATOR ===== */
-
-.womens-rivalry {
-  border: 3px solid #ff4081 !important; /* PINK ACCENT */
-  background: linear-gradient(135deg, rgba(255, 64, 129, 0.15), rgba(156, 39, 176, 0.25)) !important;
-  position: relative;
-}
-
-.match-highlight {
-  background: linear-gradient(135deg, #ff4081, #ff79b0);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 10px;
-  font-size: 0.8rem;
+  text-align: center;
+  padding: 12px;
   font-weight: bold;
-  margin-bottom: 1rem;
-  text-align: center;
-  animation: slideIn 0.5s ease-out;
+  font-size: 0.9rem;
+  border-bottom: 2px solid #9575CD; /* LIGHT PURPLE */
+  width: 100%;
 }
 
-@keyframes slideIn {
-  from { transform: translateY(-10px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+/* ===== TAB NAVIGATION ===== */
+.womens-six-nations-page .tournament-tabs {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 1rem 2rem !important;
+  background: #512DA8 !important; /* DARK PURPLE */
+  border-bottom: 2px solid #9575CD !important; /* LIGHT PURPLE */
+  position: sticky !important;
+  top: 80px !important;
+  z-index: 999 !important;
+  width: 100% !important;
 }
 
-/* ===== APPLY BRITISH LIONS BOTTOM FEATURE BLOCKS ALIGNMENT ===== */
-
-/* FIXED: Features Grid - Force 4 equal columns */
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 1rem !important;
-  margin-top: 2rem !important;
-  max-width: 100%;
-  overflow: hidden;
+.womens-six-nations-page .nav-tabs {
+  display: flex !important;
+  gap: 0.5rem !important;
 }
 
-/* FIXED: Feature Cards - Consistent sizing */
-.feature-card {
+.womens-six-nations-page .tab-btn {
   background: white !important;
-  color: #333 !important;
-  border: 2px solid #e0e0e0 !important;
-  border-radius: 12px !important;
-  padding: 1rem !important;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: center;
-  min-height: 120px !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  color: #512DA8 !important; /* DARK PURPLE */
+  border: none !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 25px !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  white-space: nowrap !important;
+  border: 2px solid #9575CD !important; /* LIGHT PURPLE */
 }
 
-.feature-icon {
-  font-size: 2rem !important;
-  margin-bottom: 0.5rem !important;
-  color: #9c27b0; /* SIX NATIONS PURPLE */
+.womens-six-nations-page .tab-btn:hover {
+  background: #F3E5F5 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(81, 45, 168, 0.4) !important;
 }
 
-.feature-title {
-  font-size: 1rem !important;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  color: #673ab7 !important; /* DARK PURPLE */
-}
-
-.feature-description {
-  font-size: 0.8rem !important;
-  color: #666;
-  line-height: 1.3;
-}
-
-/* FIXED: Quick Actions - Proper grid alignment */
-.quick-actions {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr) !important;
-  gap: 0.8rem;
-  margin-top: 1.5rem;
-  max-width: 100%;
-}
-
-.quick-btn {
-  background: linear-gradient(135deg, #9c27b0, #7b1fa2) !important; /* SIX NATIONS PURPLE GRADIENT */
+.womens-six-nations-page .tab-btn.active {
+  background: #673AB7 !important; /* MEDIUM PURPLE */
   color: white !important;
-  border: none;
-  padding: 0.8rem 1rem !important;
-  border-radius: 20px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.85rem !important;
-  min-height: auto;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  box-shadow: 0 4px 15px rgba(103, 58, 183, 0.4) !important;
+  border-color: #512DA8 !important;
 }
 
-.quick-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(156, 39, 176, 0.4);
+/* ===== FIXTURES/MATCHES SECTION ===== */
+.womens-six-nations-page .fixtures-section {
+  text-align: center;
 }
 
-/* ===== KEEP SIX NATIONS SPECIFIC HERO STYLING ===== */
+.womens-six-nations-page .centered-fixtures-title {
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin: 0 auto 30px auto;
+  color: #512DA8 !important; /* DARK PURPLE */
+  font-size: 2.5rem;
+  padding: 0 20px;
+}
 
-.tournament-hero {
-  background: linear-gradient(135deg, #FFE5B4 0%, #FAD6A5 100%) !important; /* PEACH COLORS */
+/* ===== TOURNAMENT HERO ===== */
+.womens-six-nations-page .tournament-hero {
+  background: linear-gradient(135deg, #311B92 0%, #512DA8 100%) !important; /* DARK PURPLE GRADIENT */
   padding: 3rem 2rem;
   text-align: center;
-  border-bottom: 3px solid #9c27b0; /* SIX NATIONS PURPLE BORDER */
+  border-bottom: 3px solid #9575CD; /* LIGHT PURPLE */
   position: relative;
   overflow: hidden;
 }
 
-.hero-content {
+.womens-six-nations-page .hero-content {
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
-.tournament-badge {
+.womens-six-nations-page .tournament-badge {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -378,45 +103,46 @@
   margin-bottom: 1rem;
 }
 
-.tournament-logo {
+.womens-six-nations-page .tournament-logo {
   font-size: 4rem;
   background: rgba(255, 255, 255, 0.1);
   padding: 1rem;
   border-radius: 20px;
-  border: 3px solid rgba(255, 255, 255, 0.2);
+  border: 3px solid rgba(149, 117, 205, 0.3); /* LIGHT PURPLE */
 }
 
-.tournament-info h1 {
+.womens-six-nations-page .tournament-info h1 {
   font-size: 3rem;
   margin: 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  color: #673ab7; /* DARK PURPLE */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: white;
 }
 
-.tournament-year {
+.womens-six-nations-page .tournament-year {
   font-size: 1.5rem;
   opacity: 0.9;
   margin: 0;
-  color: #9c27b0 !important; /* SIX NATIONS PURPLE */
+  color: #9575CD !important; /* LIGHT PURPLE */
   font-weight: 600;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.tournament-description {
+.womens-six-nations-page .tournament-description {
   font-size: 1.2rem;
   max-width: 600px;
   margin: 1rem auto 0;
   opacity: 0.95;
   line-height: 1.6;
-  color: #673ab7 !important; /* DARK PURPLE */
+  color: #ffffff !important;
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(81, 45, 168, 0.2); /* DARK PURPLE TRANSPARENT */
   padding: 1rem 1.5rem;
   border-radius: 10px;
-  border: 2px solid rgba(156, 39, 176, 0.3); /* SIX NATIONS PURPLE */
+  border: 2px solid rgba(149, 117, 205, 0.3); /* LIGHT PURPLE */
 }
 
-.hero-stats {
+/* ===== HERO STATS - FIXED BLACK TEXT ===== */
+.womens-six-nations-page .hero-stats {
   display: flex;
   justify-content: center;
   gap: 3rem;
@@ -425,30 +151,34 @@
   z-index: 2;
 }
 
-.stat {
+.womens-six-nations-page .stat {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.stat-number {
+/* FIXED: BLACK TEXT FOR READABILITY */
+.womens-six-nations-page .stat-number {
   font-size: 2rem;
   font-weight: bold;
-  color: #9c27b0 !important; /* SIX NATIONS PURPLE */
+  color: #000000 !important; /* BLACK FOR MAXIMUM READABILITY */
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-.stat-label {
+/* FIXED: BLACK TEXT FOR READABILITY */
+.womens-six-nations-page .stat-label {
   font-size: 0.9rem;
-  opacity: 0.8;
-  color: #673ab7; /* DARK PURPLE */
+  opacity: 0.9;
+  color: #000000 !important; /* BLACK FOR MAXIMUM READABILITY */
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
 }
 
-/* ===== KEEP SIX NATIONS SPECIFIC PERSONALIZATION BANNER ===== */
-
-.personalization-banner {
-  background: linear-gradient(135deg, rgba(156, 39, 176, 0.3), rgba(255, 64, 129, 0.3)); /* SIX NATIONS COLORS */
+/* ===== PERSONALIZATION BANNER ===== */
+.womens-six-nations-page .personalization-banner {
+  background: linear-gradient(135deg, rgba(149, 117, 205, 0.3), rgba(81, 45, 168, 0.3)); /* PURPLE COLORS */
   backdrop-filter: blur(10px);
-  border: 2px solid #9c27b0; /* SIX NATIONS PURPLE */
+  border: 2px solid #9575CD; /* LIGHT PURPLE */
   border-radius: 15px;
   padding: 1.5rem;
   margin: 1.5rem auto;
@@ -460,31 +190,47 @@
 }
 
 @keyframes glow {
-  from { box-shadow: 0 0 10px rgba(156, 39, 176, 0.3); }
-  to { box-shadow: 0 0 20px rgba(156, 39, 176, 0.6); }
+  from { box-shadow: 0 0 10px rgba(149, 117, 205, 0.3); }
+  to { box-shadow: 0 0 20px rgba(149, 117, 205, 0.6); }
 }
 
-.banner-icon {
+.womens-six-nations-page .banner-icon {
   font-size: 2rem;
   flex-shrink: 0;
 }
 
-.banner-content h3 {
+.womens-six-nations-page .banner-content h3 {
   margin: 0 0 0.5rem 0;
-  color: #9c27b0 !important; /* SIX NATIONS PURPLE */
+  color: #9575CD !important; /* LIGHT PURPLE */
   font-size: 1.2rem;
 }
 
-.banner-content p {
+.womens-six-nations-page .banner-content p {
   margin: 0;
   opacity: 0.9;
   font-size: 0.95rem;
-  color: #673ab7; /* DARK PURPLE */
+  color: #ffffff !important;
 }
 
-/* ===== APPLY BRITISH LIONS MATCH FILTERS ===== */
+/* ===== MAIN CONTENT ===== */
+.womens-six-nations-page .tournament-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 
-.match-filters {
+.womens-six-nations-page .section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #512DA8 !important; /* DARK PURPLE */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: block;
+}
+
+/* ===== MATCH FILTERS ===== */
+.womens-six-nations-page .match-filters {
   display: flex;
   gap: 1rem;
   margin-bottom: 1.5rem;
@@ -492,10 +238,10 @@
   flex-wrap: wrap;
 }
 
-.filter-btn {
+.womens-six-nations-page .filter-btn {
   background: rgba(255, 255, 255, 0.1);
-  color: #673ab7; /* DARK PURPLE */
-  border: 2px solid rgba(103, 58, 183, 0.2);
+  color: #512DA8; /* DARK PURPLE */
+  border: 2px solid rgba(81, 45, 168, 0.2);
   padding: 0.7rem 1.5rem;
   border-radius: 25px;
   cursor: pointer;
@@ -503,111 +249,141 @@
   transition: all 0.3s ease;
 }
 
-.filter-btn:hover {
+.womens-six-nations-page .filter-btn:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
-.filter-btn.active {
-  background: #9c27b0; /* SIX NATIONS PURPLE */
+.womens-six-nations-page .filter-btn.active {
+  background: #512DA8; /* DARK PURPLE */
   color: white;
-  border-color: #9c27b0;
-  box-shadow: 0 4px 15px rgba(156, 39, 176, 0.4);
+  border-color: #512DA8;
+  box-shadow: 0 4px 15px rgba(81, 45, 168, 0.4);
 }
 
-/* ===== KEEP SIX NATIONS SPECIFIC FAVORITE STYLING ===== */
+/* ===== MATCH CARD STYLING ===== */
+.womens-six-nations-page .matches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
 
-.favorite-team {
-  border: 3px solid #9c27b0 !important; /* SIX NATIONS PURPLE */
-  background: linear-gradient(135deg, rgba(156, 39, 176, 0.2), rgba(255, 64, 129, 0.3)) !important;
+.womens-six-nations-page .match-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-left: 4px solid #512DA8; /* DARK PURPLE */
+  margin-bottom: 16px;
+  overflow: hidden;
   position: relative;
-  transform: scale(1.02);
 }
 
-.favorite-badge {
+.womens-six-nations-page .match-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(81, 45, 168, 0.15);
+}
+
+.womens-six-nations-page .match-card.favorite-match {
+  border-left-width: 6px;
+  background: linear-gradient(135deg, #F3E5F5, #ffffff);
+}
+
+/* ===== SIX NATIONS RIVALRY INDICATOR ===== */
+.womens-six-nations-page .six-nations-rivalry {
+  background: linear-gradient(90deg, #512DA8, #311B92); /* PURPLE GRADIENT */
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+/* STATUS BADGE POSITIONING - FIXED TO LEFT SIDE */
+.womens-six-nations-page .status-badge {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #9c27b0; /* SIX NATIONS PURPLE */
+  top: 12px;
+  left: 12px; /* CHANGED TO LEFT */
+  background: #512DA8; /* DARK PURPLE */
   color: white;
   padding: 0.3rem 0.8rem;
   border-radius: 12px;
   font-size: 0.7rem;
   font-weight: bold;
   z-index: 10;
-  animation: pulse 2s infinite;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+.womens-six-nations-page .status-badge.upcoming {
+  background: #9575CD !important; /* LIGHT PURPLE */
+  color: #311B92 !important; /* DARK PURPLE */
 }
 
-.team-highlight {
-  background: rgba(156, 39, 176, 0.9); /* SIX NATIONS PURPLE */
-  color: white;
-  padding: 0.3rem 0.8rem;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  margin-top: 0.5rem;
-  text-align: center;
+.womens-six-nations-page .status-badge.completed {
+  background: #28a745 !important;
+  color: white !important;
 }
 
-/* Grand Slam Styling - SIX NATIONS SPECIFIC */
-.grand-slam {
-  border: 3px solid #ff4081 !important; /* PINK ACCENT */
-  background: linear-gradient(135deg, rgba(255, 64, 129, 0.15), rgba(156, 39, 176, 0.25)) !important;
-  position: relative;
-}
-
-/* ===== APPLY BRITISH LIONS MAIN CONTENT STRUCTURE ===== */
-
-.tournament-main {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  color: #9c27b0 !important; /* SIX NATIONS PURPLE */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-/* Matches Grid - FROM BRITISH LIONS */
-.matches-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 1.5rem;
-}
-
-/* Match card base styling - KEEP EXISTING but ensure high specificity */
-.womens-six-nations-page .match-card {
-  background: white !important;
-  color: #333 !important;
-  border: 2px solid #e0e0e0 !important;
-  border-radius: 12px;
-  padding: 1.2rem !important;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  min-height: 220px;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Teams container - ensure proper spacing */
-.womens-six-nations-page .teams-container {
+/* ===== MATCH HEADER ===== */
+.womens-six-nations-page .match-header {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  gap: 0.5rem;
+  position: relative;
+  padding-left: 130px; /* Make room for status badge on left */
+}
+
+.womens-six-nations-page .match-tournament {
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.8em;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #512DA8, #311B92); /* PURPLE GRADIENT */
+  max-width: 60%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* DATE POSITIONING FIXED */
+.womens-six-nations-page .match-date {
+  color: #512DA8; /* DARK PURPLE */
+  font-size: 0.9em;
+  font-weight: 500;
+  white-space: nowrap;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  z-index: 11;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* ===== TEAMS CONTAINER ===== */
+.womens-six-nations-page .teams-container {
+  display: flex;
   align-items: center;
-  margin-bottom: 1rem;
-  gap: 0.8rem;
-  flex: 1;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 16px;
+  min-height: 100px;
 }
 
 .womens-six-nations-page .team {
@@ -616,90 +392,175 @@
   align-items: center;
   flex: 1;
   min-width: 0;
-  padding: 0.3rem;
+  padding: 0 5px;
+}
+
+.womens-six-nations-page .team-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  width: 100%;
+  justify-content: center;
+}
+
+.womens-six-nations-page .team-row.reverse {
+  flex-direction: row-reverse;
 }
 
 .womens-six-nations-page .team-flag {
-  font-size: 1.8rem !important;
-  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.womens-six-nations-page .team-ranking {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #512DA8; /* DARK PURPLE */
+  background: #F3E5F5;
+  padding: 4px 8px;
+  border-radius: 8px;
+  min-width: 45px;
+  text-align: center;
 }
 
 .womens-six-nations-page .team-name {
   font-weight: 600;
-  font-size: 0.85rem !important;
-  margin-bottom: 0.2rem;
+  color: #000000;
+  font-size: 1.3em;
   text-align: center;
+  line-height: 1.2;
+  width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 100%;
-  color: #333 !important;
 }
 
-.womens-six-nations-page .team-ranking {
-  font-size: 0.65rem !important;
-  opacity: 0.7;
-  color: #000000 !important;
-  font-weight: 600;
-  background: #f8f9fa;
-  padding: 0.1rem 0.3rem !important;
-  border-radius: 4px;
-}
-
+/* ===== VS CONTAINER ===== */
 .womens-six-nations-page .vs-container {
-  margin: 0 0.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 70px;
   flex-shrink: 0;
+  margin: 0 10px;
 }
 
 .womens-six-nations-page .vs {
-  background: #9c27b0; /* SIX NATIONS PURPLE */
-  color: white;
-  padding: 0.2rem 0.6rem !important;
+  color: #000000;
+  font-weight: 700;
+  font-size: 1.1em;
+  background: #f5f5f5;
+  padding: 8px 16px;
   border-radius: 12px;
-  font-weight: bold;
-  font-size: 0.7rem !important;
+  white-space: nowrap;
+  border: 2px solid #e0e0e0;
 }
 
-/* Match footer - ensure proper spacing */
+.womens-six-nations-page .match-time {
+  color: #666;
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+/* ===== MATCH FOOTER ===== */
 .womens-six-nations-page .match-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
-  padding-top: 0.8rem;
-  border-top: 1px solid #e0e0e0;
-  gap: 0.3rem;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+  min-height: 32px;
 }
 
-.womens-six-nations-page .venue, 
-.womens-six-nations-page .capacity {
-  font-size: 0.65rem !important;
-  opacity: 0.8;
-  color: #000000 !important;
-  font-weight: 500;
-  background: #f8f9fa;
-  padding: 0.15rem 0.4rem !important;
-  border-radius: 4px;
+.womens-six-nations-page .venue, .womens-six-nations-page .capacity {
+  color: #666;
+  font-size: 0.8em;
+  font-style: italic;
+  text-align: right;
+  flex: 1;
+  margin-left: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* ===== MATCH ACTIONS ===== */
+.womens-six-nations-page .match-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.8rem;
+}
+
+.womens-six-nations-page .action-btn {
   flex: 1;
+  padding: 0.5rem 0.4rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.7rem;
+  min-height: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
 }
 
-/* ===== KEEP SIX NATIONS SPECIFIC CONTENT STYLING ===== */
-
-/* Teams Section - SIX NATIONS SPECIFIC */
-.teams-section {
-  margin-bottom: 2rem;
+/* WATCH BUTTON - DARK PURPLE */
+.womens-six-nations-page .action-btn.primary,
+.womens-six-nations-page .match-card .match-actions .action-btn:nth-of-type(1),
+.womens-six-nations-page .match-card .match-actions .action-btn:nth-child(1),
+.womens-six-nations-page .match-card .match-actions button:first-child,
+.womens-six-nations-page .match-card .match-actions .action-btn:first-child {
+  background-color: #512DA8 !important; /* DARK PURPLE */
+  color: white !important;
+  border: none !important;
 }
 
-.teams-grid {
+/* LISTEN/AUDIO BUTTON - LIGHT PURPLE */
+.womens-six-nations-page .action-btn.secondary,
+.womens-six-nations-page .match-card .match-actions .action-btn:nth-of-type(2),
+.womens-six-nations-page .match-card .match-actions .action-btn:nth-child(2),
+.womens-six-nations-page .match-card .match-actions button:last-child,
+.womens-six-nations-page .match-card .match-actions .action-btn:last-child {
+  background-color: #9575CD !important; /* LIGHT PURPLE */
+  color: white !important;
+  border: none !important;
+}
+
+.womens-six-nations-page .action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effects */
+.womens-six-nations-page .action-btn.primary:hover {
+  background-color: #311B92 !important; /* DARKER PURPLE */
+}
+
+.womens-six-nations-page .action-btn.secondary:hover {
+  background-color: #7E57C2 !important; /* DARKER LIGHT PURPLE */
+}
+
+/* ===== TEAMS SECTION ===== */
+.womens-six-nations-page .teams-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
-.nation-card {
+.womens-six-nations-page .nation-card {
   background: white;
   color: #333;
   border-radius: 12px;
@@ -707,213 +568,203 @@
   border: 2px solid #e0e0e0;
   transition: all 0.3s ease;
   position: relative;
+  text-align: center;
 }
 
-.nation-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+.womens-six-nations-page .nation-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.nation-flag {
+.womens-six-nations-page .nation-flag {
   font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.nation-info {
-  flex: 1;
-}
-
-.nation-name {
+.womens-six-nations-page .nation-name {
   font-size: 1.3rem;
   font-weight: 600;
   margin: 0 0 0.25rem 0;
-  color: #333;
+  color: #000000;
 }
 
-.world-ranking {
+.womens-six-nations-page .world-ranking {
   font-size: 0.9rem;
   opacity: 0.8;
   color: #666;
-}
-
-.nation-form {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background: #f8f9fa;
-  border-radius: 10px;
-}
-
-.form-label {
-  display: block;
-  font-size: 0.8rem;
-  opacity: 0.7;
   margin-bottom: 0.5rem;
-  color: #666;
 }
 
-.form-indicator {
-  display: flex;
-  gap: 0.3rem;
-}
-
-.form-dot {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
+.womens-six-nations-page .points {
+  font-size: 1rem;
   font-weight: bold;
+  color: #512DA8; /* DARK PURPLE */
 }
 
-.form-dot.win {
-  background: #28a745;
-  color: white;
-}
-
-.form-dot.loss {
-  background: #dc3545;
-  color: white;
-}
-
-.form-dot.draw {
-  background: #ffc107;
-  color: black;
-}
-
-.nation-actions {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.team-btn {
-  flex: 1;
-  padding: 0.5rem 1rem;
-  background: #9c27b0; /* SIX NATIONS PURPLE */
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  transition: all 0.3s ease;
-}
-
-.team-btn:hover {
-  background: #7b1fa2; /* DARKER PURPLE */
-  transform: translateY(-1px);
-}
-
-/* Standings Section - SIX NATIONS SPECIFIC */
-.standings-section {
-  margin-bottom: 2rem;
-}
-
-.standings-table {
+/* ===== STANDINGS TABLE ===== */
+.womens-six-nations-page .standings-table {
   background: white;
   color: #333;
   border-radius: 12px;
   overflow: hidden;
   border: 2px solid #e0e0e0;
+  margin-bottom: 2rem;
 }
 
-.table-header {
+.womens-six-nations-page .table-header {
   display: grid;
   grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
   gap: 1rem;
   padding: 1rem 1.5rem;
-  background: rgba(156, 39, 176, 0.8); /* SIX NATIONS PURPLE */
+  background: #512DA8; /* DARK PURPLE */
   font-weight: 600;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.table-row {
+.womens-six-nations-page .table-row {
   display: grid;
   grid-template-columns: 0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
   gap: 1rem;
   padding: 1rem 1.5rem;
   border-bottom: 1px solid #e0e0e0;
   transition: background 0.3s ease;
+  align-items: center;
 }
 
-.table-row:hover {
+.womens-six-nations-page .table-row:hover {
   background: #f8f9fa;
 }
 
-.table-row:last-child {
+.womens-six-nations-page .table-row:last-child {
   border-bottom: none;
 }
 
-.position {
+.womens-six-nations-page .position {
   font-weight: bold;
-  color: #9c27b0; /* SIX NATIONS PURPLE */
+  color: #512DA8; /* DARK PURPLE */
 }
 
-.team-name {
+.womens-six-nations-page .team-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.womens-six-nations-page .team-name-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.womens-six-nations-page .team-name-text {
   font-weight: 600;
-  color: #333;
+  color: #000000;
 }
 
-.points {
-  font-weight: bold;
-  color: #9c27b0; /* SIX NATIONS PURPLE */
+.womens-six-nations-page .favorite-star {
+  color: #9575CD; /* LIGHT PURPLE */
+  font-size: 1.1em;
 }
 
-/* Trophies Section - SIX NATIONS SPECIFIC */
-.trophies-section {
-  margin-bottom: 3rem;
+/* ===== FEATURES GRID - NO BIG TITLE ===== */
+.womens-six-nations-page .features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  max-width: 100%;
+  overflow: hidden;
 }
 
-.trophy-card {
+.womens-six-nations-page .feature-card {
   background: white;
   color: #333;
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
   border: 2px solid #e0e0e0;
-}
-
-.trophy-header {
+  border-radius: 12px;
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-height: 140px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
 }
 
-.trophy-icon {
+.womens-six-nations-page .feature-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: #512DA8; /* DARK PURPLE */
+}
+
+.womens-six-nations-page .feature-icon {
   font-size: 2rem;
+  margin-bottom: 0.8rem;
+  color: #512DA8; /* DARK PURPLE */
 }
 
-.trophy-info h3 {
-  margin: 0;
-  color: #9c27b0; /* SIX NATIONS PURPLE */
+.womens-six-nations-page .feature-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #512DA8 !important; /* DARK PURPLE */
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.trophy-winner {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: #f8f9fa;
-  border-radius: 10px;
+.womens-six-nations-page .feature-description {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.3;
 }
 
-/* ===== APPLY BRITISH LIONS BOTTOM AD BANNER ===== */
+/* ===== QUICK ACTIONS ===== */
+.womens-six-nations-page .quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+  max-width: 100%;
+}
 
-.bottom-ad-banner {
-  background: linear-gradient(90deg, #9c27b0, #673ab7); /* SIX NATIONS PURPLE GRADIENT */
+.womens-six-nations-page .quick-btn {
+  background: linear-gradient(135deg, #512DA8, #311B92); /* PURPLE GRADIENT */
+  color: white;
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+  min-height: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.womens-six-nations-page .quick-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(81, 45, 168, 0.4);
+}
+
+/* ===== BOTTOM AD BANNER ===== */
+.womens-six-nations-page .bottom-ad-banner {
+  background: linear-gradient(90deg, #311B92, #512DA8); /* DARK PURPLE GRADIENT */
   color: white;
   text-align: center;
   padding: 1.5rem 2rem;
   font-weight: bold;
   font-size: 1.1rem;
-  border-top: 3px solid #ff4081; /* PINK ACCENT */
+  border-top: 3px solid #9575CD; /* LIGHT PURPLE */
   margin-top: 3rem;
 }
 
-.bottom-ad-banner .ad-content {
+.womens-six-nations-page .bottom-ad-banner .ad-content {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -922,17 +773,16 @@
   margin: 0 auto;
 }
 
-.bottom-ad-banner .ad-icon {
+.womens-six-nations-page .bottom-ad-banner .ad-icon {
   font-size: 2rem;
 }
 
-.bottom-ad-banner .ad-text {
+.womens-six-nations-page .bottom-ad-banner .ad-text {
   flex: 1;
-  color: white;
 }
 
-.bottom-ad-banner .ad-cta {
-  background: #ff4081; /* PINK ACCENT */
+.womens-six-nations-page .bottom-ad-banner .ad-cta {
+  background: #9575CD; /* LIGHT PURPLE */
   color: white;
   padding: 0.5rem 1.5rem;
   border-radius: 25px;
@@ -942,111 +792,49 @@
   border: none;
 }
 
-.bottom-ad-banner .ad-cta:hover {
-  background: #f50057; /* DARKER PINK */
+.womens-six-nations-page .bottom-ad-banner .ad-cta:hover {
+  background: #7E57C2; /* DARKER LIGHT PURPLE */
   transform: translateY(-2px);
 }
 
-/* ===== RESPONSIVE DESIGN - FROM BRITISH LIONS ===== */
-@media (max-width: 768px) {
-  .tournament-tabs {
-    padding: 1rem;
-    top: 70px;
-  }
-  
-  .nav-tabs {
-    order: 3;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .tab-btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-  }
-  
-  .bottom-ad-banner .ad-content {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-  }
-  
-  .matches-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .teams-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-  
-  /* FIXED: Responsive feature blocks */
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  
-  .quick-actions {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  
-  .quick-btn {
-    min-width: 250px;
-    width: 100%;
-  }
+/* ===== FLAG COMPONENT STYLES ===== */
+.womens-six-nations-page .flag-small, 
+.womens-six-nations-page .flag-medium, 
+.womens-six-nations-page .flag-large {
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid #e0e0e0;
 }
 
-@media (max-width: 480px) {
-  .tournament-hero {
-    padding: 2rem 1rem;
-  }
-  
-  .tournament-info h1 {
-    font-size: 2rem;
-  }
-  
-  .tournament-logo {
-    font-size: 3rem;
-  }
-  
-  .section-title {
-    font-size: 1.5rem;
-  }
-  
-  .personalization-banner {
-    flex-direction: column;
-    text-align: center;
-    padding: 1rem;
-  }
-  
-  .match-filters {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .filter-btn {
-    width: 200px;
-  }
-  
-  .tournament-tabs {
-    top: 60px;
-  }
-  
-  /* FIXED: Mobile feature blocks */
-  .features-grid {
-    grid-template-columns: 1fr !important;
-  }
-  
-  .quick-actions {
-    grid-template-columns: 1fr !important;
-  }
+.womens-six-nations-page .flag-small {
+  width: 40px;
+  height: 25px;
 }
 
-/* ===== SIX NATIONS SPECIFIC ENHANCEMENTS ===== */
+.womens-six-nations-page .flag-medium {
+  width: 60px;
+  height: 40px;
+}
 
-/* Women's Rugby Badge */
-.womens-rugby-badge {
+.womens-six-nations-page .flag-large {
+  width: 80px;
+  height: 50px;
+}
+
+.womens-six-nations-page .flag-fallback {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #666;
+  font-size: 0.8em;
+}
+
+/* ===== WOMEN'S RUGBY BADGE ===== */
+.womens-six-nations-page .womens-rugby-badge {
   display: inline-block;
-  background: #9c27b0; /* SIX NATIONS PURPLE */
+  background: #9575CD; /* LIGHT PURPLE */
   color: white;
   padding: 0.3rem 0.8rem;
   border-radius: 15px;
@@ -1056,52 +844,145 @@
   vertical-align: middle;
 }
 
-/* Favorite Team Indicators */
-.team.favorite .team-name {
-  color: #9c27b0; /* SIX NATIONS PURPLE */
-  font-weight: bold;
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .womens-six-nations-page .tournament-tabs {
+    padding: 1rem !important;
+    top: 70px !important;
+  }
+  
+  .womens-six-nations-page .nav-tabs {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .womens-six-nations-page .tab-btn {
+    padding: 0.6rem 1rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .womens-six-nations-page .matches-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .womens-six-nations-page .teams-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .womens-six-nations-page .features-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .womens-six-nations-page .quick-actions {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .womens-six-nations-page .table-header,
+  .womens-six-nations-page .table-row {
+    grid-template-columns: 0.5fr 1.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+    font-size: 0.8rem;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+  }
 }
 
-.favorite-indicator {
-  color: #9c27b0; /* SIX NATIONS PURPLE */
-  font-size: 0.9rem;
-  margin: 0 0.3rem;
-  animation: bounce 1s infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-.favorite-team-name {
-  color: #9c27b0; /* SIX NATIONS PURPLE */
-  font-weight: bold;
-}
-
-/* Featured Player Card */
-.featured-player {
-  background: rgba(156, 39, 176, 0.1); /* SIX NATIONS PURPLE */
-  border-radius: 10px;
-  padding: 1rem;
-  margin-top: 1rem;
-  border-left: 4px solid #9c27b0;
-  transition: all 0.3s ease;
-}
-
-.featured-player:hover {
-  background: rgba(156, 39, 176, 0.15);
-  transform: translateX(5px);
-}
-
-.featured-player h4 {
-  margin: 0 0 0.5rem 0;
-  color: #9c27b0; /* SIX NATIONS PURPLE */
-  font-size: 0.9rem;
-}
-
-.featured-player p {
-  margin: 0;
-  font-size: 0.8rem;
-  opacity: 0.9;
+@media (max-width: 480px) {
+  .womens-six-nations-page .tournament-hero {
+    padding: 2rem 1rem;
+  }
+  
+  .womens-six-nations-page .tournament-info h1 {
+    font-size: 2rem;
+  }
+  
+  .womens-six-nations-page .tournament-logo {
+    font-size: 3rem;
+  }
+  
+  .womens-six-nations-page .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .womens-six-nations-page .features-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .womens-six-nations-page .quick-actions {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .womens-six-nations-page .match-card {
+    min-height: 200px;
+    padding: 1rem;
+  }
+  
+  .womens-six-nations-page .teams-container {
+    flex-direction: column;
+    gap: 20px;
+    min-height: auto;
+  }
+  
+  .womens-six-nations-page .team {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+  }
+  
+  .womens-six-nations-page .team-name {
+    font-size: 1em;
+    margin: 0 10px;
+    flex: 1;
+    min-height: auto;
+    text-align: left;
+  }
+  
+  .womens-six-nations-page .team-ranking {
+    font-size: 0.8em;
+    margin-top: 0;
+    width: auto;
+    min-width: 40px;
+  }
+  
+  .womens-six-nations-page .vs-container {
+    flex-direction: row;
+    gap: 20px;
+    order: -1;
+    margin: 0;
+    min-width: auto;
+  }
+  
+  .womens-six-nations-page .match-footer {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  
+  .womens-six-nations-page .venue, .womens-six-nations-page .capacity {
+    margin-left: 0;
+    text-align: center;
+  }
+  
+  .womens-six-nations-page .status-badge {
+    top: 8px !important;
+    left: 8px !important; /* CHANGED TO LEFT */
+    font-size: 0.6rem !important;
+    max-width: 100px !important;
+  }
+  
+  .womens-six-nations-page .table-header,
+  .womens-six-nations-page .table-row {
+    grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
+    font-size: 0.7rem;
+    gap: 0.3rem;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .womens-six-nations-page .womens-rugby-badge {
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
 }
